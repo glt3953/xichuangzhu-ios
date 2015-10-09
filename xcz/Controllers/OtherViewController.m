@@ -78,7 +78,7 @@
     if (section == 0) {
         return 1;
     } else {
-        return 1;
+        return 3;
     }
 }
 
@@ -87,28 +87,27 @@
     UITableViewCell *cell = [UITableViewCell new];
     
     if (indexPath.section == 0) {
-        NSMutableAttributedString *iconString = [[NSMutableAttributedString alloc] initWithString:ion_ios_star_outline attributes:@{NSFontAttributeName: [IonIcons fontWithSize:17], NSForegroundColorAttributeName: [UIColor colorWithRGBA:0x333333FF]}];
-        NSMutableAttributedString *countString = [[NSMutableAttributedString alloc] initWithString:@"  我的收藏" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17]}];
-        [iconString appendAttributedString:countString];
-        UILabel *upvotesLabel = [UILabel new];
-        upvotesLabel.attributedText = iconString;
-        cell.textLabel.attributedText = iconString;
+//        NSMutableAttributedString *iconString = [[NSMutableAttributedString alloc] initWithString:ion_ios_star_outline attributes:@{NSFontAttributeName: [IonIcons fontWithSize:17], NSForegroundColorAttributeName: [UIColor colorWithRGBA:0x333333FF]}];
+//        NSMutableAttributedString *countString = [[NSMutableAttributedString alloc] initWithString:@"  我的收藏" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17]}];
+//        [iconString appendAttributedString:countString];
+//        UILabel *upvotesLabel = [UILabel new];
+//        upvotesLabel.attributedText = iconString;
+//        cell.textLabel.attributedText = iconString;
+        cell.textLabel.text = @"我的收藏";
     } else {
-//        if (indexPath.row == 0) {
+        if (indexPath.row == 0) {
 //            NSMutableAttributedString *iconString = [[NSMutableAttributedString alloc] initWithString:ion_ios_gear_outline attributes:@{NSFontAttributeName: [IonIcons fontWithSize:17], NSForegroundColorAttributeName: [UIColor colorWithRGBA:0x333333FF]}];
 //            NSMutableAttributedString *countString = [[NSMutableAttributedString alloc] initWithString:@"  设置" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17]}];
 //            [iconString appendAttributedString:countString];
 //            UILabel *upvotesLabel = [UILabel new];
 //            upvotesLabel.attributedText = iconString;
 //            cell.textLabel.attributedText = iconString;
-//        } else {
-        NSMutableAttributedString *iconString = [[NSMutableAttributedString alloc] initWithString:ion_ios_information_outline attributes:@{NSFontAttributeName: [IonIcons fontWithSize:17], NSForegroundColorAttributeName: [UIColor colorWithRGBA:0x333333FF]}];
-        NSMutableAttributedString *countString = [[NSMutableAttributedString alloc] initWithString:@"  关于" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17]}];
-        [iconString appendAttributedString:countString];
-        UILabel *upvotesLabel = [UILabel new];
-        upvotesLabel.attributedText = iconString;
-        cell.textLabel.attributedText = iconString;
-//        }
+            cell.textLabel.text = @"给我们反馈";
+        } else if (indexPath.row == 1) {
+            cell.textLabel.text = @"去 App Store 给我们评价";
+        } else if (indexPath.row == 2) {
+            cell.textLabel.text = @"关于";
+        }
     }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -142,10 +141,12 @@
         }
     } else {
         if (indexPath.row == 0) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:hi@xichuangzhu.com"]];
+        } else if (indexPath.row == 1) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/xi-chuang-zhu/id912139104"]];
+        } else {
             AboutViewController *controller = [AboutViewController new];
             [self.navigationController pushViewController:controller animated:YES];
-        } else {
-            
         }
     }
 }
