@@ -12,7 +12,7 @@
 #import "XCZWork.h"
 #import <AVOSCloud/AVOSCloud.h>
 
-@interface XCZWorksViewController ()
+@interface XCZWorksViewController () <UISearchDisplayDelegate>
 
 @property (nonatomic, strong) NSMutableArray *works;
 @property (nonatomic, strong) NSArray *searchResults;

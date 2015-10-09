@@ -13,7 +13,7 @@
 #import "XCZDynasty.h"
 #import "XCZWork.h"
 
-@interface XCZAuthorsViewController ()
+@interface XCZAuthorsViewController () <UISearchDisplayDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;

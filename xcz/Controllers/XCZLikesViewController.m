@@ -11,7 +11,7 @@
 #import "XCZLike.h"
 #import "XCZWork.h"
 
-@interface XCZLikesViewController ()
+@interface XCZLikesViewController () <UISearchDisplayDelegate>
 
 @property (nonatomic, strong) NSMutableArray *likes;
 @property (nonatomic, strong) NSMutableArray *works;
