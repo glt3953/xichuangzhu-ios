@@ -191,18 +191,9 @@
     [self.navigationController pushViewController:detailController animated:YES];
 }
 
-// 以下3个message用于解决键盘位置占据了searchResultsTableView下方空间的bug
-// 参见：http://stackoverflow.com/questions/19069503/uisearchdisplaycontrollers-searchresultstableviews-contentsize-is-incorrect-b
-- (void)searchDisplayController:(UISearchDisplayController *)controller didHideSearchResultsTableView:(UITableView *)tableView {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-}
-
+// 以下代码解决了 searchResultsTableView 下方空间的 bug
+// 参见：http://stackoverflow.com/questions/19161387/uisearchdisplaycontroller-tableview-content-offset-is-incorrect-after-keyboard-h
 - (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void) keyboardWillHide {
-    UITableView *tableView = [[self searchDisplayController] searchResultsTableView];
     [tableView setContentInset:UIEdgeInsetsZero];
     [tableView setScrollIndicatorInsets:UIEdgeInsetsZero];
 }
@@ -211,15 +202,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
