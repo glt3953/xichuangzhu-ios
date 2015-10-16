@@ -48,12 +48,10 @@
     
     // text
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"西窗烛 " attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17]}];
-    NSMutableAttributedString *versionText = [[NSMutableAttributedString alloc] initWithString:@"v1.6.0" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
+    NSMutableAttributedString *versionText = [[NSMutableAttributedString alloc] initWithString:@"v1.6.1" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
     [text appendAttributedString:versionText];
     UILabel *textLabel = [UILabel new];
-//    textLabel.text = @"西窗烛 v1.2.6";
     textLabel.attributedText = text;
-//    textLabel.font = [UIFont systemFontOfSize:17];
     [wapView addSubview:textLabel];
     
     // 约束
@@ -150,12 +148,12 @@
     contactLabel.numberOfLines = 0;
     contactLabel.lineBreakMode = NSLineBreakByWordWrapping;
     contactLabel.font = [UIFont systemFontOfSize:15];
-    NSMutableAttributedString *contactPreString = [[NSMutableAttributedString alloc] initWithString:@"任何建议请联系：\n" attributes:@{}];
-    NSMutableAttributedString *contactProString = [[NSMutableAttributedString alloc] initWithString:@"hi@xichuangzhu.com" attributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)}];
+    NSMutableAttributedString *contactPreString = [[NSMutableAttributedString alloc] initWithString:@"任何建议请联系：\n" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]}];
+    NSMutableAttributedString *contactProString = [[NSMutableAttributedString alloc] initWithString:@"hi@xichuangzhu.com" attributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle), NSFontAttributeName: [UIFont systemFontOfSize:13]}];
     [contactPreString appendAttributedString:contactProString];
     
     NSMutableParagraphStyle *paragraphStyleForContact = [NSMutableParagraphStyle new];
-    paragraphStyleForContact.lineSpacing = 2;
+    paragraphStyleForContact.lineSpacing = 3;
     [contactPreString addAttribute:NSParagraphStyleAttributeName value:paragraphStyleForContact range:NSMakeRange(0, contactPreString.length)];
     
     contactLabel.attributedText = contactPreString;
@@ -169,12 +167,12 @@
     websiteLabel.numberOfLines = 0;
     websiteLabel.lineBreakMode = NSLineBreakByWordWrapping;
     websiteLabel.font = [UIFont systemFontOfSize:15];
-    NSMutableAttributedString *websitePreString = [[NSMutableAttributedString alloc] initWithString:@"西窗烛网页版：\n" attributes:@{}];
-    NSMutableAttributedString *websiteProString = [[NSMutableAttributedString alloc] initWithString:@"http://www.xichuangzhu.com" attributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)}];
+    NSMutableAttributedString *websitePreString = [[NSMutableAttributedString alloc] initWithString:@"西窗烛网页版：\n" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]}];
+    NSMutableAttributedString *websiteProString = [[NSMutableAttributedString alloc] initWithString:@"http://www.xichuangzhu.com" attributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle), NSFontAttributeName: [UIFont systemFontOfSize:13]}];
     [websitePreString appendAttributedString:websiteProString];
     
     NSMutableParagraphStyle *paragraphStyleForWebsite = [NSMutableParagraphStyle new];
-    paragraphStyleForWebsite.lineSpacing = 2;
+    paragraphStyleForWebsite.lineSpacing = 3;
     [websitePreString addAttribute:NSParagraphStyleAttributeName value:paragraphStyleForWebsite range:NSMakeRange(0, websitePreString.length)];
     
     websiteLabel.attributedText = websitePreString;
