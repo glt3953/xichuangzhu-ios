@@ -140,6 +140,9 @@
     self.work = [XCZWork getRandomWork];
     [self.detailsView updateWithWork:self.work];
     [self initNavbarShowLike:![XCZLike checkExist:self.work.id]];
+    [self.detailsView setNeedsLayout];
+    [self.detailsView layoutIfNeeded];
+    [self.detailsView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 }
 
 #pragma mark - SomeDelegate
