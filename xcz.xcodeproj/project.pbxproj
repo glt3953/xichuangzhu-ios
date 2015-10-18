@@ -45,6 +45,7 @@
 		05DF00E8195F0CE100175ABF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DF00CC195F0CE100175ABF /* CoreData.framework */; };
 		05DF00F0195F0CE100175ABF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05DF00EE195F0CE100175ABF /* InfoPlist.strings */; };
 		05DF00F2195F0CE100175ABF /* xczTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DF00F1195F0CE100175ABF /* xczTests.m */; };
+		05ECE6191BD3D476008DE9CE /* XCZWorkWikiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05ECE6181BD3D476008DE9CE /* XCZWorkWikiViewController.m */; settings = {ASSET_TAGS = (); }; };
 		05F219141BC5784000B222D7 /* OtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F219131BC5784000B222D7 /* OtherViewController.m */; settings = {ASSET_TAGS = (); }; };
 		05F219171BC6126300B222D7 /* xcz_tr.db in Resources */ = {isa = PBXBuildFile; fileRef = 05F219161BC6126300B222D7 /* xcz_tr.db */; settings = {ASSET_TAGS = (); }; };
 		05F2191A1BC6134400B222D7 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F219191BC6134400B222D7 /* AboutViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -123,6 +124,8 @@
 		05DF00ED195F0CE100175ABF /* xczTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "xczTests-Info.plist"; sourceTree = "<group>"; };
 		05DF00EF195F0CE100175ABF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		05DF00F1195F0CE100175ABF /* xczTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xczTests.m; sourceTree = "<group>"; };
+		05ECE6171BD3D476008DE9CE /* XCZWorkWikiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorkWikiViewController.h; sourceTree = "<group>"; };
+		05ECE6181BD3D476008DE9CE /* XCZWorkWikiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWorkWikiViewController.m; sourceTree = "<group>"; };
 		05F219121BC5784000B222D7 /* OtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherViewController.h; sourceTree = "<group>"; };
 		05F219131BC5784000B222D7 /* OtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherViewController.m; sourceTree = "<group>"; };
 		05F219151BC5924D00B222D7 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 				05F219131BC5784000B222D7 /* OtherViewController.m */,
 				05F219181BC6134400B222D7 /* AboutViewController.h */,
 				05F219191BC6134400B222D7 /* AboutViewController.m */,
+				05ECE6171BD3D476008DE9CE /* XCZWorkWikiViewController.h */,
+				05ECE6181BD3D476008DE9CE /* XCZWorkWikiViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 				0545D26B1BC5379200410895 /* UIColor+Helper.m in Sources */,
 				056485591BA889E100F52EAE /* XCZWorksViewController.m in Sources */,
 				0564853F1BA8895300F52EAE /* XCZWork.m in Sources */,
+				05ECE6191BD3D476008DE9CE /* XCZWorkWikiViewController.m in Sources */,
 				05DF00D5195F0CE100175ABF /* main.m in Sources */,
 				056485581BA889E100F52EAE /* XCZQuotesViewController.m in Sources */,
 				0564853E1BA8895300F52EAE /* XCZQuote.m in Sources */,

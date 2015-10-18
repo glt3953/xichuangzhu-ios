@@ -141,6 +141,7 @@
     self.content = [resultSet stringForColumn:@"content"];
     self.intro = [resultSet stringForColumn:@"intro"];
     self.layout = [resultSet stringForColumn:@"layout"];
+    self.baiduWiki = [resultSet stringForColumn:@"baidu_wiki"];
 }
 
 @end

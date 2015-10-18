@@ -12,6 +12,7 @@
 #import "WorkDetailsView.h"
 #import "XCZWorkDetailViewController.h"
 #import "XCZAuthorDetailsViewController.h"
+#import "XCZWorkWikiViewController.h"
 #import "UILabel+SetFont.h"
 #import "XCZUtils.h"
 #import "Constants.h"
@@ -24,6 +25,7 @@
 
 @property (strong, nonatomic) WorkDetailsView *detailsView;
 
+@property (strong, nonatomic) UIBarButtonItem *wikiButton;
 @property (strong, nonatomic) UIBarButtonItem *authorButton;
 @property (strong, nonatomic) UIBarButtonItem *likeButton;
 @property (strong, nonatomic) UIBarButtonItem *unlikeButton;
@@ -136,6 +138,16 @@
     [self.tabBarController.tabBar setHidden:!tabBarHidden];
 }
 
+- (void)redirectToWiki
+{
+    [self.navigationItem setTitle:@"返回"];
+    
+    if (self.work.baiduWiki) {
+        XCZWorkWikiViewController *controller = [[XCZWorkWikiViewController alloc] initWithURL:self.work.baiduWiki];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+}
+
 - (void)redirectToAuthor:(id)sender
 {
     [self.navigationItem setTitle:@"返回"];
@@ -180,6 +192,10 @@
     // 是否显示作者按钮
     if (showAuthor) {
         [btnArrays addObject:self.authorButton];
+    }
+    
+    if (self.work.baiduWiki) {
+        [btnArrays addObject:self.wikiButton];
     }
     
     // 显示收藏/取消收藏按钮
@@ -231,6 +247,19 @@
     }
 
     return _unlikeButton;
+}
+
+- (UIBarButtonItem *)wikiButton
+{
+    if (!_wikiButton) {
+        UIImage *internetIcon = [IonIcons imageWithIcon:ion_ios_world_outline
+                                            iconColor:[UIColor grayColor]
+                                             iconSize:25.0f
+                                            imageSize:CGSizeMake(27.0f, 27.0f)];
+        _wikiButton = [[UIBarButtonItem alloc] initWithImage:internetIcon style:UIBarButtonItemStylePlain target:self action:@selector(redirectToWiki)];
+    }
+    
+    return _wikiButton;
 }
 
 @end

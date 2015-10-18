@@ -9,6 +9,7 @@
 #import "XCZWork.h"
 #import "XCZLike.h"
 #import "WorkDetailsView.h"
+#import "XCZWorkWikiViewController.h"
 #import "MeetViewController.h"
 #import "Constants.h"
 #import <ionicons/IonIcons.h>
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) WorkDetailsView *detailsView;
 
 @property (strong, nonatomic) UIBarButtonItem *refreshButton;
+@property (strong, nonatomic) UIBarButtonItem *wikiButton;
 @property (strong, nonatomic) UIBarButtonItem *likeButton;
 @property (strong, nonatomic) UIBarButtonItem *unlikeButton;
 
@@ -135,6 +137,14 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadLikesData" object:nil userInfo:nil];
 }
 
+- (void)redirectToWiki
+{
+    if (self.work.baiduWiki) {
+        XCZWorkWikiViewController *controller = [[XCZWorkWikiViewController alloc] initWithURL:self.work.baiduWiki];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+}
+
 - (void)refreshWork
 {
     self.work = [XCZWork getRandomWork];
@@ -155,6 +165,10 @@
     NSMutableArray *btnArrays = [NSMutableArray new];
     
     [btnArrays addObject:self.refreshButton];
+    
+    if (self.work.baiduWiki) {
+        [btnArrays addObject:self.wikiButton];
+    }
     
     // 显示收藏/取消收藏按钮
     if (showLike) {
@@ -202,6 +216,19 @@
     }
     
     return _refreshButton;
+}
+
+- (UIBarButtonItem *)wikiButton
+{
+    if (!_wikiButton) {
+        UIImage *internetIcon = [IonIcons imageWithIcon:ion_ios_world_outline
+                                              iconColor:[UIColor grayColor]
+                                               iconSize:25.0f
+                                              imageSize:CGSizeMake(25.0f, 25.0f)];
+        _wikiButton = [[UIBarButtonItem alloc] initWithImage:internetIcon style:UIBarButtonItemStylePlain target:self action:@selector(redirectToWiki)];
+    }
+    
+    return _wikiButton;
 }
 
 @end
