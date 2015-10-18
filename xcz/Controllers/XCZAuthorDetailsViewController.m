@@ -6,11 +6,12 @@
 //  Copyright (c) 2014年 Zhipeng Liu. All rights reserved.
 //
 
-#import "XCZAuthorDetailsViewController.h"
 #import <FMDB/FMDB.h>
 #import "XCZWork.h"
 #import "XCZAuthor.h"
 #import "XCZWorkDetailViewController.h"
+#import "XCZAuthorDetailsViewController.h"
+#import "XCZAuthorQuotesViewController.h"
 #import "XCZUtils.h"
 #import <AVOSCloud/AVOSCloud.h>
 
@@ -125,6 +126,11 @@
     headerView.frame = headerFrame;
 
     [self.tableView setTableHeaderView:headerView];
+    
+    UIImage *quotesImg = [UIImage imageNamed:@"quotesGray"];
+    quotesImg = [quotesImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *quotesButton = [[UIBarButtonItem alloc] initWithImage:quotesImg style:UIBarButtonItemStylePlain target:self action:@selector(redirectToAuthorQuotes)];
+    self.navigationItem.rightBarButtonItem = quotesButton;
 }
 
 - (UIView *)headerView
@@ -136,10 +142,12 @@
     return _headerView;
 }
 
-- (void)didReceiveMemoryWarning
+# pragma mark - User Interface
+
+- (void)redirectToAuthorQuotes
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    XCZAuthorQuotesViewController *controller = [[XCZAuthorQuotesViewController alloc] initWithAuthorId:self.author.id];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - Table view data source

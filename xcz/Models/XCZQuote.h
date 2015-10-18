@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString *work;
 
 + (XCZQuote *)getRandomQuote;
++ (NSArray *)getByAuthorId:(int)authorId;
 + (NSMutableArray *)getRandomQuotes:(int)number;
 
 @end

@@ -9,17 +9,18 @@
 #import "WorkDetailsView.h"
 #import "UIColor+Helper.h"
 #import <Masonry/Masonry.h>
+#import <HTCopyableLabel.h>
 
 @interface WorkDetailsView ()
 
 @property (strong, nonatomic) XCZWork *work;
 @property (nonatomic) CGFloat width;
 
-@property (strong, nonatomic) UILabel *titleLabel;
+@property (strong, nonatomic) HTCopyableLabel *titleLabel;
 @property (strong, nonatomic) UILabel *authorLabel;
-@property (strong, nonatomic) UILabel *contentLabel;
+@property (strong, nonatomic) HTCopyableLabel *contentLabel;
 @property (strong, nonatomic) UILabel *introHeaderLabel;
-@property (strong, nonatomic) UILabel *introLabel;
+@property (strong, nonatomic) HTCopyableLabel *introLabel;
 
 @end
 
@@ -40,7 +41,7 @@
     self.contentView = contentView;
     
     // 标题
-    UILabel *titleLabel = [UILabel new];
+    HTCopyableLabel *titleLabel = [HTCopyableLabel new];
     self.titleLabel = titleLabel;
     titleLabel.numberOfLines = 0;
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -66,7 +67,7 @@
     [contentView addSubview:introHeaderLabel];
     
     // 评析
-    UILabel *introLabel = [UILabel new];
+    HTCopyableLabel *introLabel = [HTCopyableLabel new];
     self.introLabel = introLabel;
     introLabel.numberOfLines = 0;
     introLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -161,7 +162,7 @@
         [self.contentLabel removeFromSuperview];
     }
     
-    UILabel *contentLabel = [UILabel new];
+    HTCopyableLabel *contentLabel = [HTCopyableLabel new];
     self.contentLabel = contentLabel;
     contentLabel.numberOfLines = 0;
     contentLabel.lineBreakMode = NSLineBreakByWordWrapping;

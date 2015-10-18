@@ -29,6 +29,30 @@
     return quote;
 }
 
+// 获取某文学家的所有摘录
++ (NSArray *)getByAuthorId:(int)authorId
+{
+    int index = 0;
+    NSMutableArray *quotes = [[NSMutableArray alloc] init];
+    NSString *dbPath = [XCZUtils getDatabaseFilePath];
+    FMDatabase *db = [FMDatabase databaseWithPath:dbPath];
+    
+    if ([db open]) {
+        NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM quotes WHERE author_id = %d", authorId];
+        FMResultSet *s = [db executeQuery:query];
+        while ([s next]) {
+            XCZQuote *quote = [XCZQuote new];
+            [quote loadFromResultSet:s];
+            quotes[index] = quote;
+            index++;
+        }
+        
+        [db close];
+    }
+    
+    return quotes;
+}
+
 // 获取一定数目的摘录
 + (NSMutableArray *)getRandomQuotes:(int)number
 {
