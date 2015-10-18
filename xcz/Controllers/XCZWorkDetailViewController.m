@@ -194,7 +194,7 @@
         [btnArrays addObject:self.authorButton];
     }
     
-    if (self.work.baiduWiki) {
+    if ([self.work.baiduWiki length] > 0) {
         [btnArrays addObject:self.wikiButton];
     }
     

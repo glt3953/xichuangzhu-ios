@@ -166,7 +166,7 @@
     
     [btnArrays addObject:self.refreshButton];
     
-    if (self.work.baiduWiki) {
+    if ([self.work.baiduWiki length] > 0) {
         [btnArrays addObject:self.wikiButton];
     }
     
