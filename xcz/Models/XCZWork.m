@@ -144,4 +144,27 @@
     self.baiduWiki = [resultSet stringForColumn:@"baidu_wiki"];
 }
 
+#pragma mark - Getters & Setters
+
+- (NSString *)firstSentence
+{
+    if (!_firstSentence) {
+        NSString *content = [[self.content componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""];
+        
+        NSInteger stopLocation = [content rangeOfString:@"。"].location;
+        NSInteger questionLocation = [content rangeOfString:@"？"].location;
+        NSInteger semicolonLocation = [content rangeOfString:@"；"].location;
+
+        if (stopLocation < MIN(questionLocation, semicolonLocation)) {
+            _firstSentence = [NSString stringWithFormat:@"%@。", [content componentsSeparatedByString:@"。"][0]];
+        } else if (questionLocation < MIN(stopLocation, semicolonLocation)) {
+            _firstSentence = [NSString stringWithFormat:@"%@？", [content componentsSeparatedByString:@"？"][0]];
+        } else {
+            _firstSentence = [NSString stringWithFormat:@"%@。", [content componentsSeparatedByString:@"；"][0]];
+        }
+    }
+    
+    return _firstSentence;
+}
+
 @end

@@ -39,15 +39,15 @@
     // 约束
     [authorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset(15);
-        make.top.equalTo(self.contentView).offset(10);
+        make.top.equalTo(self.contentView).offset(11);
         make.right.equalTo(self.contentView);
     }];
     
     [quoteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(authorLabel);
-        make.top.equalTo(authorLabel.mas_bottom).offset(5);
+        make.top.equalTo(authorLabel.mas_bottom).offset(6);
         make.right.equalTo(authorLabel);
-        make.bottom.equalTo(self.contentView).offset(-10);
+        make.bottom.equalTo(self.contentView).offset(-11);
     }];
     
     return self;
@@ -59,12 +59,12 @@
     if (author.randomQuote) {
         self.quoteLabel.text = author.randomQuote.quote;
         [self.quoteLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.contentView).offset(-10);
+            make.bottom.equalTo(self.contentView).offset(-11);
         }];
     } else {
         self.quoteLabel.text = @"";
         [self.quoteLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.contentView).offset(-5);
+            make.bottom.equalTo(self.contentView).offset(-6);
         }];
     }
 }

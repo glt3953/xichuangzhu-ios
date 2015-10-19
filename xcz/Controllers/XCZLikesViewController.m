@@ -6,12 +6,16 @@
 //  Copyright (c) 2015年 Zhipeng Liu. All rights reserved.
 //
 
-#import "XCZLikesViewController.h"
-#import "XCZWorkDetailViewController.h"
 #import "XCZLike.h"
 #import "XCZWork.h"
+#import "XCZWorkTableViewCell.h"
+#import "XCZLikesViewController.h"
+#import "XCZWorkDetailViewController.h"
+#import <UITableView+FDTemplateLayoutCell.h>
 
-@interface XCZLikesViewController () <UISearchDisplayDelegate>
+static NSString * const cellIdentifier = @"WorkCell";
+
+@interface XCZLikesViewController () <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *likes;
 @property (nonatomic, strong) NSMutableArray *works;
@@ -52,11 +56,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self.tableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+
     self.searchDisplayController.searchBar.placeholder = @"搜索";
-    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     //添加“编辑”按钮
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]
@@ -73,7 +77,7 @@
 }
 
 // 切换编辑模式
-- (IBAction)toggleEditingMode:(id)sender
+- (void)toggleEditingMode:(id)sender
 {
     if (self.tableView.isEditing) {
         self.navigationItem.rightBarButtonItem.title = @"编辑";
@@ -157,11 +161,6 @@
 // 单元格内容
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"UITableViewCell"];
-    }
-    
     XCZWork *work = nil;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         work = self.searchResults[indexPath.row];
@@ -169,9 +168,29 @@
         work = self.works[indexPath.row];
     }
     
-    cell.textLabel.text = work.fullTitle;
-    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"[%@] %@", work.dynasty, work.author];
+    XCZWorkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    [cell updateWithWork:work showAuthor:YES];
     return cell;
+}
+
+// 单元格高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XCZWork *work;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        work = self.searchResults[indexPath.row];
+    } else {
+        work = self.works[indexPath.row];
+    }
+    
+    return [tableView fd_heightForCellWithIdentifier:cellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", work.id] configuration:^(XCZWorkTableViewCell *cell) {
+        [cell updateWithWork:work showAuthor:YES];
+    }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 62.5;
 }
 
 // 选中某单元格后的操作

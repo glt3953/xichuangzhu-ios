@@ -6,13 +6,17 @@
 //  Copyright (c) 2014年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZWork.h"
+#import "XCZWorkTableViewCell.h"
 #import "XCZWorksViewController.h"
 #import "XCZWorkDetailViewController.h"
 #import <FMDB/FMDB.h>
-#import "XCZWork.h"
 #import <AVOSCloud/AVOSCloud.h>
+#import <UITableView+FDTemplateLayoutCell.h>
 
-@interface XCZWorksViewController () <UISearchDisplayDelegate>
+static NSString * const cellIdentifier = @"WorkCell";
+
+@interface XCZWorksViewController () <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *works;
 @property (nonatomic, strong) NSArray *searchResults;
@@ -43,6 +47,8 @@
 {
     [super viewDidLoad];
     
+    [self.tableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    
     self.searchDisplayController.searchBar.placeholder = @"搜索";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -57,14 +63,9 @@
     [UIView transitionWithView: self.tableView
                       duration: 0.15f
                        options: UIViewAnimationOptionTransitionCrossDissolve
-                    animations: ^(void)
-     {
-         [self.tableView reloadData];
-     }
-                    completion: ^(BOOL isFinished)
-     {
-         /* TODO: Whatever you want here */
-     }];
+                    animations:^{
+                        [self.tableView reloadData];
+                    } completion:nil];
 }
 
 // 收到通知中心通知后，进入特定的作品页面
@@ -117,21 +118,36 @@
 // 单元格内容
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"UITableViewCell"];
-    }
-    
-    XCZWork *work = nil;
+    XCZWork *work;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         work = self.searchResults[indexPath.row];
     } else {
         work = self.works[indexPath.row];
     }
     
-    cell.textLabel.text = work.fullTitle;
-    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"[%@] %@", work.dynasty, work.author];
+    XCZWorkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    [cell updateWithWork:work showAuthor:YES];
     return cell;
+}
+
+// 单元格高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XCZWork *work;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        work = self.searchResults[indexPath.row];
+    } else {
+        work = self.works[indexPath.row];
+    }
+    
+    return [tableView fd_heightForCellWithIdentifier:cellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", work.id] configuration:^(XCZWorkTableViewCell *cell) {
+        [cell updateWithWork:work showAuthor:YES];
+    }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 62.5;
 }
 
 // 选中某单元格后的操作
@@ -149,12 +165,6 @@
     
     detailController.work = work;
     [self.navigationController pushViewController:detailController animated:YES];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

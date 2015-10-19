@@ -6,16 +6,21 @@
 //  Copyright (c) 2014年 Zhipeng Liu. All rights reserved.
 //
 
-#import <FMDB/FMDB.h>
+
 #import "XCZWork.h"
 #import "XCZAuthor.h"
+#import "XCZWorkTableViewCell.h"
 #import "XCZWorkDetailViewController.h"
 #import "XCZAuthorDetailsViewController.h"
 #import "XCZAuthorQuotesViewController.h"
 #import "XCZUtils.h"
+#import <FMDB/FMDB.h>
 #import <AVOSCloud/AVOSCloud.h>
+#import <UITableView+FDTemplateLayoutCell.h>
 
-@interface XCZAuthorDetailsViewController ()
+static NSString * const cellIdentifier = @"WorkCell";
+
+@interface XCZAuthorDetailsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *worksHeaderField;
 @property (strong, nonatomic) IBOutlet UIView *headerView;
@@ -68,6 +73,8 @@
 {
     [super viewWillAppear:animated];
     
+    self.navigationItem.title = @"";
+    
     [AVAnalytics beginLogPageView:[[NSString alloc] initWithFormat:@"author-%@", self.author.name ]];
     
     // 姓名
@@ -94,14 +101,16 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
+    self.navigationItem.title = self.author.name;
     [AVAnalytics endLogPageView:[[NSString alloc] initWithFormat:@"author-%@", self.author.name ]];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [self.tableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:cellIdentifier];
     
-    self.navigationItem.title = self.author.name;
     UIView *headerView = self.headerView;
     [self.tableView setTableHeaderView:headerView];
     
@@ -170,20 +179,34 @@
 // 单元格内容
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    
-    if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
-    }
-    
     NSArray *keys = [self.works allKeys];
-    NSString* key = [keys objectAtIndex:indexPath.section];
+    NSString *key = [keys objectAtIndex:indexPath.section];
     NSArray *works = [self.works objectForKey:key];
     XCZWork *work = works[indexPath.row];
-
-    cell.textLabel.text = work.fullTitle;
+    
+    XCZWorkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    [cell updateWithWork:work showAuthor:NO];
     return cell;
 }
+
+// 单元格高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *keys = [self.works allKeys];
+    NSString *key = [keys objectAtIndex:indexPath.section];
+    NSArray *works = [self.works objectForKey:key];
+    XCZWork *work = works[indexPath.row];
+    
+    return [tableView fd_heightForCellWithIdentifier:cellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", work.id] configuration:^(XCZWorkTableViewCell *cell) {
+        [cell updateWithWork:work showAuthor:NO];
+    }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 62.5;
+}
+
 
 // Section标题
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

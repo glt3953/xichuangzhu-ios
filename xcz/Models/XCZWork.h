@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSString *intro;
 @property (nonatomic, strong) NSString *layout;
 @property (nonatomic, strong) NSString *baiduWiki;
+@property (nonatomic, strong) NSString *firstSentence;
 @property (nonatomic) int showOrder;
 
 + (XCZWork *)getById:(int)workId;
