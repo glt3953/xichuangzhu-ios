@@ -7,6 +7,7 @@
 //
 
 #import "XCZAuthorTableViewCell.h"
+#import "UIColor+Helper.h"
 #import <Masonry.h>
 
 @interface XCZAuthorTableViewCell ()
@@ -32,7 +33,7 @@
     UILabel *quoteLabel = [UILabel new];
     [self.contentView addSubview:quoteLabel];
     quoteLabel.font = [UIFont systemFontOfSize:12];
-    quoteLabel.textColor = [UIColor grayColor];
+    quoteLabel.textColor = [UIColor colorWithRGBA:0x999999FF];
     self.quoteLabel = quoteLabel;
     
     // 约束
