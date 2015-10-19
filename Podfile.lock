@@ -12,6 +12,7 @@ PODS:
   - HTCopyableLabel (0.0.7)
   - ionicons (2.0.1)
   - Masonry (0.6.2)
+  - UITableView+FDTemplateLayoutCell (1.4.beta)
 
 DEPENDENCIES:
   - AVOSCloud
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - HTCopyableLabel
   - ionicons
   - Masonry
+  - UITableView+FDTemplateLayoutCell (>= 1.4.beta)
 
 SPEC CHECKSUMS:
   AVOSCloud: a7aa880f15d0c26e6b1d3154459c8b32e96d91ce
@@ -30,5 +32,6 @@ SPEC CHECKSUMS:
   HTCopyableLabel: e67c190d2f1f8f03c9d9858a7d8ce33be7fb43fa
   ionicons: c7b0867373392e85c17f613d19ade04ccfbe5a7c
   Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
+  UITableView+FDTemplateLayoutCell: 9d20bf0518f3c01e42ae614243b97f1161063d27
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

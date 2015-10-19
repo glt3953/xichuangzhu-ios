@@ -155,14 +155,12 @@
 // section数目
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return self.works.count;
 }
 
 // 每个section的行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     NSArray *keys = [self.works allKeys];
     NSString* key = [keys objectAtIndex:section];
     NSArray *works = [self.works objectForKey:key];

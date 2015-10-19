@@ -102,6 +102,8 @@
     return authors;
 }
 
+#pragma mark - Internal Helper
+
 - (void)loadFromResultSet:(FMResultSet *)resultSet
 {
     self.id = [resultSet intForColumn:@"id"];
@@ -110,6 +112,17 @@
     self.dynasty = [resultSet stringForColumn:@"dynasty"];
     self.birthYear = [resultSet stringForColumn:@"birth_year"];
     self.deathYear = [resultSet stringForColumn:@"death_year"];
+}
+
+#pragma mark - Getters & Setters
+
+- (XCZQuote *)randomQuote
+{
+    if (!_randomQuote) {
+        _randomQuote = [XCZQuote getRandomQuoteByAuthorId:self.id];
+    }
+    
+    return _randomQuote;
 }
 
 @end

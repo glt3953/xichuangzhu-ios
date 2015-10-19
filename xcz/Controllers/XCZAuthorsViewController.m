@@ -6,14 +6,19 @@
 //  Copyright (c) 2014年 Zhipeng Liu. All rights reserved.
 //
 
-#import "XCZAuthorsViewController.h"
-#import <FMDB/FMDB.h>
-#import "XCZAuthorDetailsViewController.h"
 #import "XCZAuthor.h"
 #import "XCZDynasty.h"
 #import "XCZWork.h"
+#import "XCZAuthorTableViewCell.h"
+#import "XCZAuthorsViewController.h"
+#import "XCZAuthorDetailsViewController.h"
+#import "UIColor+Helper.h"
+#import <FMDB/FMDB.h>
+#import <UITableView+FDTemplateLayoutCell.h>
 
-@interface XCZAuthorsViewController () <UISearchDisplayDelegate>
+static NSString * const cellIdentifier = @"AuthorCell";
+
+@interface XCZAuthorsViewController () <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
@@ -35,7 +40,6 @@
 {
     self = [super init];
     if (self) {
-        // Custom initialization
         self.navigationItem.title = @"文学家";
 
         self.dynasties = [XCZDynasty getNames];
@@ -46,7 +50,6 @@
             NSString *dynasty = self.dynasties[i];
             NSMutableArray *authors = [XCZAuthor getAuthorsByDynasty:dynasty];
             [self.authors setObject:authors forKey:dynasty];
-            
         }
     }
     
@@ -63,6 +66,8 @@
 {
     [super viewDidLoad];
     
+    [self.tableView registerClass:[XCZAuthorTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    
     self.searchDisplayController.searchBar.placeholder = @"搜索";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -73,12 +78,6 @@
 - (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView {
     [tableView setContentInset:UIEdgeInsetsZero];
     [tableView setScrollIndicatorInsets:UIEdgeInsetsZero];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 // 过滤结果
@@ -94,7 +93,7 @@
     return YES;
 }
 
-#pragma mark - Table view data source
+#pragma mark - TableView Delegate
 
 // Section数目
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -150,12 +149,6 @@
 // 单元格的内容
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    
-    if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
-    }
-    
     XCZAuthor *author = nil;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         author = self.searchResult[indexPath.row];
@@ -165,8 +158,25 @@
         author = authors[indexPath.row];
     }
 
-    cell.textLabel.text = author.name;
+    XCZAuthorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    [cell updateWithAuthor:author];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XCZAuthor *author = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        author = self.searchResult[indexPath.row];
+    } else {
+        NSString *dynastyName = [self.dynasties objectAtIndex:indexPath.section];
+        NSArray *authors = [self.authors objectForKey:dynastyName];
+        author = authors[indexPath.row];
+    }
+    
+    return [tableView fd_heightForCellWithIdentifier:cellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", author.id] configuration:^(id cell) {
+        [cell updateWithAuthor:author];
+    }];
 }
 
 // 选中单元格

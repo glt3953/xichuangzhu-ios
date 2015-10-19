@@ -6,6 +6,7 @@
 //  Copyright (c) 2014年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZQuote.h"
 #import <Foundation/Foundation.h>
 
 @interface XCZAuthor : NSObject
@@ -16,6 +17,7 @@
 @property (nonatomic, strong) NSString *dynasty;
 @property (nonatomic, strong) NSString *birthYear;
 @property (nonatomic, strong) NSString *deathYear;
+@property (nonatomic, strong) XCZQuote *randomQuote;
 
 + (XCZAuthor *)getById:(int)authorId;
 + (int)getWorksCount:(int)authorId;

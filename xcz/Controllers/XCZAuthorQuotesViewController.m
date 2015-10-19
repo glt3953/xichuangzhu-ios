@@ -56,6 +56,9 @@ static NSString * const cellIdentifier = @"identifier";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
+    [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
 }
 
 #pragma mark - Layout

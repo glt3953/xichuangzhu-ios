@@ -47,6 +47,7 @@
 		05DF00F2195F0CE100175ABF /* xczTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DF00F1195F0CE100175ABF /* xczTests.m */; };
 		05ECE6191BD3D476008DE9CE /* XCZWorkWikiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05ECE6181BD3D476008DE9CE /* XCZWorkWikiViewController.m */; settings = {ASSET_TAGS = (); }; };
 		05ECE61C1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05ECE61B1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.m */; settings = {ASSET_TAGS = (); }; };
+		05ECE61F1BD48B2B008DE9CE /* XCZAuthorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05ECE61E1BD48B2B008DE9CE /* XCZAuthorTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		05F219141BC5784000B222D7 /* OtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F219131BC5784000B222D7 /* OtherViewController.m */; settings = {ASSET_TAGS = (); }; };
 		05F219171BC6126300B222D7 /* xcz_tr.db in Resources */ = {isa = PBXBuildFile; fileRef = 05F219161BC6126300B222D7 /* xcz_tr.db */; settings = {ASSET_TAGS = (); }; };
 		05F2191A1BC6134400B222D7 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F219191BC6134400B222D7 /* AboutViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -129,6 +130,8 @@
 		05ECE6181BD3D476008DE9CE /* XCZWorkWikiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWorkWikiViewController.m; sourceTree = "<group>"; };
 		05ECE61A1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthorQuotesViewController.h; sourceTree = "<group>"; };
 		05ECE61B1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthorQuotesViewController.m; sourceTree = "<group>"; };
+		05ECE61D1BD48B2B008DE9CE /* XCZAuthorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthorTableViewCell.h; sourceTree = "<group>"; };
+		05ECE61E1BD48B2B008DE9CE /* XCZAuthorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthorTableViewCell.m; sourceTree = "<group>"; };
 		05F219121BC5784000B222D7 /* OtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherViewController.h; sourceTree = "<group>"; };
 		05F219131BC5784000B222D7 /* OtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherViewController.m; sourceTree = "<group>"; };
 		05F219151BC5924D00B222D7 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -246,6 +249,8 @@
 				0545D2671BC51F9800410895 /* XCZLabel.m */,
 				0545D26C1BC5428500410895 /* WorkDetailsView.h */,
 				0545D26D1BC5428500410895 /* WorkDetailsView.m */,
+				05ECE61D1BD48B2B008DE9CE /* XCZAuthorTableViewCell.h */,
+				05ECE61E1BD48B2B008DE9CE /* XCZAuthorTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 				05DF00C1195F0CE100175ABF /* Resources */,
 				D3A423F2841247EE8ACF5249 /* Copy Pods Resources */,
 				050AF69F1BAC1D0600FF56E0 /* ShellScript */,
+				B75211D0E4D4472936B1C3D4 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -475,6 +481,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		B75211D0E4D4472936B1C3D4 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xcz/Pods-xcz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D3A423F2841247EE8ACF5249 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -517,6 +538,7 @@
 				0564853F1BA8895300F52EAE /* XCZWork.m in Sources */,
 				05ECE6191BD3D476008DE9CE /* XCZWorkWikiViewController.m in Sources */,
 				05DF00D5195F0CE100175ABF /* main.m in Sources */,
+				05ECE61F1BD48B2B008DE9CE /* XCZAuthorTableViewCell.m in Sources */,
 				056485581BA889E100F52EAE /* XCZQuotesViewController.m in Sources */,
 				0564853E1BA8895300F52EAE /* XCZQuote.m in Sources */,
 				05F219141BC5784000B222D7 /* OtherViewController.m in Sources */,
