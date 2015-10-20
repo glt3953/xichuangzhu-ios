@@ -15,7 +15,7 @@
 #import <ionicons/IonIcons.h>
 #import <Masonry.h>
 
-@interface XCZRandomQuoteViewController () <XCZQuoteViewDelegate>
+@interface XCZRandomQuoteViewController () <XCZQuoteDraggableViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *quoteViews;
 
@@ -76,7 +76,7 @@
 - (void)refreshQuote
 {
     self.navigationItem.rightBarButtonItem.enabled = NO;
-    [(XCZQuoteView *)[self.quoteViews firstObject] leftClickAction];
+    [(XCZQuoteDraggableView *)[self.quoteViews firstObject] leftClickAction];
 }
 
 #pragma mark - XCZQuoteViewDelegate
@@ -107,7 +107,7 @@
 
 - (void)loadQuoteView
 {
-    XCZQuoteView *quoteView = [[XCZQuoteView alloc] initWithQuote:[XCZQuote getRandomQuote]];
+    XCZQuoteDraggableView *quoteView = [[XCZQuoteDraggableView alloc] initWithQuote:[XCZQuote getRandomQuote]];
     quoteView.delegate = self;
     
     if (self.quoteViews.count == 0) {

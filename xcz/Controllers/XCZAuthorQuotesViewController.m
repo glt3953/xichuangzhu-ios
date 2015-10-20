@@ -8,6 +8,7 @@
 
 #import "XCZWork.h"
 #import "XCZQuote.h"
+#import "XCZQuoteViewController.h"
 #import "XCZWorkDetailViewController.h"
 #import "XCZAuthorQuotesViewController.h"
 #import <Masonry.h>
@@ -103,14 +104,9 @@ static NSString * const cellIdentifier = @"identifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XCZWorkDetailViewController *detailController = [[XCZWorkDetailViewController alloc] init];
     XCZQuote *quote = self.quotes[indexPath.row];
-    
-    // 查询work
-    XCZWork *work = [XCZWork getById:quote.workId];
-    detailController.work = work;
-    
-    [self.navigationController pushViewController:detailController animated:YES];
+    UIViewController *controller = [[XCZQuoteViewController alloc] initWithQuote:quote];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 // 用于支持tableviewcell文字赋值
