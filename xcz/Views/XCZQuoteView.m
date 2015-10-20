@@ -78,12 +78,12 @@
     [logoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.equalTo(@18);
         make.left.equalTo(self).offset(15);
-        make.bottom.equalTo(self).offset(-15);
+        make.bottom.equalTo(self).offset(-20);
     }];
     
     [authorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.logoView);
-        make.bottom.equalTo(self.logoView.mas_top).offset(-15);
+        make.bottom.equalTo(self.logoView.mas_top).offset(-10);
     }];
     
     return self;

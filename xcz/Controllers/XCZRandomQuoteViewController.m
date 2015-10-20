@@ -14,10 +14,12 @@
 #import "UIColor+Helper.h"
 #import <ionicons/IonIcons.h>
 #import <Masonry.h>
+#import <MBProgressHUD.h>
 
 @interface XCZRandomQuoteViewController () <XCZQuoteDraggableViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *quoteViews;
+@property (strong, nonatomic) MBProgressHUD *hud;
 
 @end
 
@@ -38,10 +40,19 @@
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    //添加“换一换”按钮
+    NSMutableArray *buttons = [NSMutableArray new];
+    
+    // 刷新
     UIImage *refreshIcon = [IonIcons imageWithIcon:ion_ios_loop_strong size:24 color:[UIColor grayColor]];
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:refreshIcon style:UIBarButtonItemStylePlain target:self action:@selector(refreshQuote)];
-    self.navigationItem.rightBarButtonItem = rightButton;
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithImage:refreshIcon style:UIBarButtonItemStylePlain target:self action:@selector(refreshQuote)];
+    [buttons addObject:refreshButton];
+    
+    // 保存到相册
+    UIImage *snapshotIcon = [IonIcons imageWithIcon:ion_ios_albums_outline size:24 color:[UIColor grayColor]];
+    UIBarButtonItem *snapshotButton = [[UIBarButtonItem alloc] initWithImage:snapshotIcon style:UIBarButtonItemStylePlain target:self action:@selector(snapshot)];
+    [buttons addObject:snapshotButton];
+    
+    self.navigationItem.rightBarButtonItems = buttons;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -77,6 +88,17 @@
 {
     self.navigationItem.rightBarButtonItem.enabled = NO;
     [(XCZQuoteDraggableView *)[self.quoteViews firstObject] leftClickAction];
+}
+
+- (void)snapshot
+{
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, YES, 0);
+    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
 }
 
 #pragma mark - XCZQuoteViewDelegate
@@ -122,6 +144,11 @@
     }];
     
     [self.quoteViews addObject:quoteView];
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 #pragma mark - Getters & Setters

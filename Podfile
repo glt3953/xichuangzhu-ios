@@ -10,6 +10,7 @@ target "xcz" do
     pod 'Crashlytics'
     pod 'Masonry'
     pod 'UITableView+FDTemplateLayoutCell', '>= 1.4.beta'
+    pod 'MBProgressHUD', '~> 0.9.1'
 end
 
 target "xczTests" do
