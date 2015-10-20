@@ -8,6 +8,7 @@
 
 #import "XCZQuoteView.h"
 #import "XCZWorkDetailViewController.h"
+#import "MeetViewController.h"
 #import "XCZQuoteViewController.h"
 #import "UIColor+Helper.h"
 #import <Masonry.h>
@@ -102,6 +103,12 @@
 
 - (void)quoteViewPressed:(XCZQuote *)quote
 {
+    UIViewController *secondLastViewController = (UIViewController *)self.navigationController.viewControllers[self.navigationController.viewControllers.count - 2];
+    
+    if ([secondLastViewController isKindOfClass:[XCZWorkDetailViewController class]] || [secondLastViewController isKindOfClass:[MeetViewController class]]) {
+        return;
+    }
+    
     XCZWork *work = [XCZWork getById:quote.workId];
     XCZWorkDetailViewController *controller = [XCZWorkDetailViewController new];
     controller.work = work;

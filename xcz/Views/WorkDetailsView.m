@@ -131,7 +131,7 @@
     [introHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(15);
         make.right.equalTo(self).offset(-15);
-        make.top.equalTo(contentLabel.mas_bottom).offset(20);
+        make.top.equalTo(contentLabel.mas_bottom).offset(20).priorityHigh();
     }];
     
     [introLabel mas_makeConstraints:^(MASConstraintMaker *make) {
