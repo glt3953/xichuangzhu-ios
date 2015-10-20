@@ -18,6 +18,7 @@
 @interface XCZRandomQuoteViewController ()
 
 @property (strong, nonatomic) XCZQuote *quote;
+@property (strong, nonatomic) UIImageView *logoView;
 @property (strong, nonatomic) UIView *quoteWapView;
 @property (strong, nonatomic) UILabel *authorLabel;
 @property (strong, nonatomic) NSMutableArray *quoteLabels;
@@ -80,15 +81,27 @@
     self.quoteWapView = quoteWapView;
     quoteWapView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:quoteWapView];
-    
     quoteWapView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(redirectToWork)];
     [quoteWapView addGestureRecognizer:tapGesture];
+    
+    UIImageView *logoView = [UIImageView new];
+    logoView.image = [UIImage imageNamed:@"AppIcon40x40"];
+    logoView.layer.cornerRadius = 3;
+    logoView.layer.masksToBounds = YES;
+    self.logoView = logoView;
+    [quoteWapView addSubview:logoView];
     
     [quoteWapView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
         make.centerY.equalTo(self.view);
         make.width.height.equalTo(self.view).multipliedBy(.8);
+    }];
+    
+    [logoView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.equalTo(@18);
+        make.left.equalTo(self.quoteWapView).offset(15);
+        make.bottom.equalTo(self.quoteWapView).offset(-20);
     }];
     
     [self refreshQuote];
@@ -112,8 +125,8 @@
     [self.quoteWapView addSubview:authorLabel];
     
     [authorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.quoteWapView).offset(15);
-        make.bottom.equalTo(self.quoteWapView).offset(-20);
+        make.centerX.equalTo(self.logoView);
+        make.bottom.equalTo(self.logoView.mas_top).offset(-12);
     }];
     
     for (UILabel *label in self.quoteLabels) {
