@@ -37,6 +37,7 @@
 		05CC765D1BD6247E00A3970D /* XCZQuoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CC765C1BD6247E00A3970D /* XCZQuoteView.m */; settings = {ASSET_TAGS = (); }; };
 		05CC76601BD63F2800A3970D /* XCZQuoteDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CC765F1BD63F2800A3970D /* XCZQuoteDraggableView.m */; settings = {ASSET_TAGS = (); }; };
 		05CC76631BD6433000A3970D /* XCZQuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CC76621BD6433000A3970D /* XCZQuoteViewController.m */; settings = {ASSET_TAGS = (); }; };
+		05CC76661BD6460D00A3970D /* XCZQuoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CC76651BD6460D00A3970D /* XCZQuoteTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		05CE723719A4D97C003864E4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CE723619A4D97C003864E4 /* Images.xcassets */; };
 		05DF00C7195F0CE100175ABF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DF00C6195F0CE100175ABF /* Foundation.framework */; };
 		05DF00C9195F0CE100175ABF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DF00C8195F0CE100175ABF /* CoreGraphics.framework */; };
@@ -125,6 +126,8 @@
 		05CC765F1BD63F2800A3970D /* XCZQuoteDraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZQuoteDraggableView.m; sourceTree = "<group>"; };
 		05CC76611BD6433000A3970D /* XCZQuoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZQuoteViewController.h; sourceTree = "<group>"; };
 		05CC76621BD6433000A3970D /* XCZQuoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZQuoteViewController.m; sourceTree = "<group>"; };
+		05CC76641BD6460D00A3970D /* XCZQuoteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZQuoteTableViewCell.h; sourceTree = "<group>"; };
+		05CC76651BD6460D00A3970D /* XCZQuoteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZQuoteTableViewCell.m; sourceTree = "<group>"; };
 		05CE723619A4D97C003864E4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		05DF00C3195F0CE100175ABF /* xcz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xcz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DF00C6195F0CE100175ABF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -278,6 +281,8 @@
 				05CC765C1BD6247E00A3970D /* XCZQuoteView.m */,
 				05CC765E1BD63F2800A3970D /* XCZQuoteDraggableView.h */,
 				05CC765F1BD63F2800A3970D /* XCZQuoteDraggableView.m */,
+				05CC76641BD6460D00A3970D /* XCZQuoteTableViewCell.h */,
+				05CC76651BD6460D00A3970D /* XCZQuoteTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -571,6 +576,7 @@
 				0564853F1BA8895300F52EAE /* XCZWork.m in Sources */,
 				05ECE6191BD3D476008DE9CE /* XCZWorkWikiViewController.m in Sources */,
 				05DF00D5195F0CE100175ABF /* main.m in Sources */,
+				05CC76661BD6460D00A3970D /* XCZQuoteTableViewCell.m in Sources */,
 				05ECE61F1BD48B2B008DE9CE /* XCZAuthorTableViewCell.m in Sources */,
 				056485581BA889E100F52EAE /* XCZQuotesViewController.m in Sources */,
 				05CC76601BD63F2800A3970D /* XCZQuoteDraggableView.m in Sources */,

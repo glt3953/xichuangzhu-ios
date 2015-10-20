@@ -8,12 +8,14 @@
 
 #import "XCZWork.h"
 #import "XCZQuote.h"
+#import "XCZQuoteTableViewCell.h"
 #import "XCZQuoteViewController.h"
 #import "XCZWorkDetailViewController.h"
 #import "XCZAuthorQuotesViewController.h"
 #import <Masonry.h>
+#import <UITableView+FDTemplateLayoutCell.h>
 
-static NSString * const cellIdentifier = @"identifier";
+static NSString * const cellIdentifier = @"QuoteCell";
 
 @interface XCZAuthorQuotesViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -69,6 +71,7 @@ static NSString * const cellIdentifier = @"identifier";
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 0)];
     tableView.delegate = self;
     tableView.dataSource = self;
+    [tableView registerClass:[XCZQuoteTableViewCell class] forCellReuseIdentifier:cellIdentifier];
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView = tableView;
     [self.view addSubview:tableView];
@@ -93,13 +96,23 @@ static NSString * const cellIdentifier = @"identifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QuoteCell"];
-    if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"QuoteCell"];
-    }
     XCZQuote *quote = self.quotes[indexPath.row];
-    cell.textLabel.text = quote.quote;
+    XCZQuoteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    [cell updateWithQuote:quote];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XCZQuote *quote = self.quotes[indexPath.row];
+    return [tableView fd_heightForCellWithIdentifier:cellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", quote.id] configuration:^(XCZQuoteTableViewCell *cell) {
+        [cell updateWithQuote:quote];
+    }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 62.5;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
