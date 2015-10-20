@@ -190,6 +190,90 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		050E117C1BD6AF1A004516A9 /* Work */ = {
+			isa = PBXGroup;
+			children = (
+				05ECE6171BD3D476008DE9CE /* XCZWorkWikiViewController.h */,
+				05ECE6181BD3D476008DE9CE /* XCZWorkWikiViewController.m */,
+				0564854E1BA889E100F52EAE /* XCZWorksViewController.h */,
+				0564854F1BA889E100F52EAE /* XCZWorksViewController.m */,
+				056485501BA889E100F52EAE /* XCZWorksViewController.xib */,
+				0564854D1BA889E100F52EAE /* XCZWorkDetailViewController.h */,
+				056485421BA889E100F52EAE /* XCZWorkDetailViewController.m */,
+			);
+			name = Work;
+			sourceTree = "<group>";
+		};
+		050E117D1BD6AF27004516A9 /* Author */ = {
+			isa = PBXGroup;
+			children = (
+				056485431BA889E100F52EAE /* XCZAuthorDetailsViewController.h */,
+				056485441BA889E100F52EAE /* XCZAuthorDetailsViewController.m */,
+				056485451BA889E100F52EAE /* XCZAuthorsViewController.h */,
+				056485461BA889E100F52EAE /* XCZAuthorsViewController.m */,
+				056485471BA889E100F52EAE /* XCZAuthorsViewController.xib */,
+				05ECE61A1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.h */,
+				05ECE61B1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.m */,
+			);
+			name = Author;
+			sourceTree = "<group>";
+		};
+		050E117E1BD6AF4F004516A9 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				05CC76571BD5E6E800A3970D /* XCZRandomQuoteViewController.h */,
+				05CC76581BD5E6E800A3970D /* XCZRandomQuoteViewController.m */,
+				0545D26F1BC54C8B00410895 /* XCZLibraryViewController.h */,
+				0545D2701BC54C8B00410895 /* XCZLibraryViewController.m */,
+				0545D2721BC54CF600410895 /* XCZMeetViewController.h */,
+				0545D2731BC54CF600410895 /* XCZMeetViewController.m */,
+				05F219121BC5784000B222D7 /* XCZOtherViewController.h */,
+				05F219131BC5784000B222D7 /* XCZOtherViewController.m */,
+			);
+			name = Root;
+			sourceTree = "<group>";
+		};
+		050E117F1BD6AF76004516A9 /* Quote */ = {
+			isa = PBXGroup;
+			children = (
+				05CC76611BD6433000A3970D /* XCZQuoteViewController.h */,
+				05CC76621BD6433000A3970D /* XCZQuoteViewController.m */,
+			);
+			name = Quote;
+			sourceTree = "<group>";
+		};
+		050E11801BD6AF8B004516A9 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				05F219181BC6134400B222D7 /* XCZAboutViewController.h */,
+				05F219191BC6134400B222D7 /* XCZAboutViewController.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		050E11811BD6AF9B004516A9 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				056485481BA889E100F52EAE /* XCZLikesViewController.h */,
+				056485491BA889E100F52EAE /* XCZLikesViewController.m */,
+				0564854A1BA889E100F52EAE /* XCZLikesViewController.xib */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		050E11821BD6AFEA004516A9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				05CC76641BD6460D00A3970D /* XCZQuoteTableViewCell.h */,
+				05CC76651BD6460D00A3970D /* XCZQuoteTableViewCell.m */,
+				05ECE61D1BD48B2B008DE9CE /* XCZAuthorTableViewCell.h */,
+				05ECE61E1BD48B2B008DE9CE /* XCZAuthorTableViewCell.m */,
+				05ECE6201BD49D5E008DE9CE /* XCZWorkTableViewCell.h */,
+				05ECE6211BD49D5E008DE9CE /* XCZWorkTableViewCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		0564852D1BA885EC00F52EAE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,35 +286,12 @@
 		056485401BA8898600F52EAE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0564854D1BA889E100F52EAE /* XCZWorkDetailViewController.h */,
-				056485421BA889E100F52EAE /* XCZWorkDetailViewController.m */,
-				056485431BA889E100F52EAE /* XCZAuthorDetailsViewController.h */,
-				056485441BA889E100F52EAE /* XCZAuthorDetailsViewController.m */,
-				056485451BA889E100F52EAE /* XCZAuthorsViewController.h */,
-				056485461BA889E100F52EAE /* XCZAuthorsViewController.m */,
-				056485471BA889E100F52EAE /* XCZAuthorsViewController.xib */,
-				056485481BA889E100F52EAE /* XCZLikesViewController.h */,
-				056485491BA889E100F52EAE /* XCZLikesViewController.m */,
-				0564854A1BA889E100F52EAE /* XCZLikesViewController.xib */,
-				0564854E1BA889E100F52EAE /* XCZWorksViewController.h */,
-				0564854F1BA889E100F52EAE /* XCZWorksViewController.m */,
-				056485501BA889E100F52EAE /* XCZWorksViewController.xib */,
-				0545D26F1BC54C8B00410895 /* XCZLibraryViewController.h */,
-				0545D2701BC54C8B00410895 /* XCZLibraryViewController.m */,
-				0545D2721BC54CF600410895 /* XCZMeetViewController.h */,
-				0545D2731BC54CF600410895 /* XCZMeetViewController.m */,
-				05F219121BC5784000B222D7 /* XCZOtherViewController.h */,
-				05F219131BC5784000B222D7 /* XCZOtherViewController.m */,
-				05F219181BC6134400B222D7 /* XCZAboutViewController.h */,
-				05F219191BC6134400B222D7 /* XCZAboutViewController.m */,
-				05ECE6171BD3D476008DE9CE /* XCZWorkWikiViewController.h */,
-				05ECE6181BD3D476008DE9CE /* XCZWorkWikiViewController.m */,
-				05ECE61A1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.h */,
-				05ECE61B1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.m */,
-				05CC76571BD5E6E800A3970D /* XCZRandomQuoteViewController.h */,
-				05CC76581BD5E6E800A3970D /* XCZRandomQuoteViewController.m */,
-				05CC76611BD6433000A3970D /* XCZQuoteViewController.h */,
-				05CC76621BD6433000A3970D /* XCZQuoteViewController.m */,
+				050E11801BD6AF8B004516A9 /* Other */,
+				050E11811BD6AF9B004516A9 /* User */,
+				050E117F1BD6AF76004516A9 /* Quote */,
+				050E117E1BD6AF4F004516A9 /* Root */,
+				050E117D1BD6AF27004516A9 /* Author */,
+				050E117C1BD6AF1A004516A9 /* Work */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -266,23 +327,18 @@
 		05CC12FD196586890014989C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				050E11821BD6AFEA004516A9 /* Cell */,
 				05CC13181966FCFC0014989C /* XCZAuthorHeaderView.xib */,
-				0545D2661BC51F9800410895 /* XCZLabel.h */,
-				0545D2671BC51F9800410895 /* XCZLabel.m */,
 				0545D26C1BC5428500410895 /* XCZWorkDetailsView.h */,
 				0545D26D1BC5428500410895 /* XCZWorkDetailsView.m */,
-				05ECE61D1BD48B2B008DE9CE /* XCZAuthorTableViewCell.h */,
-				05ECE61E1BD48B2B008DE9CE /* XCZAuthorTableViewCell.m */,
-				05ECE6201BD49D5E008DE9CE /* XCZWorkTableViewCell.h */,
-				05ECE6211BD49D5E008DE9CE /* XCZWorkTableViewCell.m */,
 				05CC765B1BD6247E00A3970D /* XCZQuoteView.h */,
 				05CC765C1BD6247E00A3970D /* XCZQuoteView.m */,
 				05CC765E1BD63F2800A3970D /* XCZQuoteDraggableView.h */,
 				05CC765F1BD63F2800A3970D /* XCZQuoteDraggableView.m */,
-				05CC76641BD6460D00A3970D /* XCZQuoteTableViewCell.h */,
-				05CC76651BD6460D00A3970D /* XCZQuoteTableViewCell.m */,
 				05CC766A1BD690B100A3970D /* XCZCopyableLabel.h */,
 				05CC76681BD6900500A3970D /* XCZCopyableLabel.m */,
+				0545D2661BC51F9800410895 /* XCZLabel.h */,
+				0545D2671BC51F9800410895 /* XCZLabel.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
