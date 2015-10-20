@@ -6,6 +6,7 @@
 //  Copyright © 2015年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZQuoteView.h"
 #import <UIKit/UIKit.h>
 
 @interface XCZRandomQuoteViewController : UIViewController

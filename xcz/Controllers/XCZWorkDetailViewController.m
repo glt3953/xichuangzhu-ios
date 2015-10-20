@@ -109,6 +109,8 @@
 // 进入/退出全屏模式
 - (void)toggleBars:(UITapGestureRecognizer *)gesture
 {
+    BOOL isFullScreen = self.navigationController.navigationBar.hidden;
+    
     // Toggle statusbar
     [[UIApplication sharedApplication] setStatusBarHidden:![[UIApplication sharedApplication] isStatusBarHidden] withAnimation:UIStatusBarAnimationSlide];
     
@@ -116,7 +118,7 @@
     [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBar.hidden animated:YES];
     
     // 全屏模式下，扩大title的顶部间距
-    if (self.navigationController.navigationBar.hidden) {
+    if (isFullScreen) {
         [self.detailsView exitFullScreenMode];
     } else {
         [self.detailsView enterFullScreenMode];
