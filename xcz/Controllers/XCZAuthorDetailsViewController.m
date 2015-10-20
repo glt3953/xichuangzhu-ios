@@ -116,6 +116,7 @@ static NSString * const cellIdentifier = @"WorkCell";
     
     UIView *headerView = self.headerView;
     [self.tableView setTableHeaderView:headerView];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     // 计算introLabel的高度
     NSMutableParagraphStyle *contentParagraphStyle = [[NSMutableParagraphStyle alloc] init];
