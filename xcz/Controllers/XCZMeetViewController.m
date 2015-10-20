@@ -66,11 +66,9 @@
 {
     self.work = [XCZWork getRandomWork];
     
-    XCZWorkDetailViewController *controller = [XCZWorkDetailViewController new];
+    XCZWorkDetailViewController *controller = [[XCZWorkDetailViewController alloc] initWithWork:self.work];
     self.workDetailsViewController = controller;
-    controller.work = self.work;
     [self addChildViewController:controller];
-    
     [self.view addSubview:controller.view];
     
     [controller.view mas_makeConstraints:^(MASConstraintMaker *make) {

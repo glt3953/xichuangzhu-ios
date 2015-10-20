@@ -238,9 +238,8 @@
         gesture.view.backgroundColor = [UIColor colorWithRGBA:0xF2F2F2FF];
     });
     
-    XCZWorkDetailViewController *detailController = [[XCZWorkDetailViewController alloc] init];
-    detailController.work = [XCZWork getById:10024];
-    [self.navigationController pushViewController:detailController animated:YES];
+    UIViewController *controller = [[XCZWorkDetailViewController alloc] initWithWorkId:10024];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - SomeDelegate

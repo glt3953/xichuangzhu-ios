@@ -111,9 +111,7 @@
 
 - (void)quoteViewPressed:(XCZQuote *)quote
 {
-    XCZWork *work = [XCZWork getById:quote.workId];
-    XCZWorkDetailViewController *controller = [XCZWorkDetailViewController new];
-    controller.work = work;
+    UIViewController *controller = [[XCZWorkDetailViewController alloc] initWithWorkId:quote.workId];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

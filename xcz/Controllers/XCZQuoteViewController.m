@@ -109,9 +109,7 @@
         return;
     }
     
-    XCZWork *work = [XCZWork getById:quote.workId];
-    XCZWorkDetailViewController *controller = [XCZWorkDetailViewController new];
-    controller.work = work;
+    XCZWorkDetailViewController *controller = [[XCZWorkDetailViewController alloc] initWithWorkId:quote.workId];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

@@ -213,16 +213,13 @@ static NSString * const cellIdentifier = @"WorkCell";
 // 选中某单元格后的操作
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XCZWorkDetailViewController *detailController = [[XCZWorkDetailViewController alloc] init];
-    
     NSArray *keys = [self.works allKeys];
     NSString* key = [keys objectAtIndex:indexPath.section];
     NSArray *works = [self.works objectForKey:key];
     XCZWork *work = works[indexPath.row];
     
-    detailController.work = work;
-    detailController.showAuthorButton = NO;
-    [self.navigationController pushViewController:detailController animated:YES];
+    UIViewController *controller = [[XCZWorkDetailViewController alloc] initWithWork:work];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - Getters & Setters

@@ -28,8 +28,11 @@
 @property (strong, nonatomic) UIBarButtonItem *unlikeButton;
 @property (strong, nonatomic) UIBarButtonItem *wikiButton;
 @property (strong, nonatomic) UIBarButtonItem *authorButton;
+
 @property (strong, nonatomic) XCZWorkDetailsView *detailsView;
 @property (strong, nonatomic) UITableView *tableView;
+
+@property (strong, nonatomic) XCZWork *work;
 @property (strong, nonatomic) NSArray *quotes;
 
 @end
@@ -38,17 +41,23 @@
 
 #pragma mark - LifeCycle
 
-- (instancetype)init
+- (instancetype)initWithWork:(XCZWork *)work
 {
     self = [super init];
     if (!self) {
         return nil;
     }
-    
-    self.showAuthorButton = YES;
+
+    self.work = work;
     self.hidesBottomBarWhenPushed = YES;
     
     return self;
+}
+
+- (instancetype)initWithWorkId:(int)workId
+{
+    XCZWork *work = [XCZWork getById:workId];
+    return [self initWithWork:work];
 }
 
 - (void)loadView
@@ -65,7 +74,7 @@
     
     // 初始化navbar按钮
     bool showLike = ![XCZLike checkExist:self.work.id];
-    [self initNavbarShowAuthor:self.showAuthorButton showLike:showLike];
+    [self initNavbarShowLike:showLike];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -178,7 +187,7 @@
 - (void)likeWork:(id)sender
 {
     if ([XCZLike like:self.work.id]) {
-        [self initNavbarShowAuthor:self.showAuthorButton showLike:false];
+        [self initNavbarShowLike:false];
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadLikesData" object:nil userInfo:nil];
@@ -187,7 +196,7 @@
 - (void)unlikeWork:(id)sender
 {
     if ([XCZLike unlike:self.work.id]) {
-        [self initNavbarShowAuthor:self.showAuthorButton showLike:true];
+        [self initNavbarShowLike:true];
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadLikesData" object:nil userInfo:nil];
@@ -227,12 +236,14 @@ static NSString * const cellIdentifier = @"QuoteCell";
 #pragma mark - Internal Helpers
 
 // 设置navbar的按钮显示
-- (void)initNavbarShowAuthor:(bool)showAuthor showLike:(bool)showLike
+- (void)initNavbarShowLike:(bool)showLike
 {
     NSMutableArray *btnArrays = [NSMutableArray new];
     
     // 是否显示作者按钮
-    if (showAuthor) {
+    UIViewController *secondLastViewController = self.navigationController.viewControllers[self.navigationController.viewControllers.count - 2];
+    
+    if (![secondLastViewController isKindOfClass:[XCZAuthorDetailsViewController class]]) {
         [btnArrays addObject:self.authorButton];
     }
     

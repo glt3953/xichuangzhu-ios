@@ -196,9 +196,7 @@ static NSString * const cellIdentifier = @"WorkCell";
 // 选中某单元格后的操作
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XCZWorkDetailViewController *detailController = [[XCZWorkDetailViewController alloc] init];
-    
-    XCZWork *work = nil;
+    XCZWork *work;
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         work = self.searchResults[indexPath.row];
@@ -206,8 +204,8 @@ static NSString * const cellIdentifier = @"WorkCell";
         work = self.works[indexPath.row];
     }
     
-    detailController.work = work;
-    [self.navigationController pushViewController:detailController animated:YES];
+    UIViewController *controller = [[XCZWorkDetailViewController alloc] initWithWork:work];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 // 以下代码解决了 searchResultsTableView 下方空间的 bug

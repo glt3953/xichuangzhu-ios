@@ -69,10 +69,8 @@ static NSString * const cellIdentifier = @"WorkCell";
 - (void)pushNotificationReceived:(NSNotification*) notification
 {
     int workId = [[notification.userInfo objectForKey:@"workId"] intValue];
-    XCZWorkDetailViewController *detailController = [[XCZWorkDetailViewController alloc] init];
-    
-    detailController.work =  [XCZWork getById:workId];
-    [self.navigationController pushViewController:detailController animated:YES];
+    UIViewController *controller = [[XCZWorkDetailViewController alloc] initWithWorkId:workId];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -151,9 +149,9 @@ static NSString * const cellIdentifier = @"WorkCell";
 // 选中某单元格后的操作
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XCZWorkDetailViewController *detailController = [[XCZWorkDetailViewController alloc] init];
     
-    XCZWork *work = nil;
+    
+    XCZWork *work;
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         work = self.searchResults[indexPath.row];
@@ -161,8 +159,8 @@ static NSString * const cellIdentifier = @"WorkCell";
         work = self.works[indexPath.row];
     }
     
-    detailController.work = work;
-    [self.navigationController pushViewController:detailController animated:YES];
+    UIViewController *controller = [[XCZWorkDetailViewController alloc] initWithWork:work];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end
