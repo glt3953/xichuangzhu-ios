@@ -149,8 +149,6 @@ static NSString * const cellIdentifier = @"WorkCell";
 // 选中某单元格后的操作
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
     XCZWork *work;
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {

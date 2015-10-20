@@ -241,7 +241,10 @@ static NSString * const cellIdentifier = @"QuoteCell";
     NSMutableArray *btnArrays = [NSMutableArray new];
     
     // 是否显示作者按钮
-    UIViewController *secondLastViewController = self.navigationController.viewControllers[self.navigationController.viewControllers.count - 2];
+    UIViewController *secondLastViewController;
+    if (self.navigationController.viewControllers.count >= 2) {
+        secondLastViewController = self.navigationController.viewControllers[self.navigationController.viewControllers.count - 2];
+    }
     
     if (![secondLastViewController isKindOfClass:[XCZAuthorDetailsViewController class]]) {
         [btnArrays addObject:self.authorButton];
