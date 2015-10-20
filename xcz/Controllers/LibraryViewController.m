@@ -18,6 +18,7 @@
 @property (strong, nonatomic) XCZWorksViewController *worksViewController;
 @property (strong, nonatomic) XCZAuthorsViewController *authorsViewController;
 @property (strong, nonatomic) UIBarButtonItem *rightButton;
+@property (strong, nonatomic) UIActivityIndicatorView *activityView;
 
 @end
 
@@ -30,7 +31,18 @@
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self createViews];
+    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
+                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.activityView = activityView;
+    [activityView startAnimating];
+    [self.view bringSubviewToFront:activityView];
+    [self.view addSubview:activityView];
+    [activityView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+    
+    [activityView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(20);
+        make.centerX.equalTo(self.view);
+    }];
 }
 
 - (void)viewDidLoad
@@ -44,13 +56,18 @@
     self.segmentControl.selectedSegmentIndex = 0;
     [self.segmentControl addTarget:self action:@selector(segmentControlTapped) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = segmentControl;
-    
-    [self segmentControlTapped];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self createViews];
+    [self segmentControlTapped];
+    [self.activityView stopAnimating];
 }
 
 #pragma mark - Layout
