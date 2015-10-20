@@ -6,21 +6,21 @@
 //  Copyright © 2015年 Zhipeng Liu. All rights reserved.
 //
 
-#import "OtherViewController.h"
-#import "AboutViewController.h"
+#import "XCZOtherViewController.h"
+#import "XCZAboutViewController.h"
 #import "XCZLikesViewController.h"
 #import "UIColor+Helper.h"
 #import <Masonry/Masonry.h>
 #import <ionicons/IonIcons.h>
 #import <LeanCloudFeedback/LeanCloudFeedback.h>
 
-@interface OtherViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface XCZOtherViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 
 @end
 
-@implementation OtherViewController
+@implementation XCZOtherViewController
 
 #pragma mark - LifeCycle
 
@@ -146,7 +146,7 @@
         } else if (indexPath.row == 1) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/xi-chuang-zhu/id912139104"]];
         } else {
-            AboutViewController *controller = [AboutViewController new];
+            XCZAboutViewController *controller = [XCZAboutViewController new];
             [self.navigationController pushViewController:controller animated:YES];
         }
     }

@@ -9,7 +9,7 @@
 #import "XCZQuote.h"
 #import "XCZLike.h"
 #import "XCZLabel.h"
-#import "WorkDetailsView.h"
+#import "XCZWorkDetailsView.h"
 #import "XCZWorkDetailViewController.h"
 #import "XCZQuoteViewController.h"
 #import "XCZAuthorDetailsViewController.h"
@@ -28,7 +28,7 @@
 @property (strong, nonatomic) UIBarButtonItem *unlikeButton;
 @property (strong, nonatomic) UIBarButtonItem *wikiButton;
 @property (strong, nonatomic) UIBarButtonItem *authorButton;
-@property (strong, nonatomic) WorkDetailsView *detailsView;
+@property (strong, nonatomic) XCZWorkDetailsView *detailsView;
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSArray *quotes;
 
@@ -252,7 +252,7 @@ static NSString * const cellIdentifier = @"QuoteCell";
 
 - (UIView *)createHeaderView
 {
-    WorkDetailsView *detailsView = [[WorkDetailsView alloc] initWithWork:self.work];
+    XCZWorkDetailsView *detailsView = [[XCZWorkDetailsView alloc] initWithWork:self.work];
     self.detailsView = detailsView;
 //    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toggleBars:)];
 //    [detailsView addGestureRecognizer:gesture];

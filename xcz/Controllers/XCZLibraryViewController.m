@@ -6,13 +6,13 @@
 //  Copyright © 2015年 Zhipeng Liu. All rights reserved.
 //
 
-#import "LibraryViewController.h"
+#import "XCZLibraryViewController.h"
 #import "XCZWorksViewController.h"
 #import "XCZAuthorsViewController.h"
 #import <Masonry/Masonry.h>
 #import <ionicons/IonIcons.h>
 
-@interface LibraryViewController ()
+@interface XCZLibraryViewController ()
 
 @property (strong, nonatomic) UISegmentedControl *segmentControl;
 @property (strong, nonatomic) XCZWorksViewController *worksViewController;
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation LibraryViewController
+@implementation XCZLibraryViewController
 
 #pragma mark - LifeCycle
 
@@ -57,8 +57,6 @@
     self.segmentControl.selectedSegmentIndex = 0;
     [self.segmentControl addTarget:self action:@selector(segmentControlTapped) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = segmentControl;
-    
-
 }
 
 - (void)viewDidAppear:(BOOL)animated

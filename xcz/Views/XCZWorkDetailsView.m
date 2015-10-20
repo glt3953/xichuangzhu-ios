@@ -8,11 +8,11 @@
 
 #import "XCZQuoteView.h"
 #import "XCZCopyableLabel.h"
-#import "WorkDetailsView.h"
+#import "XCZWorkDetailsView.h"
 #import "UIColor+Helper.h"
 #import <Masonry/Masonry.h>
 
-@interface WorkDetailsView ()
+@interface XCZWorkDetailsView ()
 
 @property (strong, nonatomic) XCZWork *work;
 @property (strong, nonatomic) HTCopyableLabel *titleLabel;
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation WorkDetailsView
+@implementation XCZWorkDetailsView
 
 - (instancetype)initWithWork:(XCZWork *)work
 {

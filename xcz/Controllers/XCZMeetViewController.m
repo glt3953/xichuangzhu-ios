@@ -8,16 +8,16 @@
 
 #import "XCZWork.h"
 #import "XCZLike.h"
-#import "WorkDetailsView.h"
+#import "XCZWorkDetailsView.h"
 #import "XCZWorkWikiViewController.h"
 #import "XCZWorkDetailViewController.h"
-#import "MeetViewController.h"
+#import "XCZMeetViewController.h"
 #import "Constants.h"
 #import <ionicons/IonIcons.h>
 #import <Masonry/Masonry.h>
 #import <AVOSCloud.h>
 
-@interface MeetViewController ()
+@interface XCZMeetViewController ()
 
 @property (strong, nonatomic) XCZWork *work;
 @property (strong, nonatomic) XCZWorkDetailViewController *workDetailsViewController;
@@ -29,7 +29,7 @@
 
 @end
 
-@implementation MeetViewController
+@implementation XCZMeetViewController
 
 #pragma mark - LifeCycle
 

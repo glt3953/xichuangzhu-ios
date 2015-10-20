@@ -145,15 +145,6 @@ static NSString * const cellIdentifier = @"WorkCell";
     self.navigationItem.rightBarButtonItem = quotesButton;
 }
 
-- (UIView *)headerView
-{
-    if(!_headerView){
-        [[NSBundle mainBundle] loadNibNamed:@"AuthorHeaderView" owner:self options:nil];
-    }
-    
-    return _headerView;
-}
-
 # pragma mark - User Interface
 
 - (void)redirectToAuthorQuotes
@@ -233,5 +224,17 @@ static NSString * const cellIdentifier = @"WorkCell";
     detailController.showAuthorButton = NO;
     [self.navigationController pushViewController:detailController animated:YES];
 }
+
+#pragma mark - Getters & Setters
+
+- (UIView *)headerView
+{
+    if(!_headerView){
+        [[NSBundle mainBundle] loadNibNamed:@"XCZAuthorHeaderView" owner:self options:nil];
+    }
+    
+    return _headerView;
+}
+
 
 @end

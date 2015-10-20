@@ -1,5 +1,5 @@
 //
-//  MeetViewController.h
+//  MeViewController.h
 //  xcz
 //
 //  Created by hustlzp on 15/10/7.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MeetViewController : UIViewController
+@interface XCZOtherViewController : UIViewController
 
 @end

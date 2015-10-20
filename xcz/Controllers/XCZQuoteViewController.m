@@ -8,7 +8,7 @@
 
 #import "XCZQuoteView.h"
 #import "XCZWorkDetailViewController.h"
-#import "MeetViewController.h"
+#import "XCZMeetViewController.h"
 #import "XCZQuoteViewController.h"
 #import "UIColor+Helper.h"
 #import <Masonry.h>
@@ -105,7 +105,7 @@
 {
     UIViewController *secondLastViewController = (UIViewController *)self.navigationController.viewControllers[self.navigationController.viewControllers.count - 2];
     
-    if ([secondLastViewController isKindOfClass:[XCZWorkDetailViewController class]] || [secondLastViewController isKindOfClass:[MeetViewController class]]) {
+    if ([secondLastViewController isKindOfClass:[XCZWorkDetailViewController class]] || [secondLastViewController isKindOfClass:[XCZMeetViewController class]]) {
         return;
     }
     

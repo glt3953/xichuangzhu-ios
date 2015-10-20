@@ -7,18 +7,18 @@
 //
 
 #import "XCZWork.h"
-#import "AboutViewController.h"
+#import "XCZAboutViewController.h"
 #import "XCZWorkDetailViewController.h"
 #import "UIColor+Helper.h"
 #import <Masonry/Masonry.h>
 
-@interface AboutViewController ()
+@interface XCZAboutViewController ()
 
 @property (strong, nonatomic) UITableView *tableView;
 
 @end
 
-@implementation AboutViewController
+@implementation XCZAboutViewController
 
 #pragma mark - LifeCycle
 
