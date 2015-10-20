@@ -45,8 +45,7 @@
     [self.segmentControl addTarget:self action:@selector(segmentControlTapped) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = segmentControl;
     
-    //添加“重排序”按钮
-    self.navigationItem.rightBarButtonItem = self.rightButton;
+    [self segmentControlTapped];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -71,7 +70,6 @@
     [self.authorsViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-    self.authorsViewController.view.hidden = YES;
 }
 
 #pragma mark - Public Interface
@@ -84,10 +82,12 @@
         self.authorsViewController.view.hidden = YES;
         self.worksViewController.view.hidden = NO;
         self.navigationItem.rightBarButtonItem = self.rightButton;
+        self.navigationItem.title = self.worksViewController.navigationItem.title;
     } else {
         self.authorsViewController.view.hidden = NO;
         self.worksViewController.view.hidden = YES;
         self.navigationItem.rightBarButtonItem = nil;
+        self.navigationItem.title = self.authorsViewController.navigationItem.title;
     }
 }
 

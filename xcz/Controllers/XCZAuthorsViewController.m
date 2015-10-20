@@ -39,18 +39,18 @@ static NSString * const cellIdentifier = @"AuthorCell";
 - (instancetype)init
 {
     self = [super init];
-    if (self) {
-        self.navigationItem.title = @"文学家";
-
-        self.dynasties = [XCZDynasty getNames];
-        self.authors = [[NSMutableDictionary alloc] init];
-        self.authorsForSearch = [XCZAuthor getAllAuthors];
-        
-        for(int i = 0; i < self.dynasties.count; i++) {
-            NSString *dynasty = self.dynasties[i];
-            NSMutableArray *authors = [XCZAuthor getAuthorsByDynasty:dynasty];
-            [self.authors setObject:authors forKey:dynasty];
-        }
+    if (!self) {
+        return nil;
+    }
+    
+    self.dynasties = [XCZDynasty getNames];
+    self.authors = [[NSMutableDictionary alloc] init];
+    self.authorsForSearch = [XCZAuthor getAllAuthors];
+    
+    for(int i = 0; i < self.dynasties.count; i++) {
+        NSString *dynasty = self.dynasties[i];
+        NSMutableArray *authors = [XCZAuthor getAuthorsByDynasty:dynasty];
+        [self.authors setObject:authors forKey:dynasty];
     }
     
     return self;
@@ -65,6 +65,8 @@ static NSString * const cellIdentifier = @"AuthorCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.title = @"文学家";
     
     [self.tableView registerClass:[XCZAuthorTableViewCell class] forCellReuseIdentifier:cellIdentifier];
     

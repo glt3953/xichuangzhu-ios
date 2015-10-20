@@ -41,20 +41,23 @@ static NSString * const cellIdentifier = @"WorkCell";
 {
     self = [super init];
     
-    if (self) {
-        self.author = [XCZAuthor getById:authorId];
-        
-        // 加载worksCount
-        self.worksCount = [XCZAuthor getWorksCount:authorId];
-        
-        // 加载works
-        self.works = [[NSMutableDictionary alloc] init];
-        [self loadWorksByKind:@"文"];
-        [self loadWorksByKind:@"诗"];
-        [self loadWorksByKind:@"词"];
-        [self loadWorksByKind:@"曲"];
-        [self loadWorksByKind:@"赋"];
+    if (!self) {
+        return nil;
     }
+    
+    self.author = [XCZAuthor getById:authorId];
+    self.hidesBottomBarWhenPushed = YES;
+    
+    // 加载worksCount
+    self.worksCount = [XCZAuthor getWorksCount:authorId];
+    
+    // 加载works
+    self.works = [[NSMutableDictionary alloc] init];
+    [self loadWorksByKind:@"文"];
+    [self loadWorksByKind:@"诗"];
+    [self loadWorksByKind:@"词"];
+    [self loadWorksByKind:@"曲"];
+    [self loadWorksByKind:@"赋"];
     
     return self;
 }

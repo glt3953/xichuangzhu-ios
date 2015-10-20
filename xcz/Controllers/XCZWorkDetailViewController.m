@@ -39,9 +39,12 @@
 - (instancetype)init
 {
     self = [super init];
-    if (self) {
-        self.showAuthorButton = YES;
+    if (!self) {
+        return nil;
     }
+    
+    self.showAuthorButton = YES;
+    self.hidesBottomBarWhenPushed = YES;
     
     return self;
 }
@@ -112,30 +115,17 @@
     // Toggle navigationbar
     [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBar.hidden animated:YES];
     
-    // Toggle tabbar
-    [self.view layoutIfNeeded];
-    
-    BOOL tabBarHidden = self.tabBarController.tabBar.hidden;
-    
     // 全屏模式下，扩大title的顶部间距
-    if (tabBarHidden) {
+    if (self.navigationController.navigationBar.hidden) {
         [self.detailsView exitFullScreenMode];
-        [self.detailsView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.view);
-        }];
     } else {
         [self.detailsView enterFullScreenMode];
-        [self.detailsView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.view).offset(XCZTabBarHeight);
-        }];
     }
     
     [UIView animateWithDuration:0.4 animations:^{
         [self.view setNeedsLayout];
         [self.view layoutIfNeeded];
     }];
-    
-    [self.tabBarController.tabBar setHidden:!tabBarHidden];
 }
 
 - (void)redirectToWiki

@@ -101,7 +101,7 @@
         make.top.equalTo(introHeaderLabel.mas_bottom).offset(5);
         make.left.equalTo(contentView).offset(15);
         make.right.equalTo(contentView).offset(-15);
-        make.bottom.equalTo(contentView).offset(-20);
+        make.bottom.equalTo(contentView).offset(-15);
     }];
     
     // 内容
@@ -131,20 +131,12 @@
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(60);
     }];
-    
-    [self.introLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.contentView).offset(-30);
-    }];
 }
 
 - (void)exitFullScreenMode
 {
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(40);
-    }];
-    
-    [self.introLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.contentView).offset(-20);
     }];
 }
 

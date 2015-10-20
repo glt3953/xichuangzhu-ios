@@ -29,16 +29,11 @@ static NSString * const cellIdentifier = @"WorkCell";
 - (instancetype)init
 {
     self = [super init];
-    
-    // 当app初始化时，显示Status Bar
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
-    
-    if (self) {
-        UINavigationItem *navItem = self.navigationItem;
-        navItem.title = @"全部作品";
-        // 加载全部作品
-        self.works = [XCZWork getAll];
+    if (!self) {
+        return nil;
     }
+    
+    self.works = [XCZWork getAll];
 
     return self;
 }
@@ -46,6 +41,8 @@ static NSString * const cellIdentifier = @"WorkCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.title = @"作品";
     
     [self.tableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:cellIdentifier];
     

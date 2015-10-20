@@ -30,6 +30,7 @@
     }
     
     self.url = url;
+    self.hidesBottomBarWhenPushed = YES;
     
     return self;
 }
