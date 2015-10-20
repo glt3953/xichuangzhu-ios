@@ -11,6 +11,8 @@ PODS:
     - FMDB/common
   - HTCopyableLabel (0.0.7)
   - ionicons (2.0.1)
+  - LeanCloudFeedback (0.0.7):
+    - AVOSCloud (~> 3.1)
   - Masonry (0.6.2)
   - MBProgressHUD (0.9.1)
   - UITableView+FDTemplateLayoutCell (1.4.beta)
@@ -22,6 +24,7 @@ DEPENDENCIES:
   - FMDB
   - HTCopyableLabel
   - ionicons
+  - LeanCloudFeedback
   - Masonry
   - MBProgressHUD (~> 0.9.1)
   - UITableView+FDTemplateLayoutCell (>= 1.4.beta)
@@ -33,6 +36,7 @@ SPEC CHECKSUMS:
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   HTCopyableLabel: e67c190d2f1f8f03c9d9858a7d8ce33be7fb43fa
   ionicons: c7b0867373392e85c17f613d19ade04ccfbe5a7c
+  LeanCloudFeedback: 35d2effa89e03e9a3ce2158874a6f127751f7257
   Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   UITableView+FDTemplateLayoutCell: 9d20bf0518f3c01e42ae614243b97f1161063d27

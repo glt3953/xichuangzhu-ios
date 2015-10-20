@@ -12,6 +12,7 @@
 #import "UIColor+Helper.h"
 #import <Masonry/Masonry.h>
 #import <ionicons/IonIcons.h>
+#import <LeanCloudFeedback/LeanCloudFeedback.h>
 
 @interface OtherViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -141,7 +142,12 @@
         }
     } else {
         if (indexPath.row == 0) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:hi@xichuangzhu.com"]];
+            LCUserFeedbackViewController *feedbackViewController = [[LCUserFeedbackViewController alloc] init];
+            feedbackViewController.navigationBarStyle = LCUserFeedbackNavigationBarStyleNone;
+            feedbackViewController.contactHeaderHidden = YES;
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:feedbackViewController];
+            [self presentViewController:navigationController animated:YES completion: ^{
+            }];
         } else if (indexPath.row == 1) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/xi-chuang-zhu/id912139104"]];
         } else {

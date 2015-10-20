@@ -55,7 +55,6 @@
     [wapView addSubview:textLabel];
     
     // 约束
-    
     [logoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.bottom.equalTo(wapView);
         make.width.height.equalTo(@20);
@@ -148,7 +147,7 @@
     contactLabel.numberOfLines = 0;
     contactLabel.lineBreakMode = NSLineBreakByWordWrapping;
     contactLabel.font = [UIFont systemFontOfSize:15];
-    NSMutableAttributedString *contactPreString = [[NSMutableAttributedString alloc] initWithString:@"任何建议请联系：\n" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]}];
+    NSMutableAttributedString *contactPreString = [[NSMutableAttributedString alloc] initWithString:@"邮件联系：\n" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]}];
     NSMutableAttributedString *contactProString = [[NSMutableAttributedString alloc] initWithString:@"hi@xichuangzhu.com" attributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle), NSFontAttributeName: [UIFont systemFontOfSize:13]}];
     [contactPreString appendAttributedString:contactProString];
     
