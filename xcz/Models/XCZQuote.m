@@ -75,6 +75,30 @@
     return quotes;
 }
 
+// 获取某作品的所有摘录
++ (NSArray *)getByWorkId:(int)workId
+{
+    int index = 0;
+    NSMutableArray *quotes = [[NSMutableArray alloc] init];
+    NSString *dbPath = [XCZUtils getDatabaseFilePath];
+    FMDatabase *db = [FMDatabase databaseWithPath:dbPath];
+    
+    if ([db open]) {
+        NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM quotes WHERE work_id = %d", workId];
+        FMResultSet *s = [db executeQuery:query];
+        while ([s next]) {
+            XCZQuote *quote = [XCZQuote new];
+            [quote loadFromResultSet:s];
+            quotes[index] = quote;
+            index++;
+        }
+        
+        [db close];
+    }
+    
+    return quotes;
+}
+
 // 获取一定数目的摘录
 + (NSMutableArray *)getRandomQuotes:(int)number
 {

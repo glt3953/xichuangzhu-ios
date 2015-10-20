@@ -9,12 +9,9 @@
 #import "XCZWork.h"
 #import <UIKit/UIKit.h>
 
-@interface WorkDetailsView : UIScrollView
+@interface WorkDetailsView : UIView
 
-@property (strong, nonatomic) UIView *contentView;
-
-- (instancetype)initWithWork:(XCZWork *)work width:(CGFloat)width;
-- (void)updateWithWork:(XCZWork *)work;
+- (instancetype)initWithWork:(XCZWork *)work;
 - (void)enterFullScreenMode;
 - (void)exitFullScreenMode;
 

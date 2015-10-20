@@ -6,6 +6,7 @@
 //  Copyright © 2015年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZAuthor.h"
 #import "XCZWork.h"
 #import "XCZQuote.h"
 #import "XCZQuoteTableViewCell.h"
@@ -20,6 +21,7 @@ static NSString * const cellIdentifier = @"QuoteCell";
 @interface XCZAuthorQuotesViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) XCZAuthor *author;
 @property (strong, nonatomic) NSArray *quotes;
 @property (nonatomic) int authorId;
 
@@ -52,16 +54,23 @@ static NSString * const cellIdentifier = @"QuoteCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.navigationItem.title = @"摘录";
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
+    self.navigationItem.title = @"摘录";
+    
     NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
     [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    self.navigationItem.title = [NSString stringWithFormat:@"%@摘录", self.author.name];
 }
 
 #pragma mark - Layout
@@ -146,6 +155,15 @@ static NSString * const cellIdentifier = @"QuoteCell";
 #pragma mark - Internal Helpers
 
 #pragma mark - Getters & Setters
+
+- (XCZAuthor *)author
+{
+    if (!_author) {
+        _author = [XCZAuthor getById:self.authorId];
+    }
+    
+    return _author;
+}
 
 - (NSArray *)quotes
 {

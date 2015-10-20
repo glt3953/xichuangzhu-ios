@@ -19,6 +19,7 @@
 @property (strong, nonatomic) XCZAuthorsViewController *authorsViewController;
 @property (strong, nonatomic) UIBarButtonItem *rightButton;
 @property (strong, nonatomic) UIActivityIndicatorView *activityView;
+@property (nonatomic) BOOL hasSetupViews;
 
 @end
 
@@ -56,18 +57,21 @@
     self.segmentControl.selectedSegmentIndex = 0;
     [self.segmentControl addTarget:self action:@selector(segmentControlTapped) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = segmentControl;
-}
+    
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self createViews];
-    [self segmentControlTapped];
-    [self.activityView stopAnimating];
+    [super viewDidAppear:animated];
+    
+    if (!self.hasSetupViews) {
+        self.hasSetupViews = YES;
+        
+        [self createViews];
+        [self segmentControlTapped];
+        [self.activityView stopAnimating];
+    }
 }
 
 #pragma mark - Layout

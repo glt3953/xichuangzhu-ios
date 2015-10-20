@@ -24,9 +24,6 @@ static NSString * const cellIdentifier = @"WorkCell";
 
 @end
 
-#define TICK   NSDate *startTime = [NSDate date]
-#define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
-
 @implementation XCZWorksViewController
 
 - (instancetype)init
@@ -80,7 +77,8 @@ static NSString * const cellIdentifier = @"WorkCell";
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // 取消选中效果
+    [super viewWillAppear:animated];
+    
     NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
     [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
 }

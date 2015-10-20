@@ -6,12 +6,16 @@
 //  Copyright (c) 2014年 Zhipeng Liu. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "XCZWork.h"
+#import <UIKit/UIKit.h>
 
 @interface XCZWorkDetailViewController : UIViewController
 
 @property (nonatomic) BOOL showAuthorButton;
-@property (nonatomic, strong) XCZWork *work;
+@property (strong, nonatomic) XCZWork *work;
+
+
+
+- (void)updateWithWork:(XCZWork *)work;
 
 @end

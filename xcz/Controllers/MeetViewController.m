@@ -10,6 +10,7 @@
 #import "XCZLike.h"
 #import "WorkDetailsView.h"
 #import "XCZWorkWikiViewController.h"
+#import "XCZWorkDetailViewController.h"
 #import "MeetViewController.h"
 #import "Constants.h"
 #import <ionicons/IonIcons.h>
@@ -19,9 +20,7 @@
 @interface MeetViewController ()
 
 @property (strong, nonatomic) XCZWork *work;
-
-@property (strong, nonatomic) UISegmentedControl *segmentControl;
-@property (strong, nonatomic) WorkDetailsView *detailsView;
+@property (strong, nonatomic) XCZWorkDetailViewController *workDetailsViewController;
 
 @property (strong, nonatomic) UIBarButtonItem *refreshButton;
 @property (strong, nonatomic) UIBarButtonItem *wikiButton;
@@ -39,9 +38,6 @@
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toggleBars:)];
-    [self.view addGestureRecognizer:singleTap];
-    
     [self createViews];
 }
 
@@ -55,6 +51,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationItem.title = @"";
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.navigationItem.title = self.work.title;
 }
 
 #pragma mark - Layout
@@ -62,16 +65,16 @@
 - (void)createViews
 {
     self.work = [XCZWork getRandomWork];
-    WorkDetailsView *detailsView = [[WorkDetailsView alloc] initWithWork:self.work width:CGRectGetWidth(self.view.frame)];
-    self.detailsView = detailsView;
-    [self.view addSubview:detailsView];
     
-    [detailsView mas_makeConstraints:^(MASConstraintMaker *make) {
+    XCZWorkDetailViewController *controller = [XCZWorkDetailViewController new];
+    self.workDetailsViewController = controller;
+    controller.work = self.work;
+    [self addChildViewController:controller];
+    
+    [self.view addSubview:controller.view];
+    
+    [controller.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
-    }];
-
-    [detailsView.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self.view);
     }];
 }
 
@@ -79,62 +82,19 @@
 
 #pragma mark - User Interface
 
-// 进入/退出全屏模式
-- (void)toggleBars:(UITapGestureRecognizer *)gesture
-{
-    // Toggle statusbar
-    [[UIApplication sharedApplication] setStatusBarHidden:![[UIApplication sharedApplication] isStatusBarHidden] withAnimation:UIStatusBarAnimationSlide];
-    
-    // Toggle navigationbar
-    [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBar.hidden animated:YES];
-    
-    // Toggle tabbar
-    [self.view layoutIfNeeded];
-    
-    BOOL tabBarHidden = self.tabBarController.tabBar.hidden;
-    
-    // 全屏模式下，扩大title的顶部间距
-    if (tabBarHidden) {
-        [self.detailsView exitFullScreenMode];
-        [self.detailsView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.view);
-        }];
-    } else {
-        [self.detailsView enterFullScreenMode];
-        [self.detailsView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.view).offset(XCZTabBarHeight);
-        }];
-    }
-    
-    [UIView animateWithDuration:0.4 animations:^{
-        [self.view setNeedsLayout];
-        [self.view layoutIfNeeded];
-    }];
-    
-    [self.tabBarController.tabBar setHidden:!tabBarHidden];
-}
-
 - (void)likeWork:(id)sender
 {
-    bool result = [XCZLike like:self.work.id];
-    
-    if (result) {
+    if ([XCZLike like:self.work.id]) {
         [self initNavbarShowLike:false];
     }
-    
-    // 发送数据重载通知
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadLikesData" object:nil userInfo:nil];
 }
 
 - (void)unlikeWork:(id)sender
 {
-    bool result = [XCZLike unlike:self.work.id];
-    
-    if (result) {
+    if ([XCZLike unlike:self.work.id]) {
         [self initNavbarShowLike:true];
     }
-    
-    // 发送数据重载通知
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadLikesData" object:nil userInfo:nil];
 }
 
@@ -150,11 +110,8 @@
 {
     [AVAnalytics event:@"refresh_work"];
     self.work = [XCZWork getRandomWork];
-    [self.detailsView updateWithWork:self.work];
+    [self.workDetailsViewController updateWithWork:self.work];
     [self initNavbarShowLike:![XCZLike checkExist:self.work.id]];
-    [self.detailsView setNeedsLayout];
-    [self.detailsView layoutIfNeeded];
-    [self.detailsView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 }
 
 #pragma mark - SomeDelegate

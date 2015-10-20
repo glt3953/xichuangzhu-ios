@@ -11,6 +11,7 @@
 #import "XCZLabel.h"
 #import "WorkDetailsView.h"
 #import "XCZWorkDetailViewController.h"
+#import "XCZQuoteViewController.h"
 #import "XCZAuthorDetailsViewController.h"
 #import "XCZWorkWikiViewController.h"
 #import "UILabel+SetFont.h"
@@ -21,14 +22,15 @@
 #import <ionicons/IonIcons.h>
 #import <Masonry/Masonry.h>
 
-@interface XCZWorkDetailViewController ()
+@interface XCZWorkDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) WorkDetailsView *detailsView;
-
-@property (strong, nonatomic) UIBarButtonItem *wikiButton;
-@property (strong, nonatomic) UIBarButtonItem *authorButton;
 @property (strong, nonatomic) UIBarButtonItem *likeButton;
 @property (strong, nonatomic) UIBarButtonItem *unlikeButton;
+@property (strong, nonatomic) UIBarButtonItem *wikiButton;
+@property (strong, nonatomic) UIBarButtonItem *authorButton;
+@property (strong, nonatomic) WorkDetailsView *detailsView;
+@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) NSArray *quotes;
 
 @end
 
@@ -64,9 +66,6 @@
     // 初始化navbar按钮
     bool showLike = ![XCZLike checkExist:self.work.id];
     [self initNavbarShowAuthor:self.showAuthorButton showLike:showLike];
-    
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toggleBars:)];
-    [self.view addGestureRecognizer:singleTap];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -75,60 +74,88 @@
     
     [AVAnalytics beginLogPageView:[[NSString alloc] initWithFormat:@"work-%@/%@", self.work.author, self.work.title]];
     
-    // 从其他页面跳转过来时，将navbar标题设置为空
     self.navigationItem.title = @"";
+    
+    NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
+    [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
+    self.navigationItem.title = self.work.title;
+    
     [AVAnalytics endLogPageView:[[NSString alloc] initWithFormat:@"work-%@/%@", self.work.author, self.work.title]];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    [self sizeHeaderViewToFit];
 }
 
 #pragma mark - Layout
 
 - (void)createViews
 {
-    WorkDetailsView *workDetailsView = [[WorkDetailsView alloc] initWithWork:self.work width:CGRectGetWidth(self.view.frame)];
-    self.detailsView = workDetailsView;
-    [self.view addSubview:workDetailsView];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 0)];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    tableView.tableHeaderView = [self createHeaderView];
+    self.tableView = tableView;
+    [self.view addSubview:tableView];
     
-    [workDetailsView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
-    }];
-    
-    [workDetailsView.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self.view);
     }];
 }
 
 #pragma mark - Public Interface
 
+- (void)updateWithWork:(XCZWork *)work
+{
+    self.work = work;
+    self.tableView.tableHeaderView = [self createHeaderView];
+    self.quotes = [XCZQuote getByWorkId:self.work.id];
+    [self.tableView reloadData];
+    
+    [self.view setNeedsLayout];
+}
+
 #pragma mark - User Interface
 
 // 进入/退出全屏模式
-- (void)toggleBars:(UITapGestureRecognizer *)gesture
-{
-    BOOL isFullScreen = self.navigationController.navigationBar.hidden;
-    
-    // Toggle statusbar
-    [[UIApplication sharedApplication] setStatusBarHidden:![[UIApplication sharedApplication] isStatusBarHidden] withAnimation:UIStatusBarAnimationSlide];
-    
-    // Toggle navigationbar
-    [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBar.hidden animated:YES];
-    
-    // 全屏模式下，扩大title的顶部间距
-    if (isFullScreen) {
-        [self.detailsView exitFullScreenMode];
-    } else {
-        [self.detailsView enterFullScreenMode];
-    }
-    
-    [UIView animateWithDuration:0.4 animations:^{
-        [self.view setNeedsLayout];
-        [self.view layoutIfNeeded];
-    }];
-}
+//- (void)toggleBars:(UITapGestureRecognizer *)gesture
+//{
+//    BOOL isFullScreen = self.navigationController.navigationBar.hidden;
+//    
+//    // Toggle StatusBar & NavigationBar & TabBar
+//    [[UIApplication sharedApplication] setStatusBarHidden:![[UIApplication sharedApplication] isStatusBarHidden] withAnimation:UIStatusBarAnimationSlide];
+//    
+//    [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBar.hidden animated:YES];
+//    
+//    if (self.navigationController.viewControllers.count == 0) {
+//        self.tabBarController.tabBar.hidden = !self.tabBarController.tabBar.hidden;
+//    }
+//    
+//    // 全屏模式下，扩大title的顶部间距
+//    if (isFullScreen) {
+//        [self.detailsView exitFullScreenMode];
+//    } else {
+//        [self.detailsView enterFullScreenMode];
+//    }
+//    
+//    [UIView animateWithDuration:0.4 animations:^{
+//        [self.view setNeedsLayout];
+//        [self.view layoutIfNeeded];
+//    }];
+//}
 
 - (void)redirectToWiki
 {
@@ -150,29 +177,52 @@
 
 - (void)likeWork:(id)sender
 {
-    bool result = [XCZLike like:self.work.id];
-    
-    if (result) {
+    if ([XCZLike like:self.work.id]) {
         [self initNavbarShowAuthor:self.showAuthorButton showLike:false];
     }
     
-    // 发送数据重载通知
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadLikesData" object:nil userInfo:nil];
 }
 
 - (void)unlikeWork:(id)sender
 {
-    bool result = [XCZLike unlike:self.work.id];
-    
-    if (result) {
+    if ([XCZLike unlike:self.work.id]) {
         [self initNavbarShowAuthor:self.showAuthorButton showLike:true];
     }
     
-    // 发送数据重载通知
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadLikesData" object:nil userInfo:nil];
 }
 
 #pragma mark - SomeDelegate
+
+#pragma mark - Tableview Delegate
+
+static NSString * const cellIdentifier = @"QuoteCell";
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.quotes.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XCZQuote *quote = self.quotes[indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
+    cell.textLabel.textColor = [UIColor colorWithRGBA:0x333333FF];
+    cell.textLabel.text = quote.quote;
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XCZQuote *quote = self.quotes[indexPath.row];
+    UIViewController *controller = [[XCZQuoteViewController alloc] initWithQuote:quote];
+    [self.navigationController pushViewController:controller animated:YES];
+}
 
 #pragma mark - Internal Helpers
 
@@ -198,6 +248,27 @@
     }
     
     self.navigationItem.rightBarButtonItems = btnArrays;
+}
+
+- (UIView *)createHeaderView
+{
+    WorkDetailsView *detailsView = [[WorkDetailsView alloc] initWithWork:self.work];
+    self.detailsView = detailsView;
+//    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toggleBars:)];
+//    [detailsView addGestureRecognizer:gesture];
+    return detailsView;
+}
+
+- (void)sizeHeaderViewToFit
+{
+    UIView *headerView = self.tableView.tableHeaderView;
+    [headerView setNeedsLayout];
+    [headerView layoutIfNeeded];
+    CGSize size = [headerView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    CGRect frame = headerView.frame;
+    frame.size.height = size.height;
+    headerView.frame = frame;
+    [self.tableView setTableHeaderView:headerView];
 }
 
 #pragma mark - Getters & Setters
@@ -252,6 +323,15 @@
     }
     
     return _wikiButton;
+}
+
+- (NSArray *)quotes
+{
+    if (!_quotes) {
+        _quotes = [XCZQuote getByWorkId:self.work.id];
+    }
+    
+    return _quotes;
 }
 
 @end
