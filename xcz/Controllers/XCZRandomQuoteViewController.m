@@ -15,6 +15,7 @@
 #import <ionicons/IonIcons.h>
 #import <Masonry.h>
 #import <MBProgressHUD.h>
+#import <AVOSCloud.h>
 
 @interface XCZRandomQuoteViewController () <XCZQuoteDraggableViewDelegate>
 
@@ -88,12 +89,14 @@
 
 - (void)refreshQuote
 {
+    [AVAnalytics event:@"refresh_quote"];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     [(XCZQuoteDraggableView *)[self.quoteViews firstObject] leftClickAction];
 }
 
 - (void)snapshot
 {
+    [AVAnalytics event:@"snapshot_quote"];
     UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, YES, 0);
     [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();

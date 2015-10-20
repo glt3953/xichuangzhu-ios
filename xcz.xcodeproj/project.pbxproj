@@ -24,7 +24,6 @@
 		056485551BA889E100F52EAE /* XCZAuthorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056485471BA889E100F52EAE /* XCZAuthorsViewController.xib */; };
 		056485561BA889E100F52EAE /* XCZLikesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485491BA889E100F52EAE /* XCZLikesViewController.m */; };
 		056485571BA889E100F52EAE /* XCZLikesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0564854A1BA889E100F52EAE /* XCZLikesViewController.xib */; };
-		056485581BA889E100F52EAE /* XCZQuotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564854C1BA889E100F52EAE /* XCZQuotesViewController.m */; };
 		056485591BA889E100F52EAE /* XCZWorksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564854F1BA889E100F52EAE /* XCZWorksViewController.m */; };
 		0564855A1BA889E100F52EAE /* XCZWorksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056485501BA889E100F52EAE /* XCZWorksViewController.xib */; };
 		056485611BA88D6F00F52EAE /* UILabel+SetFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564855F1BA88D6F00F52EAE /* UILabel+SetFont.m */; };
@@ -104,8 +103,6 @@
 		056485481BA889E100F52EAE /* XCZLikesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZLikesViewController.h; sourceTree = "<group>"; };
 		056485491BA889E100F52EAE /* XCZLikesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZLikesViewController.m; sourceTree = "<group>"; };
 		0564854A1BA889E100F52EAE /* XCZLikesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XCZLikesViewController.xib; sourceTree = "<group>"; };
-		0564854B1BA889E100F52EAE /* XCZQuotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZQuotesViewController.h; sourceTree = "<group>"; };
-		0564854C1BA889E100F52EAE /* XCZQuotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZQuotesViewController.m; sourceTree = "<group>"; };
 		0564854D1BA889E100F52EAE /* XCZWorkDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorkDetailViewController.h; sourceTree = "<group>"; };
 		0564854E1BA889E100F52EAE /* XCZWorksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorksViewController.h; sourceTree = "<group>"; };
 		0564854F1BA889E100F52EAE /* XCZWorksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWorksViewController.m; sourceTree = "<group>"; };
@@ -212,8 +209,6 @@
 				056485481BA889E100F52EAE /* XCZLikesViewController.h */,
 				056485491BA889E100F52EAE /* XCZLikesViewController.m */,
 				0564854A1BA889E100F52EAE /* XCZLikesViewController.xib */,
-				0564854B1BA889E100F52EAE /* XCZQuotesViewController.h */,
-				0564854C1BA889E100F52EAE /* XCZQuotesViewController.m */,
 				0564854E1BA889E100F52EAE /* XCZWorksViewController.h */,
 				0564854F1BA889E100F52EAE /* XCZWorksViewController.m */,
 				056485501BA889E100F52EAE /* XCZWorksViewController.xib */,
@@ -578,7 +573,6 @@
 				05DF00D5195F0CE100175ABF /* main.m in Sources */,
 				05CC76661BD6460D00A3970D /* XCZQuoteTableViewCell.m in Sources */,
 				05ECE61F1BD48B2B008DE9CE /* XCZAuthorTableViewCell.m in Sources */,
-				056485581BA889E100F52EAE /* XCZQuotesViewController.m in Sources */,
 				05CC76601BD63F2800A3970D /* XCZQuoteDraggableView.m in Sources */,
 				0564853E1BA8895300F52EAE /* XCZQuote.m in Sources */,
 				05F219141BC5784000B222D7 /* OtherViewController.m in Sources */,

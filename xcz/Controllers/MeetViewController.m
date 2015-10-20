@@ -14,6 +14,7 @@
 #import "Constants.h"
 #import <ionicons/IonIcons.h>
 #import <Masonry/Masonry.h>
+#import <AVOSCloud.h>
 
 @interface MeetViewController ()
 
@@ -147,6 +148,7 @@
 
 - (void)refreshWork
 {
+    [AVAnalytics event:@"refresh_work"];
     self.work = [XCZWork getRandomWork];
     [self.detailsView updateWithWork:self.work];
     [self initNavbarShowLike:![XCZLike checkExist:self.work.id]];

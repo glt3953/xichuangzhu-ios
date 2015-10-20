@@ -13,6 +13,7 @@
 #import <Masonry.h>
 #import <MBProgressHUD.h>
 #import <IonIcons.h>
+#import <AVOSCloud.h>
 
 @interface XCZQuoteViewController () <XCZQuoteViewDelegate>
 
@@ -86,6 +87,7 @@
 
 - (void)snapshot
 {
+    [AVAnalytics event:@"snapshot_quote"];
     UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, YES, 0);
     [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
