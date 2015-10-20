@@ -7,6 +7,7 @@
 //
 
 #import "UIColor+Helper.h"
+#import "Constants.h"
 #import "XCZWorkTableViewCell.h"
 #import <Masonry.h>
 

@@ -7,6 +7,8 @@
 #define RunOnSimulator 0
 #endif
 
+#define XCZFontFangsong @"STFangsong"
+
 #define XCZTabBarHeight 49
 #define XCZNavBarHeight 64
 #define XCZStatusBarHeight 20

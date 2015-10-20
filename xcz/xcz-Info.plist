@@ -45,6 +45,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>ionicons.ttf</string>
+		<string>华文仿宋.ttf</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>

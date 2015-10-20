@@ -23,7 +23,6 @@
 
 + (void)asynchronouslyDownloadFont:(NSString *)fontName completion:(void (^)(void))completion
 {
-    UIFont* aFont = [UIFont fontWithName:fontName size:12.];
     // If the font is already downloaded
     if ([self isFontDownloaded:fontName]) {
         return;

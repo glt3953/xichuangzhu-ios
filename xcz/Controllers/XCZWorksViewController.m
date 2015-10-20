@@ -24,6 +24,9 @@ static NSString * const cellIdentifier = @"WorkCell";
 
 @end
 
+#define TICK   NSDate *startTime = [NSDate date]
+#define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
+
 @implementation XCZWorksViewController
 
 - (instancetype)init

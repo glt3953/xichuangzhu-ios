@@ -98,7 +98,6 @@ static NSString * const cellIdentifier = @"WorkCell";
     
     // 作品数目
     self.worksHeaderField.text = [[NSString alloc] initWithFormat:@"作品 / %d", self.worksCount];
-    //self.worksHeaderField.text = @"作品";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
