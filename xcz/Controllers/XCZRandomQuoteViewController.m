@@ -70,11 +70,6 @@
     self.navigationItem.title = @"摘录";
 }
 
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-}
-
 #pragma mark - Layout
 
 - (void)createViews

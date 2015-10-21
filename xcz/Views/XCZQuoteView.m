@@ -44,7 +44,7 @@
     self.logoView = logoView;
     [self addSubview:logoView];
     
-    UILabel *authorLabel = [self createVerticalLabel:[NSString stringWithFormat:@"%@", self.quote.author]];
+    UILabel *authorLabel = [self createVerticalLabel:self.quote.author];
     self.authorLabel = authorLabel;
     authorLabel.font = [UIFont fontWithName:XCZFontFangsong size:18];
     [self addSubview:authorLabel];
@@ -82,8 +82,8 @@
     }];
     
     [authorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.logoView);
-        make.bottom.equalTo(self.logoView.mas_top).offset(-10);
+        make.bottom.equalTo(logoView.mas_top).offset(-10);
+        make.centerX.equalTo(logoView);
     }];
     
     return self;
@@ -100,6 +100,8 @@
     self.layer.shadowOpacity = .25;
     self.layer.shadowPath = shadowPath.CGPath;
     self.layer.shadowRadius = 2;
+    
+    [self.authorLabel sizeToFit];
 }
 
 #pragma mark - User Interaction
@@ -119,7 +121,7 @@
     
     __block NSInteger prevLocation = 0;
     
-    NSString *pattern = @"[，。：？！、]";
+    NSString *pattern = @"[，。：；？！、]";
     NSRegularExpression *expression = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:nil];
     
     NSRange range = NSMakeRange(0,[self.quote.quote length]);
