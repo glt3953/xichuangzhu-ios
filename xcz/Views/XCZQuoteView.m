@@ -119,7 +119,7 @@
     
     __block NSInteger prevLocation = 0;
     
-    NSString *pattern = @"[，。：？！]、";
+    NSString *pattern = @"[，。：？！、]";
     NSRegularExpression *expression = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:nil];
     
     NSRange range = NSMakeRange(0,[self.quote.quote length]);
