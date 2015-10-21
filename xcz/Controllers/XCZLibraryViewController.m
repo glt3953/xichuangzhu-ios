@@ -33,12 +33,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
-                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.activityView = activityView;
     [activityView startAnimating];
     [self.view bringSubviewToFront:activityView];
     [self.view addSubview:activityView];
-    [activityView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
     
     [activityView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(20);
