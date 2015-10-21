@@ -10,6 +10,7 @@
 #import "XCZCopyableLabel.h"
 #import "XCZWorkDetailsView.h"
 #import "UIColor+Helper.h"
+#import "XCZUtil.h"
 #import <Masonry/Masonry.h>
 
 @interface XCZWorkDetailsView ()
@@ -113,8 +114,8 @@
     
     [authorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(titleLabel.mas_bottom).offset(15);
-        make.left.equalTo(self).offset(15);
-        make.right.equalTo(self).offset(-15);
+        make.left.equalTo(self).offset([XCZUtil getVerticalGap]);
+        make.right.equalTo(self).offset(-[XCZUtil getVerticalGap]);
     }];
     
     [contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -124,29 +125,25 @@
             make.top.equalTo(authorLabel.mas_bottom).offset(16);
         }
         
-        make.left.equalTo(self).offset(15);
-        make.right.equalTo(self).offset(-15);
+        make.left.right.equalTo(authorLabel);
     }];
     
     [introHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(15);
-        make.right.equalTo(self).offset(-15);
+        make.left.right.equalTo(authorLabel);
         make.top.equalTo(contentLabel.mas_bottom).offset(20).priorityHigh();
     }];
     
     [introLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(introHeaderLabel.mas_bottom).offset(5);
-        make.left.equalTo(self).offset(15);
-        make.right.equalTo(self).offset(-15);
+        make.left.right.equalTo(authorLabel);
     }];
     
     [quotesHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(introLabel.mas_bottom).offset(18);
-        make.left.equalTo(self).offset(15);
-        make.right.equalTo(self).offset(-15);
+        make.top.equalTo(introLabel.mas_bottom).offset(15);
+        make.left.right.equalTo(authorLabel);
         
         if (quotesCount > 0) {
-            make.bottom.equalTo(self).offset(0);
+            make.bottom.equalTo(self);
         } else {
             make.bottom.equalTo(self).offset(-15);
         }

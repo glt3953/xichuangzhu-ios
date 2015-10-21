@@ -6,12 +6,12 @@
 //  Copyright (c) 2014年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZTableViewController.h"
 #import <UIKit/UIKit.h>
 #import "XCZAuthor.h"
 
-@interface XCZAuthorDetailsViewController : UITableViewController
+@interface XCZAuthorDetailsViewController : XCZTableViewController
 
-
--(instancetype)initWithAuthorId:(int)authorId;
+- (instancetype)initWithAuthorId:(int)authorId;
 
 @end

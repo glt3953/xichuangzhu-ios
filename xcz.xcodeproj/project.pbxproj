@@ -12,6 +12,9 @@
 		0545D26E1BC5428500410895 /* XCZWorkDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D26D1BC5428500410895 /* XCZWorkDetailsView.m */; settings = {ASSET_TAGS = (); }; };
 		0545D2711BC54C8B00410895 /* XCZLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D2701BC54C8B00410895 /* XCZLibraryViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0545D2741BC54CF600410895 /* XCZMeetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D2731BC54CF600410895 /* XCZMeetViewController.m */; settings = {ASSET_TAGS = (); }; };
+		054AA51C1BD74C6A00CE8EDC /* XCZTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 054AA51B1BD74C6A00CE8EDC /* XCZTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		054AA51F1BD74FE600CE8EDC /* XCZAuthorHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 054AA51E1BD74FE600CE8EDC /* XCZAuthorHeaderView.m */; settings = {ASSET_TAGS = (); }; };
+		054AA5221BD76A7500CE8EDC /* XCZUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 054AA5211BD76A7500CE8EDC /* XCZUtil.m */; settings = {ASSET_TAGS = (); }; };
 		056485301BA8869D00F52EAE /* DownloadFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564852F1BA8869D00F52EAE /* DownloadFont.m */; };
 		0564853B1BA8895300F52EAE /* XCZAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485321BA8895300F52EAE /* XCZAuthor.m */; };
 		0564853C1BA8895300F52EAE /* XCZDynasty.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485341BA8895300F52EAE /* XCZDynasty.m */; };
@@ -30,7 +33,6 @@
 		05827AA0196A8236003ABBDD /* XCZUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 05827A9F196A8236003ABBDD /* XCZUtils.m */; };
 		05B2287C195FD19500F91BCC /* xcz.db in Resources */ = {isa = PBXBuildFile; fileRef = 05B2287B195FCEBE00F91BCC /* xcz.db */; };
 		05BDB0B91A555CA800DBBFBF /* xcz_user.db in Resources */ = {isa = PBXBuildFile; fileRef = 05BDB0B81A555CA800DBBFBF /* xcz_user.db */; };
-		05CC13191966FCFC0014989C /* XCZAuthorHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05CC13181966FCFC0014989C /* XCZAuthorHeaderView.xib */; };
 		05CC76591BD5E6E800A3970D /* XCZRandomQuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CC76581BD5E6E800A3970D /* XCZRandomQuoteViewController.m */; settings = {ASSET_TAGS = (); }; };
 		05CC765A1BD5FEDC00A3970D /* 华文仿宋.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05CC76561BD5E56A00A3970D /* 华文仿宋.ttf */; settings = {ASSET_TAGS = (); }; };
 		05CC765D1BD6247E00A3970D /* XCZQuoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CC765C1BD6247E00A3970D /* XCZQuoteView.m */; settings = {ASSET_TAGS = (); }; };
@@ -82,6 +84,12 @@
 		0545D2701BC54C8B00410895 /* XCZLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZLibraryViewController.m; sourceTree = "<group>"; };
 		0545D2721BC54CF600410895 /* XCZMeetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZMeetViewController.h; sourceTree = "<group>"; };
 		0545D2731BC54CF600410895 /* XCZMeetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZMeetViewController.m; sourceTree = "<group>"; };
+		054AA51A1BD74C6A00CE8EDC /* XCZTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZTableViewController.h; sourceTree = "<group>"; };
+		054AA51B1BD74C6A00CE8EDC /* XCZTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZTableViewController.m; sourceTree = "<group>"; };
+		054AA51D1BD74FE600CE8EDC /* XCZAuthorHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthorHeaderView.h; sourceTree = "<group>"; };
+		054AA51E1BD74FE600CE8EDC /* XCZAuthorHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthorHeaderView.m; sourceTree = "<group>"; };
+		054AA5201BD76A7500CE8EDC /* XCZUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZUtil.h; sourceTree = "<group>"; };
+		054AA5211BD76A7500CE8EDC /* XCZUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZUtil.m; sourceTree = "<group>"; };
 		0564852E1BA8869D00F52EAE /* DownloadFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadFont.h; sourceTree = "<group>"; };
 		0564852F1BA8869D00F52EAE /* DownloadFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadFont.m; sourceTree = "<group>"; };
 		056485311BA8895300F52EAE /* XCZAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthor.h; sourceTree = "<group>"; };
@@ -113,7 +121,6 @@
 		05827A9F196A8236003ABBDD /* XCZUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZUtils.m; sourceTree = "<group>"; };
 		05B2287B195FCEBE00F91BCC /* xcz.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = xcz.db; sourceTree = "<group>"; };
 		05BDB0B81A555CA800DBBFBF /* xcz_user.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = xcz_user.db; sourceTree = "<group>"; };
-		05CC13181966FCFC0014989C /* XCZAuthorHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XCZAuthorHeaderView.xib; sourceTree = "<group>"; };
 		05CC76561BD5E56A00A3970D /* 华文仿宋.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文仿宋.ttf"; sourceTree = "<group>"; };
 		05CC76571BD5E6E800A3970D /* XCZRandomQuoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZRandomQuoteViewController.h; sourceTree = "<group>"; };
 		05CC76581BD5E6E800A3970D /* XCZRandomQuoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZRandomQuoteViewController.m; sourceTree = "<group>"; };
@@ -272,11 +279,22 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		054AA5191BD74C1200CE8EDC /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				054AA51A1BD74C6A00CE8EDC /* XCZTableViewController.h */,
+				054AA51B1BD74C6A00CE8EDC /* XCZTableViewController.m */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
 		0564852D1BA885EC00F52EAE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				0564852E1BA8869D00F52EAE /* DownloadFont.h */,
 				0564852F1BA8869D00F52EAE /* DownloadFont.m */,
+				054AA5201BD76A7500CE8EDC /* XCZUtil.h */,
+				054AA5211BD76A7500CE8EDC /* XCZUtil.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -326,7 +344,8 @@
 			isa = PBXGroup;
 			children = (
 				050E11821BD6AFEA004516A9 /* Cell */,
-				05CC13181966FCFC0014989C /* XCZAuthorHeaderView.xib */,
+				054AA51D1BD74FE600CE8EDC /* XCZAuthorHeaderView.h */,
+				054AA51E1BD74FE600CE8EDC /* XCZAuthorHeaderView.m */,
 				0545D26C1BC5428500410895 /* XCZWorkDetailsView.h */,
 				0545D26D1BC5428500410895 /* XCZWorkDetailsView.m */,
 				05CC765B1BD6247E00A3970D /* XCZQuoteView.h */,
@@ -378,6 +397,7 @@
 		05DF00CE195F0CE100175ABF /* xcz */ = {
 			isa = PBXGroup;
 			children = (
+				054AA5191BD74C1200CE8EDC /* Additions */,
 				0564855B1BA88A0A00F52EAE /* Categories */,
 				056485401BA8898600F52EAE /* Controllers */,
 				0564852D1BA885EC00F52EAE /* Utils */,
@@ -519,7 +539,6 @@
 			files = (
 				05B2287C195FD19500F91BCC /* xcz.db in Resources */,
 				05CC765A1BD5FEDC00A3970D /* 华文仿宋.ttf in Resources */,
-				05CC13191966FCFC0014989C /* XCZAuthorHeaderView.xib in Resources */,
 				05BDB0B91A555CA800DBBFBF /* xcz_user.db in Resources */,
 				056485551BA889E100F52EAE /* XCZAuthorsViewController.xib in Resources */,
 				056485571BA889E100F52EAE /* XCZLikesViewController.xib in Resources */,
@@ -608,6 +627,7 @@
 				0564853D1BA8895300F52EAE /* XCZLike.m in Sources */,
 				056485301BA8869D00F52EAE /* DownloadFont.m in Sources */,
 				0545D2741BC54CF600410895 /* XCZMeetViewController.m in Sources */,
+				054AA51F1BD74FE600CE8EDC /* XCZAuthorHeaderView.m in Sources */,
 				05827AA0196A8236003ABBDD /* XCZUtils.m in Sources */,
 				05CC76631BD6433000A3970D /* XCZQuoteViewController.m in Sources */,
 				05CC765D1BD6247E00A3970D /* XCZQuoteView.m in Sources */,
@@ -625,10 +645,12 @@
 				05CC76591BD5E6E800A3970D /* XCZRandomQuoteViewController.m in Sources */,
 				0545D26B1BC5379200410895 /* UIColor+Helper.m in Sources */,
 				056485591BA889E100F52EAE /* XCZWorksViewController.m in Sources */,
+				054AA5221BD76A7500CE8EDC /* XCZUtil.m in Sources */,
 				0564853F1BA8895300F52EAE /* XCZWork.m in Sources */,
 				05ECE6191BD3D476008DE9CE /* XCZWorkWikiViewController.m in Sources */,
 				05DF00D5195F0CE100175ABF /* main.m in Sources */,
 				05CC76661BD6460D00A3970D /* XCZQuoteTableViewCell.m in Sources */,
+				054AA51C1BD74C6A00CE8EDC /* XCZTableViewController.m in Sources */,
 				05CC76691BD6900500A3970D /* XCZCopyableLabel.m in Sources */,
 				05ECE61F1BD48B2B008DE9CE /* XCZAuthorTableViewCell.m in Sources */,
 				05CC76601BD63F2800A3970D /* XCZQuoteDraggableView.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "XCZAuthorTableViewCell.h"
 #import "UIColor+Helper.h"
+#import "XCZUtil.h"
 #import <Masonry.h>
 
 @interface XCZAuthorTableViewCell ()
@@ -38,15 +39,14 @@
     
     // 约束
     [authorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView).offset(15);
+        make.left.equalTo(self.contentView).offset([XCZUtil getVerticalGap]);
         make.top.equalTo(self.contentView).offset(11);
-        make.right.equalTo(self.contentView);
+        make.right.equalTo(self.contentView).offset(-[XCZUtil getVerticalGap]);
     }];
     
     [quoteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(authorLabel);
+        make.left.right.equalTo(authorLabel);
         make.top.equalTo(authorLabel.mas_bottom).offset(6);
-        make.right.equalTo(authorLabel);
         make.bottom.equalTo(self.contentView).offset(-11);
     }];
     

@@ -7,9 +7,10 @@
 //
 
 #import "XCZWork.h"
+#import "XCZTableViewController.h"
 #import <UIKit/UIKit.h>
 
-@interface XCZWorkDetailViewController : UIViewController
+@interface XCZWorkDetailViewController : XCZTableViewController
 
 - (instancetype)initWithWorkId:(int)workId;
 - (instancetype)initWithWork:(XCZWork *)work;

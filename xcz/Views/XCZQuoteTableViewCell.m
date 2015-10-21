@@ -8,6 +8,7 @@
 
 #import "XCZQuoteTableViewCell.h"
 #import "UIColor+Helper.h"
+#import "XCZUtil.h"
 #import <Masonry.h>
 
 @interface XCZQuoteTableViewCell ()
@@ -40,9 +41,9 @@
     // 约束
     
     [quoteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView).offset(15);
+        make.left.equalTo(self.contentView).offset([XCZUtil getVerticalGap]);
         make.top.equalTo(self.contentView).offset(11);
-        make.right.equalTo(self.contentView).offset(-15);
+        make.right.equalTo(self.contentView).offset(-[XCZUtil getVerticalGap]);
     }];
     
     [workLabel mas_makeConstraints:^(MASConstraintMaker *make) {
