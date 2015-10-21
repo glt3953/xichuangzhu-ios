@@ -42,7 +42,7 @@
 - (void)loadView
 {
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-    self.view.backgroundColor = [UIColor colorWithRGBA:0xF2F2F2FF];
+    self.view.backgroundColor = [UIColor colorWithRGBA:0xF0F0F0FF];
     
     [self createViews];
 }
