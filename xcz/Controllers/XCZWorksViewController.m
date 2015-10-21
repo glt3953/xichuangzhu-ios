@@ -45,10 +45,13 @@ static NSString * const cellIdentifier = @"WorkCell";
     self.navigationItem.title = @"作品";
     
     [self.tableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    [self.searchDisplayController.searchResultsTableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.searchDisplayController.searchResultsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     self.searchDisplayController.searchBar.placeholder = @"搜索";
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushNotificationReceived:) name:@"openWorkView" object:nil];
 }

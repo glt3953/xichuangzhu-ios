@@ -69,10 +69,13 @@ static NSString * const cellIdentifier = @"AuthorCell";
     self.navigationItem.title = @"文学家";
     
     [self.tableView registerClass:[XCZAuthorTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    [self.searchDisplayController.searchResultsTableView registerClass:[XCZAuthorTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.searchDisplayController.searchResultsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     self.searchDisplayController.searchBar.placeholder = @"搜索";
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 // 以下代码解决了 searchResultsTableView 下方空间的 bug

@@ -31,7 +31,7 @@
 - (void)loadView
 {
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-    self.view.backgroundColor = [UIColor colorWithRGBA:0xF8F8F8FF];
+    self.view.backgroundColor = [UIColor colorWithRGBA:0xF2F2F2FF];
     
     [self createViews];
 }

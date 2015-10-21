@@ -58,7 +58,11 @@ static NSString * const cellIdentifier = @"WorkCell";
     [super viewDidLoad];
     
     [self.tableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:cellIdentifier];
-
+    [self.searchDisplayController.searchResultsTableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.searchDisplayController.searchResultsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     self.searchDisplayController.searchBar.placeholder = @"搜索";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -70,9 +74,7 @@ static NSString * const cellIdentifier = @"WorkCell";
                                     action:@selector(toggleEditingMode:)];
     [self.navigationItem setRightBarButtonItem:rightButton];
     
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-    // 收到数据重载通知
+    // 数据重载通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadNotificationReceived:) name:@"reloadLikesData" object:nil];
 }
 
