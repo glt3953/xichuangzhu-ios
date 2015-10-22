@@ -7,6 +7,7 @@
 //
 
 #import "XCZQuoteDraggableView.h"
+#import <AVOSCloud.h>
 
 #define ACTION_MARGIN 120 // distance from center where the action applies. Higher = swipe further in order for the action to be called
 #define SCALE_STRENGTH 4 // how quickly the card shrinks. Higher = slower shrinking
@@ -105,6 +106,8 @@
 
 - (void)leftAction
 {
+    [AVAnalytics event:@"quote_drag_left"];
+    
     CGPoint finishPoint = CGPointMake(-500, 2 * self.yFromCenter +self.originalPoint.y);
     [UIView animateWithDuration:0.3
                      animations:^{
@@ -120,6 +123,8 @@
 
 - (void)rightAction
 {
+    [AVAnalytics event:@"quote_drag_right"];
+    
     CGPoint finishPoint = CGPointMake(500, 2 * self.yFromCenter + self.originalPoint.y);
     [UIView animateWithDuration:0.3
                      animations:^{
@@ -135,6 +140,8 @@
 
 - (void)leftClickAction
 {
+    [AVAnalytics event:@"quote_click_left"];
+    
     CGPoint finishPoint = CGPointMake(-600, self.center.y - 50);
     [UIView animateWithDuration:0.4
                      animations:^{
@@ -151,6 +158,8 @@
 
 - (void)rightClickAction
 {
+    [AVAnalytics event:@"quote_click_right"];
+    
     CGPoint finishPoint = CGPointMake(600, self.center.y - 50);
     [UIView animateWithDuration:0.4
                      animations:^{
