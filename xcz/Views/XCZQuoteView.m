@@ -46,7 +46,7 @@
     
     UILabel *authorLabel = [self createVerticalLabel:self.quote.author];
     self.authorLabel = authorLabel;
-    authorLabel.font = [UIFont fontWithName:XCZFontFangsong size:18];
+    authorLabel.font = [UIFont fontWithName:XCZFontFangsong size:[self authorFontSize]];
     [self addSubview:authorLabel];
     
     [self createQuoteLabels];
@@ -68,7 +68,7 @@
             }];
         } else {
             [label mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(prevLabel.mas_left).offset(-10);
+                make.right.equalTo(prevLabel.mas_left).offset(-[self quoteHorizonalGap]);
             }];
         }
         
@@ -76,9 +76,9 @@
     }
     
     [logoView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.equalTo(@18);
-        make.left.equalTo(self).offset(15);
-        make.bottom.equalTo(self).offset(-20);
+        make.width.height.equalTo([NSNumber numberWithFloat:[self logoWidth]]);
+        make.left.equalTo(self).offset([self logoHorizonalGap]);
+        make.bottom.equalTo(self).offset(-[self logoVerticalGap]);
     }];
     
     [authorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -133,7 +133,9 @@
         
         NSString *quoteText = [self.quote.quote substringWithRange:NSMakeRange(prevLocation, range.location - prevLocation)];
         UILabel *quoteLabel = [self createVerticalLabel:quoteText attributes:@{NSParagraphStyleAttributeName: paragraphStyle}];
-        quoteLabel.font = [UIFont fontWithName:XCZFontFangsong size:25];
+        
+        quoteLabel.font = [UIFont fontWithName:XCZFontFangsong size:[self quoteFontSize]];
+
         [self.quoteLabels addObject:quoteLabel];
         
         prevLocation = range.location + 1;
@@ -166,6 +168,84 @@
                               [letterArray addObject:substring];
                           }];
     return [letterArray componentsJoinedByString:@"\n"];
+}
+
+- (CGFloat)quoteFontSize
+{
+    if (IS_IPHONE_4_OR_LESS) {
+        return 23;
+    } else if (IS_IPHONE_5) {
+        return 25;
+    } else if (IS_IPHONE_6) {
+        return 28.5;
+    } else {
+        return 32;
+    }
+}
+
+- (CGFloat)quoteHorizonalGap
+{
+    if (IS_IPHONE_4_OR_LESS) {
+        return 9;
+    } else if (IS_IPHONE_5) {
+        return 10;
+    } else if (IS_IPHONE_6) {
+        return 11;
+    } else {
+        return 12;
+    }
+}
+
+- (CGFloat)authorFontSize
+{
+    if (IS_IPHONE_4_OR_LESS) {
+        return 17;
+    } else if (IS_IPHONE_5) {
+        return 18;
+    } else if (IS_IPHONE_6) {
+        return 20;
+    } else {
+        return 22;
+    }
+}
+
+- (CGFloat)logoWidth
+{
+    if (IS_IPHONE_4_OR_LESS) {
+        return 17;
+    } else if (IS_IPHONE_5) {
+        return 18;
+    } else if (IS_IPHONE_6) {
+        return 20;
+    } else {
+        return 22;
+    }
+}
+
+- (CGFloat)logoVerticalGap
+{
+    if (IS_IPHONE_4_OR_LESS) {
+        return 20;
+    } else if (IS_IPHONE_5) {
+        return 20;
+    } else if (IS_IPHONE_6) {
+        return 23;
+    } else {
+        return 26;
+    }
+}
+
+- (CGFloat)logoHorizonalGap
+{
+    if (IS_IPHONE_4_OR_LESS) {
+        return 15;
+    } else if (IS_IPHONE_5) {
+        return 15;
+    } else if (IS_IPHONE_6) {
+        return 17;
+    } else {
+        return 19;
+    }
 }
 
 #pragma mark - Getters & Setters
