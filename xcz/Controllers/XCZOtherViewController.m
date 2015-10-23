@@ -13,6 +13,8 @@
 #import <Masonry/Masonry.h>
 #import <ionicons/IonIcons.h>
 #import <LeanCloudFeedback/LeanCloudFeedback.h>
+#import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
 
 @interface XCZOtherViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -78,15 +80,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
         return 1;
+    } else if (section == 1) {
+        return 2;
     } else {
-        return 3;
+        return 2;
     }
 }
 
@@ -96,12 +100,16 @@
     
     if (indexPath.section == 0) {
         cell.textLabel.text = @"我的收藏";
-    } else {
+    } else if (indexPath.section == 1){
         if (indexPath.row == 0) {
             cell.textLabel.text = @"给我们反馈";
-        } else if (indexPath.row == 1) {
+        } else {
+            cell.textLabel.text = @"推荐「西窗烛」给朋友";
+        }
+    } else {
+        if (indexPath.row == 0) {
             cell.textLabel.text = @"去 App Store 给我们评价";
-        } else if (indexPath.row == 2) {
+        } else {
             cell.textLabel.text = @"关于";
         }
     }
@@ -135,7 +143,7 @@
             XCZLikesViewController *controller = [XCZLikesViewController new];
             [self.navigationController pushViewController:controller animated:YES];
         }
-    } else {
+    } else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             LCUserFeedbackViewController *feedbackViewController = [[LCUserFeedbackViewController alloc] init];
             feedbackViewController.navigationBarStyle = LCUserFeedbackNavigationBarStyleNone;
@@ -143,7 +151,17 @@
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:feedbackViewController];
             [self presentViewController:navigationController animated:YES completion: ^{
             }];
-        } else if (indexPath.row == 1) {
+        } else {
+            [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeText;
+            [UMSocialSnsService presentSnsIconSheetView:self
+                                                 appKey:nil
+                                              shareText:@"「西窗烛」，干净优雅的诗词赏析应用。下载地址：https://itunes.apple.com/cn/app/xi-chuang-zhu/id912139104"
+                                             shareImage:nil
+                                        shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatTimeline, UMShareToWechatSession, UMShareToEmail, nil]
+                                               delegate:nil];
+        }
+    } else {
+        if (indexPath.row == 0) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/xi-chuang-zhu/id912139104"]];
         } else {
             XCZAboutViewController *controller = [XCZAboutViewController new];
