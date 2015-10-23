@@ -52,12 +52,12 @@
     [buttons addObject:refreshButton];
     
     // 分享
-    UIImage *shareIcon = [IonIcons imageWithIcon:ion_ios_paperplane_outline size:34 color:[UIColor colorWithRGBA:0x8D8D8DFF]];
+    UIImage *shareIcon = [IonIcons imageWithIcon:ion_ios_paperplane_outline size:35 color:[UIColor colorWithRGBA:0x8D8D8DFF]];
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareIcon style:UIBarButtonItemStylePlain target:self action:@selector(shareQuote)];
     [buttons addObject:shareButton];
     
     // 保存到相册
-    UIImage *snapshotIcon = [IonIcons imageWithIcon:ion_ios_albums_outline size:24 color:[UIColor grayColor]];
+    UIImage *snapshotIcon = [IonIcons imageWithIcon:ion_ios_albums_outline size:23 color:[UIColor grayColor]];
     UIBarButtonItem *snapshotButton = [[UIBarButtonItem alloc] initWithImage:snapshotIcon style:UIBarButtonItemStylePlain target:self action:@selector(snapshot)];
     [buttons addObject:snapshotButton];
     
