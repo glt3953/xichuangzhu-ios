@@ -36,6 +36,18 @@
 
 #pragma mark - LifeCycle
 
+- (instancetype)init
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    
+    [self view];
+    
+    return self;
+}
+
 - (void)loadView
 {
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
