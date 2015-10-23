@@ -15,6 +15,6 @@ xcuserdata
 DerivedData
 .idea/
 *.ipa
-xcz/Constants.m
+xcz/Constants.h
 *.xcworkspace
 Pods/

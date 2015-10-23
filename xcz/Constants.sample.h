@@ -10,6 +10,8 @@
 #define AVOSCloudAppID  @""
 #define AVOSCloudAppKey @""
 #define UmengAppKey @""
+#define WechatAppId @""
+#define WechatAppSecret @""
 
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)

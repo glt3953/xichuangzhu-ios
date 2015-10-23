@@ -21,6 +21,7 @@
 #import "DownloadFont.h"
 #import "Constants.h"
 #import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import <ionicons/IonIcons.h>
 #import <Fabric/Fabric.h>
@@ -40,6 +41,8 @@
     
     // 友盟
     [UMSocialData setAppKey:UmengAppKey];
+    [UMSocialWechatHandler setWXAppId:WechatAppId appSecret:WechatAppSecret url:nil];
+    [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ, UMShareToQzone, UMShareToWechatSession, UMShareToWechatTimeline]];
     
     // 执行数据库拷贝
     [self copyPublicDatabase];
@@ -111,6 +114,19 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [UMSocialSnsService handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return [UMSocialSnsService handleOpenURL:url];
 }
 
 - (void)copyUserDatabase
