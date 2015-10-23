@@ -6,6 +6,7 @@
 //  Copyright © 2015年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZWork.h"
 #import "XCZLibraryViewController.h"
 #import "XCZWorksViewController.h"
 #import "XCZAuthorsViewController.h"
@@ -21,11 +22,30 @@
 @property (strong, nonatomic) UIActivityIndicatorView *activityView;
 @property (nonatomic) BOOL hasSetupViews;
 
+@property (strong, nonatomic) NSArray *works;
+
 @end
 
 @implementation XCZLibraryViewController
 
 #pragma mark - LifeCycle
+
+- (instancetype)init
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    
+    self.worksViewController = [XCZWorksViewController new];
+    [self addChildViewController:self.worksViewController];
+    self.worksViewController.view;
+    
+    self.authorsViewController = [XCZAuthorsViewController new];
+    [self addChildViewController:self.authorsViewController];
+    
+    return self;
+}
 
 - (void)loadView
 {
@@ -40,8 +60,7 @@
     [self.view addSubview:activityView];
     
     [activityView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).offset(20);
-        make.centerX.equalTo(self.view);
+        make.center.equalTo(self.view);
     }];
 }
 
@@ -75,15 +94,12 @@
 
 - (void)createViews
 {
-    self.worksViewController = [XCZWorksViewController new];
-    [self addChildViewController:self.worksViewController];
     [self.view addSubview:self.worksViewController.view];
     [self.worksViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
 
-    self.authorsViewController = [XCZAuthorsViewController new];
-    [self addChildViewController:self.authorsViewController];
+    
     [self.view addSubview:self.authorsViewController.view];
     [self.authorsViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);

@@ -27,6 +27,9 @@
 @property (strong, nonatomic) UIBarButtonItem *likeButton;
 @property (strong, nonatomic) UIBarButtonItem *unlikeButton;
 
+@property (strong, nonatomic) UIActivityIndicatorView *activityView;
+@property (nonatomic) BOOL hasSetupViews;
+
 @end
 
 @implementation XCZMeetViewController
@@ -38,13 +41,24 @@
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self createViews];
+    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
+                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityView = activityView;
+    [activityView startAnimating];
+    [self.view bringSubviewToFront:activityView];
+    [self.view addSubview:activityView];
+    
+    [activityView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+    }];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+
     [self initNavbarShowLike:![XCZLike checkExist:self.work.id]];
 }
 
@@ -52,6 +66,18 @@
 {
     [super viewWillAppear:animated];
     self.navigationItem.title = @"";
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (!self.hasSetupViews) {
+        self.hasSetupViews = YES;
+        
+        [self createViews];
+        [self.activityView stopAnimating];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

@@ -44,7 +44,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
     }
     
     self.dynasties = [XCZDynasty getNames];
-    self.authors = [[NSMutableDictionary alloc] init];
+    self.authors = [NSMutableDictionary new];
     self.authorsForSearch = [XCZAuthor getAllAuthors];
     
     for(int i = 0; i < self.dynasties.count; i++) {
