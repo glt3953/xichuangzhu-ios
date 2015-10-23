@@ -11,6 +11,8 @@
 #import "XCZMeetViewController.h"
 #import "XCZQuoteViewController.h"
 #import "UIColor+Helper.h"
+#import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
 #import <Masonry.h>
 #import <MBProgressHUD.h>
 #import <IonIcons.h>
@@ -54,6 +56,11 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     NSMutableArray *buttons = [NSMutableArray new];
+    
+    // 分享
+    UIImage *shareIcon = [IonIcons imageWithIcon:ion_ios_paperplane_outline size:34 color:[UIColor grayColor]];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareIcon style:UIBarButtonItemStylePlain target:self action:@selector(shareQuote)];
+    [buttons addObject:shareButton];
     
     // 保存到相册
     UIImage *snapshotIcon = [IonIcons imageWithIcon:ion_ios_albums_outline size:24 color:[UIColor grayColor]];
@@ -101,6 +108,17 @@
     UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
 }
 
+- (void)shareQuote
+{
+    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeImage;
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:nil
+                                      shareText:@""
+                                     shareImage:[self snapshotView]
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatTimeline, UMShareToWechatSession, UMShareToWechatFavorite, UMShareToEmail, nil]
+                                       delegate:nil];
+}
+
 #pragma mark - XCZQuoteViewDelegate
 
 - (void)quoteViewPressed:(XCZQuote *)quote
@@ -127,6 +145,15 @@
             [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
         });
     });
+}
+
+- (UIImage *)snapshotView
+{
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, YES, 0);
+    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 
 #pragma mark - Getters & Setters
