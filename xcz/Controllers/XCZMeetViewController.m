@@ -9,7 +9,7 @@
 #import "XCZWork.h"
 #import "XCZLike.h"
 #import "XCZWorkDetailsView.h"
-#import "XCZWorkWikiViewController.h"
+#import "XCZWikiViewController.h"
 #import "XCZWorkDetailViewController.h"
 #import "XCZMeetViewController.h"
 #import "Constants.h"
@@ -99,7 +99,7 @@
 - (void)redirectToWiki
 {
     if (self.work.baiduWiki) {
-        XCZWorkWikiViewController *controller = [[XCZWorkWikiViewController alloc] initWithURL:self.work.baiduWiki];
+        XCZWikiViewController *controller = [[XCZWikiViewController alloc] initWithURL:self.work.baiduWiki];
         [self.navigationController pushViewController:controller animated:YES];
     }
 }

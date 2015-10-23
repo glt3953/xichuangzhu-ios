@@ -68,7 +68,7 @@
 		05DF00E8195F0CE100175ABF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DF00CC195F0CE100175ABF /* CoreData.framework */; };
 		05DF00F0195F0CE100175ABF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05DF00EE195F0CE100175ABF /* InfoPlist.strings */; };
 		05DF00F2195F0CE100175ABF /* xczTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DF00F1195F0CE100175ABF /* xczTests.m */; };
-		05ECE6191BD3D476008DE9CE /* XCZWorkWikiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05ECE6181BD3D476008DE9CE /* XCZWorkWikiViewController.m */; settings = {ASSET_TAGS = (); }; };
+		05ECE6191BD3D476008DE9CE /* XCZWikiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05ECE6181BD3D476008DE9CE /* XCZWikiViewController.m */; settings = {ASSET_TAGS = (); }; };
 		05ECE61C1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05ECE61B1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.m */; settings = {ASSET_TAGS = (); }; };
 		05ECE61F1BD48B2B008DE9CE /* XCZAuthorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05ECE61E1BD48B2B008DE9CE /* XCZAuthorTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		05ECE6221BD49D5E008DE9CE /* XCZWorkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05ECE6211BD49D5E008DE9CE /* XCZWorkTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -196,8 +196,8 @@
 		05DF00ED195F0CE100175ABF /* xczTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "xczTests-Info.plist"; sourceTree = "<group>"; };
 		05DF00EF195F0CE100175ABF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		05DF00F1195F0CE100175ABF /* xczTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xczTests.m; sourceTree = "<group>"; };
-		05ECE6171BD3D476008DE9CE /* XCZWorkWikiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorkWikiViewController.h; sourceTree = "<group>"; };
-		05ECE6181BD3D476008DE9CE /* XCZWorkWikiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWorkWikiViewController.m; sourceTree = "<group>"; };
+		05ECE6171BD3D476008DE9CE /* XCZWikiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWikiViewController.h; sourceTree = "<group>"; };
+		05ECE6181BD3D476008DE9CE /* XCZWikiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWikiViewController.m; sourceTree = "<group>"; };
 		05ECE61A1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthorQuotesViewController.h; sourceTree = "<group>"; };
 		05ECE61B1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthorQuotesViewController.m; sourceTree = "<group>"; };
 		05ECE61D1BD48B2B008DE9CE /* XCZAuthorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthorTableViewCell.h; sourceTree = "<group>"; };
@@ -249,8 +249,6 @@
 		050E117C1BD6AF1A004516A9 /* Work */ = {
 			isa = PBXGroup;
 			children = (
-				05ECE6171BD3D476008DE9CE /* XCZWorkWikiViewController.h */,
-				05ECE6181BD3D476008DE9CE /* XCZWorkWikiViewController.m */,
 				0564854E1BA889E100F52EAE /* XCZWorksViewController.h */,
 				0564854F1BA889E100F52EAE /* XCZWorksViewController.m */,
 				056485501BA889E100F52EAE /* XCZWorksViewController.xib */,
@@ -301,6 +299,8 @@
 		050E11801BD6AF8B004516A9 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				05ECE6171BD3D476008DE9CE /* XCZWikiViewController.h */,
+				05ECE6181BD3D476008DE9CE /* XCZWikiViewController.m */,
 				05F219181BC6134400B222D7 /* XCZAboutViewController.h */,
 				05F219191BC6134400B222D7 /* XCZAboutViewController.m */,
 			);
@@ -787,7 +787,7 @@
 				056485591BA889E100F52EAE /* XCZWorksViewController.m in Sources */,
 				054AA5221BD76A7500CE8EDC /* XCZUtil.m in Sources */,
 				0564853F1BA8895300F52EAE /* XCZWork.m in Sources */,
-				05ECE6191BD3D476008DE9CE /* XCZWorkWikiViewController.m in Sources */,
+				05ECE6191BD3D476008DE9CE /* XCZWikiViewController.m in Sources */,
 				05DF00D5195F0CE100175ABF /* main.m in Sources */,
 				05CC76661BD6460D00A3970D /* XCZQuoteTableViewCell.m in Sources */,
 				054AA51C1BD74C6A00CE8EDC /* XCZTableViewController.m in Sources */,

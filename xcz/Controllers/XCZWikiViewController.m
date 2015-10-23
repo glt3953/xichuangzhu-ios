@@ -6,11 +6,11 @@
 //  Copyright © 2015年 Zhipeng Liu. All rights reserved.
 //
 
-#import "XCZWorkWikiViewController.h"
+#import "XCZWikiViewController.h"
 #import <Masonry.h>
 #import <IonIcons.h>
 
-@interface XCZWorkWikiViewController () <UIWebViewDelegate>
+@interface XCZWikiViewController () <UIWebViewDelegate>
 
 @property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) NSString *url;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation XCZWorkWikiViewController
+@implementation XCZWikiViewController
 
 #pragma mark - LifeCycle
 

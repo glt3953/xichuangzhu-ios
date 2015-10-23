@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XCZWorkWikiViewController : UIViewController
+@interface XCZWikiViewController : UIViewController
 
 - (instancetype)initWithURL:(NSString *)url;
 

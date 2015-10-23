@@ -11,6 +11,7 @@
 #import "XCZAuthor.h"
 #import "XCZWorkTableViewCell.h"
 #import "XCZAuthorHeaderView.h"
+#import "XCZWikiViewController.h"
 #import "XCZWorkDetailViewController.h"
 #import "XCZAuthorDetailsViewController.h"
 #import "XCZAuthorQuotesViewController.h"
@@ -19,6 +20,7 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import <UITableView+FDTemplateLayoutCell.h>
 #import <Masonry.h>
+#import <IonIcons.h>
 
 static NSString * const cellIdentifier = @"WorkCell";
 
@@ -84,10 +86,25 @@ static NSString * const cellIdentifier = @"WorkCell";
 {
     [super viewDidLoad];
     
+    NSMutableArray *btnArrays = [NSMutableArray new];
+    
+    // 摘录
     UIImage *quotesImg = [UIImage imageNamed:@"quotesGray"];
     quotesImg = [quotesImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIBarButtonItem *quotesButton = [[UIBarButtonItem alloc] initWithImage:quotesImg style:UIBarButtonItemStylePlain target:self action:@selector(redirectToAuthorQuotes)];
-    self.navigationItem.rightBarButtonItem = quotesButton;
+    [btnArrays addObject:quotesButton];
+    
+    // 百科
+    if ([self.author.baiduWiki length] > 0) {
+        UIImage *internetIcon = [IonIcons imageWithIcon:ion_ios_world_outline
+                                              iconColor:[UIColor grayColor]
+                                               iconSize:25.0f
+                                              imageSize:CGSizeMake(27.0f, 27.0f)];
+        UIBarButtonItem *wikiButton = [[UIBarButtonItem alloc] initWithImage:internetIcon style:UIBarButtonItemStylePlain target:self action:@selector(redirectToWiki)];
+        [btnArrays addObject:wikiButton];
+    }
+    
+    self.navigationItem.rightBarButtonItems = btnArrays;
 }
 
 - (void)viewDidLayoutSubviews
@@ -102,6 +119,12 @@ static NSString * const cellIdentifier = @"WorkCell";
 - (void)redirectToAuthorQuotes
 {
     XCZAuthorQuotesViewController *controller = [[XCZAuthorQuotesViewController alloc] initWithAuthorId:self.author.id];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)redirectToWiki
+{
+    UIViewController *controller = [[XCZWikiViewController alloc] initWithURL:self.author.baiduWiki];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

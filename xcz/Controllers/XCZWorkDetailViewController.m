@@ -13,7 +13,7 @@
 #import "XCZWorkDetailViewController.h"
 #import "XCZQuoteViewController.h"
 #import "XCZAuthorDetailsViewController.h"
-#import "XCZWorkWikiViewController.h"
+#import "XCZWikiViewController.h"
 #import "UILabel+SetFont.h"
 #import "XCZUtils.h"
 #import "Constants.h"
@@ -171,7 +171,7 @@
     [self.navigationItem setTitle:@"返回"];
     
     if (self.work.baiduWiki) {
-        XCZWorkWikiViewController *controller = [[XCZWorkWikiViewController alloc] initWithURL:self.work.baiduWiki];
+        XCZWikiViewController *controller = [[XCZWikiViewController alloc] initWithURL:self.work.baiduWiki];
         [self.navigationController pushViewController:controller animated:YES];
     }
 }

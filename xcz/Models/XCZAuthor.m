@@ -112,6 +112,7 @@
     self.dynasty = [resultSet stringForColumn:@"dynasty"];
     self.birthYear = [resultSet stringForColumn:@"birth_year"];
     self.deathYear = [resultSet stringForColumn:@"death_year"];
+    self.baiduWiki = [resultSet stringForColumn:@"baidu_wiki"];
 }
 
 #pragma mark - Getters & Setters
