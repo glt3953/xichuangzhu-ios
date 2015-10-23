@@ -140,7 +140,6 @@ static NSString * const cellIdentifier = @"WorkCell";
 - (void)filterContentForSearchText:(NSString*)searchText
 {
     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"fullTitle contains[c] %@", searchText];
-    NSLog(@"%@", searchText);
     self.searchResults = [self.works filteredArrayUsingPredicate:resultPredicate];
 }
 

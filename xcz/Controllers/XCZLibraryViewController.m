@@ -39,10 +39,11 @@
     
     self.worksViewController = [XCZWorksViewController new];
     [self addChildViewController:self.worksViewController];
-    self.worksViewController.view;
+    [self.worksViewController view];
     
     self.authorsViewController = [XCZAuthorsViewController new];
     [self addChildViewController:self.authorsViewController];
+    [self.authorsViewController view];
     
     return self;
 }

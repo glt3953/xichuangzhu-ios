@@ -138,7 +138,7 @@ static NSString * const cellIdentifier = @"WorkCell";
     } else {
         work = self.works[indexPath.row];
     }
-    
+
     return [tableView fd_heightForCellWithIdentifier:cellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", work.id] configuration:^(XCZWorkTableViewCell *cell) {
         [cell updateWithWork:work showAuthor:YES];
     }];

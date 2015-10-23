@@ -168,9 +168,11 @@ static NSString * const cellIdentifier = @"AuthorCell";
     return cell;
 }
 
+// 单元格高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XCZAuthor *author = nil;
+    XCZAuthor *author;
+    
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         author = self.searchResult[indexPath.row];
     } else {
@@ -178,10 +180,15 @@ static NSString * const cellIdentifier = @"AuthorCell";
         NSArray *authors = [self.authors objectForKey:dynastyName];
         author = authors[indexPath.row];
     }
-    
+
     return [tableView fd_heightForCellWithIdentifier:cellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", author.id] configuration:^(id cell) {
         [cell updateWithAuthor:author];
     }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 62.5;
 }
 
 // 选中单元格
