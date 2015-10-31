@@ -59,12 +59,12 @@
         [self addSubview:label];
         
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self).offset(30);
+            make.top.equalTo(self).offset([self quoteTopMargin]);
         }];
         
         if (i == 0) {
             [label mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(self).offset(-30);
+                make.right.equalTo(self).offset(-[self quoteRightMargin]);
             }];
         } else {
             [label mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -193,6 +193,32 @@
         return 11;
     } else {
         return 12;
+    }
+}
+
+- (CGFloat)quoteRightMargin
+{
+    if (IS_IPHONE_4_OR_LESS) {
+        return 26;
+    } else if (IS_IPHONE_5) {
+        return 28;
+    } else if (IS_IPHONE_6) {
+        return 33;
+    } else {
+        return 36;
+    }
+}
+
+- (CGFloat)quoteTopMargin
+{
+    if (IS_IPHONE_4_OR_LESS) {
+        return 26;
+    } else if (IS_IPHONE_5) {
+        return 28;
+    } else if (IS_IPHONE_6) {
+        return 33;
+    } else {
+        return 36;
     }
 }
 
