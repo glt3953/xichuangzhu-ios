@@ -42,7 +42,7 @@
     // 友盟
     [UMSocialData setAppKey:UmengAppKey];
     [UMSocialWechatHandler setWXAppId:WechatAppId appSecret:WechatAppSecret url:nil];
-    [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ, UMShareToQzone, UMShareToWechatSession, UMShareToWechatTimeline]];
+    [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToWechatSession, UMShareToWechatTimeline]];
     
     // 执行数据库拷贝
     [self copyPublicDatabase];
