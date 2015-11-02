@@ -77,7 +77,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"文学家";    
+    self.navigationItem.title = @"文学家";
     self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 

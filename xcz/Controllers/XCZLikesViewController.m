@@ -12,19 +12,25 @@
 #import "XCZLikesViewController.h"
 #import "XCZWorkDetailViewController.h"
 #import <UITableView+FDTemplateLayoutCell.h>
+#import <Masonry.h>
 
 static NSString * const cellIdentifier = @"WorkCell";
 
 @interface XCZLikesViewController () <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSMutableArray *likes;
-@property (nonatomic, strong) NSMutableArray *works;
-@property (nonatomic, strong) NSArray *searchResults;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *likes;
+@property (strong, nonatomic) NSMutableArray *works;
+@property (strong, nonatomic) NSArray *searchResults;
+
+@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) UISearchDisplayController *searchController;
 
 @end
 
 @implementation XCZLikesViewController
+
+#pragma mark - Life Cycle
 
 - (instancetype)init
 {
@@ -34,24 +40,18 @@ static NSString * const cellIdentifier = @"WorkCell";
         UINavigationItem *navItem = self.navigationItem;
         navItem.title = @"我的收藏";
         
-        // 加载收藏作品
         [self loadData];
     }
     
     return self;
 }
 
-// 加载数据
-- (void)loadData
+- (void)loadView
 {
-    self.works = [[NSMutableArray alloc] init];
-    self.likes = [XCZLike getAll];
+    self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    self.view.backgroundColor = [UIColor whiteColor];
     
-    for (int i = 0; i < self.likes.count; i++) {
-        XCZLike *like = self.likes[i];
-        XCZWork *work = [XCZWork getById:like.workId];
-        self.works[i] = work;
-    }
+    [self createViews];
 }
 
 - (void)viewDidLoad {
@@ -78,6 +78,50 @@ static NSString * const cellIdentifier = @"WorkCell";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadNotificationReceived:) name:@"reloadLikesData" object:nil];
 }
 
+#pragma mark - Create Views
+
+- (void)createViews
+{
+    UISearchBar *searchBar = [UISearchBar new];
+    searchBar.placeholder = @"搜索";
+    [self.view addSubview:searchBar];
+    
+    UISearchDisplayController *searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+    [searchController.searchResultsTableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    searchController.searchResultsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.searchController = searchController;
+    searchController.delegate = self;
+    searchController.searchResultsDelegate = self;
+    searchController.searchResultsDataSource = self;
+    
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 0)];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    [tableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView = tableView;
+    [self.view addSubview:tableView];
+    
+    // 约束
+    [searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.equalTo(self.view);
+    }];
+    
+    [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(searchBar.mas_bottom);
+        make.left.right.bottom.equalTo(self.view);
+    }];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    // 取消选中效果
+    NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
+    [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
+}
+
+#pragma mark - User Interface
+
 // 切换编辑模式
 - (void)toggleEditingMode:(id)sender
 {
@@ -97,43 +141,13 @@ static NSString * const cellIdentifier = @"WorkCell";
     }
 }
 
-// 取消收藏
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        XCZWork *work = self.works[indexPath.row];
-        [XCZLike unlike:work.id];
-        [self.works removeObjectAtIndex:indexPath.row];
-        
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-}
 
-// 交换次序
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
-{
-    if (sourceIndexPath.row != destinationIndexPath.row) {
-        XCZWork *sourceWork = self.works[sourceIndexPath.row];
-        [self.works removeObjectAtIndex:sourceIndexPath.row];
-        [self.works insertObject:sourceWork atIndex:destinationIndexPath.row];
-        
-        XCZLike *sourceLike = self.likes[sourceIndexPath.row];
-        [self.likes removeObjectAtIndex:sourceIndexPath.row];
-        [self.likes insertObject:sourceLike atIndex:destinationIndexPath.row];
-    }
-}
+#pragma mark - SearchDisplayController
 
-- (void)viewWillAppear:(BOOL)animated
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    // 取消选中效果
-    NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
-    [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
-}
-
-- (void)reloadNotificationReceived:(NSNotification*) notification
-{
-    [self loadData];
-    [self.tableView reloadData];
+    [self filterContentForSearchText:searchString];
+    return YES;
 }
 
 // 过滤结果
@@ -143,11 +157,14 @@ static NSString * const cellIdentifier = @"WorkCell";
     self.searchResults = [self.works filteredArrayUsingPredicate:resultPredicate];
 }
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
-    [self filterContentForSearchText:searchString];
-    return YES;
+// 以下代码解决了 searchResultsTableView 下方空间的 bug
+// 参见：http://stackoverflow.com/questions/19161387/uisearchdisplaycontroller-tableview-content-offset-is-incorrect-after-keyboard-h
+- (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView {
+    [tableView setContentInset:UIEdgeInsetsZero];
+    [tableView setScrollIndicatorInsets:UIEdgeInsetsZero];
 }
+
+#pragma mark - TableView Delegate
 
 // 表行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -194,6 +211,32 @@ static NSString * const cellIdentifier = @"WorkCell";
     return 62.5;
 }
 
+// 取消收藏
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        XCZWork *work = self.works[indexPath.row];
+        [XCZLike unlike:work.id];
+        [self.works removeObjectAtIndex:indexPath.row];
+        
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+// 交换次序
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    if (sourceIndexPath.row != destinationIndexPath.row) {
+        XCZWork *sourceWork = self.works[sourceIndexPath.row];
+        [self.works removeObjectAtIndex:sourceIndexPath.row];
+        [self.works insertObject:sourceWork atIndex:destinationIndexPath.row];
+        
+        XCZLike *sourceLike = self.likes[sourceIndexPath.row];
+        [self.likes removeObjectAtIndex:sourceIndexPath.row];
+        [self.likes insertObject:sourceLike atIndex:destinationIndexPath.row];
+    }
+}
+
 // 选中某单元格后的操作
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -209,16 +252,25 @@ static NSString * const cellIdentifier = @"WorkCell";
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-// 以下代码解决了 searchResultsTableView 下方空间的 bug
-// 参见：http://stackoverflow.com/questions/19161387/uisearchdisplaycontroller-tableview-content-offset-is-incorrect-after-keyboard-h
-- (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView {
-    [tableView setContentInset:UIEdgeInsetsZero];
-    [tableView setScrollIndicatorInsets:UIEdgeInsetsZero];
+#pragma mark - Internal Helpers
+
+// 加载数据
+- (void)loadData
+{
+    self.works = [[NSMutableArray alloc] init];
+    self.likes = [XCZLike getAll];
+    
+    for (int i = 0; i < self.likes.count; i++) {
+        XCZLike *like = self.likes[i];
+        XCZWork *work = [XCZWork getById:like.workId];
+        self.works[i] = work;
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)reloadNotificationReceived:(NSNotification*) notification
+{
+    [self loadData];
+    [self.tableView reloadData];
 }
 
 @end

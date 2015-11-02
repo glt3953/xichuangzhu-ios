@@ -25,7 +25,6 @@
 		056485531BA889E100F52EAE /* XCZAuthorDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485441BA889E100F52EAE /* XCZAuthorDetailsViewController.m */; };
 		056485541BA889E100F52EAE /* XCZAuthorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485461BA889E100F52EAE /* XCZAuthorsViewController.m */; };
 		056485561BA889E100F52EAE /* XCZLikesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485491BA889E100F52EAE /* XCZLikesViewController.m */; };
-		056485571BA889E100F52EAE /* XCZLikesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0564854A1BA889E100F52EAE /* XCZLikesViewController.xib */; };
 		056485591BA889E100F52EAE /* XCZWorksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564854F1BA889E100F52EAE /* XCZWorksViewController.m */; };
 		056485611BA88D6F00F52EAE /* UILabel+SetFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564855F1BA88D6F00F52EAE /* UILabel+SetFont.m */; };
 		05827AA0196A8236003ABBDD /* XCZUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 05827A9F196A8236003ABBDD /* XCZUtils.m */; };
@@ -122,7 +121,6 @@
 		056485461BA889E100F52EAE /* XCZAuthorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthorsViewController.m; sourceTree = "<group>"; };
 		056485481BA889E100F52EAE /* XCZLikesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZLikesViewController.h; sourceTree = "<group>"; };
 		056485491BA889E100F52EAE /* XCZLikesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZLikesViewController.m; sourceTree = "<group>"; };
-		0564854A1BA889E100F52EAE /* XCZLikesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XCZLikesViewController.xib; sourceTree = "<group>"; };
 		0564854D1BA889E100F52EAE /* XCZWorkDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorkDetailViewController.h; sourceTree = "<group>"; };
 		0564854E1BA889E100F52EAE /* XCZWorksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorksViewController.h; sourceTree = "<group>"; };
 		0564854F1BA889E100F52EAE /* XCZWorksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWorksViewController.m; sourceTree = "<group>"; };
@@ -306,7 +304,6 @@
 			children = (
 				056485481BA889E100F52EAE /* XCZLikesViewController.h */,
 				056485491BA889E100F52EAE /* XCZLikesViewController.m */,
-				0564854A1BA889E100F52EAE /* XCZLikesViewController.xib */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -668,7 +665,6 @@
 				0587F1331BD9D39F0037747E /* UMSocialLocalizable.strings in Resources */,
 				0587F1391BD9D39F0037747E /* UMShareEditViewControlleriPad.xib in Resources */,
 				05BDB0B91A555CA800DBBFBF /* xcz_user.db in Resources */,
-				056485571BA889E100F52EAE /* XCZLikesViewController.xib in Resources */,
 				0587F1381BD9D39F0037747E /* UMShareEditViewController.xib in Resources */,
 				0587F13B1BD9D39F0037747E /* UMSnsAccountViewController.xib in Resources */,
 				0587F1361BD9D39F0037747E /* UMSCommentInputController.xib in Resources */,
