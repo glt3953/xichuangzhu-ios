@@ -35,6 +35,8 @@
         return nil;
     }
     
+    self.draggable = NO;
+    
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(beingDragged:)];
     [self addGestureRecognizer:panGestureRecognizer];
     
@@ -43,6 +45,10 @@
 
 - (void)beingDragged:(UIPanGestureRecognizer *)gestureRecognizer
 {
+    if (!self.draggable) {
+        return;
+    }
+    
     self.xFromCenter = [gestureRecognizer translationInView:self].x;
     self.yFromCenter = [gestureRecognizer translationInView:self].y;
     

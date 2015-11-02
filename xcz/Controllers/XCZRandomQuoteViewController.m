@@ -84,6 +84,8 @@
 {
     [self loadQuoteView];
     [self loadQuoteView];
+    
+    [(XCZQuoteDraggableView *)[self.quoteViews firstObject] setDraggable:YES];
 }
 
 #pragma mark - Public Interface
@@ -130,6 +132,7 @@
 {
     [self.quoteViews removeObjectAtIndex:0];
     [self loadQuoteView];
+    [(XCZQuoteDraggableView *)[self.quoteViews firstObject] setDraggable:YES];
     self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
@@ -137,6 +140,7 @@
 {
     [self.quoteViews removeObjectAtIndex:0];
     [self loadQuoteView];
+    [(XCZQuoteDraggableView *)[self.quoteViews firstObject] setDraggable:YES];
     self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 

@@ -18,6 +18,7 @@
 @interface XCZQuoteDraggableView : XCZQuoteView
 
 @property (weak, nonatomic) id <XCZQuoteDraggableViewDelegate> delegate;
+@property (nonatomic) BOOL draggable;
 
 - (void)leftClickAction;
 - (void)rightClickAction;
