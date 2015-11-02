@@ -102,7 +102,6 @@ static NSString * const cellIdentifier = @"identifier";
 {
     UILabel *textLabel = [UILabel new];
     textLabel.text = @"屏幕亮度";
-    textLabel.textColor = [UIColor grayColor];
     [cell.contentView addSubview:textLabel];
     
     UISlider *slider = [UISlider new];
@@ -119,8 +118,8 @@ static NSString * const cellIdentifier = @"identifier";
     }];
     
     [slider mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(textLabel.mas_right).offset(10);
-        make.right.equalTo(cell.contentView).offset(-10);
+        make.left.equalTo(textLabel.mas_right).offset(15);
+        make.right.equalTo(cell.contentView).offset(-15);
         make.centerY.equalTo(cell.contentView);
     }];
 }
