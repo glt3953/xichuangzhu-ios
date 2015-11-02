@@ -7,6 +7,7 @@
 //
 
 #import "XCZOtherViewController.h"
+#import "XCZSettingsViewController.h"
 #import "XCZAboutViewController.h"
 #import "XCZLikesViewController.h"
 #import "UIColor+Helper.h"
@@ -88,7 +89,7 @@
     if (section == 0) {
         return 1;
     } else if (section == 1) {
-        return 2;
+        return 3;
     } else {
         return 2;
     }
@@ -103,12 +104,14 @@
     } else if (indexPath.section == 1){
         if (indexPath.row == 0) {
             cell.textLabel.text = @"给我们反馈";
+        } else if (indexPath.row == 1) {
+            cell.textLabel.text = @"向朋友推荐「西窗烛」";
         } else {
-            cell.textLabel.text = @"推荐「西窗烛」给朋友";
+            cell.textLabel.text = @"去 App Store 评价";
         }
     } else {
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"去 App Store 给我们评价";
+            cell.textLabel.text = @"设置";
         } else {
             cell.textLabel.text = @"关于";
         }
@@ -151,7 +154,7 @@
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:feedbackViewController];
             [self presentViewController:navigationController animated:YES completion: ^{
             }];
-        } else {
+        } else if (indexPath.row == 1) {
             [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeText;
             [UMSocialSnsService presentSnsIconSheetView:self
                                                  appKey:nil
@@ -159,12 +162,15 @@
                                              shareImage:[UIImage imageNamed:@"share.jpg"]
                                         shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatTimeline, UMShareToWechatSession,UMShareToDouban, UMShareToEmail, nil]
                                                delegate:nil];
+        } else {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/xi-chuang-zhu/id912139104"]];
         }
     } else {
         if (indexPath.row == 0) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/xi-chuang-zhu/id912139104"]];
+            UIViewController *controller = [XCZSettingsViewController new];
+            [self.navigationController pushViewController:controller animated:YES];
         } else {
-            XCZAboutViewController *controller = [XCZAboutViewController new];
+            UIViewController *controller = [XCZAboutViewController new];
             [self.navigationController pushViewController:controller animated:YES];
         }
     }

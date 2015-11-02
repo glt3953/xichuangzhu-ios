@@ -43,6 +43,7 @@
 		0587F1491BD9D3B60037747E /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0587F1431BD9D3B60037747E /* libSocialWechat.a */; };
 		0587F14A1BD9D3B60037747E /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0587F1441BD9D3B60037747E /* libWeChatSDK.a */; };
 		0587F14C1BD9D4870037747E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0587F14B1BD9D4870037747E /* SystemConfiguration.framework */; };
+		0599F5F11BE76A2A00AA099D /* XCZSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0599F5F01BE76A2A00AA099D /* XCZSettingsViewController.m */; };
 		05B2287C195FD19500F91BCC /* xcz.db in Resources */ = {isa = PBXBuildFile; fileRef = 05B2287B195FCEBE00F91BCC /* xcz.db */; };
 		05BDB0B91A555CA800DBBFBF /* xcz_user.db in Resources */ = {isa = PBXBuildFile; fileRef = 05BDB0B81A555CA800DBBFBF /* xcz_user.db */; };
 		05CC76591BD5E6E800A3970D /* XCZRandomQuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CC76581BD5E6E800A3970D /* XCZRandomQuoteViewController.m */; };
@@ -159,6 +160,8 @@
 		0587F1461BD9D3B60037747E /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		0587F1471BD9D3B60037747E /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		0587F14B1BD9D4870037747E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0599F5EF1BE76A2A00AA099D /* XCZSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZSettingsViewController.h; sourceTree = "<group>"; };
+		0599F5F01BE76A2A00AA099D /* XCZSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZSettingsViewController.m; sourceTree = "<group>"; };
 		05B2287B195FCEBE00F91BCC /* xcz.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = xcz.db; sourceTree = "<group>"; };
 		05BDB0B81A555CA800DBBFBF /* xcz_user.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = xcz_user.db; sourceTree = "<group>"; };
 		05CC76561BD5E56A00A3970D /* 华文仿宋.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文仿宋.ttf"; sourceTree = "<group>"; };
@@ -295,6 +298,8 @@
 				05ECE6181BD3D476008DE9CE /* XCZWikiViewController.m */,
 				05F219181BC6134400B222D7 /* XCZAboutViewController.h */,
 				05F219191BC6134400B222D7 /* XCZAboutViewController.m */,
+				0599F5EF1BE76A2A00AA099D /* XCZSettingsViewController.h */,
+				0599F5F01BE76A2A00AA099D /* XCZSettingsViewController.m */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -762,6 +767,7 @@
 				05ECE6221BD49D5E008DE9CE /* XCZWorkTableViewCell.m in Sources */,
 				05ECE61C1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.m in Sources */,
 				056485541BA889E100F52EAE /* XCZAuthorsViewController.m in Sources */,
+				0599F5F11BE76A2A00AA099D /* XCZSettingsViewController.m in Sources */,
 				0564853C1BA8895300F52EAE /* XCZDynasty.m in Sources */,
 				0545D26E1BC5428500410895 /* XCZWorkDetailsView.m in Sources */,
 				056485521BA889E100F52EAE /* XCZWorkDetailViewController.m in Sources */,
