@@ -15,14 +15,15 @@
 #import "UIColor+Helper.h"
 #import <FMDB/FMDB.h>
 #import <UITableView+FDTemplateLayoutCell.h>
+#import <Masonry.h>
 
 static NSString * const cellIdentifier = @"AuthorCell";
 
 @interface XCZAuthorsViewController () <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) UISearchDisplayController *searchController;
 
 // 正常显示
 @property (nonatomic, strong) NSMutableArray *dynasties;
@@ -35,6 +36,8 @@ static NSString * const cellIdentifier = @"AuthorCell";
 @end
 
 @implementation XCZAuthorsViewController
+
+#pragma mark - Life Cycle
 
 - (instancetype)init
 {
@@ -56,6 +59,14 @@ static NSString * const cellIdentifier = @"AuthorCell";
     return self;
 }
 
+- (void)loadView
+{
+    self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self createViews];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
@@ -66,23 +77,51 @@ static NSString * const cellIdentifier = @"AuthorCell";
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"文学家";
-    
-    [self.tableView registerClass:[XCZAuthorTableViewCell class] forCellReuseIdentifier:cellIdentifier];
-    [self.searchDisplayController.searchResultsTableView registerClass:[XCZAuthorTableViewCell class] forCellReuseIdentifier:cellIdentifier];
-    
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.searchDisplayController.searchResultsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-    self.searchDisplayController.searchBar.placeholder = @"搜索";
+    self.navigationItem.title = @"文学家";    
     self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
-// 以下代码解决了 searchResultsTableView 下方空间的 bug
-// 参见：http://stackoverflow.com/questions/19161387/uisearchdisplaycontroller-tableview-content-offset-is-incorrect-after-keyboard-h
-- (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView {
-    [tableView setContentInset:UIEdgeInsetsZero];
-    [tableView setScrollIndicatorInsets:UIEdgeInsetsZero];
+#pragma mark - Create Views
+
+- (void)createViews
+{
+    UISearchBar *searchBar = [UISearchBar new];
+    searchBar.placeholder = @"搜索";
+    [self.view addSubview:searchBar];
+    
+    UISearchDisplayController *searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+    [searchController.searchResultsTableView registerClass:[XCZAuthorTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    searchController.searchResultsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.searchController = searchController;
+    searchController.delegate = self;
+    searchController.searchResultsDelegate = self;
+    searchController.searchResultsDataSource = self;
+    
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 0)];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    [tableView registerClass:[XCZAuthorTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView = tableView;
+    [self.view addSubview:tableView];
+    
+    // 约束
+    [searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.equalTo(self.view);
+    }];
+    
+    [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(searchBar.mas_bottom);
+        make.left.right.bottom.equalTo(self.view);
+    }];
+}
+
+#pragma mark - SearchDisplayControllerDelegate
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString];
+    return YES;
 }
 
 // 过滤结果
@@ -92,10 +131,11 @@ static NSString * const cellIdentifier = @"AuthorCell";
     self.searchResult = [self.authorsForSearch filteredArrayUsingPredicate:resultPredicate];
 }
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
-    [self filterContentForSearchText:searchString];
-    return YES;
+// 以下代码解决了 searchResultsTableView 下方空间的 bug
+// 参见：http://stackoverflow.com/questions/19161387/uisearchdisplaycontroller-tableview-content-offset-is-incorrect-after-keyboard-h
+- (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView {
+    [tableView setContentInset:UIEdgeInsetsZero];
+    [tableView setScrollIndicatorInsets:UIEdgeInsetsZero];
 }
 
 #pragma mark - TableView Delegate

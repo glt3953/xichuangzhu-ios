@@ -111,19 +111,19 @@ static NSString * const cellIdentifier = @"WorkCell";
     }];
 }
 
-#pragma mark - Search
+#pragma mark - SearchDisplayController
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString];
+    return YES;
+}
 
 // 过滤结果
 - (void)filterContentForSearchText:(NSString*)searchText
 {
     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"title contains[c] %@", searchText];
     self.searchResults = [self.works filteredArrayUsingPredicate:resultPredicate];
-}
-
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
-    [self filterContentForSearchText:searchString];
-    return YES;
 }
 
 // 以下代码解决了 searchResultsTableView 下方空间的 bug

@@ -24,7 +24,6 @@
 		056485521BA889E100F52EAE /* XCZWorkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485421BA889E100F52EAE /* XCZWorkDetailViewController.m */; };
 		056485531BA889E100F52EAE /* XCZAuthorDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485441BA889E100F52EAE /* XCZAuthorDetailsViewController.m */; };
 		056485541BA889E100F52EAE /* XCZAuthorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485461BA889E100F52EAE /* XCZAuthorsViewController.m */; };
-		056485551BA889E100F52EAE /* XCZAuthorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056485471BA889E100F52EAE /* XCZAuthorsViewController.xib */; };
 		056485561BA889E100F52EAE /* XCZLikesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485491BA889E100F52EAE /* XCZLikesViewController.m */; };
 		056485571BA889E100F52EAE /* XCZLikesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0564854A1BA889E100F52EAE /* XCZLikesViewController.xib */; };
 		056485591BA889E100F52EAE /* XCZWorksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564854F1BA889E100F52EAE /* XCZWorksViewController.m */; };
@@ -121,7 +120,6 @@
 		056485441BA889E100F52EAE /* XCZAuthorDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthorDetailsViewController.m; sourceTree = "<group>"; };
 		056485451BA889E100F52EAE /* XCZAuthorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthorsViewController.h; sourceTree = "<group>"; };
 		056485461BA889E100F52EAE /* XCZAuthorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthorsViewController.m; sourceTree = "<group>"; };
-		056485471BA889E100F52EAE /* XCZAuthorsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XCZAuthorsViewController.xib; sourceTree = "<group>"; };
 		056485481BA889E100F52EAE /* XCZLikesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZLikesViewController.h; sourceTree = "<group>"; };
 		056485491BA889E100F52EAE /* XCZLikesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZLikesViewController.m; sourceTree = "<group>"; };
 		0564854A1BA889E100F52EAE /* XCZLikesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XCZLikesViewController.xib; sourceTree = "<group>"; };
@@ -262,7 +260,6 @@
 				056485441BA889E100F52EAE /* XCZAuthorDetailsViewController.m */,
 				056485451BA889E100F52EAE /* XCZAuthorsViewController.h */,
 				056485461BA889E100F52EAE /* XCZAuthorsViewController.m */,
-				056485471BA889E100F52EAE /* XCZAuthorsViewController.xib */,
 				05ECE61A1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.h */,
 				05ECE61B1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.m */,
 			);
@@ -671,7 +668,6 @@
 				0587F1331BD9D39F0037747E /* UMSocialLocalizable.strings in Resources */,
 				0587F1391BD9D39F0037747E /* UMShareEditViewControlleriPad.xib in Resources */,
 				05BDB0B91A555CA800DBBFBF /* xcz_user.db in Resources */,
-				056485551BA889E100F52EAE /* XCZAuthorsViewController.xib in Resources */,
 				056485571BA889E100F52EAE /* XCZLikesViewController.xib in Resources */,
 				0587F1381BD9D39F0037747E /* UMShareEditViewController.xib in Resources */,
 				0587F13B1BD9D39F0037747E /* UMSnsAccountViewController.xib in Resources */,
