@@ -13,6 +13,7 @@
 #import "XCZWorkDetailViewController.h"
 #import "XCZMeetViewController.h"
 #import "Constants.h"
+#import "UIColor+Helper.h"
 #import <ionicons/IonIcons.h>
 #import <Masonry/Masonry.h>
 #import <AVOSCloud.h>
@@ -206,7 +207,7 @@
 - (UIBarButtonItem *)refreshButton
 {
     if (!_refreshButton) {
-        UIImage *refreshIcon = [IonIcons imageWithIcon:ion_ios_loop_strong size:24 color:[UIColor grayColor]];
+        UIImage *refreshIcon = [IonIcons imageWithIcon:ion_ios_loop_strong size:24 color:[UIColor colorWithRGBA:0x8D8D8DFF]];
         _refreshButton = [[UIBarButtonItem alloc] initWithImage:refreshIcon style:UIBarButtonItemStylePlain target:self action:@selector(refreshWork)];
     }
     
