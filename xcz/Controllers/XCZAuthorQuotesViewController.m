@@ -54,13 +54,13 @@ static NSString * const cellIdentifier = @"QuoteCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.title = @"摘录";
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    self.navigationItem.title = @"摘录";
     
     NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
     [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
@@ -69,8 +69,6 @@ static NSString * const cellIdentifier = @"QuoteCell";
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-    self.navigationItem.title = [NSString stringWithFormat:@"%@摘录", self.author.name];
 }
 
 #pragma mark - Layout
