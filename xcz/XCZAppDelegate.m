@@ -27,6 +27,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <FMDB/FMDB.h>
+#import <LeanCloudFeedback/LeanCloudFeedback.h>
 
 @implementation XCZAppDelegate
 
@@ -82,6 +83,14 @@
     otherController.tabBarItem.title = @"其他";
     otherController.tabBarItem.image = infoIcon;
     otherController.tabBarItem.selectedImage = selectedInfoIcon;
+    
+    [[LCUserFeedbackAgent sharedInstance] countUnreadFeedbackThreadsWithBlock:^(NSInteger number, NSError *error) {
+        if (!error && number != 0) {
+            otherController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%ld", (long)number];
+        } else {
+            otherController.tabBarItem.badgeValue = nil;
+        }
+    }];
     
     // TabBar Controller
     UITabBarController *tabBarController = [[UITabBarController alloc] init];

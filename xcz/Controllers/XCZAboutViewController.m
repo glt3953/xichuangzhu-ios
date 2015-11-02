@@ -186,7 +186,7 @@
     githubLabel.lineBreakMode = NSLineBreakByWordWrapping;
     githubLabel.font = [UIFont systemFontOfSize:15];
     NSMutableAttributedString *gitHubPreString = [[NSMutableAttributedString alloc] initWithString:@"GitHub 地址：\n" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]}];
-    NSMutableAttributedString *gitHubProString = [[NSMutableAttributedString alloc] initWithString:@"github.com/hustlzp/xichuangzhu-ios" attributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle), NSFontAttributeName: [UIFont systemFontOfSize:13]}];
+    NSMutableAttributedString *gitHubProString = [[NSMutableAttributedString alloc] initWithString:@"hustlzp/xichuangzhu-ios" attributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle), NSFontAttributeName: [UIFont systemFontOfSize:13]}];
     [gitHubPreString appendAttributedString:gitHubProString];
     
     NSMutableParagraphStyle *paragraphStyleForGitHub = [NSMutableParagraphStyle new];

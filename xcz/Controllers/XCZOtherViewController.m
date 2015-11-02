@@ -6,6 +6,7 @@
 //  Copyright © 2015年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZBadgeView.h"
 #import "XCZOtherViewController.h"
 #import "XCZSettingsViewController.h"
 #import "XCZAboutViewController.h"
@@ -19,6 +20,7 @@
 
 @interface XCZOtherViewController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) XCZBadgeView *badgeView;
 @property (strong, nonatomic) UITableView *tableView;
 
 @end
@@ -43,7 +45,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+
     self.navigationItem.title = @"其他";
 }
 
@@ -52,6 +54,23 @@
     [super viewWillDisappear:animated];
     
     self.navigationItem.title = @"返回";
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[LCUserFeedbackAgent sharedInstance] countUnreadFeedbackThreadsWithBlock:^(NSInteger number, NSError *error) {
+        if (!error && number != 0) {
+            [[[[[self tabBarController] tabBar] items]
+              objectAtIndex:3] setBadgeValue:[NSString stringWithFormat:@"%ld", (long)number]];
+        } else {
+            [[[[[self tabBarController] tabBar] items]
+              objectAtIndex:3] setBadgeValue:nil];
+        }
+        
+        self.badgeView.number = number;
+    }];
 }
 
 #pragma mark - Layout
@@ -103,7 +122,7 @@
         cell.textLabel.text = @"我的收藏";
     } else if (indexPath.section == 1){
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"给我们反馈";
+            [self configFeedbackCell:cell];
         } else if (indexPath.row == 1) {
             cell.textLabel.text = @"向朋友推荐「西窗烛」";
         } else {
@@ -152,7 +171,11 @@
             feedbackViewController.navigationBarStyle = LCUserFeedbackNavigationBarStyleNone;
             feedbackViewController.contactHeaderHidden = YES;
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:feedbackViewController];
+            // Remove badge
             [self presentViewController:navigationController animated:YES completion: ^{
+                [[[[[self tabBarController] tabBar] items]
+                  objectAtIndex:3] setBadgeValue:nil];
+                self.badgeView.number = 0;
             }];
         } else if (indexPath.row == 1) {
             [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeText;
@@ -178,7 +201,34 @@
 
 #pragma mark - Internal Helpers
 
+- (void)configFeedbackCell:(UITableViewCell *)cell
+{
+    UILabel *textLabel = [UILabel new];
+    textLabel.text = @"给我们反馈";
+    [cell.contentView addSubview:textLabel];
+    
+    [cell.contentView addSubview:self.badgeView];
+    
+    [textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(cell.contentView);
+        make.left.equalTo(cell.contentView).offset(15);
+    }];
+    
+    [self.badgeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(textLabel.mas_right).offset(10);
+        make.centerY.equalTo(cell.contentView);
+    }];
+}
+
 #pragma mark - Getters & Setters
 
+- (XCZBadgeView *)badgeView
+{
+    if (!_badgeView) {
+        _badgeView = [XCZBadgeView new];
+    }
+    
+    return _badgeView;
+}
 
 @end
