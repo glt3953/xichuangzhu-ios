@@ -177,9 +177,9 @@
     } else if (IS_IPHONE_5) {
         return 25;
     } else if (IS_IPHONE_6) {
-        return 28.5;
+        return 28;
     } else {
-        return 32;
+        return 31;
     }
 }
 
