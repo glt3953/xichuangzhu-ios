@@ -14,7 +14,6 @@
 
 @interface XCZQuoteView ()
 
-@property (strong, nonatomic) XCZQuote *quote;
 @property (strong, nonatomic) UIImageView *logoView;
 @property (strong, nonatomic) UILabel *authorLabel;
 @property (strong, nonatomic) NSMutableArray *quoteLabels;

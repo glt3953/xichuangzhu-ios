@@ -19,6 +19,8 @@
 
 @property (weak, nonatomic) id <XCZQuoteViewDelegate> delegate;
 
+@property (strong, nonatomic) XCZQuote *quote;
+
 - (instancetype)initWithQuote:(XCZQuote *)quote;
 
 @end

@@ -111,12 +111,14 @@
 
 - (void)shareQuote
 {
+    XCZQuote *quote = (XCZQuote *)[(XCZQuoteDraggableView *)[self.quoteViews firstObject] quote];
+    NSString *shareText = [NSString stringWithFormat:@"%@——%@《%@》", quote.quote, quote.author, quote.work];
     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeImage;
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:nil
-                                      shareText:@""
+                                      shareText:shareText
                                      shareImage:[self snapshotView]
-                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatTimeline, UMShareToWechatSession, UMShareToEmail, nil]
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatTimeline, UMShareToWechatSession, UMShareToDouban, UMShareToEmail, nil]
                                        delegate:nil];
 }
 
