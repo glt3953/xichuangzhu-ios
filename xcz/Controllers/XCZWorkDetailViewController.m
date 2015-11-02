@@ -283,7 +283,7 @@ static NSString * const cellIdentifier = @"QuoteCell";
         UIImage *authorIcon = [IonIcons imageWithIcon:ion_ios_person_outline
                                             iconColor:[UIColor grayColor]
                                              iconSize:31.0f
-                                            imageSize:CGSizeMake(31.0f, 31.0f)];
+                                            imageSize:CGSizeMake(22.0f, 31.0f)];
         _authorButton = [[UIBarButtonItem alloc] initWithImage:authorIcon style:UIBarButtonItemStylePlain target:self action:@selector(redirectToAuthor:)];
     }
     
