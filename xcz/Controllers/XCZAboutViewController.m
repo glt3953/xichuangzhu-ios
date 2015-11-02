@@ -167,7 +167,7 @@
     websiteLabel.lineBreakMode = NSLineBreakByWordWrapping;
     websiteLabel.font = [UIFont systemFontOfSize:15];
     NSMutableAttributedString *websitePreString = [[NSMutableAttributedString alloc] initWithString:@"西窗烛网页版：\n" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]}];
-    NSMutableAttributedString *websiteProString = [[NSMutableAttributedString alloc] initWithString:@"http://www.xichuangzhu.com" attributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle), NSFontAttributeName: [UIFont systemFontOfSize:13]}];
+    NSMutableAttributedString *websiteProString = [[NSMutableAttributedString alloc] initWithString:@"www.xichuangzhu.com" attributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle), NSFontAttributeName: [UIFont systemFontOfSize:13]}];
     [websitePreString appendAttributedString:websiteProString];
     
     NSMutableParagraphStyle *paragraphStyleForWebsite = [NSMutableParagraphStyle new];
@@ -179,6 +179,25 @@
     UITapGestureRecognizer *gestureForWebsite = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(websiteTapped)];
     [websiteLabel addGestureRecognizer:gestureForWebsite];
     [contentView addSubview:websiteLabel];
+    
+    // GitHub
+    UILabel *githubLabel = [UILabel new];
+    githubLabel.numberOfLines = 0;
+    githubLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    githubLabel.font = [UIFont systemFontOfSize:15];
+    NSMutableAttributedString *gitHubPreString = [[NSMutableAttributedString alloc] initWithString:@"GitHub 地址：\n" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]}];
+    NSMutableAttributedString *gitHubProString = [[NSMutableAttributedString alloc] initWithString:@"github.com/hustlzp/xichuangzhu-ios" attributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle), NSFontAttributeName: [UIFont systemFontOfSize:13]}];
+    [gitHubPreString appendAttributedString:gitHubProString];
+    
+    NSMutableParagraphStyle *paragraphStyleForGitHub = [NSMutableParagraphStyle new];
+    paragraphStyleForGitHub.lineSpacing = 3;
+    [gitHubPreString addAttribute:NSParagraphStyleAttributeName value:paragraphStyleForGitHub range:NSMakeRange(0, gitHubPreString.length)];
+    
+    githubLabel.attributedText = gitHubPreString;
+    githubLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *gestureForGitHub = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gitHubTapped)];
+    [githubLabel addGestureRecognizer:gestureForGitHub];
+    [contentView addSubview:githubLabel];
     
     // 约束
     
@@ -211,6 +230,11 @@
     [websiteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(contactLabel.mas_bottom).offset(20);
         make.left.right.equalTo(contactLabel);
+    }];
+    
+    [githubLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(websiteLabel.mas_bottom).offset(20);
+        make.left.right.equalTo(contactLabel);
         make.bottom.equalTo(contentView).offset(-60);
     }];
 
@@ -229,6 +253,11 @@
 - (void)websiteTapped
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.xichuangzhu.com"]];
+}
+
+- (void)gitHubTapped
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/hustlzp/xichuangzhu-ios"]];
 }
 
 - (void)sloganTapped:(UITapGestureRecognizer *)gesture
