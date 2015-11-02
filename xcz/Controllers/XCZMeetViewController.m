@@ -43,6 +43,8 @@
         return nil;
     }
     
+    self.work = [XCZWork getRandomWork];
+    
     [self view];
     
     return self;
@@ -102,8 +104,6 @@
 
 - (void)createViews
 {
-    self.work = [XCZWork getRandomWork];
-    
     XCZWorkDetailViewController *controller = [[XCZWorkDetailViewController alloc] initWithWork:self.work];
     self.workDetailsViewController = controller;
     [self addChildViewController:controller];

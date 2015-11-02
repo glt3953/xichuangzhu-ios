@@ -52,7 +52,7 @@
     [buttons addObject:refreshButton];
     
     // 分享
-    UIImage *shareIcon = [IonIcons imageWithIcon:ion_ios_paperplane_outline size:35 color:[UIColor colorWithRGBA:0x8D8D8DFF]];
+    UIImage *shareIcon = [IonIcons imageWithIcon:ion_ios_paperplane_outline iconColor:[UIColor colorWithRGBA:0x8D8D8DFF] iconSize:35 imageSize:CGSizeMake(27, 35)];
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareIcon style:UIBarButtonItemStylePlain target:self action:@selector(shareQuote)];
     [buttons addObject:shareButton];
     
