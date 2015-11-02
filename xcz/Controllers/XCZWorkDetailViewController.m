@@ -102,12 +102,6 @@
     [AVAnalytics endLogPageView:[[NSString alloc] initWithFormat:@"work-%@/%@", self.work.author, self.work.title]];
 }
 
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    [self sizeHeaderViewToFit];
-}
-
 #pragma mark - Layout
 
 - (void)createViews
@@ -202,8 +196,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadLikesData" object:nil userInfo:nil];
 }
 
-#pragma mark - SomeDelegate
-
 #pragma mark - Tableview Delegate
 
 static NSString * const cellIdentifier = @"QuoteCell";
@@ -268,21 +260,19 @@ static NSString * const cellIdentifier = @"QuoteCell";
 {
     XCZWorkDetailsView *detailsView = [[XCZWorkDetailsView alloc] initWithWork:self.work];
     self.detailsView = detailsView;
+    
+    detailsView.bounds = CGRectMake(0, 0, SCREEN_WIDTH, 0);
+    [detailsView setNeedsLayout];
+    [detailsView layoutIfNeeded];
+    CGSize size = [detailsView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    CGRect frame = detailsView.frame;
+    frame.size.height = size.height;
+    detailsView.frame = frame;
+    
 //    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toggleBars:)];
 //    [detailsView addGestureRecognizer:gesture];
+    
     return detailsView;
-}
-
-- (void)sizeHeaderViewToFit
-{
-    UIView *headerView = self.tableView.tableHeaderView;
-    [headerView setNeedsLayout];
-    [headerView layoutIfNeeded];
-    CGSize size = [headerView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    CGRect frame = headerView.frame;
-    frame.size.height = size.height;
-    headerView.frame = frame;
-    [self.tableView setTableHeaderView:headerView];
 }
 
 #pragma mark - Getters & Setters

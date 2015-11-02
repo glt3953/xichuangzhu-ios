@@ -16,6 +16,7 @@
 #import "XCZAuthorDetailsViewController.h"
 #import "XCZAuthorQuotesViewController.h"
 #import "XCZUtils.h"
+#import "Constants.h"
 #import <FMDB/FMDB.h>
 #import <AVOSCloud/AVOSCloud.h>
 #import <UITableView+FDTemplateLayoutCell.h>
@@ -105,13 +106,6 @@ static NSString * const cellIdentifier = @"WorkCell";
     }
     
     self.navigationItem.rightBarButtonItems = btnArrays;
-}
-
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    [self sizeHeaderViewToFit];
 }
 
 # pragma mark - User Interface
@@ -210,7 +204,17 @@ static NSString * const cellIdentifier = @"WorkCell";
 
 - (UIView *)createHeaderView
 {
-    return [[XCZAuthorHeaderView alloc] initWithAuthor:self.author];
+    UIView *headerView = [[XCZAuthorHeaderView alloc] initWithAuthor:self.author];
+    
+    headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 0);
+    [headerView setNeedsLayout];
+    [headerView layoutIfNeeded];
+    CGSize size = [headerView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    CGRect frame = headerView.frame;
+    frame.size.height = size.height;
+    headerView.frame = frame;
+    
+    return headerView;
 }
 
 - (void)sizeHeaderViewToFit
