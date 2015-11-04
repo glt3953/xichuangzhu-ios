@@ -179,7 +179,7 @@
 }
 
 - (void)likeWork:(id)sender
-{
+{    
     if ([XCZLike like:self.work.id]) {
         [self initNavbarShowLike:false];
     }

@@ -9,6 +9,7 @@
 #import "XCZLike.h"
 #import "XCZUtils.h"
 #import <FMDB/FMDB.h>
+#import <AVOSCloud.h>
 
 @implementation XCZLike
 
@@ -85,6 +86,8 @@
     bool exist = [self checkExist:workId];
     bool result;
     
+    [AVAnalytics event:@"like_work"];
+    
     if (!exist) {
         NSString *dbPath = [XCZUtils getUserDatabaseFilePath];
         FMDatabase *db = [FMDatabase databaseWithPath:dbPath];
@@ -104,6 +107,8 @@
 {
     bool exist = [self checkExist:workId];
     bool result;
+    
+    [AVAnalytics event:@"like_work"];
     
     if (exist) {
         NSString *dbPath = [XCZUtils getUserDatabaseFilePath];
