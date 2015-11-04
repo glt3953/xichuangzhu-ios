@@ -19,7 +19,7 @@
 #import <MBProgressHUD.h>
 #import <AVOSCloud.h>
 
-static CGFloat const SecondQuoteViewOriginalScale = 0.9;
+static CGFloat const SecondQuoteViewOriginalScale = 0.94;
 
 @interface XCZRandomQuoteViewController () <XCZQuoteDraggableViewDelegate>
 
