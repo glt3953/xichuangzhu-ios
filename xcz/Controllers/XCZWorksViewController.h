@@ -6,10 +6,9 @@
 //  Copyright (c) 2014年 Zhipeng Liu. All rights reserved.
 //
 
-#import "XCZTableViewController.h"
 #import <UIKit/UIKit.h>
 
-@interface XCZWorksViewController : XCZTableViewController
+@interface XCZWorksViewController : UIViewController
 
 - (void)reorderWorks;
 

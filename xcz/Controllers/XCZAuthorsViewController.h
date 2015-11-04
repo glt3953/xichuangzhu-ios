@@ -6,9 +6,8 @@
 //  Copyright (c) 2014年 Zhipeng Liu. All rights reserved.
 //
 
-#import "XCZTableViewController.h"
 #import <UIKit/UIKit.h>
 
-@interface XCZAuthorsViewController : XCZTableViewController
+@interface XCZAuthorsViewController : UIViewController
 
 @end

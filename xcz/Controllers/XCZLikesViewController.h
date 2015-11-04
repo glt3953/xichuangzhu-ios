@@ -6,9 +6,8 @@
 //  Copyright (c) 2015年 Zhipeng Liu. All rights reserved.
 //
 
-#import "XCZTableViewController.h"
 #import <UIKit/UIKit.h>
 
-@interface XCZLikesViewController : XCZTableViewController
+@interface XCZLikesViewController : UIViewController
 
 @end
