@@ -112,6 +112,25 @@
     }
 }
 
+#pragma mark - Public Helpers
+
+- (void)adjustSize
+{
+    if (!self.superview) {
+        return;
+    }
+    
+    [self mas_makeConstraints:^(MASConstraintMaker *make) {
+        if (IS_IPHONE_4_OR_LESS) {
+            make.height.equalTo(self.superview).multipliedBy(.85);
+            make.width.equalTo(self.mas_height).multipliedBy(.75);
+        } else {
+            make.height.equalTo(self.superview).multipliedBy(.8);
+            make.width.equalTo(self.superview).multipliedBy(.8);
+        }
+    }];
+}
+
 #pragma mark - Internal Helpers
 
 - (void)createQuoteLabels

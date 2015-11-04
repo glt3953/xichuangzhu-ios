@@ -18,9 +18,9 @@
 @interface XCZQuoteView : UIView
 
 @property (weak, nonatomic) id <XCZQuoteViewDelegate> delegate;
-
 @property (strong, nonatomic) XCZQuote *quote;
 
 - (instancetype)initWithQuote:(XCZQuote *)quote;
+- (void)adjustSize;
 
 @end

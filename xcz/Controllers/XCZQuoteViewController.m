@@ -85,8 +85,9 @@
     
     [quoteView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.view);
-        make.width.height.equalTo(self.view).multipliedBy(.8);
     }];
+    
+    [quoteView adjustSize];
 }
 
 #pragma mark - Public Interface
