@@ -6,6 +6,7 @@
 //  Copyright (c) 2014年 Zhipeng Liu. All rights reserved.
 //
 
+#import "Constants.h"
 #import "XCZUtils.h"
 
 @implementation XCZUtils
@@ -39,6 +40,15 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *storePath = [documentsDirectory stringByAppendingPathComponent: @"xcz_user.db"];
     return storePath;
+}
+
++ (CGFloat)getVerticalGap
+{
+    if (IS_IPHONE_6P) {
+        return 20;
+    } else {
+        return 15;
+    }
 }
 
 @end

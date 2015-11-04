@@ -13,7 +13,6 @@
 		0545D2711BC54C8B00410895 /* XCZLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D2701BC54C8B00410895 /* XCZLibraryViewController.m */; };
 		0545D2741BC54CF600410895 /* XCZMeetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D2731BC54CF600410895 /* XCZMeetViewController.m */; };
 		054AA51F1BD74FE600CE8EDC /* XCZAuthorHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 054AA51E1BD74FE600CE8EDC /* XCZAuthorHeaderView.m */; };
-		054AA5221BD76A7500CE8EDC /* XCZUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 054AA5211BD76A7500CE8EDC /* XCZUtil.m */; };
 		0564853B1BA8895300F52EAE /* XCZAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485321BA8895300F52EAE /* XCZAuthor.m */; };
 		0564853C1BA8895300F52EAE /* XCZDynasty.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485341BA8895300F52EAE /* XCZDynasty.m */; };
 		0564853D1BA8895300F52EAE /* XCZLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485361BA8895300F52EAE /* XCZLike.m */; };
@@ -98,8 +97,6 @@
 		0545D2731BC54CF600410895 /* XCZMeetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZMeetViewController.m; sourceTree = "<group>"; };
 		054AA51D1BD74FE600CE8EDC /* XCZAuthorHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthorHeaderView.h; sourceTree = "<group>"; };
 		054AA51E1BD74FE600CE8EDC /* XCZAuthorHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthorHeaderView.m; sourceTree = "<group>"; };
-		054AA5201BD76A7500CE8EDC /* XCZUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZUtil.h; sourceTree = "<group>"; };
-		054AA5211BD76A7500CE8EDC /* XCZUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZUtil.m; sourceTree = "<group>"; };
 		056485311BA8895300F52EAE /* XCZAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthor.h; sourceTree = "<group>"; };
 		056485321BA8895300F52EAE /* XCZAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthor.m; sourceTree = "<group>"; };
 		056485331BA8895300F52EAE /* XCZDynasty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZDynasty.h; sourceTree = "<group>"; };
@@ -120,8 +117,8 @@
 		0564854D1BA889E100F52EAE /* XCZWorkDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorkDetailViewController.h; sourceTree = "<group>"; };
 		0564854E1BA889E100F52EAE /* XCZWorksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorksViewController.h; sourceTree = "<group>"; };
 		0564854F1BA889E100F52EAE /* XCZWorksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWorksViewController.m; sourceTree = "<group>"; };
-		05827A9E196A8236003ABBDD /* XCZUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZUtils.h; sourceTree = "<group>"; };
-		05827A9F196A8236003ABBDD /* XCZUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZUtils.m; sourceTree = "<group>"; };
+		05827A9E196A8236003ABBDD /* XCZUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XCZUtils.h; path = ../XCZUtils.h; sourceTree = "<group>"; };
+		05827A9F196A8236003ABBDD /* XCZUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XCZUtils.m; path = ../XCZUtils.m; sourceTree = "<group>"; };
 		0587F11A1BD9D39F0037747E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		0587F11C1BD9D39F0037747E /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		0587F11D1BD9D39F0037747E /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -333,8 +330,8 @@
 		0564852D1BA885EC00F52EAE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				054AA5201BD76A7500CE8EDC /* XCZUtil.h */,
-				054AA5211BD76A7500CE8EDC /* XCZUtil.m */,
+				05827A9E196A8236003ABBDD /* XCZUtils.h */,
+				05827A9F196A8236003ABBDD /* XCZUtils.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -527,8 +524,6 @@
 				05DF00D8195F0CE100175ABF /* XCZAppDelegate.m */,
 				05F219151BC5924D00B222D7 /* Constants.h */,
 				05DF00CF195F0CE100175ABF /* Supporting Files */,
-				05827A9E196A8236003ABBDD /* XCZUtils.h */,
-				05827A9F196A8236003ABBDD /* XCZUtils.m */,
 			);
 			path = xcz;
 			sourceTree = "<group>";
@@ -773,7 +768,6 @@
 				05CC76591BD5E6E800A3970D /* XCZRandomQuoteViewController.m in Sources */,
 				0545D26B1BC5379200410895 /* UIColor+Helper.m in Sources */,
 				056485591BA889E100F52EAE /* XCZWorksViewController.m in Sources */,
-				054AA5221BD76A7500CE8EDC /* XCZUtil.m in Sources */,
 				0564853F1BA8895300F52EAE /* XCZWork.m in Sources */,
 				05ECE6191BD3D476008DE9CE /* XCZWikiViewController.m in Sources */,
 				0599F5F41BE7923F00AA099D /* UIImage+Helper.m in Sources */,

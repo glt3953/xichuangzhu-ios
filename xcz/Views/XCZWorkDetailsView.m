@@ -10,7 +10,7 @@
 #import "XCZCopyableLabel.h"
 #import "XCZWorkDetailsView.h"
 #import "UIColor+Helper.h"
-#import "XCZUtil.h"
+#import "XCZUtils.h"
 #import <Masonry/Masonry.h>
 
 @interface XCZWorkDetailsView ()
@@ -114,8 +114,8 @@
     
     [authorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(titleLabel.mas_bottom).offset(15);
-        make.left.equalTo(self).offset([XCZUtil getVerticalGap]);
-        make.right.equalTo(self).offset(-[XCZUtil getVerticalGap]);
+        make.left.equalTo(self).offset([XCZUtils getVerticalGap]);
+        make.right.equalTo(self).offset(-[XCZUtils getVerticalGap]);
     }];
     
     [contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
