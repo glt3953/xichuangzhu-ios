@@ -11,21 +11,6 @@
 
 @implementation XCZUtils
 
-+ (NSUInteger)currentWindowWidth
-{
-    // 参考：http://stackoverflow.com/questions/7905432/how-to-get-orientation-dependent-height-and-width-of-the-screen
-    NSInteger width = 0;
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    CGSize size = [UIScreen mainScreen].bounds.size;
-    if (UIInterfaceOrientationIsLandscape(orientation)) {
-        width = size.height;
-    } else {
-        width = size.width;
-    }
-    
-    return width;
-}
-
 + (NSString *)getDatabaseFilePath
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

@@ -15,7 +15,6 @@
 @interface XCZUtils : NSObject
 
 + (CGFloat)getVerticalGap;
-+ (NSUInteger)currentWindowWidth;
 + (NSString *)getDatabaseFilePath;
 + (NSString *)getUserDatabaseFilePath;
 
