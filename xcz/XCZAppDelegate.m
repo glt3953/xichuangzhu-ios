@@ -52,8 +52,6 @@
     // 延迟0.5s
     usleep(500 * 1000);
     
-//    [DownloadFont asynchronouslyDownloadFont:@"STFangsong" completion:nil];
-    
     // 摘录
     XCZRandomQuoteViewController *quoteController = [XCZRandomQuoteViewController new];
     UINavigationController *quoteNavController = [[UINavigationController alloc] initWithRootViewController:quoteController];
