@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "XCZAuthor.h"
 
-@interface XCZAuthorDetailsViewController : UIViewController
+@interface XCZAuthorViewController : UIViewController
 
 - (instancetype)initWithAuthorId:(int)authorId;
 

@@ -11,7 +11,7 @@
 #import "XCZWork.h"
 #import "XCZAuthorTableViewCell.h"
 #import "XCZAuthorsViewController.h"
-#import "XCZAuthorDetailsViewController.h"
+#import "XCZAuthorViewController.h"
 #import "UIColor+Helper.h"
 #import <FMDB/FMDB.h>
 #import <UITableView+FDTemplateLayoutCell.h>
@@ -243,7 +243,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
         author = authors[indexPath.row];
     }
     
-    XCZAuthorDetailsViewController *detailController = [[XCZAuthorDetailsViewController alloc] initWithAuthorId:author.id];
+    XCZAuthorViewController *detailController = [[XCZAuthorViewController alloc] initWithAuthorId:author.id];
 
     [self.navigationController pushViewController:detailController animated:YES];
 }

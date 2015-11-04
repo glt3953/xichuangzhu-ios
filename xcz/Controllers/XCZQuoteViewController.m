@@ -7,7 +7,7 @@
 //
 
 #import "XCZQuoteView.h"
-#import "XCZWorkDetailViewController.h"
+#import "XCZWorkViewController.h"
 #import "XCZMeetViewController.h"
 #import "XCZQuoteViewController.h"
 #import "UIColor+Helper.h"
@@ -128,11 +128,11 @@
 {
     UIViewController *secondLastViewController = (UIViewController *)self.navigationController.viewControllers[self.navigationController.viewControllers.count - 2];
     
-    if ([secondLastViewController isKindOfClass:[XCZWorkDetailViewController class]] || [secondLastViewController isKindOfClass:[XCZMeetViewController class]]) {
+    if ([secondLastViewController isKindOfClass:[XCZWorkViewController class]] || [secondLastViewController isKindOfClass:[XCZMeetViewController class]]) {
         return;
     }
     
-    XCZWorkDetailViewController *controller = [[XCZWorkDetailViewController alloc] initWithWorkId:quote.workId];
+    XCZWorkViewController *controller = [[XCZWorkViewController alloc] initWithWorkId:quote.workId];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

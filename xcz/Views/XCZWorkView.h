@@ -9,7 +9,7 @@
 #import "XCZWork.h"
 #import <UIKit/UIKit.h>
 
-@interface XCZWorkDetailsView : UIView
+@interface XCZWorkView : UIView
 
 - (instancetype)initWithWork:(XCZWork *)work;
 - (void)enterFullScreenMode;

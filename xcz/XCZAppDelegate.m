@@ -12,7 +12,7 @@
 #import "XCZOtherViewController.h"
 #import "XCZRandomQuoteViewController.h"
 #import "XCZLibraryViewController.h"
-#import "XCZWorkDetailViewController.h"
+#import "XCZWorkViewController.h"
 #import "XCZMeetViewController.h"
 #import "XCZLikesViewController.h"
 #import "XCZUtils.h"

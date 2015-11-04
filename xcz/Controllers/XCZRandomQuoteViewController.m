@@ -8,7 +8,7 @@
 
 #import "XCZQuote.h"
 #import "XCZWork.h"
-#import "XCZWorkDetailViewController.h"
+#import "XCZWorkViewController.h"
 #import "XCZRandomQuoteViewController.h"
 #import "Constants.h"
 #import "UIColor+Helper.h"
@@ -128,7 +128,7 @@ static CGFloat const SecondQuoteViewOriginalScale = 0.94;
 
 - (void)quoteViewPressed:(XCZQuote *)quote
 {
-    UIViewController *controller = [[XCZWorkDetailViewController alloc] initWithWorkId:quote.workId];
+    UIViewController *controller = [[XCZWorkViewController alloc] initWithWorkId:quote.workId];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

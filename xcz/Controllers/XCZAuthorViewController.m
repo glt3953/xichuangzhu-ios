@@ -12,8 +12,8 @@
 #import "XCZWorkTableViewCell.h"
 #import "XCZAuthorHeaderView.h"
 #import "XCZWikiViewController.h"
-#import "XCZWorkDetailViewController.h"
-#import "XCZAuthorDetailsViewController.h"
+#import "XCZWorkViewController.h"
+#import "XCZAuthorViewController.h"
 #import "XCZAuthorQuotesViewController.h"
 #import "XCZUtils.h"
 #import "Constants.h"
@@ -25,7 +25,7 @@
 
 static NSString * const cellIdentifier = @"WorkCell";
 
-@interface XCZAuthorDetailsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface XCZAuthorViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) XCZAuthor *author;
 @property (nonatomic, strong) NSMutableDictionary *works;
@@ -33,7 +33,7 @@ static NSString * const cellIdentifier = @"WorkCell";
 
 @end
 
-@implementation XCZAuthorDetailsViewController
+@implementation XCZAuthorViewController
 
 - (instancetype)initWithAuthorId:(int)authorId
 {
@@ -180,7 +180,7 @@ static NSString * const cellIdentifier = @"WorkCell";
     NSArray *works = [self.works objectForKey:key];
     XCZWork *work = works[indexPath.row];
     
-    UIViewController *controller = [[XCZWorkDetailViewController alloc] initWithWork:work];
+    UIViewController *controller = [[XCZWorkViewController alloc] initWithWork:work];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

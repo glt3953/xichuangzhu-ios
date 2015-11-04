@@ -9,7 +9,7 @@
 #import "XCZWork.h"
 #import <UIKit/UIKit.h>
 
-@interface XCZWorkDetailViewController : UIViewController
+@interface XCZWorkViewController : UIViewController
 
 - (instancetype)initWithWorkId:(int)workId;
 - (instancetype)initWithWork:(XCZWork *)work;

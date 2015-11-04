@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0545D2681BC51F9800410895 /* XCZLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D2671BC51F9800410895 /* XCZLabel.m */; };
 		0545D26B1BC5379200410895 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D2691BC5379200410895 /* UIColor+Helper.m */; };
-		0545D26E1BC5428500410895 /* XCZWorkDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D26D1BC5428500410895 /* XCZWorkDetailsView.m */; };
+		0545D26E1BC5428500410895 /* XCZWorkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D26D1BC5428500410895 /* XCZWorkView.m */; };
 		0545D2711BC54C8B00410895 /* XCZLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D2701BC54C8B00410895 /* XCZLibraryViewController.m */; };
 		0545D2741BC54CF600410895 /* XCZMeetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D2731BC54CF600410895 /* XCZMeetViewController.m */; };
 		054AA51F1BD74FE600CE8EDC /* XCZAuthorHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 054AA51E1BD74FE600CE8EDC /* XCZAuthorHeaderView.m */; };
@@ -18,8 +18,8 @@
 		0564853D1BA8895300F52EAE /* XCZLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485361BA8895300F52EAE /* XCZLike.m */; };
 		0564853E1BA8895300F52EAE /* XCZQuote.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485381BA8895300F52EAE /* XCZQuote.m */; };
 		0564853F1BA8895300F52EAE /* XCZWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564853A1BA8895300F52EAE /* XCZWork.m */; };
-		056485521BA889E100F52EAE /* XCZWorkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485421BA889E100F52EAE /* XCZWorkDetailViewController.m */; };
-		056485531BA889E100F52EAE /* XCZAuthorDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485441BA889E100F52EAE /* XCZAuthorDetailsViewController.m */; };
+		056485521BA889E100F52EAE /* XCZWorkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485421BA889E100F52EAE /* XCZWorkViewController.m */; };
+		056485531BA889E100F52EAE /* XCZAuthorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485441BA889E100F52EAE /* XCZAuthorViewController.m */; };
 		056485541BA889E100F52EAE /* XCZAuthorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485461BA889E100F52EAE /* XCZAuthorsViewController.m */; };
 		056485561BA889E100F52EAE /* XCZLikesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485491BA889E100F52EAE /* XCZLikesViewController.m */; };
 		056485591BA889E100F52EAE /* XCZWorksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564854F1BA889E100F52EAE /* XCZWorksViewController.m */; };
@@ -89,8 +89,8 @@
 		0545D2671BC51F9800410895 /* XCZLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZLabel.m; sourceTree = "<group>"; };
 		0545D2691BC5379200410895 /* UIColor+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
 		0545D26A1BC5379200410895 /* UIColor+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helper.h"; sourceTree = "<group>"; };
-		0545D26C1BC5428500410895 /* XCZWorkDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorkDetailsView.h; sourceTree = "<group>"; };
-		0545D26D1BC5428500410895 /* XCZWorkDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWorkDetailsView.m; sourceTree = "<group>"; };
+		0545D26C1BC5428500410895 /* XCZWorkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorkView.h; sourceTree = "<group>"; };
+		0545D26D1BC5428500410895 /* XCZWorkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWorkView.m; sourceTree = "<group>"; };
 		0545D26F1BC54C8B00410895 /* XCZLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZLibraryViewController.h; sourceTree = "<group>"; };
 		0545D2701BC54C8B00410895 /* XCZLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZLibraryViewController.m; sourceTree = "<group>"; };
 		0545D2721BC54CF600410895 /* XCZMeetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZMeetViewController.h; sourceTree = "<group>"; };
@@ -107,14 +107,14 @@
 		056485381BA8895300F52EAE /* XCZQuote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZQuote.m; sourceTree = "<group>"; };
 		056485391BA8895300F52EAE /* XCZWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWork.h; sourceTree = "<group>"; };
 		0564853A1BA8895300F52EAE /* XCZWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWork.m; sourceTree = "<group>"; };
-		056485421BA889E100F52EAE /* XCZWorkDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWorkDetailViewController.m; sourceTree = "<group>"; };
-		056485431BA889E100F52EAE /* XCZAuthorDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthorDetailsViewController.h; sourceTree = "<group>"; };
-		056485441BA889E100F52EAE /* XCZAuthorDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthorDetailsViewController.m; sourceTree = "<group>"; };
+		056485421BA889E100F52EAE /* XCZWorkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWorkViewController.m; sourceTree = "<group>"; };
+		056485431BA889E100F52EAE /* XCZAuthorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthorViewController.h; sourceTree = "<group>"; };
+		056485441BA889E100F52EAE /* XCZAuthorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthorViewController.m; sourceTree = "<group>"; };
 		056485451BA889E100F52EAE /* XCZAuthorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthorsViewController.h; sourceTree = "<group>"; };
 		056485461BA889E100F52EAE /* XCZAuthorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthorsViewController.m; sourceTree = "<group>"; };
 		056485481BA889E100F52EAE /* XCZLikesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZLikesViewController.h; sourceTree = "<group>"; };
 		056485491BA889E100F52EAE /* XCZLikesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZLikesViewController.m; sourceTree = "<group>"; };
-		0564854D1BA889E100F52EAE /* XCZWorkDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorkDetailViewController.h; sourceTree = "<group>"; };
+		0564854D1BA889E100F52EAE /* XCZWorkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorkViewController.h; sourceTree = "<group>"; };
 		0564854E1BA889E100F52EAE /* XCZWorksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorksViewController.h; sourceTree = "<group>"; };
 		0564854F1BA889E100F52EAE /* XCZWorksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWorksViewController.m; sourceTree = "<group>"; };
 		05827A9E196A8236003ABBDD /* XCZUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XCZUtils.h; path = ../XCZUtils.h; sourceTree = "<group>"; };
@@ -242,8 +242,8 @@
 			children = (
 				0564854E1BA889E100F52EAE /* XCZWorksViewController.h */,
 				0564854F1BA889E100F52EAE /* XCZWorksViewController.m */,
-				0564854D1BA889E100F52EAE /* XCZWorkDetailViewController.h */,
-				056485421BA889E100F52EAE /* XCZWorkDetailViewController.m */,
+				0564854D1BA889E100F52EAE /* XCZWorkViewController.h */,
+				056485421BA889E100F52EAE /* XCZWorkViewController.m */,
 			);
 			name = Work;
 			sourceTree = "<group>";
@@ -251,8 +251,8 @@
 		050E117D1BD6AF27004516A9 /* Author */ = {
 			isa = PBXGroup;
 			children = (
-				056485431BA889E100F52EAE /* XCZAuthorDetailsViewController.h */,
-				056485441BA889E100F52EAE /* XCZAuthorDetailsViewController.m */,
+				056485431BA889E100F52EAE /* XCZAuthorViewController.h */,
+				056485441BA889E100F52EAE /* XCZAuthorViewController.m */,
 				056485451BA889E100F52EAE /* XCZAuthorsViewController.h */,
 				056485461BA889E100F52EAE /* XCZAuthorsViewController.m */,
 				05ECE61A1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.h */,
@@ -458,8 +458,8 @@
 				050E11821BD6AFEA004516A9 /* Cell */,
 				054AA51D1BD74FE600CE8EDC /* XCZAuthorHeaderView.h */,
 				054AA51E1BD74FE600CE8EDC /* XCZAuthorHeaderView.m */,
-				0545D26C1BC5428500410895 /* XCZWorkDetailsView.h */,
-				0545D26D1BC5428500410895 /* XCZWorkDetailsView.m */,
+				0545D26C1BC5428500410895 /* XCZWorkView.h */,
+				0545D26D1BC5428500410895 /* XCZWorkView.m */,
 				05CC765B1BD6247E00A3970D /* XCZQuoteView.h */,
 				05CC765C1BD6247E00A3970D /* XCZQuoteView.m */,
 				05CC765E1BD63F2800A3970D /* XCZQuoteDraggableView.h */,
@@ -759,8 +759,8 @@
 				056485541BA889E100F52EAE /* XCZAuthorsViewController.m in Sources */,
 				0599F5F11BE76A2A00AA099D /* XCZSettingsViewController.m in Sources */,
 				0564853C1BA8895300F52EAE /* XCZDynasty.m in Sources */,
-				0545D26E1BC5428500410895 /* XCZWorkDetailsView.m in Sources */,
-				056485521BA889E100F52EAE /* XCZWorkDetailViewController.m in Sources */,
+				0545D26E1BC5428500410895 /* XCZWorkView.m in Sources */,
+				056485521BA889E100F52EAE /* XCZWorkViewController.m in Sources */,
 				05DF00D9195F0CE100175ABF /* XCZAppDelegate.m in Sources */,
 				056485561BA889E100F52EAE /* XCZLikesViewController.m in Sources */,
 				0545D2711BC54C8B00410895 /* XCZLibraryViewController.m in Sources */,
@@ -778,7 +778,7 @@
 				05CC76601BD63F2800A3970D /* XCZQuoteDraggableView.m in Sources */,
 				0564853E1BA8895300F52EAE /* XCZQuote.m in Sources */,
 				05F219141BC5784000B222D7 /* XCZOtherViewController.m in Sources */,
-				056485531BA889E100F52EAE /* XCZAuthorDetailsViewController.m in Sources */,
+				056485531BA889E100F52EAE /* XCZAuthorViewController.m in Sources */,
 				05F2191A1BC6134400B222D7 /* XCZAboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,7 +11,7 @@
 #import "XCZQuote.h"
 #import "XCZQuoteTableViewCell.h"
 #import "XCZQuoteViewController.h"
-#import "XCZWorkDetailViewController.h"
+#import "XCZWorkViewController.h"
 #import "XCZAuthorQuotesViewController.h"
 #import <Masonry.h>
 #import <UITableView+FDTemplateLayoutCell.h>

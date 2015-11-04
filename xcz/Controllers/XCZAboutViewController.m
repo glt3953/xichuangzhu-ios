@@ -8,7 +8,7 @@
 
 #import "XCZWork.h"
 #import "XCZAboutViewController.h"
-#import "XCZWorkDetailViewController.h"
+#import "XCZWorkViewController.h"
 #import "UIColor+Helper.h"
 #import <Masonry/Masonry.h>
 
@@ -267,7 +267,7 @@
         gesture.view.backgroundColor = [UIColor colorWithRGBA:0xF2F2F2FF];
     });
     
-    UIViewController *controller = [[XCZWorkDetailViewController alloc] initWithWorkId:10024];
+    UIViewController *controller = [[XCZWorkViewController alloc] initWithWorkId:10024];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

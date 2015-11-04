@@ -9,7 +9,7 @@
 #import "XCZWork.h"
 #import "XCZWorkTableViewCell.h"
 #import "XCZWorksViewController.h"
-#import "XCZWorkDetailViewController.h"
+#import "XCZWorkViewController.h"
 #import <FMDB/FMDB.h>
 #import <AVOSCloud/AVOSCloud.h>
 #import <UITableView+FDTemplateLayoutCell.h>
@@ -191,7 +191,7 @@ static NSString * const cellIdentifier = @"WorkCell";
         work = self.works[indexPath.row];
     }
     
-    UIViewController *controller = [[XCZWorkDetailViewController alloc] initWithWork:work];
+    UIViewController *controller = [[XCZWorkViewController alloc] initWithWork:work];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

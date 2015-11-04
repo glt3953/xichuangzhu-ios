@@ -8,9 +8,9 @@
 
 #import "XCZWork.h"
 #import "XCZLike.h"
-#import "XCZWorkDetailsView.h"
+#import "XCZWorkView.h"
 #import "XCZWikiViewController.h"
-#import "XCZWorkDetailViewController.h"
+#import "XCZWorkViewController.h"
 #import "XCZMeetViewController.h"
 #import "Constants.h"
 #import "UIColor+Helper.h"
@@ -21,7 +21,7 @@
 @interface XCZMeetViewController ()
 
 @property (strong, nonatomic) XCZWork *work;
-@property (strong, nonatomic) XCZWorkDetailViewController *workDetailsViewController;
+@property (strong, nonatomic) XCZWorkViewController *workDetailsViewController;
 
 @property (strong, nonatomic) UIBarButtonItem *refreshButton;
 @property (strong, nonatomic) UIBarButtonItem *wikiButton;
@@ -105,7 +105,7 @@
 
 - (void)createViews
 {
-    XCZWorkDetailViewController *controller = [[XCZWorkDetailViewController alloc] initWithWork:self.work];
+    XCZWorkViewController *controller = [[XCZWorkViewController alloc] initWithWork:self.work];
     self.workDetailsViewController = controller;
     [self addChildViewController:controller];
     [self.view addSubview:controller.view];

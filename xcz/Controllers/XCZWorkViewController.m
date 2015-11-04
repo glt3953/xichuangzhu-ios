@@ -9,10 +9,10 @@
 #import "XCZQuote.h"
 #import "XCZLike.h"
 #import "XCZLabel.h"
-#import "XCZWorkDetailsView.h"
-#import "XCZWorkDetailViewController.h"
+#import "XCZWorkView.h"
+#import "XCZWorkViewController.h"
 #import "XCZQuoteViewController.h"
-#import "XCZAuthorDetailsViewController.h"
+#import "XCZAuthorViewController.h"
 #import "XCZWikiViewController.h"
 #import "XCZUtils.h"
 #import "Constants.h"
@@ -21,14 +21,14 @@
 #import <ionicons/IonIcons.h>
 #import <Masonry/Masonry.h>
 
-@interface XCZWorkDetailViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface XCZWorkViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UIBarButtonItem *likeButton;
 @property (strong, nonatomic) UIBarButtonItem *unlikeButton;
 @property (strong, nonatomic) UIBarButtonItem *wikiButton;
 @property (strong, nonatomic) UIBarButtonItem *authorButton;
 
-@property (strong, nonatomic) XCZWorkDetailsView *detailsView;
+@property (strong, nonatomic) XCZWorkView *detailsView;
 @property (strong, nonatomic) UITableView *tableView;
 
 @property (strong, nonatomic) XCZWork *work;
@@ -36,7 +36,7 @@
 
 @end
 
-@implementation XCZWorkDetailViewController
+@implementation XCZWorkViewController
 
 #pragma mark - LifeCycle
 
@@ -174,7 +174,7 @@
 {
     [self.navigationItem setTitle:@"返回"];
     
-    XCZAuthorDetailsViewController *authorDetailController = [[XCZAuthorDetailsViewController alloc] initWithAuthorId:self.work.authorId];
+    XCZAuthorViewController *authorDetailController = [[XCZAuthorViewController alloc] initWithAuthorId:self.work.authorId];
     [self.navigationController pushViewController:authorDetailController animated:YES];
 }
 
@@ -238,7 +238,7 @@ static NSString * const cellIdentifier = @"QuoteCell";
         secondLastViewController = self.navigationController.viewControllers[self.navigationController.viewControllers.count - 2];
     }
     
-    if (![secondLastViewController isKindOfClass:[XCZAuthorDetailsViewController class]]) {
+    if (![secondLastViewController isKindOfClass:[XCZAuthorViewController class]]) {
         [btnArrays addObject:self.authorButton];
     }
     
@@ -258,7 +258,7 @@ static NSString * const cellIdentifier = @"QuoteCell";
 
 - (UIView *)createHeaderView
 {
-    XCZWorkDetailsView *detailsView = [[XCZWorkDetailsView alloc] initWithWork:self.work];
+    XCZWorkView *detailsView = [[XCZWorkView alloc] initWithWork:self.work];
     self.detailsView = detailsView;
     
     detailsView.bounds = CGRectMake(0, 0, SCREEN_WIDTH, 0);

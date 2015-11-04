@@ -10,7 +10,7 @@
 #import "XCZWork.h"
 #import "XCZWorkTableViewCell.h"
 #import "XCZLikesViewController.h"
-#import "XCZWorkDetailViewController.h"
+#import "XCZWorkViewController.h"
 #import <UITableView+FDTemplateLayoutCell.h>
 #import <Masonry.h>
 
@@ -248,7 +248,7 @@ static NSString * const cellIdentifier = @"WorkCell";
         work = self.works[indexPath.row];
     }
     
-    UIViewController *controller = [[XCZWorkDetailViewController alloc] initWithWork:work];
+    UIViewController *controller = [[XCZWorkViewController alloc] initWithWork:work];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
