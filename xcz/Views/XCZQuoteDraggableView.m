@@ -59,27 +59,28 @@
         };
             
         case UIGestureRecognizerStateChanged:{
+            // 更改中心位置
+            self.center = CGPointMake(self.originalPoint.x + self.xFromCenter, self.originalPoint.y + self.yFromCenter);
+            
+            // 旋转
             // dictates rotation (see ROTATION_MAX and ROTATION_STRENGTH for details)
             CGFloat rotationStrength = MIN(self.xFromCenter / ROTATION_STRENGTH, ROTATION_MAX);
             
             // degree change in radians
             CGFloat rotationAngel = (CGFloat) (ROTATION_ANGLE * rotationStrength);
             
-            // amount the height changes when you move the card up to a certain point
-            CGFloat scale = MAX(1 - fabs(rotationStrength) / SCALE_STRENGTH, SCALE_MAX);
-            
-            // move the object's center by center + gesture coordinate
-            self.center = CGPointMake(self.originalPoint.x + self.xFromCenter, self.originalPoint.y + self.yFromCenter);
-            
             // rotate by certain amount
             CGAffineTransform transform = CGAffineTransformMakeRotation(rotationAngel);
             
-            // scale by certain amount
+            // 缩放
+            CGFloat scale = MAX(1 - fabs(rotationStrength) / SCALE_STRENGTH, SCALE_MAX);
             CGAffineTransform scaleTransform = CGAffineTransformScale(transform, scale, scale);
             
-            // apply transformations
             self.transform = scaleTransform;
-            //            [self updateOverlay:xFromCenter];
+            
+            if ([self.delegate respondsToSelector:@selector(beingDragged:)]) {
+                [self.delegate beingDragged:MIN(1.0, fabs(self.xFromCenter) / ACTION_MARGIN)];
+            }
             
             break;
         };
@@ -107,6 +108,9 @@
                              self.center = self.originalPoint;
                              self.transform = CGAffineTransformMakeRotation(0);
                          }];
+        if ([self.delegate respondsToSelector:@selector(backToCenter:)]) {
+            [self.delegate backToCenter:MIN(1.0, fabs(self.xFromCenter) / ACTION_MARGIN)];
+        }
     }
 }
 
@@ -179,5 +183,7 @@
                          }
                      }];
 }
+
+#pragma mark - Getters & Setters
 
 @end

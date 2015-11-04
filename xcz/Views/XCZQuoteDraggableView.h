@@ -13,6 +13,10 @@
 - (void)quoteViewSwipedLeft:(UIView *)quoteView;
 - (void)quoteViewSwipedRight:(UIView *)quoteView;
 
+@optional
+- (void)beingDragged:(CGFloat)factor;
+- (void)backToCenter:(CGFloat)factor;
+
 @end
 
 @interface XCZQuoteDraggableView : XCZQuoteView

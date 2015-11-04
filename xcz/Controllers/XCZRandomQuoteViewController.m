@@ -19,9 +19,12 @@
 #import <MBProgressHUD.h>
 #import <AVOSCloud.h>
 
+static CGFloat const SecondQuoteViewOriginalScale = 0.9;
+
 @interface XCZRandomQuoteViewController () <XCZQuoteDraggableViewDelegate>
 
-@property (strong, nonatomic) NSMutableArray *quoteViews;
+@property (strong, nonatomic) XCZQuoteDraggableView *firstQuoteView;
+@property (strong, nonatomic) XCZQuoteDraggableView *secondQuoteView;
 @property (strong, nonatomic) MBProgressHUD *hud;
 
 @end
@@ -84,8 +87,7 @@
 {
     [self loadQuoteView];
     [self loadQuoteView];
-    
-    [(XCZQuoteDraggableView *)[self.quoteViews firstObject] setDraggable:YES];
+    self.firstQuoteView.draggable = YES;
 }
 
 #pragma mark - Public Interface
@@ -96,7 +98,7 @@
 {
     [AVAnalytics event:@"refresh_quote"];
     self.navigationItem.rightBarButtonItem.enabled = NO;
-    [(XCZQuoteDraggableView *)[self.quoteViews firstObject] leftClickAction];
+    [self.firstQuoteView leftClickAction];
 }
 
 - (void)snapshot
@@ -111,7 +113,7 @@
 
 - (void)shareQuote
 {
-    XCZQuote *quote = (XCZQuote *)[(XCZQuoteDraggableView *)[self.quoteViews firstObject] quote];
+    XCZQuote *quote = self.firstQuoteView.quote;
     NSString *shareText = [NSString stringWithFormat:@"%@——%@《%@》", quote.quote, quote.author, quote.work];
     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeImage;
     [UMSocialSnsService presentSnsIconSheetView:self
@@ -132,18 +134,27 @@
 
 - (void)quoteViewSwipedLeft:(UIView *)quoteView
 {
-    [self.quoteViews removeObjectAtIndex:0];
     [self loadQuoteView];
-    [(XCZQuoteDraggableView *)[self.quoteViews firstObject] setDraggable:YES];
     self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
 - (void)quoteViewSwipedRight:(UIView *)quoteView
 {
-    [self.quoteViews removeObjectAtIndex:0];
     [self loadQuoteView];
-    [(XCZQuoteDraggableView *)[self.quoteViews firstObject] setDraggable:YES];
     self.navigationItem.rightBarButtonItem.enabled = YES;
+}
+
+- (void)beingDragged:(CGFloat)factor
+{
+    CGFloat scale = SecondQuoteViewOriginalScale + (1 - SecondQuoteViewOriginalScale) * factor;
+    self.secondQuoteView.transform = CGAffineTransformScale(CGAffineTransformIdentity, scale, scale);
+}
+
+- (void)backToCenter:(CGFloat)factor
+{
+    [UIView animateWithDuration:.3 animations:^{
+        self.secondQuoteView.transform = CGAffineTransformScale(CGAffineTransformIdentity, SecondQuoteViewOriginalScale, SecondQuoteViewOriginalScale);
+    }];
 }
 
 #pragma mark - Internal Helpers
@@ -153,10 +164,20 @@
     XCZQuoteDraggableView *quoteView = [[XCZQuoteDraggableView alloc] initWithQuote:[XCZQuote getRandomQuote]];
     quoteView.delegate = self;
     
-    if (self.quoteViews.count == 0) {
+    if (!self.firstQuoteView) {
+        self.firstQuoteView = quoteView;
+        self.firstQuoteView.draggable = YES;
         [self.view addSubview:quoteView];
     } else {
-        [self.view insertSubview:quoteView belowSubview:[self.quoteViews lastObject]];
+        if (self.secondQuoteView) {
+            self.firstQuoteView = self.secondQuoteView;
+            self.firstQuoteView.draggable = YES;
+            self.secondQuoteView = quoteView;
+        }
+            
+        self.secondQuoteView = quoteView;
+        quoteView.transform = CGAffineTransformScale(CGAffineTransformIdentity, SecondQuoteViewOriginalScale, SecondQuoteViewOriginalScale);
+        [self.view insertSubview:quoteView belowSubview:self.firstQuoteView];
     }
     
     [quoteView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -164,8 +185,6 @@
     }];
     
     [quoteView adjustSize];
-    
-    [self.quoteViews addObject:quoteView];
 }
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
@@ -190,14 +209,5 @@
 }
 
 #pragma mark - Getters & Setters
-
-- (NSMutableArray *)quoteViews
-{
-    if (!_quoteViews) {
-        _quoteViews = [NSMutableArray new];
-    }
-    
-    return _quoteViews;
-}
 
 @end
