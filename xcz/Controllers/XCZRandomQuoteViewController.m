@@ -118,7 +118,7 @@
                                          appKey:nil
                                       shareText:shareText
                                      shareImage:[self snapshotView]
-                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatTimeline, UMShareToWechatSession, UMShareToDouban, UMShareToEmail, nil]
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatTimeline, UMShareToWechatSession, UMShareToSina, UMShareToDouban, nil]
                                        delegate:nil];
 }
 

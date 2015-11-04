@@ -183,7 +183,7 @@
                                                  appKey:nil
                                               shareText:@"「西窗烛」，干净优雅的诗词赏析应用。下载地址：https://itunes.apple.com/cn/app/xi-chuang-zhu/id912139104"
                                              shareImage:[UIImage imageNamed:@"share.jpg"]
-                                        shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatTimeline, UMShareToWechatSession,UMShareToDouban, UMShareToEmail, nil]
+                                        shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatTimeline, UMShareToWechatSession,UMShareToSina, UMShareToDouban, nil]
                                                delegate:nil];
         } else {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/xi-chuang-zhu/id912139104"]];

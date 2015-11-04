@@ -50,7 +50,7 @@
     [self copyUserDatabase];
     
     // 延迟0.5s
-//    usleep(500 * 1000);
+    usleep(500 * 1000);
     
 //    [DownloadFont asynchronouslyDownloadFont:@"STFangsong" completion:nil];
     
