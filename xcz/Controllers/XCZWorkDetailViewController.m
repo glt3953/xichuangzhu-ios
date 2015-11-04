@@ -127,6 +127,7 @@
     self.tableView.tableHeaderView = [self createHeaderView];
     self.quotes = [XCZQuote getByWorkId:self.work.id];
     [self.tableView reloadData];
+    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
     
     [self.view setNeedsLayout];
 }
