@@ -19,7 +19,7 @@
 #import <MBProgressHUD.h>
 #import <AVOSCloud.h>
 
-static CGFloat const SecondQuoteViewOriginalScale = 0.94;
+static CGFloat const SecondQuoteViewOriginalScale = 0.97;
 
 @interface XCZRandomQuoteViewController () <XCZQuoteDraggableViewDelegate>
 
@@ -99,6 +99,10 @@ static CGFloat const SecondQuoteViewOriginalScale = 0.94;
     [AVAnalytics event:@"refresh_quote"];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     [self.firstQuoteView leftClickAction];
+    
+    [UIView animateWithDuration:.4 animations:^{
+        self.secondQuoteView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
+    }];
 }
 
 - (void)snapshot
