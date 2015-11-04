@@ -20,6 +20,7 @@
 @property (weak, nonatomic) id <XCZQuoteViewDelegate> delegate;
 @property (strong, nonatomic) XCZQuote *quote;
 
+- (void)quoteViewPressed;
 - (instancetype)initWithQuote:(XCZQuote *)quote;
 - (void)adjustSize;
 

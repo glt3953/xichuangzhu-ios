@@ -184,6 +184,15 @@
                      }];
 }
 
+- (void)quoteViewPressed
+{
+    if (!self.draggable) {
+        return;
+    }
+    
+    [super quoteViewPressed];
+}
+
 #pragma mark - Getters & Setters
 
 @end
