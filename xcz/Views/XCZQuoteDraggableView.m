@@ -184,6 +184,8 @@
                      }];
 }
 
+#pragma mark - Public Methods
+
 - (void)quoteViewPressed
 {
     if (!self.draggable) {
