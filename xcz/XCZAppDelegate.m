@@ -18,7 +18,6 @@
 #import "XCZUtils.h"
 #import "Constants.h"
 #import "UIColor+Helper.h"
-#import "DownloadFont.h"
 #import "Constants.h"
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"

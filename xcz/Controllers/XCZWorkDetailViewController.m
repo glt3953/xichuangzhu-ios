@@ -14,7 +14,6 @@
 #import "XCZQuoteViewController.h"
 #import "XCZAuthorDetailsViewController.h"
 #import "XCZWikiViewController.h"
-#import "UILabel+SetFont.h"
 #import "XCZUtils.h"
 #import "Constants.h"
 #import "UIColor+Helper.h"

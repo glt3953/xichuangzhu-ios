@@ -15,7 +15,6 @@
 		054AA51C1BD74C6A00CE8EDC /* XCZTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 054AA51B1BD74C6A00CE8EDC /* XCZTableViewController.m */; };
 		054AA51F1BD74FE600CE8EDC /* XCZAuthorHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 054AA51E1BD74FE600CE8EDC /* XCZAuthorHeaderView.m */; };
 		054AA5221BD76A7500CE8EDC /* XCZUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 054AA5211BD76A7500CE8EDC /* XCZUtil.m */; };
-		056485301BA8869D00F52EAE /* DownloadFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564852F1BA8869D00F52EAE /* DownloadFont.m */; };
 		0564853B1BA8895300F52EAE /* XCZAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485321BA8895300F52EAE /* XCZAuthor.m */; };
 		0564853C1BA8895300F52EAE /* XCZDynasty.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485341BA8895300F52EAE /* XCZDynasty.m */; };
 		0564853D1BA8895300F52EAE /* XCZLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485361BA8895300F52EAE /* XCZLike.m */; };
@@ -104,8 +103,6 @@
 		054AA51E1BD74FE600CE8EDC /* XCZAuthorHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthorHeaderView.m; sourceTree = "<group>"; };
 		054AA5201BD76A7500CE8EDC /* XCZUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZUtil.h; sourceTree = "<group>"; };
 		054AA5211BD76A7500CE8EDC /* XCZUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZUtil.m; sourceTree = "<group>"; };
-		0564852E1BA8869D00F52EAE /* DownloadFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadFont.h; sourceTree = "<group>"; };
-		0564852F1BA8869D00F52EAE /* DownloadFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadFont.m; sourceTree = "<group>"; };
 		056485311BA8895300F52EAE /* XCZAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthor.h; sourceTree = "<group>"; };
 		056485321BA8895300F52EAE /* XCZAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthor.m; sourceTree = "<group>"; };
 		056485331BA8895300F52EAE /* XCZDynasty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZDynasty.h; sourceTree = "<group>"; };
@@ -341,8 +338,6 @@
 		0564852D1BA885EC00F52EAE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				0564852E1BA8869D00F52EAE /* DownloadFont.h */,
-				0564852F1BA8869D00F52EAE /* DownloadFont.m */,
 				054AA5201BD76A7500CE8EDC /* XCZUtil.h */,
 				054AA5211BD76A7500CE8EDC /* XCZUtil.m */,
 			);
@@ -763,7 +758,6 @@
 			files = (
 				0545D2681BC51F9800410895 /* XCZLabel.m in Sources */,
 				0564853D1BA8895300F52EAE /* XCZLike.m in Sources */,
-				056485301BA8869D00F52EAE /* DownloadFont.m in Sources */,
 				0545D2741BC54CF600410895 /* XCZMeetViewController.m in Sources */,
 				054AA51F1BD74FE600CE8EDC /* XCZAuthorHeaderView.m in Sources */,
 				05827AA0196A8236003ABBDD /* XCZUtils.m in Sources */,
