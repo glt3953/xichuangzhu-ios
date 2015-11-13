@@ -134,7 +134,7 @@
     aboutLabel.numberOfLines = 0;
     aboutLabel.lineBreakMode = NSLineBreakByWordWrapping;
     aboutLabel.font = [UIFont systemFontOfSize:15];
-    NSString *aboutText = @"西窗烛旨在为大家提供一个干净的古典文学欣赏空间。大江东去的豪放明快、低头弄青梅的婉媚曲折、西窗剪烛的情深意重，每次读到都会有所触动。文学之美，时光洗练。";
+    NSString *aboutText = @"西窗烛旨在为大家提供一个干净的古典文学欣赏空间。大江东去的豪放明快、低头弄梅的婉媚曲折、西窗剪烛的情深意重，每次读到都会有所触动。文学之美，时光洗练。";
     NSMutableAttributedString *attributedStringForAbout = [[NSMutableAttributedString alloc] initWithString:aboutText];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = 5;
