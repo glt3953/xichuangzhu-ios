@@ -72,7 +72,7 @@ static NSInteger const ColsCount = 4;
 - (void)updateWithCollection:(XCZCollection *)collection indexPath:(NSIndexPath *)indexPath
 {
     self.collectionLabel.text = collection.name;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:@"https://placeholdit.imgix.net/~text?txtsize=33&txt=&w=120&h=120"]];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:@"https://placeholdit.imgix.net/~text?txtsize=33&txt=&w=120&h=120"] placeholderImage:[UIImage imageNamed:@"DefaultCollectionCover.png"]];
     
     [self.wapView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.equalTo(self.contentView);
