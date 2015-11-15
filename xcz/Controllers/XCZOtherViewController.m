@@ -11,6 +11,7 @@
 #import "XCZSettingsViewController.h"
 #import "XCZAboutViewController.h"
 #import "XCZLikesViewController.h"
+#import "XCZMeetViewController.h"
 #import "UIColor+Helper.h"
 #import <Masonry/Masonry.h>
 #import <ionicons/IonIcons.h>
@@ -106,7 +107,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 1;
+        return 2;
     } else if (section == 1) {
         return 3;
     } else {
@@ -119,7 +120,11 @@
     UITableViewCell *cell = [UITableViewCell new];
     
     if (indexPath.section == 0) {
-        cell.textLabel.text = @"我的收藏";
+        if (indexPath.row ==  0) {
+            cell.textLabel.text = @"我的收藏";
+        } else {
+            cell.textLabel.text = @"偶遇";
+        }
     } else if (indexPath.section == 1){
         if (indexPath.row == 0) {
             [self configFeedbackCell:cell];
@@ -163,6 +168,9 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             XCZLikesViewController *controller = [XCZLikesViewController new];
+            [self.navigationController pushViewController:controller animated:YES];
+        } else {
+            XCZMeetViewController * controller = [XCZMeetViewController new];
             [self.navigationController pushViewController:controller animated:YES];
         }
     } else if (indexPath.section == 1) {

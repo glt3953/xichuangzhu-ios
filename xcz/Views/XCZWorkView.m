@@ -114,8 +114,8 @@
     
     [authorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(titleLabel.mas_bottom).offset(15);
-        make.left.equalTo(self).offset([XCZUtils getVerticalGap]);
-        make.right.equalTo(self).offset(-[XCZUtils getVerticalGap]);
+        make.left.equalTo(self).offset([XCZUtils getCellHorizonalGap]);
+        make.right.equalTo(self).offset(-[XCZUtils getCellHorizonalGap]);
     }];
     
     [contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {

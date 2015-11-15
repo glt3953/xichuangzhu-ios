@@ -52,6 +52,14 @@
 		05CC76661BD6460D00A3970D /* XCZQuoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CC76651BD6460D00A3970D /* XCZQuoteTableViewCell.m */; };
 		05CC76691BD6900500A3970D /* XCZCopyableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CC76681BD6900500A3970D /* XCZCopyableLabel.m */; };
 		05CE723719A4D97C003864E4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CE723619A4D97C003864E4 /* Images.xcassets */; };
+		05CFDFE21BF772010027773C /* XCZCollectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CFDFE11BF772010027773C /* XCZCollectionsViewController.m */; };
+		05CFDFE51BF773F80027773C /* XCZCollectionKind.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CFDFE41BF773F80027773C /* XCZCollectionKind.m */; };
+		05CFDFE81BF7740F0027773C /* XCZCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CFDFE71BF7740F0027773C /* XCZCollection.m */; };
+		05CFDFEB1BF774230027773C /* XCZCollectionWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CFDFEA1BF774230027773C /* XCZCollectionWork.m */; };
+		05CFDFEF1BF77B2F0027773C /* XCZCollectionWorksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CFDFEE1BF77B2F0027773C /* XCZCollectionWorksViewController.m */; };
+		05CFDFF31BF782300027773C /* XCZCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CFDFF21BF782300027773C /* XCZCollectionCell.m */; };
+		05CFDFF61BF8298D0027773C /* XCZCollectionSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CFDFF51BF8298D0027773C /* XCZCollectionSectionHeaderView.m */; };
+		05CFDFF91BF8438B0027773C /* XCZCollectionSectionFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CFDFF81BF8438B0027773C /* XCZCollectionSectionFooterView.m */; };
 		05DF00C7195F0CE100175ABF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DF00C6195F0CE100175ABF /* Foundation.framework */; };
 		05DF00C9195F0CE100175ABF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DF00C8195F0CE100175ABF /* CoreGraphics.framework */; };
 		05DF00CB195F0CE100175ABF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DF00CA195F0CE100175ABF /* UIKit.framework */; };
@@ -172,6 +180,22 @@
 		05CC76681BD6900500A3970D /* XCZCopyableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZCopyableLabel.m; sourceTree = "<group>"; };
 		05CC766A1BD690B100A3970D /* XCZCopyableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZCopyableLabel.h; sourceTree = "<group>"; };
 		05CE723619A4D97C003864E4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		05CFDFE01BF772010027773C /* XCZCollectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZCollectionsViewController.h; sourceTree = "<group>"; };
+		05CFDFE11BF772010027773C /* XCZCollectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZCollectionsViewController.m; sourceTree = "<group>"; };
+		05CFDFE31BF773F80027773C /* XCZCollectionKind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZCollectionKind.h; sourceTree = "<group>"; };
+		05CFDFE41BF773F80027773C /* XCZCollectionKind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZCollectionKind.m; sourceTree = "<group>"; };
+		05CFDFE61BF7740F0027773C /* XCZCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZCollection.h; sourceTree = "<group>"; };
+		05CFDFE71BF7740F0027773C /* XCZCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZCollection.m; sourceTree = "<group>"; };
+		05CFDFE91BF774230027773C /* XCZCollectionWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZCollectionWork.h; sourceTree = "<group>"; };
+		05CFDFEA1BF774230027773C /* XCZCollectionWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZCollectionWork.m; sourceTree = "<group>"; };
+		05CFDFED1BF77B2F0027773C /* XCZCollectionWorksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZCollectionWorksViewController.h; sourceTree = "<group>"; };
+		05CFDFEE1BF77B2F0027773C /* XCZCollectionWorksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZCollectionWorksViewController.m; sourceTree = "<group>"; };
+		05CFDFF11BF782300027773C /* XCZCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZCollectionCell.h; sourceTree = "<group>"; };
+		05CFDFF21BF782300027773C /* XCZCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZCollectionCell.m; sourceTree = "<group>"; };
+		05CFDFF41BF8298D0027773C /* XCZCollectionSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZCollectionSectionHeaderView.h; sourceTree = "<group>"; };
+		05CFDFF51BF8298D0027773C /* XCZCollectionSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZCollectionSectionHeaderView.m; sourceTree = "<group>"; };
+		05CFDFF71BF8438B0027773C /* XCZCollectionSectionFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZCollectionSectionFooterView.h; sourceTree = "<group>"; };
+		05CFDFF81BF8438B0027773C /* XCZCollectionSectionFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZCollectionSectionFooterView.m; sourceTree = "<group>"; };
 		05DF00C3195F0CE100175ABF /* xcz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xcz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DF00C6195F0CE100175ABF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		05DF00C8195F0CE100175ABF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -268,10 +292,10 @@
 				05CC76581BD5E6E800A3970D /* XCZRandomQuoteViewController.m */,
 				0545D26F1BC54C8B00410895 /* XCZLibraryViewController.h */,
 				0545D2701BC54C8B00410895 /* XCZLibraryViewController.m */,
-				0545D2721BC54CF600410895 /* XCZMeetViewController.h */,
-				0545D2731BC54CF600410895 /* XCZMeetViewController.m */,
 				05F219121BC5784000B222D7 /* XCZOtherViewController.h */,
 				05F219131BC5784000B222D7 /* XCZOtherViewController.m */,
+				05CFDFE01BF772010027773C /* XCZCollectionsViewController.h */,
+				05CFDFE11BF772010027773C /* XCZCollectionsViewController.m */,
 			);
 			name = Root;
 			sourceTree = "<group>";
@@ -294,6 +318,8 @@
 				05F219191BC6134400B222D7 /* XCZAboutViewController.m */,
 				0599F5EF1BE76A2A00AA099D /* XCZSettingsViewController.h */,
 				0599F5F01BE76A2A00AA099D /* XCZSettingsViewController.m */,
+				0545D2721BC54CF600410895 /* XCZMeetViewController.h */,
+				0545D2731BC54CF600410895 /* XCZMeetViewController.m */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -307,7 +333,7 @@
 			name = User;
 			sourceTree = "<group>";
 		};
-		050E11821BD6AFEA004516A9 /* Cell */ = {
+		050E11821BD6AFEA004516A9 /* TableCell */ = {
 			isa = PBXGroup;
 			children = (
 				05CC76641BD6460D00A3970D /* XCZQuoteTableViewCell.h */,
@@ -317,7 +343,7 @@
 				05ECE6201BD49D5E008DE9CE /* XCZWorkTableViewCell.h */,
 				05ECE6211BD49D5E008DE9CE /* XCZWorkTableViewCell.m */,
 			);
-			name = Cell;
+			name = TableCell;
 			sourceTree = "<group>";
 		};
 		054AA5191BD74C1200CE8EDC /* Additions */ = {
@@ -339,6 +365,7 @@
 		056485401BA8898600F52EAE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				05CFDFEC1BF77AC70027773C /* Collection */,
 				050E11801BD6AF8B004516A9 /* Other */,
 				050E11811BD6AF9B004516A9 /* User */,
 				050E117F1BD6AF76004516A9 /* Quote */,
@@ -448,6 +475,12 @@
 				056485381BA8895300F52EAE /* XCZQuote.m */,
 				056485391BA8895300F52EAE /* XCZWork.h */,
 				0564853A1BA8895300F52EAE /* XCZWork.m */,
+				05CFDFE31BF773F80027773C /* XCZCollectionKind.h */,
+				05CFDFE41BF773F80027773C /* XCZCollectionKind.m */,
+				05CFDFE61BF7740F0027773C /* XCZCollection.h */,
+				05CFDFE71BF7740F0027773C /* XCZCollection.m */,
+				05CFDFE91BF774230027773C /* XCZCollectionWork.h */,
+				05CFDFEA1BF774230027773C /* XCZCollectionWork.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -455,7 +488,8 @@
 		05CC12FD196586890014989C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				050E11821BD6AFEA004516A9 /* Cell */,
+				05CFDFF01BF781EF0027773C /* CollectionCell */,
+				050E11821BD6AFEA004516A9 /* TableCell */,
 				054AA51D1BD74FE600CE8EDC /* XCZAuthorHeaderView.h */,
 				054AA51E1BD74FE600CE8EDC /* XCZAuthorHeaderView.m */,
 				0545D26C1BC5428500410895 /* XCZWorkView.h */,
@@ -470,8 +504,30 @@
 				0545D2671BC51F9800410895 /* XCZLabel.m */,
 				0599F5F51BE7B9A300AA099D /* XCZBadgeView.h */,
 				0599F5F61BE7B9A300AA099D /* XCZBadgeView.m */,
+				05CFDFF41BF8298D0027773C /* XCZCollectionSectionHeaderView.h */,
+				05CFDFF51BF8298D0027773C /* XCZCollectionSectionHeaderView.m */,
+				05CFDFF71BF8438B0027773C /* XCZCollectionSectionFooterView.h */,
+				05CFDFF81BF8438B0027773C /* XCZCollectionSectionFooterView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		05CFDFEC1BF77AC70027773C /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				05CFDFED1BF77B2F0027773C /* XCZCollectionWorksViewController.h */,
+				05CFDFEE1BF77B2F0027773C /* XCZCollectionWorksViewController.m */,
+			);
+			name = Collection;
+			sourceTree = "<group>";
+		};
+		05CFDFF01BF781EF0027773C /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				05CFDFF11BF782300027773C /* XCZCollectionCell.h */,
+				05CFDFF21BF782300027773C /* XCZCollectionCell.m */,
+			);
+			name = CollectionCell;
 			sourceTree = "<group>";
 		};
 		05DF00BA195F0CE100175ABF = {
@@ -692,7 +748,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" 381afd6764f80d23443d620e7747e03f867c0ac3 773ed15148084e082507af05b6418cbc08d25458a9d2f0bb194f2538347443a3";
+			shellScript = "";
 		};
 		9A222FDB2DB94392BEE9375E /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -753,20 +809,25 @@
 				05827AA0196A8236003ABBDD /* XCZUtils.m in Sources */,
 				05CC76631BD6433000A3970D /* XCZQuoteViewController.m in Sources */,
 				05CC765D1BD6247E00A3970D /* XCZQuoteView.m in Sources */,
+				05CFDFE81BF7740F0027773C /* XCZCollection.m in Sources */,
 				0599F5F71BE7B9A300AA099D /* XCZBadgeView.m in Sources */,
 				05ECE6221BD49D5E008DE9CE /* XCZWorkTableViewCell.m in Sources */,
 				05ECE61C1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.m in Sources */,
 				056485541BA889E100F52EAE /* XCZAuthorsViewController.m in Sources */,
 				0599F5F11BE76A2A00AA099D /* XCZSettingsViewController.m in Sources */,
 				0564853C1BA8895300F52EAE /* XCZDynasty.m in Sources */,
+				05CFDFEF1BF77B2F0027773C /* XCZCollectionWorksViewController.m in Sources */,
+				05CFDFF31BF782300027773C /* XCZCollectionCell.m in Sources */,
 				0545D26E1BC5428500410895 /* XCZWorkView.m in Sources */,
 				056485521BA889E100F52EAE /* XCZWorkViewController.m in Sources */,
 				05DF00D9195F0CE100175ABF /* XCZAppDelegate.m in Sources */,
 				056485561BA889E100F52EAE /* XCZLikesViewController.m in Sources */,
 				0545D2711BC54C8B00410895 /* XCZLibraryViewController.m in Sources */,
 				0564853B1BA8895300F52EAE /* XCZAuthor.m in Sources */,
+				05CFDFF91BF8438B0027773C /* XCZCollectionSectionFooterView.m in Sources */,
 				05CC76591BD5E6E800A3970D /* XCZRandomQuoteViewController.m in Sources */,
 				0545D26B1BC5379200410895 /* UIColor+Helper.m in Sources */,
+				05CFDFE51BF773F80027773C /* XCZCollectionKind.m in Sources */,
 				056485591BA889E100F52EAE /* XCZWorksViewController.m in Sources */,
 				0564853F1BA8895300F52EAE /* XCZWork.m in Sources */,
 				05ECE6191BD3D476008DE9CE /* XCZWikiViewController.m in Sources */,
@@ -774,10 +835,13 @@
 				05DF00D5195F0CE100175ABF /* main.m in Sources */,
 				05CC76661BD6460D00A3970D /* XCZQuoteTableViewCell.m in Sources */,
 				05CC76691BD6900500A3970D /* XCZCopyableLabel.m in Sources */,
+				05CFDFE21BF772010027773C /* XCZCollectionsViewController.m in Sources */,
 				05ECE61F1BD48B2B008DE9CE /* XCZAuthorTableViewCell.m in Sources */,
 				05CC76601BD63F2800A3970D /* XCZQuoteDraggableView.m in Sources */,
 				0564853E1BA8895300F52EAE /* XCZQuote.m in Sources */,
+				05CFDFEB1BF774230027773C /* XCZCollectionWork.m in Sources */,
 				05F219141BC5784000B222D7 /* XCZOtherViewController.m in Sources */,
+				05CFDFF61BF8298D0027773C /* XCZCollectionSectionHeaderView.m in Sources */,
 				056485531BA889E100F52EAE /* XCZAuthorViewController.m in Sources */,
 				05F2191A1BC6134400B222D7 /* XCZAboutViewController.m in Sources */,
 			);

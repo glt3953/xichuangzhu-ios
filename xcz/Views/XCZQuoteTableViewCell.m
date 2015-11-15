@@ -41,9 +41,9 @@
     // 约束
     
     [quoteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView).offset([XCZUtils getVerticalGap]);
+        make.left.equalTo(self.contentView).offset([XCZUtils getCellHorizonalGap]);
         make.top.equalTo(self.contentView).offset(11);
-        make.right.equalTo(self.contentView).offset(-[XCZUtils getVerticalGap]);
+        make.right.equalTo(self.contentView).offset(-[XCZUtils getCellHorizonalGap]);
     }];
     
     [workLabel mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -47,14 +47,14 @@
     self.firstSentenceLabel = firstSentenceLabel;
     
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView).offset([XCZUtils getVerticalGap]);
+        make.left.equalTo(self.contentView).offset([XCZUtils getCellHorizonalGap]);
         make.top.equalTo(self.contentView).offset(11);
     }];
     
     [authorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(titleLabel);
         make.left.greaterThanOrEqualTo(titleLabel.mas_right).offset(10);
-        make.right.equalTo(self.contentView).offset(-[XCZUtils getVerticalGap]);
+        make.right.equalTo(self.contentView).offset(-[XCZUtils getCellHorizonalGap]);
     }];
     
     [firstSentenceLabel mas_makeConstraints:^(MASConstraintMaker *make) {

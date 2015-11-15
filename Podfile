@@ -4,6 +4,7 @@ platform :ios, '7.0'
 target "xcz" do
     pod 'FMDB'
     pod 'AVOSCloud'
+    pod 'LeanCloudFeedback'
     pod 'HTCopyableLabel'
     pod 'ionicons'
     pod 'Fabric'
@@ -11,7 +12,7 @@ target "xcz" do
     pod 'Masonry'
     pod 'UITableView+FDTemplateLayoutCell', '>= 1.4.beta'
     pod 'MBProgressHUD', '~> 0.9.1'
-    pod 'LeanCloudFeedback'
+    pod 'SDWebImage', '~>3.7'
 end
 
 target "xczTests" do

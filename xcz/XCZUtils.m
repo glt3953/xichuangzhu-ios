@@ -27,7 +27,7 @@
     return storePath;
 }
 
-+ (CGFloat)getVerticalGap
++ (CGFloat)getCellHorizonalGap
 {
     if (IS_IPHONE_6P) {
         return 20;

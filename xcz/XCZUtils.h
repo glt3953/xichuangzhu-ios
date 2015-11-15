@@ -14,7 +14,7 @@
 
 @interface XCZUtils : NSObject
 
-+ (CGFloat)getVerticalGap;
++ (CGFloat)getCellHorizonalGap;
 + (NSString *)getDatabaseFilePath;
 + (NSString *)getUserDatabaseFilePath;
 

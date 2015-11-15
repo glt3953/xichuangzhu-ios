@@ -13,7 +13,7 @@
 #import "XCZRandomQuoteViewController.h"
 #import "XCZLibraryViewController.h"
 #import "XCZWorkViewController.h"
-#import "XCZMeetViewController.h"
+#import "XCZCollectionsViewController.h"
 #import "XCZLikesViewController.h"
 #import "XCZUtils.h"
 #import "Constants.h"
@@ -32,7 +32,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Fabric with:@[[Crashlytics class]]];
+//    [Fabric with:@[[Crashlytics class]]];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -58,12 +58,12 @@
     UIImage *quotesImg = [UIImage imageNamed:@"quotes.png"];
     quoteController.tabBarItem.image = quotesImg;
     
-    // 偶遇
-    XCZMeetViewController *meetController = [XCZMeetViewController new];
-    UINavigationController *meetNavController = [[UINavigationController alloc] initWithRootViewController:meetController];
-    meetController.tabBarItem.title = @"偶遇";
+    // 分类
+    XCZCollectionsViewController *collectionsController = [XCZCollectionsViewController new];
+    UINavigationController *meetNavController = [[UINavigationController alloc] initWithRootViewController:collectionsController];
+    collectionsController.tabBarItem.title = @"分类";
     UIImage *meetImg = [UIImage imageNamed:@"authors.png"];
-    meetController.tabBarItem.image = meetImg;
+    collectionsController.tabBarItem.image = meetImg;
     
     // 文库
     XCZLibraryViewController *libraryController = [XCZLibraryViewController new];

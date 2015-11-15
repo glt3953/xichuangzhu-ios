@@ -67,8 +67,8 @@
     // 约束
     
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset([XCZUtils getVerticalGap]);
-        make.right.equalTo(self).offset(-[XCZUtils getVerticalGap]);
+        make.left.equalTo(self).offset([XCZUtils getCellHorizonalGap]);
+        make.right.equalTo(self).offset(-[XCZUtils getCellHorizonalGap]);
         make.top.equalTo(self).offset(25);
     }];
     
