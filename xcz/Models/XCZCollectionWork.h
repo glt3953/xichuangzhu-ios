@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <FMDB/FMDB.h>
 
 @interface XCZCollectionWork : NSObject
 
@@ -16,5 +17,7 @@
 @property (strong, nonatomic) NSString *work;
 @property (nonatomic) NSInteger collectionId;
 @property (strong, nonatomic) NSString *collection;
+
+- (void)loadFromResultSet:(FMResultSet *)resultSet;
 
 @end

@@ -147,6 +147,13 @@ static NSString * const FooterViewReuseIdentifier = @"FooterView";
     return reusableView;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    XCZCollection *collection = self.collections[indexPath.section][indexPath.item];
+    UIViewController *controller = [[XCZCollectionWorksViewController alloc] initWithCollection:collection];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 #pragma mark - Internal Helpers
 
 #pragma mark - Getters & Setters

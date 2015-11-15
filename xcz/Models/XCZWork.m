@@ -7,6 +7,7 @@
 //
 
 #import "XCZWork.h"
+#import "XCZCollectionWork.h"
 #import "XCZUtils.h"
 #import <FMDB/FMDB.h>
 
@@ -126,6 +127,32 @@
     
     return work;
 }
+
+// 获取某集合的所有作品
++ (NSArray *)getByCollectionId:(NSInteger)collectionId
+{
+    int index = 0;
+    NSMutableArray *works = [NSMutableArray new];
+    NSString *dbPath = [XCZUtils getDatabaseFilePath];
+    FMDatabase *db = [FMDatabase databaseWithPath:dbPath];
+    
+    if ([db open]) {
+        FMResultSet *s = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM collection_works WHERE collection_id == %d ORDER BY show_order ASC", collectionId]];
+        while ([s next]) {
+            XCZCollectionWork *collectionWork = [XCZCollectionWork new];
+            [collectionWork loadFromResultSet:s];
+            XCZWork *work = [XCZWork getById:collectionWork.workId];
+            works[index] = work;
+            index++;
+        }
+        
+        [db close];
+    }
+    
+    return works;
+}
+
+#pragma mark - Internal Helper
 
 - (void)updateWithResultSet:(FMResultSet *)resultSet
 {

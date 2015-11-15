@@ -6,10 +6,11 @@
 //  Copyright © 2015年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZCollection.h"
 #import <UIKit/UIKit.h>
 
 @interface XCZCollectionWorksViewController : UIViewController
 
-- (instancetype)initWithCollectionId:(NSInteger)collectionId;
+- (instancetype)initWithCollection:(XCZCollection *)collection;
 
 @end
