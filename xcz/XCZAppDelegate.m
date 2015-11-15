@@ -32,7 +32,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    [Fabric with:@[[Crashlytics class]]];
+    [Fabric with:@[[Crashlytics class]]];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
