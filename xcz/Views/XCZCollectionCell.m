@@ -30,7 +30,6 @@ static NSInteger const ColsCount = 4;
     if (!self) {
         return nil;
     }
-//    self.contentView.backgroundColor = [UIColor redColor];
     
 //    self.contentView.layer.borderWidth = .5;
 //    self.contentView.layer.borderColor = [UIColor blackColor].CGColor;
@@ -71,8 +70,14 @@ static NSInteger const ColsCount = 4;
 
 - (void)updateWithCollection:(XCZCollection *)collection indexPath:(NSIndexPath *)indexPath
 {
+    if ([collection.cover length] != 0) {
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:collection.cover] placeholderImage:[UIImage imageNamed:@"DefaultCollectionCover.png"]];
+    } else {
+        self.imageView.image = [UIImage imageNamed:@"DefaultCollectionCover.png"];
+    }
+    
     self.collectionLabel.text = collection.name;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:@"https://placeholdit.imgix.net/~text?txtsize=33&txt=&w=120&h=120"] placeholderImage:[UIImage imageNamed:@"DefaultCollectionCover.png"]];
+
     
     [self.wapView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.equalTo(self.contentView);

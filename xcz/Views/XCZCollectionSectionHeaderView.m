@@ -30,8 +30,7 @@
     
     UILabel *titleLable = [UILabel new];
     self.titleLabel = titleLable;
-    titleLable.font = [UIFont systemFontOfSize:16];
-    titleLable.textColor = [UIColor XCZMainColor];
+    titleLable.font = [UIFont boldSystemFontOfSize:16];
     [self addSubview:titleLable];
     
     [titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
