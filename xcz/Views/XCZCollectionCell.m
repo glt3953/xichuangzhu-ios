@@ -8,6 +8,7 @@
 
 #import "XCZCollectionCell.h"
 #import "Constants.h"
+#import "UIColor+Helper.h"
 #import <Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <QuartzCore/QuartzCore.h>
@@ -38,11 +39,19 @@ static NSInteger const ColsCount = 4;
     self.wapView = wapView;
     [self.contentView addSubview:wapView];
     
+    UIView *imageWapView = [UIView new];
+    [wapView addSubview:imageWapView];
+    imageWapView.backgroundColor = [UIColor whiteColor];
+    imageWapView.layer.cornerRadius = [XCZCollectionCell getImageWidth] / 2;
+    imageWapView.layer.masksToBounds = YES;
+    imageWapView.layer.borderWidth = 1;
+    imageWapView.layer.borderColor = [UIColor colorWithRGBA:0xE0E0E0FF].CGColor;
+    
     UIImageView *imageView = [UIImageView new];
     self.imageView = imageView;
-    imageView.layer.cornerRadius = [XCZCollectionCell getImageWidth] / 2;
+    imageView.layer.cornerRadius = [XCZCollectionCell getImageWidth] / 2 - 4;
     imageView.layer.masksToBounds = YES;
-    [wapView addSubview:imageView];
+    [imageWapView addSubview:imageView];
     
     UILabel *collectionLabel = [UILabel new];
     self.collectionLabel = collectionLabel;
@@ -52,15 +61,21 @@ static NSInteger const ColsCount = 4;
     collectionLabel.textAlignment = NSTextAlignmentCenter;
     collectionLabel.font = [UIFont systemFontOfSize:[XCZCollectionCell getCollectionLabelFontSize]];
     
-    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    // 约束
+    [imageWapView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(wapView).offset([XCZCollectionCell getHorizonalGap]);
         make.left.right.equalTo(wapView);
         make.width.height.equalTo([NSNumber numberWithFloat:[XCZCollectionCell getImageWidth]]);
     }];
     
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(imageWapView);
+        make.width.height.equalTo([NSNumber numberWithFloat:[XCZCollectionCell getImageWidth] - 8]);
+    }];
+    
     [collectionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(wapView);
-        make.width.lessThanOrEqualTo(imageView);
+        make.width.lessThanOrEqualTo(imageWapView);
         make.top.equalTo(imageView.mas_bottom).offset(8);
         make.bottom.equalTo(wapView);
     }];
@@ -96,13 +111,13 @@ static NSInteger const ColsCount = 4;
 + (CGFloat)getImageWidth
 {
     if (IS_IPHONE_4_OR_LESS) {
-        return 60;
+        return 64;
     } else if (IS_IPHONE_5) {
-        return 60;
+        return 64;
     } else if (IS_IPHONE_6) {
-        return 68;
+        return 70;
     } else {
-        return 75;
+        return 76;
     }
 }
 

@@ -11,6 +11,7 @@
 #import "XCZWorkTableViewCell.h"
 #import "XCZWorkViewController.h"
 #import "XCZCollectionWorksViewController.h"
+#import "UIColor+Helper.h"
 #import <Masonry.h>
 #import <UITableView+FDTemplateLayoutCell.h>
 

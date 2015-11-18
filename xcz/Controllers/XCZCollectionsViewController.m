@@ -13,6 +13,7 @@
 #import "XCZCollectionCell.h"
 #import "XCZCollectionWorksViewController.h"
 #import "XCZCollectionsViewController.h"
+#import "UIColor+Helper.h"
 #import "Constants.h"
 #import "XCZUtils.h"
 #import <Masonry.h>
@@ -67,7 +68,7 @@ static NSString * const FooterViewReuseIdentifier = @"FooterView";
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     collectionView.delegate = self;
     collectionView.dataSource = self;
-    collectionView.backgroundColor = [UIColor whiteColor];
+    collectionView.backgroundColor = [UIColor colorWithRGBA:0xFFFFFFFF];
     [collectionView registerClass:[XCZCollectionCell class] forCellWithReuseIdentifier:CellReuseIdentifier];
     [collectionView registerClass:[XCZCollectionSectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HeaderViewReuseIdentifier];
     [collectionView registerClass:[XCZCollectionSectionFooterView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:FooterViewReuseIdentifier];
