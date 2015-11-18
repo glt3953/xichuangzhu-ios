@@ -68,6 +68,11 @@ static NSInteger const ColsCount = 4;
     return self;
 }
 
+- (UICollectionViewLayoutAttributes *)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes
+{
+    return layoutAttributes;
+}
+
 - (void)updateWithCollection:(XCZCollection *)collection indexPath:(NSIndexPath *)indexPath
 {
     if ([collection.cover length] != 0) {
@@ -77,7 +82,6 @@ static NSInteger const ColsCount = 4;
     }
     
     self.collectionLabel.text = collection.name;
-
     
     [self.wapView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.equalTo(self.contentView);

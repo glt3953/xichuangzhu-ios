@@ -120,7 +120,7 @@ static NSString * const FooterViewReuseIdentifier = @"FooterView";
         CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
         height = size.height;
     });
-
+    
     if (indexPath.item % 4 == 0 || indexPath.item % 4 == 3) {
         width = [XCZCollectionCell getImageWidth] + [XCZCollectionCell getHorizonalGap] * 1.5;
     } else {
