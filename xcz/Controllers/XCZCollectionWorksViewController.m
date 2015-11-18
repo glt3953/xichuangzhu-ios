@@ -7,6 +7,7 @@
 //
 
 #import "XCZWork.h"
+#import "XCZCollectionWork.h"
 #import "XCZWorkTableViewCell.h"
 #import "XCZWorkViewController.h"
 #import "XCZCollectionWorksViewController.h"
@@ -18,7 +19,7 @@ static NSString * const CellIdentifier = @"CellIdentifier";
 @interface XCZCollectionWorksViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) XCZCollection *collection;
-@property (strong, nonatomic) NSArray *works;
+@property (strong, nonatomic) NSArray *collectionWorks;
 @property (weak, nonatomic) UITableView *tableView;
 
 @end
@@ -88,25 +89,24 @@ static NSString * const CellIdentifier = @"CellIdentifier";
 // 表行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.works count];
+    return [self.collectionWorks count];
 }
 
 // 单元格内容
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XCZWork *work = self.works[indexPath.row];
+    XCZCollectionWork *collectionWork = self.collectionWorks[indexPath.row];
     XCZWorkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    [cell updateWithWork:work showAuthor:YES];
+    [cell updateWithCollectionWork:collectionWork];
     return cell;
 }
 
 // 单元格高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XCZWork *work = self.works[indexPath.row];
-    
-    return [tableView fd_heightForCellWithIdentifier:CellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", work.id] configuration:^(XCZWorkTableViewCell *cell) {
-        [cell updateWithWork:work showAuthor:YES];
+    XCZCollectionWork *collectionWork = self.collectionWorks[indexPath.row];
+    return [tableView fd_heightForCellWithIdentifier:CellIdentifier cacheByKey:[NSString stringWithFormat:@"%ld", (long)collectionWork.id] configuration:^(XCZWorkTableViewCell *cell) {
+        [cell updateWithCollectionWork:collectionWork];
     }];
 }
 
@@ -118,8 +118,8 @@ static NSString * const CellIdentifier = @"CellIdentifier";
 // 选中某单元格后的操作
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XCZWork *work = self.works[indexPath.row];
-    
+    XCZCollectionWork *collectionWork = self.collectionWorks[indexPath.row];
+    XCZWork *work = [XCZWork getById:(int)collectionWork.workId];
     UIViewController *controller = [[XCZWorkViewController alloc] initWithWork:work];
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -128,13 +128,13 @@ static NSString * const CellIdentifier = @"CellIdentifier";
 
 #pragma mark - Getters & Setters
 
-- (NSArray *)works
+- (NSArray *)collectionWorks
 {
-    if (!_works) {
-        _works = [XCZWork getByCollectionId:self.collection.id];
+    if (!_collectionWorks) {
+        _collectionWorks = [XCZCollectionWork getByCollectionId:self.collection.id];
     }
     
-    return _works;
+    return _collectionWorks;
 }
 
 @end

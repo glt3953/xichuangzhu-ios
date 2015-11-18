@@ -17,5 +17,6 @@
 + (CGFloat)getCellHorizonalGap;
 + (NSString *)getDatabaseFilePath;
 + (NSString *)getUserDatabaseFilePath;
++ (NSString *)getFirstSentenceFromWorkContent:(NSString *)content;
 
 @end

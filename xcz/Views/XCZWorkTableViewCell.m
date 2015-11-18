@@ -80,4 +80,11 @@
     }
 }
 
+- (void)updateWithCollectionWork:(XCZCollectionWork *)collectionWork
+{
+    self.titleLabel.text = collectionWork.workTitle;
+    self.authorLabel.text = [NSString stringWithFormat:@"[%@] %@", collectionWork.workDynasty, collectionWork.workAuthor];
+    self.firstSentenceLabel.text = collectionWork.workFirstSentence;
+}
+
 @end

@@ -14,10 +14,15 @@
 @property (nonatomic) NSInteger id;
 @property (nonatomic) NSInteger showOrder;
 @property (nonatomic) NSInteger workId;
-@property (strong, nonatomic) NSString *work;
+@property (strong, nonatomic) NSString *workTitle;
+@property (strong, nonatomic) NSString *workFullTitle;
+@property (strong, nonatomic) NSString *workAuthor;
+@property (strong, nonatomic) NSString *workDynasty;
+@property (strong, nonatomic) NSString *workContent;
+@property (strong, nonatomic) NSString *workFirstSentence;
 @property (nonatomic) NSInteger collectionId;
 @property (strong, nonatomic) NSString *collection;
 
-- (void)loadFromResultSet:(FMResultSet *)resultSet;
++ (NSArray *)getByCollectionId:(NSInteger)collectionId;
 
 @end

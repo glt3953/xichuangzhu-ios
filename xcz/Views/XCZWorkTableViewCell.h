@@ -7,10 +7,12 @@
 //
 
 #import "XCZWork.h"
+#import "XCZCollectionWork.h"
 #import <UIKit/UIKit.h>
 
 @interface XCZWorkTableViewCell : UITableViewCell
 
 - (void)updateWithWork:(XCZWork *)work showAuthor:(BOOL)showAuthor;
+- (void)updateWithCollectionWork:(XCZCollectionWork *)collectionWork;
 
 @end
