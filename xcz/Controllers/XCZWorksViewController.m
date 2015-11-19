@@ -19,9 +19,9 @@ static NSString * const cellIdentifier = @"WorkCell";
 
 @interface XCZWorksViewController () <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSMutableArray *works;
-@property (nonatomic, strong) NSArray *searchResults;
-@property (weak, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *works;
+@property (strong, nonatomic) NSArray *searchResults;
+@property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UISearchDisplayController *searchController;
 
 @end

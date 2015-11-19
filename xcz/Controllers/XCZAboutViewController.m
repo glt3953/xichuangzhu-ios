@@ -48,7 +48,7 @@
     
     // text
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"西窗烛 " attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17]}];
-    NSMutableAttributedString *versionText = [[NSMutableAttributedString alloc] initWithString:@"v1.7.1" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
+    NSMutableAttributedString *versionText = [[NSMutableAttributedString alloc] initWithString:@"v1.8.0" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
     [text appendAttributedString:versionText];
     UILabel *textLabel = [UILabel new];
     textLabel.attributedText = text;

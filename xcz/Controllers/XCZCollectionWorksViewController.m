@@ -21,11 +21,12 @@
 
 static NSString * const CellIdentifier = @"CellIdentifier";
 
-@interface XCZCollectionWorksViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface XCZCollectionWorksViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) XCZCollection *collection;
 @property (strong, nonatomic) NSArray *collectionWorks;
-@property (weak, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UILabel *titleLabel;
 
 @end
 
@@ -58,7 +59,17 @@ static NSString * const CellIdentifier = @"CellIdentifier";
 {
     [super viewDidLoad];
     
-//    self.navigationItem.title = self.collection.fullName;
+    self.navigationItem.title = self.collection.fullName;
+    
+    // Custom titleView
+    UILabel *titleLabel = [UILabel new];
+    self.titleLabel = titleLabel;
+    titleLabel.textColor = [UIColor clearColor];
+    titleLabel.text = self.collection.fullName;
+    titleLabel.font = [UIFont boldSystemFontOfSize:17];
+    CGSize size = [titleLabel systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    titleLabel.frame = CGRectMake(0, 0, size.width, size.height);
+    self.navigationItem.titleView = titleLabel;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -105,13 +116,14 @@ static NSString * const CellIdentifier = @"CellIdentifier";
     [imageView sd_setImageWithURL:[NSURL URLWithString:self.collection.cover] placeholderImage:[UIImage imageNamed:@"DefaultCollectionCover.png"]];
     
     UILabel *collectionNameLabel = [UILabel new];
-    collectionNameLabel.font = [UIFont boldSystemFontOfSize:17];
+    collectionNameLabel.font = [UIFont systemFontOfSize:20];
     collectionNameLabel.text = self.collection.fullName;
     [headerView addSubview:collectionNameLabel];
     
     UILabel *collectionDescLabel = [UILabel new];
-    collectionDescLabel.font = [UIFont systemFontOfSize:15];
+    collectionDescLabel.font = [UIFont systemFontOfSize:13];
     collectionDescLabel.text = self.collection.desc;
+    collectionDescLabel.textColor = [UIColor colorWithRGBA:0x999999FF];
     [headerView addSubview:collectionDescLabel];
     
     UIView *bottomBorderView = [UIView new];
@@ -133,13 +145,13 @@ static NSString * const CellIdentifier = @"CellIdentifier";
     
     [collectionNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(imageWapView.mas_right).offset(10);
-        make.top.equalTo(headerView).offset(20);
+        make.top.equalTo(headerView).offset(18);
         make.right.equalTo(headerView).offset(-10);
     }];
     
     [collectionDescLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(collectionNameLabel);
-        make.top.equalTo(collectionNameLabel.mas_bottom).offset(5);
+        make.top.equalTo(collectionNameLabel.mas_bottom).offset(6);
         make.right.equalTo(collectionNameLabel);
     }];
     
@@ -164,7 +176,20 @@ static NSString * const CellIdentifier = @"CellIdentifier";
 
 #pragma mark - User Interface
 
-#pragma mark - SomeDelegate
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat offset = scrollView.contentOffset.y;
+    CGFloat alpha;
+    
+    if (offset < 0) {
+        self.titleLabel.textColor = [UIColor clearColor];
+    } else {
+        alpha = MIN((offset - 100) / 200, 1.0);
+        self.titleLabel.textColor = [[UIColor blackColor] colorWithAlphaComponent:alpha];
+    }
+}
 
 #pragma mark - TableView Delegate
 
