@@ -237,6 +237,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
     XCZAuthor *author = nil;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         author = self.searchResult[indexPath.row];
+        [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     } else {
         NSString *dynastyName = [self.dynasties objectAtIndex:indexPath.section];
         NSArray *authors = [self.authors objectForKey:dynastyName];

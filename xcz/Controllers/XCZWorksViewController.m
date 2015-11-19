@@ -187,6 +187,7 @@ static NSString * const cellIdentifier = @"WorkCell";
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         work = self.searchResults[indexPath.row];
+        [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     } else {
         work = self.works[indexPath.row];
     }
