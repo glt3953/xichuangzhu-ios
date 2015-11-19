@@ -7,12 +7,16 @@
 //
 
 #import "XCZWork.h"
+#import "XCZCollectionCell.h"
 #import "XCZCollectionWork.h"
 #import "XCZWorkTableViewCell.h"
 #import "XCZWorkViewController.h"
 #import "XCZCollectionWorksViewController.h"
 #import "UIColor+Helper.h"
+#import "Constants.h"
+#import "XCZUtils.h"
 #import <Masonry.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import <UITableView+FDTemplateLayoutCell.h>
 
 static NSString * const CellIdentifier = @"CellIdentifier";
@@ -54,7 +58,7 @@ static NSString * const CellIdentifier = @"CellIdentifier";
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = self.collection.fullName;
+//    self.navigationItem.title = self.collection.fullName;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -72,6 +76,7 @@ static NSString * const CellIdentifier = @"CellIdentifier";
     tableView.delegate = self;
     tableView.dataSource = self;
     [tableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:CellIdentifier];
+    tableView.tableHeaderView = [self createHeaderView];
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView = tableView;
     [self.view addSubview:tableView];
@@ -79,6 +84,80 @@ static NSString * const CellIdentifier = @"CellIdentifier";
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+}
+
+- (UIView *)createHeaderView
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0)];
+    
+    UIView *imageWapView = [UIView new];
+    [headerView addSubview:imageWapView];
+    imageWapView.backgroundColor = [UIColor whiteColor];
+    imageWapView.layer.cornerRadius = [XCZCollectionCell getImageWidth] / 2;
+    imageWapView.layer.masksToBounds = YES;
+    imageWapView.layer.borderWidth = 1;
+    imageWapView.layer.borderColor = [UIColor colorWithRGBA:0xE0E0E0FF].CGColor;
+    
+    UIImageView *imageView = [UIImageView new];
+    imageView.layer.cornerRadius = [XCZCollectionCell getImageWidth] / 2 - 4;
+    imageView.layer.masksToBounds = YES;
+    [imageWapView addSubview:imageView];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:self.collection.cover] placeholderImage:[UIImage imageNamed:@"DefaultCollectionCover.png"]];
+    
+    UILabel *collectionNameLabel = [UILabel new];
+    collectionNameLabel.font = [UIFont boldSystemFontOfSize:17];
+    collectionNameLabel.text = self.collection.fullName;
+    [headerView addSubview:collectionNameLabel];
+    
+    UILabel *collectionDescLabel = [UILabel new];
+    collectionDescLabel.font = [UIFont systemFontOfSize:15];
+    collectionDescLabel.text = self.collection.desc;
+    [headerView addSubview:collectionDescLabel];
+    
+    UIView *bottomBorderView = [UIView new];
+    bottomBorderView.backgroundColor = [UIColor colorWithRGBA:0xC8C7CCFF];
+    [headerView addSubview:bottomBorderView];
+    
+    // 约束
+    [imageWapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(headerView).offset(10);
+        make.left.equalTo(headerView).offset([XCZUtils getCellHorizonalGap]);
+        make.bottom.equalTo(headerView).offset(-10);
+        make.width.height.equalTo([NSNumber numberWithFloat:[XCZCollectionCell getImageWidth]]);
+    }];
+    
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(imageWapView);
+        make.width.height.equalTo([NSNumber numberWithFloat:[XCZCollectionCell getImageWidth] - 8]);
+    }];
+    
+    [collectionNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(imageWapView.mas_right).offset(10);
+        make.top.equalTo(headerView).offset(20);
+        make.right.equalTo(headerView).offset(-10);
+    }];
+    
+    [collectionDescLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(collectionNameLabel);
+        make.top.equalTo(collectionNameLabel.mas_bottom).offset(5);
+        make.right.equalTo(collectionNameLabel);
+    }];
+    
+    [bottomBorderView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(imageWapView);
+        make.right.equalTo(headerView);
+        make.height.equalTo(@.5);
+        make.bottom.equalTo(headerView);
+    }];
+    
+    [headerView setNeedsLayout];
+    [headerView layoutIfNeeded];
+    CGSize size = [headerView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    CGRect frame = headerView.frame;
+    frame.size.height = size.height;
+    headerView.frame = frame;
+    
+    return headerView;
 }
 
 #pragma mark - Public Interface
