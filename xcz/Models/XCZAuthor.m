@@ -108,6 +108,7 @@
 {
     self.id = [resultSet intForColumn:@"id"];
     self.name = [resultSet stringForColumn:@"name"];
+    self.firstChar = [resultSet stringForColumn:@"first_char"];
     self.intro = [resultSet stringForColumn:@"intro"];
     self.dynasty = [resultSet stringForColumn:@"dynasty"];
     self.birthYear = [resultSet stringForColumn:@"birth_year"];

@@ -13,6 +13,7 @@
 
 @property (nonatomic) int id;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *firstChar;
 @property (nonatomic, strong) NSString *intro;
 @property (nonatomic, strong) NSString *dynasty;
 @property (nonatomic, strong) NSString *birthYear;
