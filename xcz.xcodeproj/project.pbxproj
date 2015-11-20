@@ -35,7 +35,6 @@
 		0587F13B1BD9D39F0037747E /* UMSnsAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0587F12F1BD9D39F0037747E /* UMSnsAccountViewController.xib */; };
 		0587F13C1BD9D39F0037747E /* UMSShareListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0587F1301BD9D39F0037747E /* UMSShareListController.xib */; };
 		0587F13D1BD9D39F0037747E /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0587F1311BD9D39F0037747E /* UMSocialSDKResourcesNew.bundle */; };
-		0587F1481BD9D3B60037747E /* libSocialTwitter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0587F1401BD9D3B60037747E /* libSocialTwitter.a */; };
 		0587F1491BD9D3B60037747E /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0587F1431BD9D3B60037747E /* libSocialWechat.a */; };
 		0587F14A1BD9D3B60037747E /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0587F1441BD9D3B60037747E /* libWeChatSDK.a */; };
 		0587F14C1BD9D4870037747E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0587F14B1BD9D4870037747E /* SystemConfiguration.framework */; };
@@ -153,8 +152,6 @@
 		0587F1301BD9D39F0037747E /* UMSShareListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSShareListController.xib; sourceTree = "<group>"; };
 		0587F1311BD9D39F0037747E /* UMSocialSDKResourcesNew.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResourcesNew.bundle; sourceTree = "<group>"; };
 		0587F1321BD9D39F0037747E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UMSocialLocalizable.strings"; sourceTree = "<group>"; };
-		0587F1401BD9D3B60037747E /* libSocialTwitter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialTwitter.a; sourceTree = "<group>"; };
-		0587F1411BD9D3B60037747E /* UMSocialTwitterHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialTwitterHandler.h; sourceTree = "<group>"; };
 		0587F1431BD9D3B60037747E /* libSocialWechat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWechat.a; sourceTree = "<group>"; };
 		0587F1441BD9D3B60037747E /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		0587F1451BD9D3B60037747E /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
@@ -244,7 +241,6 @@
 			files = (
 				0587F14C1BD9D4870037747E /* SystemConfiguration.framework in Frameworks */,
 				05DF00C9195F0CE100175ABF /* CoreGraphics.framework in Frameworks */,
-				0587F1481BD9D3B60037747E /* libSocialTwitter.a in Frameworks */,
 				0587F14A1BD9D3B60037747E /* libWeChatSDK.a in Frameworks */,
 				05DF00CD195F0CE100175ABF /* CoreData.framework in Frameworks */,
 				05DF00CB195F0CE100175ABF /* UIKit.framework in Frameworks */,
@@ -447,19 +443,9 @@
 		0587F13E1BD9D3B60037747E /* UMSocial_Sdk_Extra_Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0587F13F1BD9D3B60037747E /* Twitter */,
 				0587F1421BD9D3B60037747E /* Wechat */,
 			);
 			path = UMSocial_Sdk_Extra_Frameworks;
-			sourceTree = "<group>";
-		};
-		0587F13F1BD9D3B60037747E /* Twitter */ = {
-			isa = PBXGroup;
-			children = (
-				0587F1401BD9D3B60037747E /* libSocialTwitter.a */,
-				0587F1411BD9D3B60037747E /* UMSocialTwitterHandler.h */,
-			);
-			path = Twitter;
 			sourceTree = "<group>";
 		};
 		0587F1421BD9D3B60037747E /* Wechat */ = {
