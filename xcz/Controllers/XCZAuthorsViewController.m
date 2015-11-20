@@ -25,12 +25,11 @@ static NSString * const cellIdentifier = @"AuthorCell";
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) UISearchDisplayController *searchController;
 
-// 正常显示
+@property (nonatomic, strong) NSMutableArray *authors;
 @property (nonatomic, strong) NSMutableArray *dynasties;
-@property (nonatomic, strong) NSMutableDictionary *authors;
-
-// 用于搜索
-@property (nonatomic, strong) NSMutableArray *authorsForSearch;
+@property (nonatomic, strong) NSMutableDictionary *authorsForDynasty;
+@property (nonatomic, strong) NSMutableArray *firstChars;
+@property (strong, nonatomic) NSMutableDictionary *authorsForFirstChar;
 @property (nonatomic, strong) NSArray *searchResult;
 
 @end
@@ -46,16 +45,30 @@ static NSString * const cellIdentifier = @"AuthorCell";
         return nil;
     }
     
+    self.authors = [XCZAuthor getAllAuthors];
     self.dynasties = [XCZDynasty getNames];
-    self.authors = [NSMutableDictionary new];
-    self.authorsForSearch = [XCZAuthor getAllAuthors];
+    self.authorsForDynasty = [NSMutableDictionary new];
+    self.firstChars = [NSMutableArray new];
+    self.authorsForFirstChar = [NSMutableDictionary new];
     
-    for (XCZAuthor *author in self.authorsForSearch) {
-        if (![self.authors objectForKey:author.dynasty]) {
-            [self.authors setObject:[NSMutableArray array] forKey:author.dynasty];
+    for (XCZAuthor *author in self.authors) {
+        if (![self.authorsForDynasty objectForKey:author.dynasty]) {
+            [self.authorsForDynasty setObject:[NSMutableArray array] forKey:author.dynasty];
         }
+        [[self.authorsForDynasty objectForKey:author.dynasty] addObject:author];
         
-        [[self.authors objectForKey:author.dynasty] addObject:author];
+        if (![self.authorsForFirstChar objectForKey:author.firstChar]) {
+            [self.authorsForFirstChar setObject:[NSMutableArray array] forKey:author.firstChar];
+        }
+        [[self.authorsForFirstChar objectForKey:author.firstChar] addObject:author];
+    }
+    
+    for (char firstChar = 'A'; firstChar <= 'Z'; firstChar++) {
+        NSString *firstCharInString = [NSString stringWithFormat:@"%c", firstChar];
+
+        if ([self.authorsForFirstChar objectForKey:firstCharInString] != nil) {
+            [self.firstChars addObject:firstCharInString];
+        }
     }
     
     return self;
@@ -130,7 +143,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
 - (void)filterContentForSearchText:(NSString*)searchText
 {
     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
-    self.searchResult = [self.authorsForSearch filteredArrayUsingPredicate:resultPredicate];
+    self.searchResult = [self.authors filteredArrayUsingPredicate:resultPredicate];
 }
 
 // 以下代码解决了 searchResultsTableView 下方空间的 bug
@@ -159,7 +172,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
         return self.searchResult.count;
     } else {
         NSString *dynastyName = [self.dynasties objectAtIndex:section];
-        NSArray *authors = [self.authors objectForKey:dynastyName];
+        NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
         return authors.count;
     }
 }
@@ -201,7 +214,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
         author = self.searchResult[indexPath.row];
     } else {
         NSString *dynastyName = [self.dynasties objectAtIndex:indexPath.section];
-        NSArray *authors = [self.authors objectForKey:dynastyName];
+        NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
         author = authors[indexPath.row];
     }
 
@@ -219,7 +232,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
         author = self.searchResult[indexPath.row];
     } else {
         NSString *dynastyName = [self.dynasties objectAtIndex:indexPath.section];
-        NSArray *authors = [self.authors objectForKey:dynastyName];
+        NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
         author = authors[indexPath.row];
     }
 
@@ -242,7 +255,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
         [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     } else {
         NSString *dynastyName = [self.dynasties objectAtIndex:indexPath.section];
-        NSArray *authors = [self.authors objectForKey:dynastyName];
+        NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
         author = authors[indexPath.row];
     }
     
