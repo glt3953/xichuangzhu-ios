@@ -42,6 +42,9 @@
 		0599F5F11BE76A2A00AA099D /* XCZSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0599F5F01BE76A2A00AA099D /* XCZSettingsViewController.m */; };
 		0599F5F41BE7923F00AA099D /* UIImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0599F5F31BE7923F00AA099D /* UIImage+Helper.m */; };
 		0599F5F71BE7B9A300AA099D /* XCZBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0599F5F61BE7B9A300AA099D /* XCZBadgeView.m */; };
+		05AC40BA1BFF56A1006F6CA3 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05AC40B91BFF569B006F6CA3 /* FontAwesome.ttf */; };
+		05AC40BD1BFF5732006F6CA3 /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AC40BB1BFF5732006F6CA3 /* UIImage+FontAwesome.m */; };
+		05AC40C01BFF5D42006F6CA3 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AC40BF1BFF5D42006F6CA3 /* NSString+FontAwesome.m */; };
 		05B2287C195FD19500F91BCC /* xcz.db in Resources */ = {isa = PBXBuildFile; fileRef = 05B2287B195FCEBE00F91BCC /* xcz.db */; };
 		05BDB0B91A555CA800DBBFBF /* xcz_user.db in Resources */ = {isa = PBXBuildFile; fileRef = 05BDB0B81A555CA800DBBFBF /* xcz_user.db */; };
 		05CC76591BD5E6E800A3970D /* XCZRandomQuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CC76581BD5E6E800A3970D /* XCZRandomQuoteViewController.m */; };
@@ -164,6 +167,11 @@
 		0599F5F31BE7923F00AA099D /* UIImage+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helper.m"; sourceTree = "<group>"; };
 		0599F5F51BE7B9A300AA099D /* XCZBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZBadgeView.h; sourceTree = "<group>"; };
 		0599F5F61BE7B9A300AA099D /* XCZBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZBadgeView.m; sourceTree = "<group>"; };
+		05AC40B91BFF569B006F6CA3 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		05AC40BB1BFF5732006F6CA3 /* UIImage+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FontAwesome.m"; sourceTree = "<group>"; };
+		05AC40BC1BFF5732006F6CA3 /* UIImage+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FontAwesome.h"; sourceTree = "<group>"; };
+		05AC40BE1BFF5D42006F6CA3 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		05AC40BF1BFF5D42006F6CA3 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
 		05B2287B195FCEBE00F91BCC /* xcz.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = xcz.db; sourceTree = "<group>"; };
 		05BDB0B81A555CA800DBBFBF /* xcz_user.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = xcz_user.db; sourceTree = "<group>"; };
 		05CC76561BD5E56A00A3970D /* 华文仿宋.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文仿宋.ttf"; sourceTree = "<group>"; };
@@ -349,6 +357,10 @@
 		054AA5191BD74C1200CE8EDC /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				05AC40BE1BFF5D42006F6CA3 /* NSString+FontAwesome.h */,
+				05AC40BF1BFF5D42006F6CA3 /* NSString+FontAwesome.m */,
+				05AC40BB1BFF5732006F6CA3 /* UIImage+FontAwesome.m */,
+				05AC40BC1BFF5732006F6CA3 /* UIImage+FontAwesome.h */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -587,6 +599,7 @@
 		05DF00CF195F0CE100175ABF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				05AC40B91BFF569B006F6CA3 /* FontAwesome.ttf */,
 				05CC76561BD5E56A00A3970D /* 华文仿宋.ttf */,
 				05CE723619A4D97C003864E4 /* Images.xcassets */,
 				05BDB0B81A555CA800DBBFBF /* xcz_user.db */,
@@ -720,6 +733,7 @@
 				0587F13B1BD9D39F0037747E /* UMSnsAccountViewController.xib in Resources */,
 				0587F1361BD9D39F0037747E /* UMSCommentInputController.xib in Resources */,
 				05CE723719A4D97C003864E4 /* Images.xcassets in Resources */,
+				05AC40BA1BFF56A1006F6CA3 /* FontAwesome.ttf in Resources */,
 				0587F13A1BD9D39F0037747E /* UMSLoginViewController.xib in Resources */,
 				0587F13D1BD9D39F0037747E /* UMSocialSDKResourcesNew.bundle in Resources */,
 				0587F1371BD9D39F0037747E /* UMSCommentInputControlleriPad.xib in Resources */,
@@ -807,6 +821,7 @@
 				0564853D1BA8895300F52EAE /* XCZLike.m in Sources */,
 				0545D2741BC54CF600410895 /* XCZMeetViewController.m in Sources */,
 				054AA51F1BD74FE600CE8EDC /* XCZAuthorHeaderView.m in Sources */,
+				05AC40C01BFF5D42006F6CA3 /* NSString+FontAwesome.m in Sources */,
 				05827AA0196A8236003ABBDD /* XCZUtils.m in Sources */,
 				05CC76631BD6433000A3970D /* XCZQuoteViewController.m in Sources */,
 				05CC765D1BD6247E00A3970D /* XCZQuoteView.m in Sources */,
@@ -845,6 +860,7 @@
 				05CFDFF61BF8298D0027773C /* XCZCollectionSectionHeaderView.m in Sources */,
 				056485531BA889E100F52EAE /* XCZAuthorViewController.m in Sources */,
 				05F2191A1BC6134400B222D7 /* XCZAboutViewController.m in Sources */,
+				05AC40BD1BFF5732006F6CA3 /* UIImage+FontAwesome.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

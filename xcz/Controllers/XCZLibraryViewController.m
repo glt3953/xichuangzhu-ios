@@ -11,6 +11,7 @@
 #import "XCZWorksViewController.h"
 #import "XCZAuthorsViewController.h"
 #import "UIColor+Helper.h"
+#import "UIImage+FontAwesome.h"
 #import <Masonry/Masonry.h>
 #import <ionicons/IonIcons.h>
 
@@ -19,11 +20,16 @@
 @property (strong, nonatomic) UISegmentedControl *segmentControl;
 @property (strong, nonatomic) XCZWorksViewController *worksViewController;
 @property (strong, nonatomic) XCZAuthorsViewController *authorsViewController;
-@property (strong, nonatomic) UIBarButtonItem *rightButton;
+
 @property (strong, nonatomic) UIActivityIndicatorView *activityView;
 @property (nonatomic) BOOL hasSetupViews;
 
 @property (strong, nonatomic) NSArray *works;
+
+@property (strong, nonatomic) UIBarButtonItem *refreshWorksButton;
+@property (strong, nonatomic) UIBarButtonItem *turnOnAuthorsAlphabetModeButton;
+@property (strong, nonatomic) UIBarButtonItem *turnOffAuthorsAlphabetModeButton;
+@property (nonatomic) BOOL orderAuthorsByAlphabet;
 
 @end
 
@@ -77,6 +83,8 @@
     self.segmentControl.selectedSegmentIndex = 0;
     [self.segmentControl addTarget:self action:@selector(segmentControlTapped) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = segmentControl;
+    
+    [self segmentControlTapped];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -87,7 +95,6 @@
         self.hasSetupViews = YES;
         
         [self createViews];
-        [self segmentControlTapped];
         [self.activityView stopAnimating];
     }
 }
@@ -117,13 +124,18 @@
     if (self.segmentControl.selectedSegmentIndex == 0) {
         self.authorsViewController.view.hidden = YES;
         self.worksViewController.view.hidden = NO;
-        self.navigationItem.rightBarButtonItem = self.rightButton;
+        self.navigationItem.rightBarButtonItem = self.refreshWorksButton;
         self.navigationItem.title = self.worksViewController.navigationItem.title;
     } else {
         self.authorsViewController.view.hidden = NO;
         self.worksViewController.view.hidden = YES;
-        self.navigationItem.rightBarButtonItem = nil;
         self.navigationItem.title = self.authorsViewController.navigationItem.title;
+        
+        if (self.orderAuthorsByAlphabet) {
+            self.navigationItem.rightBarButtonItem = self.turnOffAuthorsAlphabetModeButton;
+        } else {
+            self.navigationItem.rightBarButtonItem = self.turnOnAuthorsAlphabetModeButton;
+        }
     }
 }
 
@@ -132,20 +144,56 @@
     [self.worksViewController reorderWorks];
 }
 
+- (void)turnOnAuthorsAlphabetMode
+{
+    self.orderAuthorsByAlphabet = YES;
+    [self.authorsViewController turnOnAuthorsAlphabetMode];
+    [self segmentControlTapped];
+}
+
+- (void)turnOffAuthorsAlphabetMode
+{
+    self.orderAuthorsByAlphabet = NO;
+    [self.authorsViewController turnOffAuthorsAlphabetMode];
+    [self segmentControlTapped];
+}
+
 #pragma mark - SomeDelegate
 
 #pragma mark - Internal Helpers
 
 #pragma mark - Getters & Setters
 
-- (UIBarButtonItem *)rightButton
+- (UIBarButtonItem *)refreshWorksButton
 {
-    if (!_rightButton) {
+    if (!_refreshWorksButton) {
         UIImage *refreshIcon = [IonIcons imageWithIcon:ion_ios_loop_strong size:24 color:[UIColor colorWithRGBA:0x8D8D8DFF]];
-        _rightButton = [[UIBarButtonItem alloc] initWithImage:refreshIcon style:UIBarButtonItemStylePlain target:self action:@selector(reorderWorks)];
+        _refreshWorksButton = [[UIBarButtonItem alloc] initWithImage:refreshIcon style:UIBarButtonItemStylePlain target:self action:@selector(reorderWorks)];
     }
     
-    return _rightButton;
+    return _refreshWorksButton;
+}
+
+- (UIBarButtonItem *)turnOnAuthorsAlphabetModeButton
+{
+    if (!_turnOnAuthorsAlphabetModeButton) {
+        UIImage *alphabetIcon = [UIImage imageWithIcon:@"fa-sort-alpha-asc" backgroundColor:[UIColor clearColor] iconColor:[UIColor colorWithRGBA:0x8D8D8DFF] fontSize:20];
+        alphabetIcon = [alphabetIcon imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        _turnOnAuthorsAlphabetModeButton = [[UIBarButtonItem alloc] initWithImage:alphabetIcon style:UIBarButtonItemStylePlain target:self action:@selector(turnOnAuthorsAlphabetMode)];
+    }
+    
+    return _turnOnAuthorsAlphabetModeButton;
+}
+
+- (UIBarButtonItem *)turnOffAuthorsAlphabetModeButton
+{
+    if (!_turnOffAuthorsAlphabetModeButton) {
+        UIImage *alphabetIcon = [UIImage imageWithIcon:@"fa-sort-alpha-asc" backgroundColor:[UIColor clearColor] iconColor:self.view.tintColor fontSize:20];
+        alphabetIcon = [alphabetIcon imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        _turnOffAuthorsAlphabetModeButton = [[UIBarButtonItem alloc] initWithImage:alphabetIcon style:UIBarButtonItemStylePlain target:self action:@selector(turnOffAuthorsAlphabetMode)];
+    }
+    
+    return _turnOffAuthorsAlphabetModeButton;
 }
 
 @end

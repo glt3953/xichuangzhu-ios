@@ -107,6 +107,7 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>FontAwesome.ttf</string>
 		<string>ionicons.ttf</string>
 		<string>华文仿宋.ttf</string>
 	</array>

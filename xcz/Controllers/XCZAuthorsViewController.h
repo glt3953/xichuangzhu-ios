@@ -10,4 +10,7 @@
 
 @interface XCZAuthorsViewController : UIViewController
 
+- (void)turnOnAuthorsAlphabetMode;
+- (void)turnOffAuthorsAlphabetMode;
+
 @end

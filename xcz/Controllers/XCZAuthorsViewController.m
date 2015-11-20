@@ -32,6 +32,8 @@ static NSString * const cellIdentifier = @"AuthorCell";
 @property (strong, nonatomic) NSMutableDictionary *authorsForFirstChar;
 @property (nonatomic, strong) NSArray *searchResult;
 
+@property (nonatomic) BOOL orderAuthorsByAlphabet;
+
 @end
 
 @implementation XCZAuthorsViewController
@@ -65,9 +67,14 @@ static NSString * const cellIdentifier = @"AuthorCell";
     
     for (char firstChar = 'A'; firstChar <= 'Z'; firstChar++) {
         NSString *firstCharInString = [NSString stringWithFormat:@"%c", firstChar];
-
+        
         if ([self.authorsForFirstChar objectForKey:firstCharInString] != nil) {
             [self.firstChars addObject:firstCharInString];
+
+            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
+            NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+            NSArray *sortedArray = [[self.authorsForFirstChar objectForKey:firstCharInString] sortedArrayUsingDescriptors:sortDescriptors];
+            [self.authorsForFirstChar setObject:sortedArray forKey:firstCharInString];
         }
     }
     
@@ -131,6 +138,28 @@ static NSString * const cellIdentifier = @"AuthorCell";
     }];
 }
 
+#pragma mark - Public Interface
+
+- (void)turnOnAuthorsAlphabetMode
+{
+    self.orderAuthorsByAlphabet = YES;
+    
+    [self.tableView reloadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.tableView.contentOffset = CGPointZero;
+    });
+}
+
+- (void)turnOffAuthorsAlphabetMode
+{
+    self.orderAuthorsByAlphabet = NO;
+    
+    [self.tableView reloadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.tableView.contentOffset = CGPointZero;
+    });
+}
+
 #pragma mark - SearchDisplayControllerDelegate
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
@@ -155,25 +184,33 @@ static NSString * const cellIdentifier = @"AuthorCell";
 
 #pragma mark - TableView Delegate
 
-// Section数目
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return 1;
     } else {
-        return self.dynasties.count;
+        if (self.orderAuthorsByAlphabet) {
+            return self.firstChars.count;
+        } else {
+            return self.dynasties.count;
+        }
     }
 }
 
-// 每个Section的行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return self.searchResult.count;
     } else {
-        NSString *dynastyName = [self.dynasties objectAtIndex:section];
-        NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
-        return authors.count;
+        if (self.orderAuthorsByAlphabet) {
+            NSString *firstChar = self.firstChars[section];
+            NSArray *authors = [self.authorsForFirstChar objectForKey:firstChar];
+            return authors.count;
+        } else {
+            NSString *dynastyName = self.dynasties[section];
+            NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
+            return authors.count;
+        }
     }
 }
 
@@ -183,7 +220,11 @@ static NSString * const cellIdentifier = @"AuthorCell";
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return @"";
     } else {
-        return self.dynasties[section];
+        if (self.orderAuthorsByAlphabet) {
+            return self.firstChars[section];
+        } else {
+            return self.dynasties[section];
+        }
     }
 }
 
@@ -193,16 +234,20 @@ static NSString * const cellIdentifier = @"AuthorCell";
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return @[];
     } else {
-        NSMutableArray *dynasties = [self.dynasties mutableCopy];
-        for (int i = 0; i < dynasties.count; i++) {
-            if ([dynasties[i] isEqualToString:@"五代十国"]) {
-                dynasties[i] = @"五代";
-            } else if ([dynasties[i] isEqualToString:@"南北朝"]) {
-                dynasties[i] = @"南北";
+        if (self.orderAuthorsByAlphabet) {
+            return self.firstChars;
+        } else {
+            NSMutableArray *dynasties = [self.dynasties mutableCopy];
+            for (int i = 0; i < dynasties.count; i++) {
+                if ([dynasties[i] isEqualToString:@"五代十国"]) {
+                    dynasties[i] = @"五代";
+                } else if ([dynasties[i] isEqualToString:@"南北朝"]) {
+                    dynasties[i] = @"南北";
+                }
             }
+            
+            return dynasties;
         }
-        
-        return dynasties;
     }
 }
 
@@ -213,9 +258,15 @@ static NSString * const cellIdentifier = @"AuthorCell";
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         author = self.searchResult[indexPath.row];
     } else {
-        NSString *dynastyName = [self.dynasties objectAtIndex:indexPath.section];
-        NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
-        author = authors[indexPath.row];
+        if (self.orderAuthorsByAlphabet) {
+            NSString *firstChar = self.firstChars[indexPath.section];
+            NSArray *authors = [self.authorsForFirstChar objectForKey:firstChar];
+            author = authors[indexPath.row];
+        } else {
+            NSString *dynastyName = [self.dynasties objectAtIndex:indexPath.section];
+            NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
+            author = authors[indexPath.row];
+        }
     }
 
     XCZAuthorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -231,9 +282,15 @@ static NSString * const cellIdentifier = @"AuthorCell";
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         author = self.searchResult[indexPath.row];
     } else {
-        NSString *dynastyName = [self.dynasties objectAtIndex:indexPath.section];
-        NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
-        author = authors[indexPath.row];
+        if (self.orderAuthorsByAlphabet) {
+            NSString *firstChar = self.firstChars[indexPath.section];
+            NSArray *authors = [self.authorsForFirstChar objectForKey:firstChar];
+            author = authors[indexPath.row];
+        } else {
+            NSString *dynastyName = [self.dynasties objectAtIndex:indexPath.section];
+            NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
+            author = authors[indexPath.row];
+        }
     }
 
     return [tableView fd_heightForCellWithIdentifier:cellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", author.id] configuration:^(id cell) {
@@ -254,13 +311,18 @@ static NSString * const cellIdentifier = @"AuthorCell";
         author = self.searchResult[indexPath.row];
         [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     } else {
-        NSString *dynastyName = [self.dynasties objectAtIndex:indexPath.section];
-        NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
-        author = authors[indexPath.row];
+        if (self.orderAuthorsByAlphabet) {
+            NSString *firstChar = self.firstChars[indexPath.section];
+            NSArray *authors = [self.authorsForFirstChar objectForKey:firstChar];
+            author = authors[indexPath.row];
+        } else {
+            NSString *dynastyName = [self.dynasties objectAtIndex:indexPath.section];
+            NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
+            author = authors[indexPath.row];
+        }
     }
     
     XCZAuthorViewController *detailController = [[XCZAuthorViewController alloc] initWithAuthorId:author.id];
-
     [self.navigationController pushViewController:detailController animated:YES];
 }
 
