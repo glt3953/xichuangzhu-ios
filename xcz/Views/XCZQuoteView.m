@@ -108,7 +108,17 @@
 - (void)quoteViewPressed
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(quoteViewPressed:)]) {
-        [self.delegate quoteViewPressed:self.quote];
+        [UIView animateWithDuration:.01 animations:^{
+            self.transform = CGAffineTransformScale(CGAffineTransformIdentity, .985, .985);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:.1 animations:^{
+                self.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self.delegate quoteViewPressed:self.quote];
+                });
+            }];
+        }];
     }
 }
 
