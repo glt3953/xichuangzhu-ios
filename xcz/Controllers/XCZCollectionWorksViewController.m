@@ -18,6 +18,7 @@
 #import <Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UITableView+FDTemplateLayoutCell.h>
+#import <AVOSCloud.h>
 
 static NSString * const CellIdentifier = @"CellIdentifier";
 
@@ -76,7 +77,15 @@ static NSString * const CellIdentifier = @"CellIdentifier";
 {
     [super viewWillAppear:animated];
     
+    [AVAnalytics beginLogPageView:[[NSString alloc] initWithFormat:@"collection-%@", self.collection.name]];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [AVAnalytics endLogPageView:[[NSString alloc] initWithFormat:@"collection-%@", self.collection.name]];
 }
 
 #pragma mark - View Helpers

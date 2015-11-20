@@ -16,6 +16,7 @@
 #import <FMDB/FMDB.h>
 #import <UITableView+FDTemplateLayoutCell.h>
 #import <Masonry.h>
+#import <AVOSCloud.h>
 
 static NSString * const cellIdentifier = @"AuthorCell";
 
@@ -142,12 +143,14 @@ static NSString * const cellIdentifier = @"AuthorCell";
 
 - (void)turnOnAuthorsAlphabetMode
 {
+    [AVAnalytics event:@"turn_on_authors_alphabet_mode"];
     self.orderAuthorsByAlphabet = YES;
     [self.tableView reloadData];
 }
 
 - (void)turnOffAuthorsAlphabetMode
 {
+    [AVAnalytics event:@"turn_off_authors_alphabet_mode"];
     self.orderAuthorsByAlphabet = NO;
     [self.tableView reloadData];
 }
