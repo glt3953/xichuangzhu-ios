@@ -113,6 +113,7 @@
     self.birthYear = [resultSet stringForColumn:@"birth_year"];
     self.deathYear = [resultSet stringForColumn:@"death_year"];
     self.baiduWiki = [resultSet stringForColumn:@"baidu_wiki"];
+    self.worksCount = [resultSet intForColumn:@"works_count"];
 }
 
 #pragma mark - Getters & Setters

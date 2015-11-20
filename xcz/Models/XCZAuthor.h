@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSString *deathYear;
 @property (nonatomic, strong) NSString *baiduWiki;
 @property (nonatomic, strong) XCZQuote *randomQuote;
+@property (nonatomic) NSInteger worksCount;
 
 + (XCZAuthor *)getById:(int)authorId;
 + (int)getWorksCount:(int)authorId;
