@@ -50,10 +50,12 @@ static NSString * const cellIdentifier = @"AuthorCell";
     self.authors = [NSMutableDictionary new];
     self.authorsForSearch = [XCZAuthor getAllAuthors];
     
-    for(int i = 0; i < self.dynasties.count; i++) {
-        NSString *dynasty = self.dynasties[i];
-        NSMutableArray *authors = [XCZAuthor getAuthorsByDynasty:dynasty];
-        [self.authors setObject:authors forKey:dynasty];
+    for (XCZAuthor *author in self.authorsForSearch) {
+        if (![self.authors objectForKey:author.dynasty]) {
+            [self.authors setObject:[NSMutableArray array] forKey:author.dynasty];
+        }
+        
+        [[self.authors objectForKey:author.dynasty] addObject:author];
     }
     
     return self;
