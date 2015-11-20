@@ -143,21 +143,13 @@ static NSString * const cellIdentifier = @"AuthorCell";
 - (void)turnOnAuthorsAlphabetMode
 {
     self.orderAuthorsByAlphabet = YES;
-    
     [self.tableView reloadData];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.tableView.contentOffset = CGPointZero;
-    });
 }
 
 - (void)turnOffAuthorsAlphabetMode
 {
     self.orderAuthorsByAlphabet = NO;
-    
     [self.tableView reloadData];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.tableView.contentOffset = CGPointZero;
-    });
 }
 
 #pragma mark - SearchDisplayControllerDelegate

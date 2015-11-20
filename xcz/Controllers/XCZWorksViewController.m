@@ -111,6 +111,20 @@ static NSString * const cellIdentifier = @"WorkCell";
     }];
 }
 
+#pragma mark - Public Methods
+
+- (void)reorderWorks
+{
+    [AVAnalytics event:@"reorder_works"]; // “重排序”事件。
+    self.works = [XCZWork reorderWorks];
+    [UIView transitionWithView: self.tableView
+                      duration: 0.15f
+                       options: UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        [self.tableView reloadData];
+                    } completion:nil];
+}
+
 #pragma mark - SearchDisplayController
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
@@ -197,17 +211,5 @@ static NSString * const cellIdentifier = @"WorkCell";
 }
 
 #pragma mark - Internal Helpers
-
-- (void)reorderWorks
-{
-    [AVAnalytics event:@"reorder_works"]; // “重排序”事件。
-    self.works = [XCZWork reorderWorks];
-    [UIView transitionWithView: self.tableView
-                      duration: 0.15f
-                       options: UIViewAnimationOptionTransitionCrossDissolve
-                    animations:^{
-                        [self.tableView reloadData];
-                    } completion:nil];
-}
 
 @end
