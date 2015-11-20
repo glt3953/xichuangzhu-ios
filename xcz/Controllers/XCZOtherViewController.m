@@ -168,9 +168,11 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             XCZLikesViewController *controller = [XCZLikesViewController new];
+            controller.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:controller animated:YES];
         } else {
             XCZMeetViewController * controller = [XCZMeetViewController new];
+            controller.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:controller animated:YES];
         }
     } else if (indexPath.section == 1) {
@@ -199,9 +201,11 @@
     } else {
         if (indexPath.row == 0) {
             UIViewController *controller = [XCZSettingsViewController new];
+            controller.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:controller animated:YES];
         } else {
             UIViewController *controller = [XCZAboutViewController new];
+            controller.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:controller animated:YES];
         }
     }
