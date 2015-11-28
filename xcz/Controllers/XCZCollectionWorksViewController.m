@@ -60,13 +60,11 @@ static NSString * const CellIdentifier = @"CellIdentifier";
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = self.collection.name;
-    
     // Custom titleView
     UILabel *titleLabel = [UILabel new];
     self.titleLabel = titleLabel;
     titleLabel.textColor = [UIColor clearColor];
-    titleLabel.text = self.collection.name;
+    titleLabel.text = [NSString stringWithFormat:@"「 %@ 」", self.collection.name];
     titleLabel.font = [UIFont boldSystemFontOfSize:17];
     CGSize size = [titleLabel systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     titleLabel.frame = CGRectMake(0, 0, size.width, size.height);
