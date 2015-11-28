@@ -60,13 +60,13 @@ static NSString * const CellIdentifier = @"CellIdentifier";
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = self.collection.fullName;
+    self.navigationItem.title = self.collection.name;
     
     // Custom titleView
     UILabel *titleLabel = [UILabel new];
     self.titleLabel = titleLabel;
     titleLabel.textColor = [UIColor clearColor];
-    titleLabel.text = self.collection.fullName;
+    titleLabel.text = self.collection.name;
     titleLabel.font = [UIFont boldSystemFontOfSize:17];
     CGSize size = [titleLabel systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     titleLabel.frame = CGRectMake(0, 0, size.width, size.height);
@@ -126,7 +126,7 @@ static NSString * const CellIdentifier = @"CellIdentifier";
     
     UILabel *collectionNameLabel = [UILabel new];
     collectionNameLabel.font = [UIFont systemFontOfSize:20];
-    collectionNameLabel.text = self.collection.fullName;
+    collectionNameLabel.text = self.collection.name;
     [headerView addSubview:collectionNameLabel];
     
     UILabel *collectionDescLabel = [UILabel new];

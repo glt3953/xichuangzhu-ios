@@ -57,7 +57,6 @@
     self.id = [resultSet intForColumn:@"id"];
     self.name = [resultSet stringForColumn:@"name"];
     self.showOrder = [resultSet intForColumn:@"show_order"];
-    self.fullName = [resultSet stringForColumn:@"full_name"];
     self.abbr = [resultSet stringForColumn:@"abbr"];
     self.desc = [resultSet stringForColumn:@"desc"];
     self.cover = [resultSet stringForColumn:@"cover"];

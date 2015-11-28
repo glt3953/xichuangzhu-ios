@@ -234,7 +234,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
         } else {
             NSMutableArray *dynasties = [self.dynasties mutableCopy];
             for (int i = 0; i < dynasties.count; i++) {
-                if ([dynasties[i] isEqualToString:@"五代十国"]) {
+                if ([dynasties[i] hasPrefix:@"五代"]) {
                     dynasties[i] = @"五代";
                 } else if ([dynasties[i] isEqualToString:@"南北朝"]) {
                     dynasties[i] = @"南北";

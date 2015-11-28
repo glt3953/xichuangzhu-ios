@@ -47,11 +47,11 @@ static NSString * const cellIdentifier = @"WorkCell";
     
     // 加载works
     self.works = [NSMutableDictionary new];
-    [self loadWorksByKind:@"文"];
-    [self loadWorksByKind:@"诗"];
-    [self loadWorksByKind:@"词"];
-    [self loadWorksByKind:@"曲"];
-    [self loadWorksByKind:@"赋"];
+    [self loadWorksByKind:@"wen"];
+    [self loadWorksByKind:@"shi"];
+    [self loadWorksByKind:@"ci"];
+    [self loadWorksByKind:@"qu"];
+    [self loadWorksByKind:@"fu"];
     
     return self;
 }
@@ -230,12 +230,27 @@ static NSString * const cellIdentifier = @"WorkCell";
 }
 
 // 根据类别加载作品
-- (void)loadWorksByKind:(NSString *)kindCN
+- (void)loadWorksByKind:(NSString *)kind
 {
-    NSMutableArray *works = [XCZWork getWorksByAuthorId:self.author.id kind:kindCN];
+    NSMutableArray *works = [XCZWork getWorksByAuthorId:self.author.id kind:kind];
     
     if ([works count] > 0) {
-        [self.works setObject:works forKey:kindCN];
+        [self.works setObject:works forKey:[self getChineseFromKind:kind traditional:NO]];
+    }
+}
+
+- (NSString *)getChineseFromKind:(NSString *)kind traditional:(BOOL)traditional
+{
+    if ([kind isEqualToString:@"shi"]) {
+        return traditional ? @"詩" : @"诗";
+    } else if ([kind isEqualToString:@"ci"]) {
+        return traditional ? @"詞" : @"词";
+    } else if ([kind isEqualToString:@"wen"]) {
+        return @"文";
+    } else if ([kind isEqualToString:@"qu"]) {
+        return @"曲";
+    } else {
+        return traditional ? @"賦" : @"赋";
     }
 }
 

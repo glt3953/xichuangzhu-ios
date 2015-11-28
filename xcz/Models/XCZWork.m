@@ -97,7 +97,7 @@
     FMDatabase *db = [FMDatabase databaseWithPath:dbPath];
 
     if ([db open]) {
-        NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM works WHERE author_id = %d AND kind_cn = '%@'", authorId, kind];
+        NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM works WHERE author_id = %d AND kind = '%@'", authorId, kind];
         FMResultSet *s = [db executeQuery:query];
         while ([s next]) {
             XCZWork *work = [XCZWork new];
