@@ -50,6 +50,28 @@
     return collections;
 }
 
++ (NSArray *)getAll
+{
+    int index = 0;
+    NSMutableArray *collections = [NSMutableArray new];
+    NSString *dbPath = [XCZUtils getDatabaseFilePath];
+    FMDatabase *db = [FMDatabase databaseWithPath:dbPath];
+    
+    if ([db open]) {
+        FMResultSet *s = [db executeQuery:@"SELECT * FROM collections ORDER BY show_order ASC"];
+        while ([s next]) {
+            XCZCollection *collection = [XCZCollection new];
+            [collection loadFromResultSet:s];
+            collections[index] = collection;
+            index++;
+        }
+        
+        [db close];
+    }
+    
+    return collections;
+}
+
 #pragma mark - Internal Helpers
 
 - (void)loadFromResultSet:(FMResultSet *)resultSet

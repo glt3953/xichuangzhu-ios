@@ -68,7 +68,6 @@ static NSString * const FooterViewReuseIdentifier = @"FooterView";
 
 #pragma mark - View Helpers
 
-
 - (void)createViews
 {
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];

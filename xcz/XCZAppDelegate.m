@@ -7,6 +7,7 @@
 //
 
 #import "XCZWork.h"
+#import "XCZCollection.h"
 #import "XCZQuote.h"
 #import "XCZAppDelegate.h"
 #import "XCZOtherViewController.h"
@@ -27,6 +28,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import <FMDB/FMDB.h>
 #import <LeanCloudFeedback/LeanCloudFeedback.h>
+#import <SDWebImage/SDWebImagePrefetcher.h>
 
 @implementation XCZAppDelegate
 
@@ -98,7 +100,7 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
+
     return YES;
 }
 
@@ -116,6 +118,16 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    // 预加载collection图片
+    NSArray *collections = [XCZCollection getAll];
+    NSMutableArray *urls = [NSMutableArray new];
+    SDWebImagePrefetcher *prefetcher = [SDWebImagePrefetcher sharedImagePrefetcher];
+
+    for (XCZCollection *collection in collections) {
+        [urls addObject:collection.cover];
+    }
+
+    [prefetcher prefetchURLs:urls];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

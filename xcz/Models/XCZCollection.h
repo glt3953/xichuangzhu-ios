@@ -22,5 +22,6 @@
 
 + (NSArray *)getByCollectionKind:(NSInteger)collectionKindId;
 + (instancetype)getById:(NSInteger)id;
++ (NSArray *)getAll;
 
 @end
