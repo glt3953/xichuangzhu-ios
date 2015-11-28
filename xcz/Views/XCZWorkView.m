@@ -80,30 +80,35 @@
     // 评析header
     UILabel *introHeaderLabel = [UILabel new];
     self.introHeaderLabel = introHeaderLabel;
-    introHeaderLabel.text = @"评析";
-    introHeaderLabel.textColor = [UIColor XCZMainColor];
-    [self addSubview:introHeaderLabel];
+    if ([self.work.intro length] > 0) {
+        introHeaderLabel.text = @"评析";
+        introHeaderLabel.textColor = [UIColor XCZMainColor];
+        [self addSubview:introHeaderLabel];
+    }
     
     // 评析
     XCZCopyableLabel *introLabel = [XCZCopyableLabel new];
     self.introLabel = introLabel;
-    introLabel.numberOfLines = 0;
-    introLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    introLabel.font = [UIFont systemFontOfSize:14];
-    introLabel.textColor = [UIColor colorWithRGBA:0x333333FF];
-    NSMutableParagraphStyle *introParagraphStyle = [[NSMutableParagraphStyle alloc] init];
-    introParagraphStyle.lineHeightMultiple = 1.3;
-    introParagraphStyle.paragraphSpacing = 8;
-    introLabel.attributedText = [[NSAttributedString alloc] initWithString:self.work.intro attributes:@{NSParagraphStyleAttributeName: introParagraphStyle}];
-    [self addSubview:introLabel];
+    if ([self.work.intro length] > 0) {
+        introLabel.numberOfLines = 0;
+        introLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        introLabel.font = [UIFont systemFontOfSize:14];
+        introLabel.textColor = [UIColor colorWithRGBA:0x333333FF];
+        NSMutableParagraphStyle *introParagraphStyle = [[NSMutableParagraphStyle alloc] init];
+        introParagraphStyle.lineHeightMultiple = 1.3;
+        introParagraphStyle.paragraphSpacing = 8;
+        introLabel.attributedText = [[NSAttributedString alloc] initWithString:self.work.intro attributes:@{NSParagraphStyleAttributeName: introParagraphStyle}];
+        [self addSubview:introLabel];
+    }
     
     // 摘录header
     UILabel *quotesHeaderLabel = [UILabel new];
     self.quotesHeaderLabel = quotesHeaderLabel;
-    quotesHeaderLabel.text = [NSString stringWithFormat:@"摘录 / %ld", (long)quotesCount];
-    quotesHeaderLabel.text = @"摘录";
-    quotesHeaderLabel.textColor = [UIColor XCZMainColor];
-    [self addSubview:quotesHeaderLabel];
+    if (quotesCount > 0) {
+        quotesHeaderLabel.text = @"摘录";
+        quotesHeaderLabel.textColor = [UIColor XCZMainColor];
+        [self addSubview:quotesHeaderLabel];
+    }
     
     // 约束
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -128,26 +133,46 @@
         make.left.right.equalTo(authorLabel);
     }];
     
-    [introHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(authorLabel);
-        make.top.equalTo(contentLabel.mas_bottom).offset(20).priorityHigh();
-    }];
-    
-    [introLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(introHeaderLabel.mas_bottom).offset(5);
-        make.left.right.equalTo(authorLabel);
-    }];
-    
-    [quotesHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(introLabel.mas_bottom).offset(15);
-        make.left.right.equalTo(authorLabel);
+    if ([self.work.intro length] > 0) {
+        [introHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(authorLabel);
+            make.top.equalTo(contentLabel.mas_bottom).offset(20).priorityHigh();
+        }];
         
-        if (quotesCount > 0) {
+        [introLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(introHeaderLabel.mas_bottom).offset(5);
+            make.left.right.equalTo(authorLabel);
+        }];
+    }
+    
+    if (quotesCount > 0) {
+        [quotesHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(authorLabel);
             make.bottom.equalTo(self);
+        }];
+    }
+    
+    if ([self.work.intro length] > 0) {
+        if (quotesCount > 0) {
+            [quotesHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(introLabel.mas_bottom).offset(15);
+            }];
         } else {
-            make.bottom.equalTo(self).offset(-15);
+            [introLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(self).offset(-15);
+            }];
         }
-    }];
+    } else {
+        if (quotesCount > 0) {
+            [quotesHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(contentLabel.mas_bottom).offset(20);
+            }];
+        } else {
+            [contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(self).offset(-15);
+            }];
+        }
+    }
     
     return self;
 }
