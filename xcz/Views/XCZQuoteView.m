@@ -36,6 +36,15 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(quoteViewPressed)];
     [self addGestureRecognizer:tapGesture];
     
+    [self createSubViews];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(quoteFontChanged) name:XCZQuoteFontChangedNotification object:nil];
+    
+    return self;
+}
+
+- (void)createSubViews
+{
     UIImageView *logoView = [UIImageView new];
     logoView.image = [UIImage imageNamed:@"AppIcon40x40"];
     logoView.layer.cornerRadius = 3;
@@ -86,8 +95,6 @@
         make.bottom.equalTo(logoView.mas_top).offset(-10);
         make.centerX.equalTo(logoView);
     }];
-    
-    return self;
 }
 
 - (void)layoutSubviews
@@ -103,6 +110,11 @@
     self.layer.shadowRadius = 2;
     
     [self.authorLabel sizeToFit];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - User Interaction
@@ -122,6 +134,20 @@
             }];
         }];
     }
+}
+
+#pragma mark - Notification Handles
+
+- (void)quoteFontChanged
+{
+    for (UIView *subView in self.subviews) {
+        [subView removeFromSuperview];
+    }
+    
+    [self createSubViews];
+    
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
 }
 
 #pragma mark - Public Helpers
