@@ -10,6 +10,14 @@
 #import "XCZUtils.h"
 #import <FMDB/FMDB.h>
 
+@interface XCZAuthor ()
+
+@property (strong, nonatomic) NSString *nameTr;
+@property (strong, nonatomic) NSString *introTr;
+@property (strong, nonatomic) NSString *dynastyTr;
+
+@end
+
 @implementation XCZAuthor
 
 // 根据id获取文学家
@@ -107,17 +115,50 @@
 - (void)loadFromResultSet:(FMResultSet *)resultSet
 {
     self.id = [resultSet intForColumn:@"id"];
-    self.name = [resultSet stringForColumn:@"name"];
+    
     self.firstChar = [resultSet stringForColumn:@"first_char"];
-    self.intro = [resultSet stringForColumn:@"intro"];
-    self.dynasty = [resultSet stringForColumn:@"dynasty"];
     self.birthYear = [resultSet stringForColumn:@"birth_year"];
     self.deathYear = [resultSet stringForColumn:@"death_year"];
     self.baiduWiki = [resultSet stringForColumn:@"baidu_wiki"];
     self.worksCount = [resultSet intForColumn:@"works_count"];
+    
+    self.name = [resultSet stringForColumn:@"name"];
+    self.intro = [resultSet stringForColumn:@"intro"];
+    self.dynasty = [resultSet stringForColumn:@"dynasty"];
+    
+    self.nameTr = [resultSet stringForColumn:@"name_tr"];
+    self.introTr = [resultSet stringForColumn:@"intro_tr"];
+    self.dynastyTr = [resultSet stringForColumn:@"dynasty_tr"];
 }
 
 #pragma mark - Getters & Setters
+
+- (NSString *)name
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _name;
+    } else {
+        return _nameTr;
+    }
+}
+
+- (NSString *)intro
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _intro;
+    } else {
+        return _introTr;
+    }
+}
+
+- (NSString *)dynasty
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _dynasty;
+    } else {
+        return _dynastyTr;
+    }
+}
 
 - (XCZQuote *)randomQuote
 {

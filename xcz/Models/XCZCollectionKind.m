@@ -10,6 +10,12 @@
 #import "XCZUtils.h"
 #import <FMDB/FMDB.h>
 
+@interface XCZCollectionKind ()
+
+@property (strong, nonatomic) NSString *nameTr;
+
+@end
+
 @implementation XCZCollectionKind
 
 + (NSArray *)getAll
@@ -39,8 +45,20 @@
 - (void)loadFromResultSet:(FMResultSet *)resultSet
 {
     self.id = [resultSet intForColumn:@"id"];
-    self.name = [resultSet stringForColumn:@"name"];
     self.showOrder = [resultSet intForColumn:@"show_order"];
+    self.name = [resultSet stringForColumn:@"name"];
+    self.nameTr = [resultSet stringForColumn:@"name_tr"];
+}
+
+#pragma mark - Getters & Setters
+
+- (NSString *)name
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _name;
+    } else {
+        return _nameTr;
+    }
 }
 
 @end

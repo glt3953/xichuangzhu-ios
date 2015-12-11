@@ -11,6 +11,19 @@
 #import "XCZUtils.h"
 #import <FMDB/FMDB.h>
 
+@interface XCZWork ()
+
+@property (strong, nonatomic) NSString *titleTr;
+@property (strong, nonatomic) NSString *fullTitleTr;
+@property (strong, nonatomic) NSString *authorTr;
+@property (strong, nonatomic) NSString *dynastyTr;
+@property (strong, nonatomic) NSString *kindCNTr;
+@property (strong, nonatomic) NSString *forewordTr;
+@property (strong, nonatomic) NSString *contentTr;
+@property (strong, nonatomic) NSString *introTr;
+
+@end
+
 @implementation XCZWork
 
 // 根据id获取作品
@@ -133,21 +146,103 @@
 - (void)updateWithResultSet:(FMResultSet *)resultSet
 {
     self.id = [resultSet intForColumn:@"id"];
+    self.authorId = [resultSet intForColumn:@"author_id"];
+    self.kind = [resultSet stringForColumn:@"kind"];
+    self.layout = [resultSet stringForColumn:@"layout"];
+    self.baiduWiki = [resultSet stringForColumn:@"baidu_wiki"];
+
     self.title = [resultSet stringForColumn:@"title"];
     self.fullTitle = [resultSet stringForColumn:@"full_title"];
-    self.authorId = [resultSet intForColumn:@"author_id"];
     self.author = [resultSet stringForColumn:@"author"];
     self.dynasty = [resultSet stringForColumn:@"dynasty"];
-    self.kind = [resultSet stringForColumn:@"kind"];
     self.kindCN = [resultSet stringForColumn:@"kind_cn"];
     self.foreword = [resultSet stringForColumn:@"foreword"];
     self.content = [resultSet stringForColumn:@"content"];
     self.intro = [resultSet stringForColumn:@"intro"];
-    self.layout = [resultSet stringForColumn:@"layout"];
-    self.baiduWiki = [resultSet stringForColumn:@"baidu_wiki"];
+
+    self.titleTr = [resultSet stringForColumn:@"title_tr"];
+    self.fullTitleTr = [resultSet stringForColumn:@"full_title_tr"];
+    self.authorTr = [resultSet stringForColumn:@"author_tr"];
+    self.dynastyTr = [resultSet stringForColumn:@"dynasty_tr"];
+    self.kindCNTr = [resultSet stringForColumn:@"kind_cn_tr"];
+    self.forewordTr = [resultSet stringForColumn:@"foreword_tr"];
+    self.contentTr = [resultSet stringForColumn:@"content_tr"];
+    self.introTr = [resultSet stringForColumn:@"intro_tr"];
 }
 
 #pragma mark - Getters & Setters
+
+- (NSString *)title
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _title;
+    } else {
+        return _titleTr;
+    }
+}
+
+- (NSString *)fullTitle
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _fullTitle;
+    } else {
+        return _fullTitleTr;
+    }
+}
+
+- (NSString *)author
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _author;
+    } else {
+        return _authorTr;
+    }
+}
+
+- (NSString *)dynasty
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _dynasty;
+    } else {
+        return _dynastyTr;
+    }
+}
+
+- (NSString *)kindCN
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _kindCN;
+    } else {
+        return _kindCNTr;
+    }
+}
+
+- (NSString *)foreword
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _foreword;
+    } else {
+        return _forewordTr;
+    }
+}
+
+- (NSString *)content
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _content;
+    } else {
+        return _contentTr;
+    }
+}
+
+- (NSString *)intro
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _intro;
+    } else {
+        return _introTr;
+    }
+}
 
 - (NSString *)firstSentence
 {

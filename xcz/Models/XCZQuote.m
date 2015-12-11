@@ -10,6 +10,14 @@
 #import "XCZUtils.h"
 #import <FMDB/FMDB.h>
 
+@interface XCZQuote ()
+
+@property (strong, nonatomic) NSString *quoteTr;
+@property (strong, nonatomic) NSString *authorTr;
+@property (strong, nonatomic) NSString *workTr;
+
+@end
+
 @implementation XCZQuote
 
 // 获取一条随机摘录
@@ -127,11 +135,45 @@
 - (void)loadFromResultSet:(FMResultSet *)resultSet
 {
     self.id = [resultSet intForColumn:@"id"];
-    self.quote = [resultSet stringForColumn:@"quote"];
     self.authorId = [resultSet intForColumn:@"author_id"];
-    self.author = [resultSet stringForColumn:@"author"];
     self.workId = [resultSet intForColumn:@"work_id"];
+    
+    self.quote = [resultSet stringForColumn:@"quote"];
+    self.author = [resultSet stringForColumn:@"author"];
     self.work = [resultSet stringForColumn:@"work"];
+
+    self.quoteTr = [resultSet stringForColumn:@"quote_tr"];
+    self.authorTr = [resultSet stringForColumn:@"author_tr"];
+    self.workTr = [resultSet stringForColumn:@"work_tr"];
+}
+
+#pragma mark - Getters & Setters
+
+- (NSString *)quote
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _quote;
+    } else {
+        return _quoteTr;
+    }
+}
+
+- (NSString *)author
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _author;
+    } else {
+        return _authorTr;
+    }
+}
+
+- (NSString *)work
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _work;
+    } else {
+        return _workTr;
+    }
 }
 
 @end

@@ -10,6 +10,14 @@
 #import "XCZUtils.h"
 #import <FMDB/FMDB.h>
 
+@interface XCZCollection ()
+
+@property (strong, nonatomic) NSString *nameTr;
+@property (strong, nonatomic) NSString *descTr;
+@property (strong, nonatomic) NSString *kindTr;
+
+@end
+
 @implementation XCZCollection
 
 + (instancetype)getById:(NSInteger)id
@@ -77,14 +85,48 @@
 - (void)loadFromResultSet:(FMResultSet *)resultSet
 {
     self.id = [resultSet intForColumn:@"id"];
-    self.name = [resultSet stringForColumn:@"name"];
+    
     self.showOrder = [resultSet intForColumn:@"show_order"];
-    self.abbr = [resultSet stringForColumn:@"abbr"];
-    self.desc = [resultSet stringForColumn:@"desc"];
     self.cover = [resultSet stringForColumn:@"cover"];
     self.link = [resultSet stringForColumn:@"link"];
     self.kindId = [resultSet intForColumn:@"kind_id"];
+
+    self.name = [resultSet stringForColumn:@"name"];
+    self.desc = [resultSet stringForColumn:@"desc"];
     self.kind = [resultSet stringForColumn:@"kind"];
+    
+    self.nameTr = [resultSet stringForColumn:@"name_tr"];
+    self.descTr = [resultSet stringForColumn:@"desc_tr"];
+    self.kindTr = [resultSet stringForColumn:@"kind_tr"];
+}
+
+#pragma mark - Getters & Setters
+
+- (NSString *)name
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _name;
+    } else {
+        return _nameTr;
+    }
+}
+
+- (NSString *)desc
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _desc;
+    } else {
+        return _descTr;
+    }
+}
+
+- (NSString *)kind
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _kind;
+    } else {
+        return _kindTr;
+    }
 }
 
 @end

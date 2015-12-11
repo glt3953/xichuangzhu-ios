@@ -22,7 +22,14 @@
     if ([db open]) {
         FMResultSet *s = [db executeQuery:@"SELECT * FROM dynasties ORDER BY start_year ASC"];
         while ([s next]) {
-            NSString* dynastyName = [s stringForColumn:@"name"];
+            NSString* dynastyName;
+            
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+                dynastyName = [s stringForColumn:@"name"];
+            } else {
+                dynastyName = [s stringForColumn:@"name_tr"];
+            }
+            
             dynastyNames[index] = dynastyName;
             index++;
         }
