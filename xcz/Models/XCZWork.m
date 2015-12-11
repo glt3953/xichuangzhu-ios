@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSString *forewordTr;
 @property (strong, nonatomic) NSString *contentTr;
 @property (strong, nonatomic) NSString *introTr;
+@property (strong, nonatomic) NSString *firstSentenceTr;
 
 @end
 
@@ -168,6 +169,9 @@
     self.forewordTr = [resultSet stringForColumn:@"foreword_tr"];
     self.contentTr = [resultSet stringForColumn:@"content_tr"];
     self.introTr = [resultSet stringForColumn:@"intro_tr"];
+    
+    self.firstSentence = [XCZUtils getFirstSentenceFromWorkContent:_content];
+    self.firstSentenceTr = [XCZUtils getFirstSentenceFromWorkContent:_contentTr];
 }
 
 #pragma mark - Getters & Setters
@@ -246,11 +250,11 @@
 
 - (NSString *)firstSentence
 {
-    if (!_firstSentence) {
-        _firstSentence = [XCZUtils getFirstSentenceFromWorkContent:self.content];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _firstSentence;
+    } else {
+        return _firstSentenceTr;
     }
-    
-    return _firstSentence;
 }
 
 @end

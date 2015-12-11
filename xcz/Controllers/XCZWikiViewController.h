@@ -6,9 +6,10 @@
 //  Copyright © 2015年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZBaseViewController.h"
 #import <UIKit/UIKit.h>
 
-@interface XCZWikiViewController : UIViewController
+@interface XCZWikiViewController : XCZBaseViewController
 
 - (instancetype)initWithURL:(NSString *)url;
 

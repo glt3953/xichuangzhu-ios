@@ -6,10 +6,11 @@
 //  Copyright © 2015年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZBaseViewController.h"
 #import "XCZCollection.h"
 #import <UIKit/UIKit.h>
 
-@interface XCZCollectionWorksViewController : UIViewController
+@interface XCZCollectionWorksViewController : XCZBaseViewController
 
 - (instancetype)initWithCollection:(XCZCollection *)collection;
 

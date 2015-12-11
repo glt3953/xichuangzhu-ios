@@ -60,6 +60,7 @@ static NSString * const CellIdentifier = @"CellIdentifier";
 {
     [super viewDidLoad];
     
+    
     // Custom titleView
     UILabel *titleLabel = [UILabel new];
     self.titleLabel = titleLabel;

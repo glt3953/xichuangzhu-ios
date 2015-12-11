@@ -109,8 +109,6 @@
         [[NSUserDefaults standardUserDefaults] setObject:XCZFontWYFangsong forKey:@"QuoteFont"];
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:XCZQuoteFontChangedNotification object:nil];
-    
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:self.selectedIndexPath];
     selectedCell.accessoryType = UITableViewCellAccessoryNone;
     
@@ -118,6 +116,8 @@
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
     self.selectedIndexPath = indexPath;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:XCZQuoteFontChangedNotification object:nil];
 }
 
 #pragma mark - Internal Helpers

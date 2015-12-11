@@ -6,9 +6,10 @@
 //  Copyright © 2015年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZBaseViewController.h"
 #import <UIKit/UIKit.h>
 
-@interface XCZAuthorQuotesViewController : UIViewController
+@interface XCZAuthorQuotesViewController : XCZBaseViewController
 
 - (instancetype)initWithAuthorId:(int)authorId;
 

@@ -6,9 +6,10 @@
 //  Copyright (c) 2014年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZBaseViewController.h"
 #import <UIKit/UIKit.h>
 
-@interface XCZAuthorsViewController : UIViewController
+@interface XCZAuthorsViewController : XCZBaseViewController
 
 - (void)turnOnAuthorsAlphabetMode;
 - (void)turnOffAuthorsAlphabetMode;

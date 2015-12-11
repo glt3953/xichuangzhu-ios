@@ -49,7 +49,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
     }
     
     self.authors = [XCZAuthor getAllAuthors];
-    self.dynasties = [XCZDynasty getNames];
+    self.dynasties = [XCZDynasty getAll];
     self.authorsForDynasty = [NSMutableDictionary new];
     self.firstChars = [NSMutableArray new];
     self.authorsForFirstChar = [NSMutableDictionary new];
@@ -202,8 +202,8 @@ static NSString * const cellIdentifier = @"AuthorCell";
             NSArray *authors = [self.authorsForFirstChar objectForKey:firstChar];
             return authors.count;
         } else {
-            NSString *dynastyName = self.dynasties[section];
-            NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
+            XCZDynasty *dynasty = self.dynasties[section];
+            NSArray *authors = [self.authorsForDynasty objectForKey:dynasty.name];
             return authors.count;
         }
     }
@@ -218,7 +218,8 @@ static NSString * const cellIdentifier = @"AuthorCell";
         if (self.orderAuthorsByAlphabet) {
             return self.firstChars[section];
         } else {
-            return self.dynasties[section];
+            XCZDynasty *dynasty = self.dynasties[section];
+            return dynasty.name;
         }
     }
 }
@@ -232,16 +233,21 @@ static NSString * const cellIdentifier = @"AuthorCell";
         if (self.orderAuthorsByAlphabet) {
             return self.firstChars;
         } else {
-            NSMutableArray *dynasties = [self.dynasties mutableCopy];
-            for (int i = 0; i < dynasties.count; i++) {
-                if ([dynasties[i] hasPrefix:@"五代"]) {
-                    dynasties[i] = @"五代";
-                } else if ([dynasties[i] isEqualToString:@"南北朝"]) {
-                    dynasties[i] = @"南北";
+            NSMutableArray *dynastyNames = [NSMutableArray new];
+            
+            for (int i = 0; i < self.dynasties.count; i++) {
+                XCZDynasty *dynasty = self.dynasties[i];
+                
+                if ([dynasty.name hasPrefix:@"五代"]) {
+                    [dynastyNames addObject:@"五代"];
+                } else if ([dynasty.name hasPrefix:@"南北"]) {
+                    [dynastyNames addObject:@"南北"];
+                } else {
+                    [dynastyNames addObject:dynasty.name];
                 }
             }
             
-            return dynasties;
+            return dynastyNames;
         }
     }
 }
@@ -258,8 +264,8 @@ static NSString * const cellIdentifier = @"AuthorCell";
             NSArray *authors = [self.authorsForFirstChar objectForKey:firstChar];
             author = authors[indexPath.row];
         } else {
-            NSString *dynastyName = [self.dynasties objectAtIndex:indexPath.section];
-            NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
+            XCZDynasty *dynasty = self.dynasties[indexPath.section];
+            NSArray *authors = [self.authorsForDynasty objectForKey:dynasty.name];
             author = authors[indexPath.row];
         }
     }
@@ -282,8 +288,8 @@ static NSString * const cellIdentifier = @"AuthorCell";
             NSArray *authors = [self.authorsForFirstChar objectForKey:firstChar];
             author = authors[indexPath.row];
         } else {
-            NSString *dynastyName = [self.dynasties objectAtIndex:indexPath.section];
-            NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
+            XCZDynasty *dynasty = self.dynasties[indexPath.section];
+            NSArray *authors = [self.authorsForDynasty objectForKey:dynasty.name];
             author = authors[indexPath.row];
         }
     }
@@ -311,8 +317,8 @@ static NSString * const cellIdentifier = @"AuthorCell";
             NSArray *authors = [self.authorsForFirstChar objectForKey:firstChar];
             author = authors[indexPath.row];
         } else {
-            NSString *dynastyName = [self.dynasties objectAtIndex:indexPath.section];
-            NSArray *authors = [self.authorsForDynasty objectForKey:dynastyName];
+            XCZDynasty *dynasty = self.dynasties[indexPath.section];
+            NSArray *authors = [self.authorsForDynasty objectForKey:dynasty.name];
             author = authors[indexPath.row];
         }
     }

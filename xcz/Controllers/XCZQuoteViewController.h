@@ -7,9 +7,10 @@
 //
 
 #import "XCZQuote.h"
+#import "XCZBaseViewController.h"
 #import <UIKit/UIKit.h>
 
-@interface XCZQuoteViewController : UIViewController
+@interface XCZQuoteViewController : XCZBaseViewController
 
 - (instancetype)initWithQuote:(XCZQuote *)quote;
 

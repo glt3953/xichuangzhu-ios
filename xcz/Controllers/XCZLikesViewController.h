@@ -6,8 +6,9 @@
 //  Copyright (c) 2015年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZBaseViewController.h"
 #import <UIKit/UIKit.h>
 
-@interface XCZLikesViewController : UIViewController
+@interface XCZLikesViewController : XCZBaseViewController
 
 @end

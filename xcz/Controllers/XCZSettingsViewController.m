@@ -9,6 +9,7 @@
 #import "XCZSettingsViewController.h"
 #import "XCZChineseKindSettingsViewController.h"
 #import "XCZQuoteFontSettingsViewController.h"
+#import "Constants.h"
 #import <Masonry.h>
 
 @interface XCZSettingsViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -35,11 +36,18 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"设置";
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(quoteFontChanged) name:XCZQuoteFontChangedNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Layout
@@ -65,6 +73,11 @@
 - (void)changeBrightness
 {
     [UIScreen mainScreen].brightness = self.slider.value;
+}
+
+- (void)quoteFontChanged
+{
+    [self.tableView reloadData];
 }
 
 #pragma mark - SomeDelegate

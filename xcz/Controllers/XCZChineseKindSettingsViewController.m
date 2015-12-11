@@ -103,8 +103,6 @@
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"SimplifiedChinese"];
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:XCZChineseKindChangedNotification object:nil];
-    
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:self.selectedIndexPath];
     selectedCell.accessoryType = UITableViewCellAccessoryNone;
     
@@ -112,6 +110,8 @@
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
     self.selectedIndexPath = indexPath;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:XCZChineseKindChangedNotification object:nil];
 }
 
 #pragma mark - Internal Helpers

@@ -6,9 +6,10 @@
 //  Copyright © 2015年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZBaseViewController.h"
 #import "XCZQuoteDraggableView.h"
 #import <UIKit/UIKit.h>
 
-@interface XCZRandomQuoteViewController : UIViewController
+@interface XCZRandomQuoteViewController : XCZBaseViewController
 
 @end

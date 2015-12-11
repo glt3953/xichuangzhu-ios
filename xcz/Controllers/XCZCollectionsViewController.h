@@ -6,8 +6,9 @@
 //  Copyright © 2015年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZBaseViewController.h"
 #import <UIKit/UIKit.h>
 
-@interface XCZCollectionsViewController : UIViewController
+@interface XCZCollectionsViewController : XCZBaseViewController
 
 @end

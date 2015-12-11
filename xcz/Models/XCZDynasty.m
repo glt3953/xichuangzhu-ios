@@ -10,32 +10,68 @@
 #import "XCZUtils.h"
 #import <FMDB/FMDB.h>
 
+@interface XCZDynasty ()
+
+@property (nonatomic, strong) NSString *nameTr;
+@property (nonatomic, strong) NSString *introTr;
+
+@end
+
 @implementation XCZDynasty
 
-+ (NSMutableArray *)getNames
++ (NSMutableArray *)getAll
 {
     int index = 0;
-    NSMutableArray *dynastyNames = [[NSMutableArray alloc] init];
-    
+    NSMutableArray *dynasties = [NSMutableArray new];
     NSString *dbPath = [XCZUtils getDatabaseFilePath];
     FMDatabase *db = [FMDatabase databaseWithPath:dbPath];
+    
     if ([db open]) {
         FMResultSet *s = [db executeQuery:@"SELECT * FROM dynasties ORDER BY start_year ASC"];
         while ([s next]) {
-            NSString* dynastyName;
-            
-            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
-                dynastyName = [s stringForColumn:@"name"];
-            } else {
-                dynastyName = [s stringForColumn:@"name_tr"];
-            }
-            
-            dynastyNames[index] = dynastyName;
+            XCZDynasty *dynasty = [XCZDynasty new];
+            [dynasty loadFromResultSet:s];
+            dynasties[index] = dynasty;
             index++;
         }
+        
+        [db close];
     }
     
-    return dynastyNames;
+    return dynasties;
+}
+
+#pragma mark - Internal Helper
+
+- (void)loadFromResultSet:(FMResultSet *)resultSet
+{
+    self.id = [resultSet intForColumn:@"id"];
+    
+    self.name = [resultSet stringForColumn:@"name"];
+    self.intro = [resultSet stringForColumn:@"intro"];
+    
+    self.nameTr = [resultSet stringForColumn:@"name_tr"];
+    self.introTr = [resultSet stringForColumn:@"intro_tr"];
+}
+
+#pragma mark - Getters & Setters
+
+- (NSString *)name
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _name;
+    } else {
+        return _nameTr;
+    }
+}
+
+- (NSString *)intro
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _intro;
+    } else {
+        return _introTr;
+    }
 }
 
 @end

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		05349CDF1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05349CDE1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m */; };
 		05349CE21C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05349CE11C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.m */; };
+		05349CE51C1B392A0011DCEB /* XCZBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05349CE41C1B392A0011DCEB /* XCZBaseViewController.m */; };
 		0545D2681BC51F9800410895 /* XCZLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D2671BC51F9800410895 /* XCZLabel.m */; };
 		0545D26B1BC5379200410895 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D2691BC5379200410895 /* UIColor+Helper.m */; };
 		0545D26E1BC5428500410895 /* XCZWorkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D26D1BC5428500410895 /* XCZWorkView.m */; };
@@ -102,6 +103,8 @@
 		05349CDE1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZChineseKindSettingsViewController.m; sourceTree = "<group>"; };
 		05349CE01C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZQuoteFontSettingsViewController.h; sourceTree = "<group>"; };
 		05349CE11C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZQuoteFontSettingsViewController.m; sourceTree = "<group>"; };
+		05349CE31C1B39290011DCEB /* XCZBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZBaseViewController.h; sourceTree = "<group>"; };
+		05349CE41C1B392A0011DCEB /* XCZBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZBaseViewController.m; sourceTree = "<group>"; };
 		0545D2661BC51F9800410895 /* XCZLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZLabel.h; sourceTree = "<group>"; };
 		0545D2671BC51F9800410895 /* XCZLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZLabel.m; sourceTree = "<group>"; };
 		0545D2691BC5379200410895 /* UIColor+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
@@ -580,6 +583,8 @@
 		05DF00CE195F0CE100175ABF /* xcz */ = {
 			isa = PBXGroup;
 			children = (
+				05349CE31C1B39290011DCEB /* XCZBaseViewController.h */,
+				05349CE41C1B392A0011DCEB /* XCZBaseViewController.m */,
 				054AA5191BD74C1200CE8EDC /* Additions */,
 				0564855B1BA88A0A00F52EAE /* Categories */,
 				056485401BA8898600F52EAE /* Controllers */,
@@ -763,7 +768,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" 381afd6764f80d23443d620e7747e03f867c0ac3 773ed15148084e082507af05b6418cbc08d25458a9d2f0bb194f2538347443a3";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 381afd6764f80d23443d620e7747e03f867c0ac3 773ed15148084e082507af05b6418cbc08d25458a9d2f0bb194f2538347443a3";
 		};
 		9A222FDB2DB94392BEE9375E /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -827,6 +832,7 @@
 				05CC76631BD6433000A3970D /* XCZQuoteViewController.m in Sources */,
 				05CC765D1BD6247E00A3970D /* XCZQuoteView.m in Sources */,
 				05CFDFE81BF7740F0027773C /* XCZCollection.m in Sources */,
+				05349CE51C1B392A0011DCEB /* XCZBaseViewController.m in Sources */,
 				0599F5F71BE7B9A300AA099D /* XCZBadgeView.m in Sources */,
 				05349CDF1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m in Sources */,
 				05ECE6221BD49D5E008DE9CE /* XCZWorkTableViewCell.m in Sources */,
