@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05349CDF1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05349CDE1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m */; };
+		05349CE21C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05349CE11C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.m */; };
 		0545D2681BC51F9800410895 /* XCZLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D2671BC51F9800410895 /* XCZLabel.m */; };
 		0545D26B1BC5379200410895 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D2691BC5379200410895 /* UIColor+Helper.m */; };
 		0545D26E1BC5428500410895 /* XCZWorkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D26D1BC5428500410895 /* XCZWorkView.m */; };
 		0545D2711BC54C8B00410895 /* XCZLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D2701BC54C8B00410895 /* XCZLibraryViewController.m */; };
 		0545D2741BC54CF600410895 /* XCZMeetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D2731BC54CF600410895 /* XCZMeetViewController.m */; };
 		054AA51F1BD74FE600CE8EDC /* XCZAuthorHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 054AA51E1BD74FE600CE8EDC /* XCZAuthorHeaderView.m */; };
+		054D06551C19EF8A002E7854 /* Wyue.otf in Resources */ = {isa = PBXBuildFile; fileRef = 054D06541C19EF4F002E7854 /* Wyue.otf */; };
 		0564853B1BA8895300F52EAE /* XCZAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485321BA8895300F52EAE /* XCZAuthor.m */; };
 		0564853C1BA8895300F52EAE /* XCZDynasty.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485341BA8895300F52EAE /* XCZDynasty.m */; };
 		0564853D1BA8895300F52EAE /* XCZLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485361BA8895300F52EAE /* XCZLike.m */; };
@@ -95,6 +98,10 @@
 
 /* Begin PBXFileReference section */
 		051C225419B8B1FC00FA14E8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		05349CDD1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZChineseKindSettingsViewController.h; sourceTree = "<group>"; };
+		05349CDE1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZChineseKindSettingsViewController.m; sourceTree = "<group>"; };
+		05349CE01C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZQuoteFontSettingsViewController.h; sourceTree = "<group>"; };
+		05349CE11C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZQuoteFontSettingsViewController.m; sourceTree = "<group>"; };
 		0545D2661BC51F9800410895 /* XCZLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZLabel.h; sourceTree = "<group>"; };
 		0545D2671BC51F9800410895 /* XCZLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZLabel.m; sourceTree = "<group>"; };
 		0545D2691BC5379200410895 /* UIColor+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
@@ -107,6 +114,7 @@
 		0545D2731BC54CF600410895 /* XCZMeetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZMeetViewController.m; sourceTree = "<group>"; };
 		054AA51D1BD74FE600CE8EDC /* XCZAuthorHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthorHeaderView.h; sourceTree = "<group>"; };
 		054AA51E1BD74FE600CE8EDC /* XCZAuthorHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthorHeaderView.m; sourceTree = "<group>"; };
+		054D06541C19EF4F002E7854 /* Wyue.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Wyue.otf; sourceTree = "<group>"; };
 		056485311BA8895300F52EAE /* XCZAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthor.h; sourceTree = "<group>"; };
 		056485321BA8895300F52EAE /* XCZAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthor.m; sourceTree = "<group>"; };
 		056485331BA8895300F52EAE /* XCZDynasty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZDynasty.h; sourceTree = "<group>"; };
@@ -322,6 +330,10 @@
 				05F219191BC6134400B222D7 /* XCZAboutViewController.m */,
 				0599F5EF1BE76A2A00AA099D /* XCZSettingsViewController.h */,
 				0599F5F01BE76A2A00AA099D /* XCZSettingsViewController.m */,
+				05349CDD1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.h */,
+				05349CDE1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m */,
+				05349CE01C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.h */,
+				05349CE11C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.m */,
 				0545D2721BC54CF600410895 /* XCZMeetViewController.h */,
 				0545D2731BC54CF600410895 /* XCZMeetViewController.m */,
 			);
@@ -587,6 +599,7 @@
 			children = (
 				05AC40B91BFF569B006F6CA3 /* FontAwesome.ttf */,
 				05CC76561BD5E56A00A3970D /* 华文仿宋.ttf */,
+				054D06541C19EF4F002E7854 /* Wyue.otf */,
 				05CE723619A4D97C003864E4 /* Images.xcassets */,
 				05BDB0B81A555CA800DBBFBF /* xcz_user.db */,
 				05B2287B195FCEBE00F91BCC /* xcz.db */,
@@ -717,6 +730,7 @@
 				05BDB0B91A555CA800DBBFBF /* xcz_user.db in Resources */,
 				0587F1381BD9D39F0037747E /* UMShareEditViewController.xib in Resources */,
 				0587F13B1BD9D39F0037747E /* UMSnsAccountViewController.xib in Resources */,
+				054D06551C19EF8A002E7854 /* Wyue.otf in Resources */,
 				0587F1361BD9D39F0037747E /* UMSCommentInputController.xib in Resources */,
 				05CE723719A4D97C003864E4 /* Images.xcassets in Resources */,
 				05AC40BA1BFF56A1006F6CA3 /* FontAwesome.ttf in Resources */,
@@ -808,11 +822,13 @@
 				0545D2741BC54CF600410895 /* XCZMeetViewController.m in Sources */,
 				054AA51F1BD74FE600CE8EDC /* XCZAuthorHeaderView.m in Sources */,
 				05AC40C01BFF5D42006F6CA3 /* NSString+FontAwesome.m in Sources */,
+				05349CE21C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.m in Sources */,
 				05827AA0196A8236003ABBDD /* XCZUtils.m in Sources */,
 				05CC76631BD6433000A3970D /* XCZQuoteViewController.m in Sources */,
 				05CC765D1BD6247E00A3970D /* XCZQuoteView.m in Sources */,
 				05CFDFE81BF7740F0027773C /* XCZCollection.m in Sources */,
 				0599F5F71BE7B9A300AA099D /* XCZBadgeView.m in Sources */,
+				05349CDF1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m in Sources */,
 				05ECE6221BD49D5E008DE9CE /* XCZWorkTableViewCell.m in Sources */,
 				05ECE61C1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.m in Sources */,
 				056485541BA889E100F52EAE /* XCZAuthorsViewController.m in Sources */,

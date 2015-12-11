@@ -43,9 +43,11 @@
     self.logoView = logoView;
     [self addSubview:logoView];
     
-    UILabel *authorLabel = [self createVerticalLabel:self.quote.author];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = [self lineSpacing];
+    UILabel *authorLabel = [self createVerticalLabel:self.quote.author attributes:@{NSParagraphStyleAttributeName: paragraphStyle}];
     self.authorLabel = authorLabel;
-    authorLabel.font = [UIFont fontWithName:XCZFontFangsong size:[self authorFontSize]];
+    authorLabel.font = [UIFont fontWithName:[self fontName] size:[self authorFontSize]];
     [self addSubview:authorLabel];
     
     [self createQuoteLabels];
@@ -157,12 +159,12 @@
         NSRange range = [result rangeAtIndex:0];
         
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        paragraphStyle.lineSpacing = 2;
+        paragraphStyle.lineSpacing = [self lineSpacing];
         
         NSString *quoteText = [self.quote.quote substringWithRange:NSMakeRange(prevLocation, range.location - prevLocation)];
         UILabel *quoteLabel = [self createVerticalLabel:quoteText attributes:@{NSParagraphStyleAttributeName: paragraphStyle}];
         
-        quoteLabel.font = [UIFont fontWithName:XCZFontFangsong size:[self quoteFontSize]];
+        quoteLabel.font = [UIFont fontWithName:[self fontName] size:[self quoteFontSize]];
 
         [self.quoteLabels addObject:quoteLabel];
         
@@ -198,32 +200,75 @@
     return [letterArray componentsJoinedByString:@"\n"];
 }
 
+- (NSString *)fontName
+{
+    if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"QuoteFont"] isEqualToString:@"STFangsong"]) {
+        return XCZFontHWFangsong;
+    } else {
+        return XCZFontWYFangsong;
+    }
+}
+
 - (CGFloat)quoteFontSize
 {
-    if (IS_IPHONE_4_OR_LESS) {
-        return 23;
-    } else if (IS_IPHONE_5) {
-        return 25;
-    } else if (IS_IPHONE_6) {
-        return 28;
+    // 华文仿宋
+    if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"QuoteFont"] isEqualToString:@"STFangsong"]) {
+        if (IS_IPHONE_4_OR_LESS) {
+            return 23;
+        } else if (IS_IPHONE_5) {
+            return 25;
+        } else if (IS_IPHONE_6) {
+            return 28;
+        } else {
+            return 31;
+        }
     } else {
-        return 31;
+        // 文悦仿宋
+        if (IS_IPHONE_4_OR_LESS) {
+            return 19;
+        } else if (IS_IPHONE_5) {
+            return 21;
+        } else if (IS_IPHONE_6) {
+            return 24;
+        } else {
+            return 27;
+        }
     }
 }
 
+// 水平间距
 - (CGFloat)quoteHorizonalGap
 {
-    if (IS_IPHONE_4_OR_LESS) {
-        return 9;
-    } else if (IS_IPHONE_5) {
-        return 10;
-    } else if (IS_IPHONE_6) {
-        return 11;
+    // 华文仿宋
+    if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"QuoteFont"] isEqualToString:@"STFangsong"]) {
+        if (IS_IPHONE_4_OR_LESS) {
+            return 9;
+        } else if (IS_IPHONE_5) {
+            return 10;
+        } else if (IS_IPHONE_6) {
+            return 11;
+        } else {
+            return 12;
+        }
     } else {
-        return 12;
+        // 文悦仿宋
+        if (IS_IPHONE_4_OR_LESS) {
+            return 11;
+        } else if (IS_IPHONE_5) {
+            return 12;
+        } else if (IS_IPHONE_6) {
+            return 13;
+        } else {
+            return 14;
+        }
     }
 }
 
+/**
+ *  右边距
+ *
+ *  @return
+ */
 - (CGFloat)quoteRightMargin
 {
     if (IS_IPHONE_4_OR_LESS) {
@@ -237,6 +282,11 @@
     }
 }
 
+/**
+ *  上边距
+ *
+ *  @return
+ */
 - (CGFloat)quoteTopMargin
 {
     if (IS_IPHONE_4_OR_LESS) {
@@ -250,16 +300,41 @@
     }
 }
 
+// 行间距
+- (CGFloat)lineSpacing
+{
+    if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"QuoteFont"] isEqualToString:@"STFangsong"]) {
+        return 2;
+    } else {
+        return 0.6;
+    }
+}
+
+// 作者字体
 - (CGFloat)authorFontSize
 {
-    if (IS_IPHONE_4_OR_LESS) {
-        return 17;
-    } else if (IS_IPHONE_5) {
-        return 18;
-    } else if (IS_IPHONE_6) {
-        return 20;
+    // 华文仿宋
+    if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"QuoteFont"] isEqualToString:@"STFangsong"]) {
+        if (IS_IPHONE_4_OR_LESS) {
+            return 17;
+        } else if (IS_IPHONE_5) {
+            return 18;
+        } else if (IS_IPHONE_6) {
+            return 20;
+        } else {
+            return 22;
+        }
     } else {
-        return 22;
+        // 文悦仿宋
+        if (IS_IPHONE_4_OR_LESS) {
+            return 13;
+        } else if (IS_IPHONE_5) {
+            return 14;
+        } else if (IS_IPHONE_6) {
+            return 16;
+        } else {
+            return 18;
+        }
     }
 }
 

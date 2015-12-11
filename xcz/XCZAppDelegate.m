@@ -34,6 +34,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *factorySettings = @{@"SimplifiedChinese": @YES, @"QuoteFont": @"STFangsong"};
+    [defaults registerDefaults:factorySettings];
+    
     [Fabric with:@[[Crashlytics class]]];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -165,7 +169,6 @@
 {
     NSString *storePath = [XCZUtils getDatabaseFilePath];
     NSString *bundleStore = [[NSBundle mainBundle] pathForResource:@"xcz" ofType:@"db"];
-    //NSLog(@"%@", storePath);
     
     // 若Documents文件夹下不存在数据库文件，则执行拷贝
     if (![[NSFileManager defaultManager] fileExistsAtPath:storePath]) {

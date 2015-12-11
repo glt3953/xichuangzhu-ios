@@ -7,6 +7,8 @@
 //
 
 #import "XCZSettingsViewController.h"
+#import "XCZChineseKindSettingsViewController.h"
+#import "XCZQuoteFontSettingsViewController.h"
 #import <Masonry.h>
 
 @interface XCZSettingsViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -69,22 +71,35 @@
 
 #pragma mark - Tableview Delegate
 
-static NSString * const cellIdentifier = @"identifier";
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [UITableViewCell new];
+    NSString *chineseKind = [[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"] ? @"简体" : @"繁体";
+    NSString *fontName;
     
-    [self configBrightnessCell:cell];
+    if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"QuoteFont"] isEqualToString:@"STFangsong"]) {
+        fontName = @"华文仿宋";
+    } else {
+        fontName = @"文悦古体仿宋";
+    }
+    
+    if (indexPath.row == 0) {
+        [self configKeyValueCell:cell key:@"简繁切换" value:chineseKind];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else if (indexPath.row == 1) {
+        [self configKeyValueCell:cell key:@"摘录字体" value:fontName];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else {
+        [self configBrightnessCell:cell];
+    }
     
     return cell;
 }
-
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
@@ -94,14 +109,50 @@ static NSString * const cellIdentifier = @"identifier";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row == 0) {
+        UIViewController *controller = [XCZChineseKindSettingsViewController new];
+        [self.navigationController pushViewController:controller animated:YES];
+    } else if (indexPath.row == 1) {
+        UIViewController *controller = [XCZQuoteFontSettingsViewController new];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 }
 
 #pragma mark - Internal Helpers
+
+- (void)configKeyValueCell:(UITableViewCell *)cell key:(NSString *)key value:(NSString *)value
+{
+    UILabel *keyLabel = [UILabel new];
+    keyLabel.text = key;
+    keyLabel.font = [UIFont systemFontOfSize:15];
+    [cell.contentView addSubview:keyLabel];
+    
+    UILabel *valueLabel = [UILabel new];
+    valueLabel.textColor = [UIColor grayColor];
+    if (value) {
+        valueLabel.text = value;
+    }
+    valueLabel.font = [UIFont systemFontOfSize:15];
+    [cell.contentView addSubview:valueLabel];
+    
+    // 约束
+    [keyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(cell.contentView);
+        make.left.equalTo(cell.contentView).offset(15);
+    }];
+    
+    [valueLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(cell.contentView);
+        make.right.equalTo(cell.contentView);
+    }];
+}
 
 - (void)configBrightnessCell:(UITableViewCell *)cell
 {
     UILabel *textLabel = [UILabel new];
     textLabel.text = @"屏幕亮度";
+    textLabel.font = [UIFont systemFontOfSize:15];
     [cell.contentView addSubview:textLabel];
     
     UISlider *slider = [UISlider new];
