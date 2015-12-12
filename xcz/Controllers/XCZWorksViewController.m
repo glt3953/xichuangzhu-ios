@@ -81,7 +81,7 @@ static NSString * const cellIdentifier = @"WorkCell";
 - (void)createViews
 {
     UISearchBar *searchBar = [UISearchBar new];
-    searchBar.placeholder = @"搜索";
+//    searchBar.placeholder = @"搜索";
     [self.view addSubview:searchBar];
     
     UISearchDisplayController *searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0521D8721C1BBA6B0003A081 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0521D8741C1BBA6B0003A081 /* InfoPlist.strings */; };
+		0521D8781C1BBDC50003A081 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0521D87A1C1BBDC50003A081 /* Localizable.strings */; };
 		05349CDF1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05349CDE1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m */; };
 		05349CE21C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05349CE11C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.m */; };
 		05349CE51C1B392A0011DCEB /* XCZBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05349CE41C1B392A0011DCEB /* XCZBaseViewController.m */; };
@@ -101,6 +102,8 @@
 		051C225419B8B1FC00FA14E8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0521D8731C1BBA6B0003A081 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		0521D8751C1BBB800003A081 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		0521D8791C1BBDC50003A081 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0521D87B1C1BBDC70003A081 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		05349CDD1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZChineseKindSettingsViewController.h; sourceTree = "<group>"; };
 		05349CDE1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZChineseKindSettingsViewController.m; sourceTree = "<group>"; };
 		05349CE01C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZQuoteFontSettingsViewController.h; sourceTree = "<group>"; };
@@ -612,6 +615,7 @@
 				05DF00D4195F0CE100175ABF /* main.m */,
 				05DF00D6195F0CE100175ABF /* xcz-Prefix.pch */,
 				0521D8741C1BBA6B0003A081 /* InfoPlist.strings */,
+				0521D87A1C1BBDC50003A081 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -739,6 +743,7 @@
 				054D06551C19EF8A002E7854 /* Wyue.otf in Resources */,
 				0587F1361BD9D39F0037747E /* UMSCommentInputController.xib in Resources */,
 				05CE723719A4D97C003864E4 /* Images.xcassets in Resources */,
+				0521D8781C1BBDC50003A081 /* Localizable.strings in Resources */,
 				05AC40BA1BFF56A1006F6CA3 /* FontAwesome.ttf in Resources */,
 				0587F13A1BD9D39F0037747E /* UMSLoginViewController.xib in Resources */,
 				0587F13D1BD9D39F0037747E /* UMSocialSDKResourcesNew.bundle in Resources */,
@@ -898,6 +903,15 @@
 				0521D8751C1BBB800003A081 /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0521D87A1C1BBDC50003A081 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0521D8791C1BBDC50003A081 /* zh-Hans */,
+				0521D87B1C1BBDC70003A081 /* zh-Hant */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		0587F1191BD9D39F0037747E /* UMSocialLocalizable.strings */ = {

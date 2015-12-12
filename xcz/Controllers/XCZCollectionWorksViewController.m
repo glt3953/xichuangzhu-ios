@@ -60,16 +60,7 @@ static NSString * const CellIdentifier = @"CellIdentifier";
 {
     [super viewDidLoad];
     
-    
-    // Custom titleView
-    UILabel *titleLabel = [UILabel new];
-    self.titleLabel = titleLabel;
-    titleLabel.textColor = [UIColor clearColor];
-    titleLabel.text = [NSString stringWithFormat:@"「 %@ 」", self.collection.name];
-    titleLabel.font = [UIFont boldSystemFontOfSize:17];
-    CGSize size = [titleLabel systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    titleLabel.frame = CGRectMake(0, 0, size.width, size.height);
-    self.navigationItem.titleView = titleLabel;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -91,6 +82,16 @@ static NSString * const CellIdentifier = @"CellIdentifier";
 
 - (void)createViews
 {
+    // Custom titleView
+    UILabel *titleLabel = [UILabel new];
+    self.titleLabel = titleLabel;
+    titleLabel.textColor = [UIColor clearColor];
+    titleLabel.text = [NSString stringWithFormat:@"「 %@ 」", self.collection.name];
+    titleLabel.font = [UIFont boldSystemFontOfSize:17];
+    CGSize size = [titleLabel systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    titleLabel.frame = CGRectMake(0, 0, size.width, size.height);
+    self.navigationItem.titleView = titleLabel;
+    
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 0)];
     tableView.delegate = self;
     tableView.dataSource = self;

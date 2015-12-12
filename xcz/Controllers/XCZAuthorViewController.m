@@ -235,22 +235,24 @@ static NSString * const cellIdentifier = @"WorkCell";
     NSMutableArray *works = [XCZWork getWorksByAuthorId:self.author.id kind:kind];
     
     if ([works count] > 0) {
-        [self.works setObject:works forKey:[self getChineseFromKind:kind traditional:NO]];
+        [self.works setObject:works forKey:[self getChineseFromKind:kind]];
     }
 }
 
-- (NSString *)getChineseFromKind:(NSString *)kind traditional:(BOOL)traditional
+- (NSString *)getChineseFromKind:(NSString *)kind
 {
+    BOOL simplified = [[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"];
+    
     if ([kind isEqualToString:@"shi"]) {
-        return traditional ? @"詩" : @"诗";
+        return simplified ? @"诗" : @"詩";
     } else if ([kind isEqualToString:@"ci"]) {
-        return traditional ? @"詞" : @"词";
+        return simplified ? @"词" : @"詞";
     } else if ([kind isEqualToString:@"wen"]) {
         return @"文";
     } else if ([kind isEqualToString:@"qu"]) {
         return @"曲";
     } else {
-        return traditional ? @"賦" : @"赋";
+        return simplified ? @"赋" : @"賦";
     }
 }
 
