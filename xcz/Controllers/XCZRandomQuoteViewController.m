@@ -91,6 +91,11 @@ static CGFloat const SecondQuoteViewOriginalScale = 0.97;
 
 #pragma mark - Public Interface
 
+- (void)updateTabBarTitle
+{
+    self.tabBarItem.title = LocalizedString(@"摘录");
+}
+
 #pragma mark - User Interface
 
 - (void)refreshQuote

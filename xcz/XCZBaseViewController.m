@@ -28,7 +28,7 @@
     // Should be overrided by subclass.
 }
 
-- (void)reloadData
+- (void)updateTabBarTitle
 {
     // Should be overrided by subclass.
 }
@@ -40,7 +40,7 @@
 
 - (void)chineseKindChanged
 {
-    [self reloadData];
+    [self updateTabBarTitle];
     
     for (UIView *subView in self.view.subviews) {
         [subView removeFromSuperview];

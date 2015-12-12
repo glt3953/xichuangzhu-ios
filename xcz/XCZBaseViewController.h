@@ -11,6 +11,6 @@
 @interface XCZBaseViewController : UIViewController
 
 - (void)createViews;
-- (void)reloadData;
+- (void)updateTabBarTitle;
 
 @end

@@ -14,6 +14,7 @@
 #import "XCZCollectionWorksViewController.h"
 #import "XCZCollectionsViewController.h"
 #import "UIColor+Helper.h"
+#import "LocalizeHelper.h"
 #import "Constants.h"
 #import "XCZUtils.h"
 #import <Masonry.h>
@@ -92,6 +93,11 @@ static NSString * const FooterViewReuseIdentifier = @"FooterView";
 }
 
 #pragma mark - Public Interface
+
+- (void)updateTabBarTitle
+{
+    self.tabBarItem.title = LocalizedString(@"分类");
+}
 
 #pragma mark - User Interface
 

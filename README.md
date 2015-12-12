@@ -17,4 +17,4 @@ xichuangzhu-ios
 ###对LeanCloudFeedback的修改
 
 * 修改错误提示（LCUserFeedbackViewController.m 第266行）
-* 修改文字：详情、请填写反馈、意见反馈、发送
+* 文字简繁版：详情、请填写反馈、意见反馈、发送

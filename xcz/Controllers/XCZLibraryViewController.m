@@ -115,6 +115,11 @@
 
 #pragma mark - Public Interface
 
+- (void)updateTabBarTitle
+{
+    self.tabBarItem.title = LocalizedString(@"文库");
+}
+
 #pragma mark - User Interface
 
 - (void)segmentControlTapped
