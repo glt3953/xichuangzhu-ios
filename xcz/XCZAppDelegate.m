@@ -36,7 +36,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *factorySettings = @{@"SimplifiedChinese": @YES, @"QuoteFont": @"STFangsong"};
+    NSDictionary *factorySettings = @{@"SimplifiedChinese": @NO, @"QuoteFont": XCZFontWYFangsong};
     [defaults registerDefaults:factorySettings];
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
