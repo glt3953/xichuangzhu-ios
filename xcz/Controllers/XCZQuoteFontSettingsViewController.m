@@ -7,6 +7,7 @@
 //
 
 #import "XCZQuoteFontSettingsViewController.h"
+#import "LocalizeHelper.h"
 #import "Constants.h"
 #import "XCZUtils.h"
 #import <Masonry.h>
@@ -50,7 +51,7 @@
 
 - (void)createViews
 {
-    self.navigationItem.title = @"设置摘录字体";
+    self.navigationItem.title = LocalizedString(@"设置摘录字体");
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 0) style:UITableViewStyleGrouped];
     tableView.delegate = self;
@@ -80,9 +81,9 @@
     UITableViewCell *cell = [UITableViewCell new];
     
     if (indexPath.row == 0) {
-        [self configCell:cell text:@"品味传统文学之美" textFont:[UIFont fontWithName:XCZFontHWFangsong size:18] details:@"华文仿宋"];
+        [self configCell:cell text:LocalizedString(@"品味传统文学之美") textFont:[UIFont fontWithName:XCZFontHWFangsong size:18] details:LocalizedString(@"华文仿宋")];
     } else {
-        [self configCell:cell text:@"品味传统文学之美" textFont:[UIFont fontWithName:XCZFontWYFangsong size:16] details:@"文悦古体仿宋"];
+        [self configCell:cell text:LocalizedString(@"品味传统文学之美") textFont:[UIFont fontWithName:XCZFontWYFangsong size:16] details:LocalizedString(@"文悦古体仿宋")];
     }
     
     if ([indexPath compare:self.selectedIndexPath] == NSOrderedSame) {

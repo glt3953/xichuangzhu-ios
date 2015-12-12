@@ -10,6 +10,7 @@
 #import "XCZCopyableLabel.h"
 #import "Constants.h"
 #import "UIColor+Helper.h"
+#import "LocalizeHelper.h"
 #import "XCZUtils.h"
 #import <Masonry.h>
 
@@ -44,7 +45,7 @@
     // intro header
     UILabel *introHeaderLabel = [UILabel new];
     introHeaderLabel.textColor = [UIColor XCZMainColor];
-    introHeaderLabel.text = @"简介";
+    introHeaderLabel.text = LocalizedString(@"简介");
     [self addSubview:introHeaderLabel];
     
     // intro

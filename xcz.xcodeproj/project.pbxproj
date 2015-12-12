@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0521D8721C1BBA6B0003A081 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0521D8741C1BBA6B0003A081 /* InfoPlist.strings */; };
 		0521D8781C1BBDC50003A081 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0521D87A1C1BBDC50003A081 /* Localizable.strings */; };
+		0521D87E1C1C3AF20003A081 /* LocalizeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0521D87D1C1C3AF20003A081 /* LocalizeHelper.m */; };
 		05349CDF1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05349CDE1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m */; };
 		05349CE21C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05349CE11C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.m */; };
 		05349CE51C1B392A0011DCEB /* XCZBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05349CE41C1B392A0011DCEB /* XCZBaseViewController.m */; };
@@ -104,6 +105,8 @@
 		0521D8751C1BBB800003A081 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		0521D8791C1BBDC50003A081 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0521D87B1C1BBDC70003A081 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0521D87C1C1C3AF20003A081 /* LocalizeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizeHelper.h; sourceTree = "<group>"; };
+		0521D87D1C1C3AF20003A081 /* LocalizeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizeHelper.m; sourceTree = "<group>"; };
 		05349CDD1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZChineseKindSettingsViewController.h; sourceTree = "<group>"; };
 		05349CDE1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZChineseKindSettingsViewController.m; sourceTree = "<group>"; };
 		05349CE01C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZQuoteFontSettingsViewController.h; sourceTree = "<group>"; };
@@ -375,6 +378,8 @@
 				05AC40BF1BFF5D42006F6CA3 /* NSString+FontAwesome.m */,
 				05AC40BB1BFF5732006F6CA3 /* UIImage+FontAwesome.m */,
 				05AC40BC1BFF5732006F6CA3 /* UIImage+FontAwesome.h */,
+				0521D87C1C1C3AF20003A081 /* LocalizeHelper.h */,
+				0521D87D1C1C3AF20003A081 /* LocalizeHelper.m */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -841,6 +846,7 @@
 				0599F5F71BE7B9A300AA099D /* XCZBadgeView.m in Sources */,
 				05349CDF1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m in Sources */,
 				05ECE6221BD49D5E008DE9CE /* XCZWorkTableViewCell.m in Sources */,
+				0521D87E1C1C3AF20003A081 /* LocalizeHelper.m in Sources */,
 				05ECE61C1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.m in Sources */,
 				056485541BA889E100F52EAE /* XCZAuthorsViewController.m in Sources */,
 				0599F5F11BE76A2A00AA099D /* XCZSettingsViewController.m in Sources */,

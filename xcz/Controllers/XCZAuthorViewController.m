@@ -17,6 +17,7 @@
 #import "XCZAuthorQuotesViewController.h"
 #import "XCZUtils.h"
 #import "Constants.h"
+#import "LocalizeHelper.h"
 #import <FMDB/FMDB.h>
 #import <AVOSCloud/AVOSCloud.h>
 #import <UITableView+FDTemplateLayoutCell.h>

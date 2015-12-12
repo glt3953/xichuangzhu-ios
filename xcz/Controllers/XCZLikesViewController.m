@@ -8,6 +8,7 @@
 
 #import "XCZLike.h"
 #import "XCZWork.h"
+#import "LocalizeHelper.h"
 #import "XCZWorkTableViewCell.h"
 #import "XCZLikesViewController.h"
 #import "XCZWorkViewController.h"
@@ -67,7 +68,7 @@ static NSString * const CellIdentifier = @"WorkCell";
     
     // “编辑”按钮
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]
-                                    initWithTitle:@"编辑"
+                                    initWithTitle:LocalizedString(@"编辑")
                                     style:UIBarButtonItemStylePlain
                                     target:self
                                     action:@selector(toggleEditingMode:)];

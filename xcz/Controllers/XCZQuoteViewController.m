@@ -11,6 +11,7 @@
 #import "XCZMeetViewController.h"
 #import "XCZQuoteViewController.h"
 #import "UIColor+Helper.h"
+#import "LocalizeHelper.h"
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
 #import <Masonry.h>
@@ -103,7 +104,7 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
 
-    self.hud.labelText = @"保存到相册";
+    self.hud.labelText = LocalizedString(@"保存到相册");
     UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
 }
 

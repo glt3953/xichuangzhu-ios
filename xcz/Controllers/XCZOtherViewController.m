@@ -13,6 +13,7 @@
 #import "XCZLikesViewController.h"
 #import "XCZMeetViewController.h"
 #import "UIColor+Helper.h"
+#import "LocalizeHelper.h"
 #import <Masonry/Masonry.h>
 #import <ionicons/IonIcons.h>
 #import <LeanCloudFeedback/LeanCloudFeedback.h>
@@ -129,15 +130,15 @@
         if (indexPath.row == 0) {
             [self configFeedbackCell:cell];
         } else if (indexPath.row == 1) {
-            cell.textLabel.text = @"向朋友推荐「西窗烛」";
+            cell.textLabel.text = LocalizedString(@"向朋友推荐「西窗烛」");
         } else {
-            cell.textLabel.text = @"去 App Store 评价";
+            cell.textLabel.text = LocalizedString(@"去 App Store 评价");
         }
     } else {
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"设置";
+            cell.textLabel.text = LocalizedString(@"设置");
         } else {
-            cell.textLabel.text = @"关于";
+            cell.textLabel.text = LocalizedString(@"关于");
         }
     }
     
@@ -191,7 +192,7 @@
             [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeText;
             [UMSocialSnsService presentSnsIconSheetView:self
                                                  appKey:nil
-                                              shareText:@"「西窗烛」，干净优雅的诗词赏析应用。iPhone版下载地址：https://itunes.apple.com/cn/app/xi-chuang-zhu/id912139104"
+                                              shareText:LocalizedString(@"「西窗烛」，干净优雅的诗词赏析应用。iPhone版下载地址：https://itunes.apple.com/cn/app/xi-chuang-zhu/id912139104")
                                              shareImage:[UIImage imageNamed:@"share.jpg"]
                                         shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatTimeline, UMShareToWechatSession,UMShareToSina, UMShareToDouban, nil]
                                                delegate:nil];
@@ -216,7 +217,7 @@
 - (void)configFeedbackCell:(UITableViewCell *)cell
 {
     UILabel *textLabel = [UILabel new];
-    textLabel.text = @"给我们反馈";
+    textLabel.text = LocalizedString(@"给我们反馈");
     [cell.contentView addSubview:textLabel];
     
     [cell.contentView addSubview:self.badgeView];

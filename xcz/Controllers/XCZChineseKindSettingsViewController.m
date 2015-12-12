@@ -8,6 +8,7 @@
 
 #import "XCZChineseKindSettingsViewController.h"
 #import "Constants.h"
+#import "LocalizeHelper.h"
 #import <Masonry.h>
 
 @interface XCZChineseKindSettingsViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -49,7 +50,7 @@
 
 - (void)createViews
 {
-    self.navigationItem.title = @"简繁切换";
+    self.navigationItem.title = LocalizedString(@"简繁切换");
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 0) style:UITableViewStyleGrouped];
     tableView.delegate = self;
@@ -79,9 +80,9 @@
     UITableViewCell *cell = [UITableViewCell new];
     
     if (indexPath.row == 0) {
-        [self configCell:cell text:@"简体"];
+        [self configCell:cell text:LocalizedString(@"简体")];
     } else {
-        [self configCell:cell text:@"繁体"];
+        [self configCell:cell text:LocalizedString(@"繁体")];
     }
     
     if ([indexPath compare:self.selectedIndexPath] == NSOrderedSame) {
@@ -99,9 +100,13 @@
     
     if (indexPath.row == 0) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"SimplifiedChinese"];
+        LocalizationSetLanguage(@"zh-Hans");
     } else {
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"SimplifiedChinese"];
+        LocalizationSetLanguage(@"zh-Hant");
     }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:self.selectedIndexPath];
     selectedCell.accessoryType = UITableViewCellAccessoryNone;

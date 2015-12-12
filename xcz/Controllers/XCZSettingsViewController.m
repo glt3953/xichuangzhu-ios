@@ -9,6 +9,7 @@
 #import "XCZSettingsViewController.h"
 #import "XCZChineseKindSettingsViewController.h"
 #import "XCZQuoteFontSettingsViewController.h"
+#import "LocalizeHelper.h"
 #import "Constants.h"
 #import <Masonry.h>
 
@@ -52,7 +53,7 @@
 
 - (void)createViews
 {
-    self.navigationItem.title = @"设置";
+    self.navigationItem.title = LocalizedString(@"设置");
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 0) style:UITableViewStyleGrouped];
     tableView.delegate = self;
@@ -92,20 +93,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [UITableViewCell new];
-    NSString *chineseKind = [[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"] ? @"简体" : @"繁体";
+    NSString *chineseKind = [[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"] ? LocalizedString(@"简体") : LocalizedString(@"繁体");
     NSString *fontName;
     
     if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"QuoteFont"] isEqualToString:@"STFangsong"]) {
-        fontName = @"华文仿宋";
+        fontName = LocalizedString(@"华文仿宋");
     } else {
-        fontName = @"文悦古体仿宋";
+        fontName = LocalizedString(@"文悦古体仿宋");
     }
     
     if (indexPath.row == 0) {
-        [self configKeyValueCell:cell key:@"简繁切换" value:chineseKind];
+        [self configKeyValueCell:cell key:LocalizedString(@"简繁切换") value:chineseKind];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else if (indexPath.row == 1) {
-        [self configKeyValueCell:cell key:@"摘录字体" value:fontName];
+        [self configKeyValueCell:cell key:LocalizedString(@"摘录字体") value:fontName];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
         [self configBrightnessCell:cell];

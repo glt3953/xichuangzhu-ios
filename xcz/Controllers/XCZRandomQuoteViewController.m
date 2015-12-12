@@ -12,6 +12,7 @@
 #import "XCZRandomQuoteViewController.h"
 #import "Constants.h"
 #import "UIColor+Helper.h"
+#import "LocalizeHelper.h"
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
 #import <ionicons/IonIcons.h>
@@ -109,7 +110,7 @@ static CGFloat const SecondQuoteViewOriginalScale = 0.97;
     
     [AVAnalytics event:@"snapshot_quote"];
     
-    self.hud.labelText = @"保存到相册";
+    self.hud.labelText = LocalizedString(@"保存到相册");
     UIImageWriteToSavedPhotosAlbum([self snapshotView], self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
 }
 

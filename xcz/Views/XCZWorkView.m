@@ -10,6 +10,7 @@
 #import "XCZCopyableLabel.h"
 #import "XCZWorkView.h"
 #import "UIColor+Helper.h"
+#import "LocalizeHelper.h"
 #import "XCZUtils.h"
 #import <Masonry/Masonry.h>
 
@@ -81,7 +82,7 @@
     UILabel *introHeaderLabel = [UILabel new];
     self.introHeaderLabel = introHeaderLabel;
     if ([self.work.intro length] > 0) {
-        introHeaderLabel.text = @"评析";
+        introHeaderLabel.text = LocalizedString(@"评析");
         introHeaderLabel.textColor = [UIColor XCZMainColor];
         [self addSubview:introHeaderLabel];
     }

@@ -19,6 +19,7 @@
 #import "XCZUtils.h"
 #import "Constants.h"
 #import "UIColor+Helper.h"
+#import "LocalizeHelper.h"
 #import "Constants.h"
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
@@ -37,6 +38,12 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *factorySettings = @{@"SimplifiedChinese": @YES, @"QuoteFont": @"STFangsong"};
     [defaults registerDefaults:factorySettings];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        LocalizationSetLanguage(@"zh-Hans");
+    } else {
+        LocalizationSetLanguage(@"zh-Hant");
+    }
     
     [Fabric with:@[[Crashlytics class]]];
 
@@ -60,21 +67,21 @@
     // 摘录
     XCZRandomQuoteViewController *quoteController = [XCZRandomQuoteViewController new];
     UINavigationController *quoteNavController = [[UINavigationController alloc] initWithRootViewController:quoteController];
-    quoteController.tabBarItem.title = @"摘录";
+    quoteController.tabBarItem.title = LocalizedString(@"摘录");
     UIImage *quotesImg = [UIImage imageNamed:@"quotes.png"];
     quoteController.tabBarItem.image = quotesImg;
     
     // 分类
     XCZCollectionsViewController *collectionsController = [XCZCollectionsViewController new];
     UINavigationController *meetNavController = [[UINavigationController alloc] initWithRootViewController:collectionsController];
-    collectionsController.tabBarItem.title = @"分类";
+    collectionsController.tabBarItem.title = LocalizedString(@"分类");
     UIImage *meetImg = [UIImage imageNamed:@"authors.png"];
     collectionsController.tabBarItem.image = meetImg;
     
     // 文库
     XCZLibraryViewController *libraryController = [XCZLibraryViewController new];
     UINavigationController *libraryNavController = [[UINavigationController alloc] initWithRootViewController:libraryController];
-    libraryController.tabBarItem.title = @"文库";
+    libraryController.tabBarItem.title = LocalizedString(@"文库");
     UIImage *libraryImg = [UIImage imageNamed:@"works.png"];
     libraryController.tabBarItem.image = libraryImg;
     

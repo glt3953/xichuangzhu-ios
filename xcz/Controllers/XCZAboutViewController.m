@@ -9,6 +9,7 @@
 #import "XCZWork.h"
 #import "XCZAboutViewController.h"
 #import "XCZWorkViewController.h"
+#import "LocalizeHelper.h"
 #import "UIColor+Helper.h"
 #import <Masonry/Masonry.h>
 
@@ -76,7 +77,7 @@
     [wapView addSubview:logoView];
     
     // text
-    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"西窗烛 " attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17]}];
+    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:LocalizedString(@"西窗烛 ") attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17]}];
     NSMutableAttributedString *versionText = [[NSMutableAttributedString alloc] initWithString:@"v1.8.0" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
     [text appendAttributedString:versionText];
     UILabel *textLabel = [UILabel new];
@@ -117,7 +118,7 @@
     sloganLabel.numberOfLines = 0;
     sloganLabel.lineBreakMode = NSLineBreakByWordWrapping;
     sloganLabel.font = [UIFont systemFontOfSize:20];
-    NSString *sloganText = @"何当共剪西窗烛，\n却话巴山夜雨时。";
+    NSString *sloganText = LocalizedString(@"何当共剪西窗烛，\n却话巴山夜雨时。");
     NSMutableAttributedString *attributedStringForSlogan = [[NSMutableAttributedString alloc] initWithString:sloganText];
     NSMutableParagraphStyle *paragraphStyleForSlogan = [[NSMutableParagraphStyle alloc] init];
     paragraphStyleForSlogan.alignment = NSTextAlignmentCenter;
@@ -128,7 +129,7 @@
     
     // slogan from
     UILabel *sloganFromLabel = [UILabel new];
-    sloganFromLabel.text = @"— [唐] 李商隐";
+    sloganFromLabel.text = LocalizedString(@"— [唐] 李商隐");
     sloganFromLabel.textColor = [UIColor colorWithRGBA:0x333333FF];
     sloganFromLabel.font = [UIFont systemFontOfSize:12];
     [sloganWapView addSubview:sloganFromLabel];
@@ -138,7 +139,7 @@
     aboutLabel.numberOfLines = 0;
     aboutLabel.lineBreakMode = NSLineBreakByWordWrapping;
     aboutLabel.font = [UIFont systemFontOfSize:15];
-    NSString *aboutText = @"西窗烛旨在为大家提供一个干净的古典文学欣赏空间。大江东去的豪放明快、低头弄梅的婉媚曲折、西窗剪烛的情深意重，每次读到都会有所触动。文学之美，时光洗练。";
+    NSString *aboutText = LocalizedString(@"西窗烛旨在为大家提供一个干净的古典文学欣赏空间。大江东去的豪放明快、低头弄梅的婉媚曲折、西窗剪烛的情深意重，每次读到都会有所触动。文学之美，时光洗练。");
     NSMutableAttributedString *attributedStringForAbout = [[NSMutableAttributedString alloc] initWithString:aboutText];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = 5;
@@ -151,7 +152,7 @@
     contactLabel.numberOfLines = 0;
     contactLabel.lineBreakMode = NSLineBreakByWordWrapping;
     contactLabel.font = [UIFont systemFontOfSize:15];
-    NSMutableAttributedString *contactPreString = [[NSMutableAttributedString alloc] initWithString:@"邮件联系：\n" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]}];
+    NSMutableAttributedString *contactPreString = [[NSMutableAttributedString alloc] initWithString:LocalizedString(@"邮件联系：\n") attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]}];
     NSMutableAttributedString *contactProString = [[NSMutableAttributedString alloc] initWithString:@"hi@xichuangzhu.com" attributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle), NSFontAttributeName: [UIFont systemFontOfSize:13]}];
     [contactPreString appendAttributedString:contactProString];
     
@@ -170,7 +171,7 @@
     websiteLabel.numberOfLines = 0;
     websiteLabel.lineBreakMode = NSLineBreakByWordWrapping;
     websiteLabel.font = [UIFont systemFontOfSize:15];
-    NSMutableAttributedString *websitePreString = [[NSMutableAttributedString alloc] initWithString:@"西窗烛网页版：\n" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]}];
+    NSMutableAttributedString *websitePreString = [[NSMutableAttributedString alloc] initWithString:LocalizedString(@"西窗烛网页版：\n") attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]}];
     NSMutableAttributedString *websiteProString = [[NSMutableAttributedString alloc] initWithString:@"www.xichuangzhu.com" attributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle), NSFontAttributeName: [UIFont systemFontOfSize:13]}];
     [websitePreString appendAttributedString:websiteProString];
     

@@ -11,6 +11,7 @@
 #import "XCZWorksViewController.h"
 #import "XCZAuthorsViewController.h"
 #import "UIColor+Helper.h"
+#import "LocalizeHelper.h"
 #import "UIImage+FontAwesome.h"
 #import <Masonry/Masonry.h>
 #import <ionicons/IonIcons.h>
@@ -95,7 +96,7 @@
 
 - (void)createViews
 {
-    UISegmentedControl *segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"作品", @"文学家"]];
+    UISegmentedControl *segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"作品", LocalizedString(@"文学家")]];
     self.segmentControl = segmentControl;
     self.segmentControl.selectedSegmentIndex = 0;
     [self.segmentControl addTarget:self action:@selector(segmentControlTapped) forControlEvents:UIControlEventValueChanged];
