@@ -71,8 +71,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.edgesForExtendedLayout = UIRectEdgeNone;
 
     [self initNavbarShowLike:![XCZLike checkExist:self.work.id]];
 }

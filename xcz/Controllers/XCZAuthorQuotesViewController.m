@@ -54,8 +54,6 @@ static NSString * const cellIdentifier = @"QuoteCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.navigationItem.title = @"摘录";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -75,6 +73,8 @@ static NSString * const cellIdentifier = @"QuoteCell";
 
 - (void)createViews
 {
+    self.navigationItem.title = @"摘录";
+    
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 0)];
     tableView.delegate = self;
     tableView.dataSource = self;

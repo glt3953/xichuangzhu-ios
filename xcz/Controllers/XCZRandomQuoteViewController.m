@@ -45,8 +45,6 @@ static CGFloat const SecondQuoteViewOriginalScale = 0.97;
 {
     [super viewDidLoad];
     
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    
     NSMutableArray *buttons = [NSMutableArray new];
     
     // 刷新

@@ -35,8 +35,6 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"设置";
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(quoteFontChanged) name:XCZQuoteFontChangedNotification object:nil];
 }
 
@@ -54,6 +52,8 @@
 
 - (void)createViews
 {
+    self.navigationItem.title = @"设置";
+    
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 0) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;

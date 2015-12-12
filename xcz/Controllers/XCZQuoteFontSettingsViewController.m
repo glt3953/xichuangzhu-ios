@@ -34,8 +34,6 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"设置摘录字体";
-    
     if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"QuoteFont"] isEqualToString:XCZFontHWFangsong]) {
         self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     } else {
@@ -52,6 +50,8 @@
 
 - (void)createViews
 {
+    self.navigationItem.title = @"设置摘录字体";
+    
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 0) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;

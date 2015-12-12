@@ -54,9 +54,6 @@ static NSString * const cellIdentifier = @"WorkCell";
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"作品";
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushNotificationReceived:) name:@"openWorkView" object:nil];
 }
 
@@ -80,8 +77,9 @@ static NSString * const cellIdentifier = @"WorkCell";
 
 - (void)createViews
 {
+    self.navigationItem.title = @"作品";
+    
     UISearchBar *searchBar = [UISearchBar new];
-//    searchBar.placeholder = @"搜索";
     [self.view addSubview:searchBar];
     
     UISearchDisplayController *searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];

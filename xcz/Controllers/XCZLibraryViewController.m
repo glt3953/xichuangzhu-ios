@@ -76,14 +76,6 @@
 {
     [super viewDidLoad];
     
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    UISegmentedControl *segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"作品", @"文学家"]];
-    self.segmentControl = segmentControl;
-    self.segmentControl.selectedSegmentIndex = 0;
-    [self.segmentControl addTarget:self action:@selector(segmentControlTapped) forControlEvents:UIControlEventValueChanged];
-    self.navigationItem.titleView = segmentControl;
-    
     [self segmentControlTapped];
 }
 
@@ -103,11 +95,16 @@
 
 - (void)createViews
 {
+    UISegmentedControl *segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"作品", @"文学家"]];
+    self.segmentControl = segmentControl;
+    self.segmentControl.selectedSegmentIndex = 0;
+    [self.segmentControl addTarget:self action:@selector(segmentControlTapped) forControlEvents:UIControlEventValueChanged];
+    self.navigationItem.titleView = segmentControl;
+    
     [self.view addSubview:self.worksViewController.view];
     [self.worksViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-
     
     [self.view addSubview:self.authorsViewController.view];
     [self.authorsViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {

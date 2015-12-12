@@ -14,7 +14,7 @@
 #import <UITableView+FDTemplateLayoutCell.h>
 #import <Masonry.h>
 
-static NSString * const cellIdentifier = @"WorkCell";
+static NSString * const CellIdentifier = @"WorkCell";
 
 @interface XCZLikesViewController () <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -35,13 +35,11 @@ static NSString * const cellIdentifier = @"WorkCell";
 - (instancetype)init
 {
     self = [super init];
-    
-    if (self) {
-        UINavigationItem *navItem = self.navigationItem;
-        navItem.title = @"我的收藏";
-        
-        [self loadData];
+    if (!self) {
+        return nil;
     }
+    
+    [self loadData];
     
     return self;
 }
@@ -57,23 +55,6 @@ static NSString * const cellIdentifier = @"WorkCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:cellIdentifier];
-    [self.searchDisplayController.searchResultsTableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:cellIdentifier];
-    
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.searchDisplayController.searchResultsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-    self.searchDisplayController.searchBar.placeholder = @"搜索";
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    //添加“编辑”按钮
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]
-                                    initWithTitle:@"编辑"
-                                    style:UIBarButtonItemStylePlain
-                                    target:self
-                                    action:@selector(toggleEditingMode:)];
-    [self.navigationItem setRightBarButtonItem:rightButton];
-    
     // 数据重载通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadNotificationReceived:) name:@"reloadLikesData" object:nil];
 }
@@ -82,12 +63,22 @@ static NSString * const cellIdentifier = @"WorkCell";
 
 - (void)createViews
 {
+    self.navigationItem.title = @"我的收藏";
+    
+    // “编辑”按钮
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]
+                                    initWithTitle:@"编辑"
+                                    style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(toggleEditingMode:)];
+    [self.navigationItem setRightBarButtonItem:rightButton];
+    
     UISearchBar *searchBar = [UISearchBar new];
     searchBar.placeholder = @"搜索";
     [self.view addSubview:searchBar];
     
     UISearchDisplayController *searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
-    [searchController.searchResultsTableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    [searchController.searchResultsTableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:CellIdentifier];
     searchController.searchResultsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.searchController = searchController;
     searchController.delegate = self;
@@ -97,7 +88,7 @@ static NSString * const cellIdentifier = @"WorkCell";
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 0)];
     tableView.delegate = self;
     tableView.dataSource = self;
-    [tableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    [tableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:CellIdentifier];
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView = tableView;
     [self.view addSubview:tableView];
@@ -186,7 +177,7 @@ static NSString * const cellIdentifier = @"WorkCell";
         work = self.works[indexPath.row];
     }
     
-    XCZWorkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    XCZWorkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     [cell updateWithWork:work showAuthor:YES];
     return cell;
 }
@@ -201,7 +192,7 @@ static NSString * const cellIdentifier = @"WorkCell";
         work = self.works[indexPath.row];
     }
     
-    return [tableView fd_heightForCellWithIdentifier:cellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", work.id] configuration:^(XCZWorkTableViewCell *cell) {
+    return [tableView fd_heightForCellWithIdentifier:CellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", work.id] configuration:^(XCZWorkTableViewCell *cell) {
         [cell updateWithWork:work showAuthor:YES];
     }];
 }

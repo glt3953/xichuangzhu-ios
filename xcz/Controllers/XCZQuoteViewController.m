@@ -53,8 +53,6 @@
 {
     [super viewDidLoad];
     
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    
     NSMutableArray *buttons = [NSMutableArray new];
     
     // 分享

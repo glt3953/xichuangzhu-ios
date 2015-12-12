@@ -99,17 +99,15 @@ static NSString * const cellIdentifier = @"AuthorCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.navigationItem.title = @"文学家";
-    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 #pragma mark - Create Views
 
 - (void)createViews
 {
+    self.navigationItem.title = @"文学家";
+    
     UISearchBar *searchBar = [UISearchBar new];
-//    searchBar.placeholder = @"搜索";
     [self.view addSubview:searchBar];
     
     UISearchDisplayController *searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];

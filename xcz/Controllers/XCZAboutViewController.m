@@ -33,10 +33,39 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+#pragma mark - Layout
+
+- (void)createViews
+{
     // wap
+    UIView *navTitleView = [self createNavTitleView];
+    self.navigationItem.titleView = navTitleView;
+    
+    UIScrollView *scrollView = [UIScrollView new];
+    [self.view addSubview:scrollView];
+
+    UIView *contentView = [self createContentView];
+    [scrollView addSubview:contentView];
+    
+    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
+    [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.view);
+        make.edges.equalTo(scrollView);
+    }];
+}
+
+- (UIView *)createNavTitleView
+{
     UIView *wapView = [UIView new];
     
     // logo
@@ -69,32 +98,7 @@
     CGSize size = [wapView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     wapView.frame = CGRectMake(0, 0, size.width, size.height);
     
-    self.navigationItem.titleView = wapView;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-#pragma mark - Layout
-
-- (void)createViews
-{
-    UIScrollView *scrollView = [UIScrollView new];
-    [self.view addSubview:scrollView];
-
-    UIView *contentView = [self createContentView];
-    [scrollView addSubview:contentView];
-    
-    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
-    
-    [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self.view);
-        make.edges.equalTo(scrollView);
-    }];
+    return wapView;
 }
 
 - (UIView *)createContentView

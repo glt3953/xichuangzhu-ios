@@ -33,8 +33,6 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"简繁切换";
-    
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
         self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     } else {
@@ -51,6 +49,8 @@
 
 - (void)createViews
 {
+    self.navigationItem.title = @"简繁切换";
+    
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 0) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;

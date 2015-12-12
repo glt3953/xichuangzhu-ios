@@ -57,8 +57,6 @@ static NSString * const FooterViewReuseIdentifier = @"FooterView";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.navigationItem.title = @"分类";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -70,6 +68,8 @@ static NSString * const FooterViewReuseIdentifier = @"FooterView";
 
 - (void)createViews
 {
+    self.navigationItem.title = @"分类";
+    
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.minimumLineSpacing = 0;
     layout.minimumInteritemSpacing = 0;
