@@ -75,8 +75,10 @@
     XCZCollectionsViewController *collectionsController = [XCZCollectionsViewController new];
     UINavigationController *meetNavController = [[UINavigationController alloc] initWithRootViewController:collectionsController];
     collectionsController.tabBarItem.title = LocalizedString(@"分类");
-    UIImage *meetImg = [UIImage imageNamed:@"authors.png"];
+    UIImage *meetImg = [IonIcons imageWithIcon:ion_ios_pricetags_outline size:25 color:[UIColor XCZSystemGrayColor]];
+    UIImage *selectedmeetImg = [IonIcons imageWithIcon:ion_ios_pricetags_outline size:25 color:[UIColor XCZSystemTintColor]];
     collectionsController.tabBarItem.image = meetImg;
+    collectionsController.tabBarItem.selectedImage = selectedmeetImg;
     
     // 文库
     XCZLibraryViewController *libraryController = [XCZLibraryViewController new];
