@@ -78,7 +78,7 @@
     
     // text
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:LocalizedString(@"西窗烛 ") attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17]}];
-    NSMutableAttributedString *versionText = [[NSMutableAttributedString alloc] initWithString:@"v1.8.0" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
+    NSMutableAttributedString *versionText = [[NSMutableAttributedString alloc] initWithString:@"v1.9.0" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
     [text appendAttributedString:versionText];
     UILabel *textLabel = [UILabel new];
     textLabel.attributedText = text;
@@ -267,8 +267,8 @@
 
 - (void)sloganTapped:(UITapGestureRecognizer *)gesture
 {
-    gesture.view.backgroundColor = [UIColor colorWithRGBA:0xEEEEEEFF];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    gesture.view.backgroundColor = [UIColor colorWithRGBA:0xE6E6E6FF];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         gesture.view.backgroundColor = [UIColor colorWithRGBA:0xF2F2F2FF];
     });
     
