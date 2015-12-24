@@ -51,7 +51,7 @@
     
     // AVOSCloud
     [AVOSCloud setApplicationId:AVOSCloudAppID clientKey:AVOSCloudAppKey];
-    
+
     // 友盟
     [UMSocialData setAppKey:UmengAppKey];
     [UMSocialWechatHandler setWXAppId:WechatAppId appSecret:WechatAppSecret url:nil];

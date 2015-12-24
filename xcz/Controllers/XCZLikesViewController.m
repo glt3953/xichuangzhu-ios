@@ -75,7 +75,7 @@ static NSString * const CellIdentifier = @"WorkCell";
     [self.navigationItem setRightBarButtonItem:rightButton];
     
     UISearchBar *searchBar = [UISearchBar new];
-    searchBar.placeholder = @"搜索";
+    searchBar.placeholder = LocalizedString(@"搜索");
     [self.view addSubview:searchBar];
     
     UISearchDisplayController *searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];

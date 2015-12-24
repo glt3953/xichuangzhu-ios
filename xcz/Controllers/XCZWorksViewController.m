@@ -10,6 +10,7 @@
 #import "XCZWorkTableViewCell.h"
 #import "XCZWorksViewController.h"
 #import "XCZWorkViewController.h"
+#import "LocalizeHelper.h"
 #import <FMDB/FMDB.h>
 #import <AVOSCloud/AVOSCloud.h>
 #import <UITableView+FDTemplateLayoutCell.h>
@@ -80,6 +81,7 @@ static NSString * const cellIdentifier = @"WorkCell";
     self.navigationItem.title = @"作品";
     
     UISearchBar *searchBar = [UISearchBar new];
+    searchBar.placeholder = LocalizedString(@"搜索");
     [self.view addSubview:searchBar];
     
     UISearchDisplayController *searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];

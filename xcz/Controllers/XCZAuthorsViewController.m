@@ -13,6 +13,7 @@
 #import "XCZAuthorsViewController.h"
 #import "XCZAuthorViewController.h"
 #import "UIColor+Helper.h"
+#import "LocalizeHelper.h"
 #import <FMDB/FMDB.h>
 #import <UITableView+FDTemplateLayoutCell.h>
 #import <Masonry.h>
@@ -108,6 +109,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
     self.navigationItem.title = @"文学家";
     
     UISearchBar *searchBar = [UISearchBar new];
+    searchBar.placeholder = LocalizedString(@"搜索");
     [self.view addSubview:searchBar];
     
     UISearchDisplayController *searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];

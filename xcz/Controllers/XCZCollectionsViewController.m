@@ -69,7 +69,7 @@ static NSString * const FooterViewReuseIdentifier = @"FooterView";
 
 - (void)createViews
 {
-    self.navigationItem.title = @"分类";
+    self.navigationItem.title = LocalizedString(@"分类");
     
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.minimumLineSpacing = 0;
