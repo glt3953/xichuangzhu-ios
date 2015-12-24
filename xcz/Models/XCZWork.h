@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSString *baiduWiki;
 @property (nonatomic, strong) NSString *firstSentence;
 @property (nonatomic) int showOrder;
+@property (strong, nonatomic) NSArray *collections;
 
 + (XCZWork *)getById:(int)workId;
 + (NSMutableArray *)getAll;

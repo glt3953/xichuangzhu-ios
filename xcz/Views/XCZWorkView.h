@@ -11,6 +11,8 @@
 
 @interface XCZWorkView : UIView
 
+@property (weak, nonatomic) UIViewController *delegate;
+
 - (instancetype)initWithWork:(XCZWork *)work;
 - (void)enterFullScreenMode;
 - (void)exitFullScreenMode;

@@ -24,5 +24,6 @@
 @property (strong, nonatomic) NSString *collection;
 
 + (NSArray *)getByCollectionId:(NSInteger)collectionId;
+- (void)loadFromResultSet:(FMResultSet *)resultSet;
 
 @end

@@ -20,6 +20,8 @@
 		0545D2741BC54CF600410895 /* XCZMeetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0545D2731BC54CF600410895 /* XCZMeetViewController.m */; };
 		054AA51F1BD74FE600CE8EDC /* XCZAuthorHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 054AA51E1BD74FE600CE8EDC /* XCZAuthorHeaderView.m */; };
 		054D06551C19EF8A002E7854 /* Wyue.otf in Resources */ = {isa = PBXBuildFile; fileRef = 054D06541C19EF4F002E7854 /* Wyue.otf */; };
+		055D34B71C2BB2CB004902C9 /* XCZTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 055D34B61C2BB2CB004902C9 /* XCZTagView.m */; };
+		055D34BA1C2BB2DC004902C9 /* XCZTagListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 055D34B91C2BB2DC004902C9 /* XCZTagListView.m */; };
 		0564853B1BA8895300F52EAE /* XCZAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485321BA8895300F52EAE /* XCZAuthor.m */; };
 		0564853C1BA8895300F52EAE /* XCZDynasty.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485341BA8895300F52EAE /* XCZDynasty.m */; };
 		0564853D1BA8895300F52EAE /* XCZLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 056485361BA8895300F52EAE /* XCZLike.m */; };
@@ -126,6 +128,11 @@
 		054AA51D1BD74FE600CE8EDC /* XCZAuthorHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthorHeaderView.h; sourceTree = "<group>"; };
 		054AA51E1BD74FE600CE8EDC /* XCZAuthorHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthorHeaderView.m; sourceTree = "<group>"; };
 		054D06541C19EF4F002E7854 /* Wyue.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Wyue.otf; sourceTree = "<group>"; };
+		055D34B01C2BAA19004902C9 /* xcz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "xcz-Bridging-Header.h"; path = "Additions/xcz-Bridging-Header.h"; sourceTree = "<group>"; };
+		055D34B51C2BB2CB004902C9 /* XCZTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZTagView.h; sourceTree = "<group>"; };
+		055D34B61C2BB2CB004902C9 /* XCZTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZTagView.m; sourceTree = "<group>"; };
+		055D34B81C2BB2DC004902C9 /* XCZTagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZTagListView.h; sourceTree = "<group>"; };
+		055D34B91C2BB2DC004902C9 /* XCZTagListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZTagListView.m; sourceTree = "<group>"; };
 		056485311BA8895300F52EAE /* XCZAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZAuthor.h; sourceTree = "<group>"; };
 		056485321BA8895300F52EAE /* XCZAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZAuthor.m; sourceTree = "<group>"; };
 		056485331BA8895300F52EAE /* XCZDynasty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZDynasty.h; sourceTree = "<group>"; };
@@ -380,6 +387,10 @@
 				05AC40BC1BFF5732006F6CA3 /* UIImage+FontAwesome.h */,
 				0521D87C1C1C3AF20003A081 /* LocalizeHelper.h */,
 				0521D87D1C1C3AF20003A081 /* LocalizeHelper.m */,
+				055D34B51C2BB2CB004902C9 /* XCZTagView.h */,
+				055D34B61C2BB2CB004902C9 /* XCZTagView.m */,
+				055D34B81C2BB2DC004902C9 /* XCZTagListView.h */,
+				055D34B91C2BB2DC004902C9 /* XCZTagListView.m */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -591,6 +602,7 @@
 		05DF00CE195F0CE100175ABF /* xcz */ = {
 			isa = PBXGroup;
 			children = (
+				055D34B01C2BAA19004902C9 /* xcz-Bridging-Header.h */,
 				05349CE31C1B39290011DCEB /* XCZBaseViewController.h */,
 				05349CE41C1B392A0011DCEB /* XCZBaseViewController.m */,
 				054AA5191BD74C1200CE8EDC /* Additions */,
@@ -700,6 +712,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = XCZ;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Zhipeng Liu";
 				TargetAttributes = {
@@ -845,6 +858,7 @@
 				05349CE51C1B392A0011DCEB /* XCZBaseViewController.m in Sources */,
 				0599F5F71BE7B9A300AA099D /* XCZBadgeView.m in Sources */,
 				05349CDF1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m in Sources */,
+				055D34B71C2BB2CB004902C9 /* XCZTagView.m in Sources */,
 				05ECE6221BD49D5E008DE9CE /* XCZWorkTableViewCell.m in Sources */,
 				0521D87E1C1C3AF20003A081 /* LocalizeHelper.m in Sources */,
 				05ECE61C1BD3FF9F008DE9CE /* XCZAuthorQuotesViewController.m in Sources */,
@@ -864,6 +878,7 @@
 				0545D26B1BC5379200410895 /* UIColor+Helper.m in Sources */,
 				05CFDFE51BF773F80027773C /* XCZCollectionKind.m in Sources */,
 				056485591BA889E100F52EAE /* XCZWorksViewController.m in Sources */,
+				055D34BA1C2BB2DC004902C9 /* XCZTagListView.m in Sources */,
 				0564853F1BA8895300F52EAE /* XCZWork.m in Sources */,
 				05ECE6191BD3D476008DE9CE /* XCZWikiViewController.m in Sources */,
 				0599F5F41BE7923F00AA099D /* UIImage+Helper.m in Sources */,
@@ -1008,13 +1023,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "xcz/xcz-Prefix.pch";
 				INFOPLIST_FILE = "xcz/xcz-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/xcz",
@@ -1026,6 +1044,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "xcz/Additions/xcz-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1037,13 +1057,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "xcz/xcz-Prefix.pch";
 				INFOPLIST_FILE = "xcz/xcz-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/xcz",
@@ -1055,6 +1078,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "xcz/Additions/xcz-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

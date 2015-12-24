@@ -259,6 +259,7 @@ static NSString * const cellIdentifier = @"QuoteCell";
 - (UIView *)createHeaderView
 {
     XCZWorkView *detailsView = [[XCZWorkView alloc] initWithWork:self.work];
+    detailsView.delegate = self;
     self.detailsView = detailsView;
     
     detailsView.bounds = CGRectMake(0, 0, SCREEN_WIDTH, 0);

@@ -7,6 +7,7 @@
 //
 
 #import "XCZWork.h"
+#import "XCZCollection.h"
 #import "XCZCollectionWork.h"
 #import "XCZUtils.h"
 #import <FMDB/FMDB.h>
@@ -142,6 +143,31 @@
     return work;
 }
 
+- (NSArray *)getCollections
+{
+    int index = 0;
+    NSMutableArray *collections = [NSMutableArray new];
+    NSString *dbPath = [XCZUtils getDatabaseFilePath];
+    FMDatabase *db = [FMDatabase databaseWithPath:dbPath];
+    
+    if ([db open]) {
+        NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM collection_works WHERE work_id = %d", self.id];
+        FMResultSet *s = [db executeQuery:query];
+        while ([s next]) {
+            XCZCollectionWork *collectionWork = [XCZCollectionWork new];
+            [collectionWork loadFromResultSet:s];
+            
+            XCZCollection *collection = [XCZCollection getById:collectionWork.collectionId];
+            collections[index] = collection;
+            index++;
+        }
+        
+        [db close];
+    }
+    
+    return collections;
+}
+
 #pragma mark - Internal Helper
 
 - (void)updateWithResultSet:(FMResultSet *)resultSet
@@ -255,6 +281,14 @@
     } else {
         return _firstSentenceTr;
     }
+}
+
+- (NSArray *)collections{
+    if (!_collections) {
+        _collections = [self getCollections];
+    }
+    
+    return _collections;
 }
 
 @end
