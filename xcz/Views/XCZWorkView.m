@@ -14,6 +14,7 @@
 #import "XCZCollectionWorksViewController.h"
 #import "UIColor+Helper.h"
 #import "LocalizeHelper.h"
+#import "NSArray+Helper.h"
 #import "XCZUtils.h"
 #import <Masonry/Masonry.h>
 
@@ -82,68 +83,25 @@
     contentLabel.attributedText = [[NSAttributedString alloc] initWithString:self.work.content attributes:@{NSParagraphStyleAttributeName: contentParagraphStyle}];
     [self addSubview:contentLabel];
     
-    // 评析header
-    UILabel *introHeaderLabel = [UILabel new];
-    self.introHeaderLabel = introHeaderLabel;
-//    if ([self.work.intro length] > 0) {
-        introHeaderLabel.text = LocalizedString(@"评析");
-        introHeaderLabel.textColor = [UIColor XCZMainColor];
-        [self addSubview:introHeaderLabel];
-//    }
+    UIView *collectionWapView;
+    if (self.work.collections.count > 0) {
+        collectionWapView = [self createCollectionWapView];
+        [self addSubview:collectionWapView];
+    }
     
-    // 评析
-    XCZCopyableLabel *introLabel = [XCZCopyableLabel new];
-    self.introLabel = introLabel;
-//    if ([self.work.intro length] > 0) {
-        introLabel.numberOfLines = 0;
-        introLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        introLabel.font = [UIFont systemFontOfSize:14];
-        introLabel.textColor = [UIColor colorWithRGBA:0x333333FF];
-        NSMutableParagraphStyle *introParagraphStyle = [[NSMutableParagraphStyle alloc] init];
-        introParagraphStyle.lineHeightMultiple = 1.3;
-        introParagraphStyle.paragraphSpacing = 8;
-        introLabel.attributedText = [[NSAttributedString alloc] initWithString:self.work.intro attributes:@{NSParagraphStyleAttributeName: introParagraphStyle}];
-        [self addSubview:introLabel];
-//    }
+    UIView *introWapView;
+    if ([self.work.intro length] > 0) {
+        introWapView = [self createIntroWapView];
+        [self addSubview:introWapView];
+    }
     
-    UILabel *collectionsHeaderLabel = [UILabel new];
-    self.collectionsHeaderLabel = collectionsHeaderLabel;
-//    if (self.work.collections.count > 0) {
-        collectionsHeaderLabel.text = @"分类";
-        collectionsHeaderLabel.textColor = [UIColor XCZMainColor];
-        [self addSubview:collectionsHeaderLabel];
-//    }
-    
-    XCZTagListView *collectionsView = [XCZTagListView new];
-    collectionsView.cornerRadius = 1.5;
-    collectionsView.borderColor = [UIColor colorWithRGBA:0xD8D8D8FF];
-    collectionsView.tagBackgroundColor = [UIColor colorWithRGBA:0xEEEEEEFF];
-    collectionsView.tagSelectedBackgroundColor = [UIColor colorWithRGBA:0xDDDDDDFF];
-    collectionsView.textColor = [UIColor colorWithRGBA:0x444444FF];
-    collectionsView.paddingX = 8;
-    collectionsView.paddingY = 5;
-    collectionsView.marginX = 7;
-    collectionsView.marginY = 7;
-//    if (self.work.collections.count > 0) {
-        for (XCZCollection *collection in self.work.collections) {
-            [collectionsView addTag:collection.name].onTap = ^void(void) {
-                UIViewController *controller = [[XCZCollectionWorksViewController alloc] initWithCollection:collection];
-                if (self.delegate) {
-                    [self.delegate.navigationController pushViewController:controller animated:YES];
-                }
-            };
-        }
-        [self addSubview:collectionsView];
-//    }
-    
-    // 摘录header
-    UILabel *quotesHeaderLabel = [UILabel new];
-    self.quotesHeaderLabel = quotesHeaderLabel;
-//    if (quotesCount > 0) {
-        quotesHeaderLabel.text = @"摘录";
+    UILabel *quotesHeaderLabel;
+    if (quotesCount > 0) {
+        quotesHeaderLabel = [UILabel new];
+        quotesHeaderLabel.text = LocalizedString(@"摘录");
         quotesHeaderLabel.textColor = [UIColor XCZMainColor];
         [self addSubview:quotesHeaderLabel];
-//    }
+    }
     
     // 约束
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -168,62 +126,53 @@
         make.left.right.equalTo(authorLabel);
     }];
     
-//    if ([self.work.intro length] > 0) {
-        [introHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(authorLabel);
-            make.top.equalTo(contentLabel.mas_bottom).offset(20).priorityHigh();
-        }];
-        
-        [introLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(introHeaderLabel.mas_bottom).offset(5);
-            make.left.right.equalTo(authorLabel);
-        }];
-//    }
+    UIView *prevView;
+    BOOL hasMakeConstraintToContentLabel = NO;
+    NSArray *viewArray = @[collectionWapView ? collectionWapView : [NSNull null],
+                           introWapView ? introWapView : [NSNull null],
+                           quotesHeaderLabel ? quotesHeaderLabel : [NSNull null]];
+    NSArray *reverseViewArray = [viewArray reversedArray];
     
-    [collectionsHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(authorLabel);
-        make.top.equalTo(introLabel.mas_bottom).offset(15);
-    }];
+    for (UIView *view in viewArray) {
+        if (![view isEqual:[NSNull null]]) {
+            [view mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.right.equalTo(authorLabel);
+            }];
+            
+            if (!hasMakeConstraintToContentLabel) {
+                [view mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(contentLabel.mas_bottom).offset(20);
+                }];
+                
+                hasMakeConstraintToContentLabel = YES;
+            } else {
+                [view mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(prevView.mas_bottom).offset(15);
+                }];
+            }
+            
+            prevView = view;
+        }
+    }
     
-    [collectionsView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(authorLabel);
-        make.top.equalTo(collectionsHeaderLabel.mas_bottom).offset(10);
-    }];
-    
-//    if (quotesCount > 0) {
-        [quotesHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(authorLabel);
-            make.top.equalTo(collectionsView.mas_bottom).offset(15);
-            make.bottom.equalTo(self);
-        }];
-//    }
-    
-//    if ([self.work.intro length] > 0) {
-//        if (quotesCount > 0) {
-//            [quotesHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.top.equalTo(introLabel.mas_bottom).offset(15);
-//            }];
-//        } else {
-//            [introLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.bottom.equalTo(self).offset(-15);
-//            }];
-//        }
-//    } else {
-//        if (quotesCount > 0) {
-//            [quotesHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.top.equalTo(contentLabel.mas_bottom).offset(20);
-//            }];
-//        } else {
-//            [contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.bottom.equalTo(self).offset(-15);
-//            }];
-//        }
-//    }
+    for (UIView *view in reverseViewArray) {
+        if (![view isEqual:[NSNull null]]) {
+            [view mas_makeConstraints:^(MASConstraintMaker *make) {
+                if (quotesCount > 0) {
+                    make.bottom.equalTo(self);
+                } else {
+                    make.bottom.equalTo(self).offset(-20);
+                }
+            }];
+            
+            break;
+        }
+    }
     
     return self;
 }
 
-#pragma mark - public methods
+#pragma mark - Public methods
 
 - (void)enterFullScreenMode
 {
@@ -237,6 +186,85 @@
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(40);
     }];
+}
+
+#pragma mark - View helpers
+
+- (UIView *)createIntroWapView
+{
+    UIView *wapView = [UIView new];
+    
+    // 评析header
+    UILabel *introHeaderLabel = [UILabel new];
+    introHeaderLabel.text = LocalizedString(@"评析");
+    introHeaderLabel.textColor = [UIColor XCZMainColor];
+    [wapView addSubview:introHeaderLabel];
+    
+    // 评析
+    XCZCopyableLabel *introLabel = [XCZCopyableLabel new];
+    introLabel.numberOfLines = 0;
+    introLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    introLabel.font = [UIFont systemFontOfSize:14];
+    introLabel.textColor = [UIColor colorWithRGBA:0x333333FF];
+    NSMutableParagraphStyle *introParagraphStyle = [[NSMutableParagraphStyle alloc] init];
+    introParagraphStyle.lineHeightMultiple = 1.3;
+    introParagraphStyle.paragraphSpacing = 8;
+    introLabel.attributedText = [[NSAttributedString alloc] initWithString:self.work.intro attributes:@{NSParagraphStyleAttributeName: introParagraphStyle}];
+    [wapView addSubview:introLabel];
+
+    [introHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(wapView);
+    }];
+    
+    [introLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(introHeaderLabel.mas_bottom).offset(5);
+        make.left.right.bottom.equalTo(wapView);
+    }];
+    
+    return wapView;
+}
+
+- (UIView *)createCollectionWapView
+{
+    UIView *wapView = [UIView new];
+    
+    UILabel *collectionsHeaderLabel = [UILabel new];
+    self.collectionsHeaderLabel = collectionsHeaderLabel;
+    collectionsHeaderLabel.text = LocalizedString(@"分类");
+    collectionsHeaderLabel.textColor = [UIColor XCZMainColor];
+    [wapView addSubview:collectionsHeaderLabel];
+    
+    XCZTagListView *collectionsView = [XCZTagListView new];
+    collectionsView.cornerRadius = 0;
+    collectionsView.borderWidth = 0;
+    collectionsView.borderColor = [UIColor colorWithRGBA:0xD8D8D8FF];
+    collectionsView.tagBackgroundColor = [UIColor colorWithRGBA:0xEEEEEEFF];
+    collectionsView.tagSelectedBackgroundColor = [UIColor colorWithRGBA:0xDDDDDDFF];
+    collectionsView.textColor = [UIColor colorWithRGBA:0x444444FF];
+    collectionsView.paddingX = 8;
+    collectionsView.paddingY = 5;
+    collectionsView.marginX = 7;
+    collectionsView.marginY = 7;
+    for (XCZCollection *collection in self.work.collections) {
+        [collectionsView addTag:collection.name].onTap = ^void(void) {
+            UIViewController *controller = [[XCZCollectionWorksViewController alloc] initWithCollection:collection];
+            if (self.delegate) {
+                [self.delegate.navigationController pushViewController:controller animated:YES];
+            }
+        };
+    }
+    [wapView addSubview:collectionsView];
+
+    [collectionsHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(wapView);
+    }];
+    
+    [collectionsView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(wapView);
+        make.top.equalTo(collectionsHeaderLabel.mas_bottom).offset(10);
+    }];
+    
+    return wapView;
 }
 
 @end
