@@ -37,26 +37,33 @@
 }
 
 + (NSString *)getFirstSentenceFromWorkContent:(NSString *)content
-{
-    NSString *firstSentence;
-    NSInteger stopLocation;
-    NSInteger questionLocation;
-    NSInteger semicolonLocation;
+{    
+    content = [[content componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] firstObject];
+    NSArray *seperators = @[@"。", @"？", @"；", @"！"];
     
-    content = [[content componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""];
-    stopLocation = [content rangeOfString:@"。"].location;
-    questionLocation = [content rangeOfString:@"？"].location;
-    semicolonLocation = [content rangeOfString:@"；"].location;
+    NSInteger minLocation = -1;
+    NSString *minSeperator;
     
-    if (stopLocation < MIN(questionLocation, semicolonLocation)) {
-        firstSentence = [NSString stringWithFormat:@"%@。", [content componentsSeparatedByString:@"。"][0]];
-    } else if (questionLocation < MIN(stopLocation, semicolonLocation)) {
-        firstSentence = [NSString stringWithFormat:@"%@？", [content componentsSeparatedByString:@"？"][0]];
-    } else {
-        firstSentence = [NSString stringWithFormat:@"%@。", [content componentsSeparatedByString:@"；"][0]];
+    for (NSString *seperator in seperators) {
+        NSInteger location = [content rangeOfString:seperator].location;
+        if (location == NSNotFound) {
+            continue;
+        }
+        
+        if (minLocation == -1) {
+            minLocation = location;
+            minSeperator = seperator;
+        } else if (location < minLocation){
+            minLocation = location;
+            minSeperator = seperator;
+        }
     }
     
-    return firstSentence;
+    if (minLocation == -1) {
+        return content;
+    } else {
+        return [NSString stringWithFormat:@"%@%@", [[content componentsSeparatedByString:minSeperator] firstObject], minSeperator];
+    }
 }
 
 @end

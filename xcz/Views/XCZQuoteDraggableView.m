@@ -9,7 +9,7 @@
 #import "XCZQuoteDraggableView.h"
 #import <AVOSCloud.h>
 
-#define ACTION_MARGIN 120 // distance from center where the action applies. Higher = swipe further in order for the action to be called
+#define ACTION_MARGIN 80 // distance from center where the action applies. Higher = swipe further in order for the action to be called
 #define SCALE_STRENGTH 4 // how quickly the card shrinks. Higher = slower shrinking
 #define SCALE_MAX .93 // upper bar for how much the card shrinks. Higher = shrinks less
 #define ROTATION_MAX 1 // the maximum rotation allowed in radians.  Higher = card can keep rotating longer
