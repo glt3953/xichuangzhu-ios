@@ -136,7 +136,7 @@ static NSString * const cellIdentifier = @"WorkCell";
 // 过滤结果
 - (void)filterContentForSearchText:(NSString*)searchText
 {
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"title contains[c] %@", searchText];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"titleTr contains[c] %@ || titleSim contains[c] %@", searchText, searchText];
     self.searchResults = [self.works filteredArrayUsingPredicate:resultPredicate];
 }
 

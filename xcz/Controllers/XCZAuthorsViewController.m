@@ -166,7 +166,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
 // 过滤结果
 - (void)filterContentForSearchText:(NSString*)searchText
 {
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"nameSim contains[c] %@ OR nameTr contains[c] %@", searchText, searchText];
     self.searchResult = [self.authors filteredArrayUsingPredicate:resultPredicate];
 }
 

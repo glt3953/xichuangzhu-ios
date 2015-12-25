@@ -13,6 +13,7 @@
 @interface XCZAuthor ()
 
 @property (strong, nonatomic) NSString *nameTr;
+@property (strong, nonatomic) NSString *nameSim;
 @property (strong, nonatomic) NSString *introTr;
 @property (strong, nonatomic) NSString *dynastyTr;
 
@@ -127,6 +128,7 @@
     self.dynasty = [resultSet stringForColumn:@"dynasty"];
     
     self.nameTr = [resultSet stringForColumn:@"name_tr"];
+    self.nameSim = [resultSet stringForColumn:@"name"];
     self.introTr = [resultSet stringForColumn:@"intro_tr"];
     self.dynastyTr = [resultSet stringForColumn:@"dynasty_tr"];
 }

@@ -15,6 +15,7 @@
 @interface XCZWork ()
 
 @property (strong, nonatomic) NSString *titleTr;
+@property (nonatomic, strong) NSString *titleSim;
 @property (strong, nonatomic) NSString *fullTitleTr;
 @property (strong, nonatomic) NSString *authorTr;
 @property (strong, nonatomic) NSString *dynastyTr;
@@ -188,6 +189,7 @@
     self.intro = [resultSet stringForColumn:@"intro"];
 
     self.titleTr = [resultSet stringForColumn:@"title_tr"];
+    self.titleSim = [resultSet stringForColumn:@"title"];
     self.fullTitleTr = [resultSet stringForColumn:@"full_title_tr"];
     self.authorTr = [resultSet stringForColumn:@"author_tr"];
     self.dynastyTr = [resultSet stringForColumn:@"dynasty_tr"];
