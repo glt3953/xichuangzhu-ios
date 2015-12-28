@@ -47,6 +47,7 @@
     // 标题
     HTCopyableLabel *titleLabel = [HTCopyableLabel new];
     self.titleLabel = titleLabel;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.numberOfLines = 0;
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     titleLabel.font = [UIFont systemFontOfSize:25];
@@ -106,6 +107,24 @@
     // 约束
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(40);
+        if ([work.title rangeOfString:@" · "].location == NSNotFound) {
+            if (work.title.length == 11) {
+                make.left.equalTo(self).offset(20);
+                make.right.equalTo(self).offset(-20);
+            } else {
+                make.left.equalTo(self).offset(30);
+                make.right.equalTo(self).offset(-30);
+            }
+        } else {
+            if (work.title.length == 13) {
+                make.left.equalTo(self).offset(20);
+                make.right.equalTo(self).offset(-20);
+            } else {
+                make.left.equalTo(self).offset(30);
+                make.right.equalTo(self).offset(-30);
+            }
+        }
+        
         make.left.equalTo(self).offset(30);
         make.right.equalTo(self).offset(-30);
     }];
@@ -238,9 +257,9 @@
     collectionsView.cornerRadius = 0;
     collectionsView.borderWidth = 0;
     collectionsView.borderColor = [UIColor colorWithRGBA:0xD8D8D8FF];
-    collectionsView.tagBackgroundColor = [UIColor colorWithRGBA:0xEEEEEEFF];
-    collectionsView.tagSelectedBackgroundColor = [UIColor colorWithRGBA:0xDDDDDDFF];
-    collectionsView.textColor = [UIColor colorWithRGBA:0x444444FF];
+    collectionsView.tagBackgroundColor = [UIColor colorWithRGBA:0xEAEAEAFF];
+    collectionsView.tagSelectedBackgroundColor = [UIColor colorWithRGBA:0xD8D8D8FF];
+    collectionsView.textColor = [UIColor colorWithRGBA:0x333333FF];
     collectionsView.paddingX = 8;
     collectionsView.paddingY = 5;
     collectionsView.marginX = 7;

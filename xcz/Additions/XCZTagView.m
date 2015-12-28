@@ -35,11 +35,14 @@
 
 - (void)tagPressed {
     self.backgroundColor = self.tagSelectedBackgroundColor;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.backgroundColor = self.tagBackgroundColor;
-        if (self.onTap) {
-            self.onTap();
-        }
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (self.onTap) {
+                self.onTap();
+            }
+        });
     });
 }
 
