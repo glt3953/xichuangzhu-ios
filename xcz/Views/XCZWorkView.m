@@ -47,7 +47,6 @@
     // 标题
     HTCopyableLabel *titleLabel = [HTCopyableLabel new];
     self.titleLabel = titleLabel;
-    titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.numberOfLines = 0;
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     titleLabel.font = [UIFont systemFontOfSize:25];
@@ -107,10 +106,11 @@
     // 约束
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(40);
+        
         if ([work.title rangeOfString:@" · "].location == NSNotFound) {
             if (work.title.length == 11) {
-                make.left.equalTo(self).offset(20);
-                make.right.equalTo(self).offset(-20);
+                make.left.equalTo(self).offset(15);
+                make.right.equalTo(self).offset(-15);
             } else {
                 make.left.equalTo(self).offset(30);
                 make.right.equalTo(self).offset(-30);
@@ -124,9 +124,6 @@
                 make.right.equalTo(self).offset(-30);
             }
         }
-        
-        make.left.equalTo(self).offset(30);
-        make.right.equalTo(self).offset(-30);
     }];
     
     [authorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -210,7 +207,12 @@
 - (void)highlightQuote:(XCZQuote *)quote
 {
     NSMutableAttributedString *contentString = [[NSMutableAttributedString alloc] initWithAttributedString:self.contentLabel.attributedText];
-    NSString *pattern = [NSString stringWithFormat:@"%@.+%@.{1}", [quote.pieces firstObject], [quote.pieces lastObject]];
+    NSString *pattern;
+    if (quote.pieces.count == 1) {
+        pattern = [NSString stringWithFormat:@"%@.{1}", [quote.pieces firstObject]];
+    } else {
+        pattern = [NSString stringWithFormat:@"%@.*%@.{1}", [quote.pieces firstObject], [quote.pieces lastObject]];
+    }
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:NULL];
     NSArray *matches = [regex matchesInString:self.work.content options:0 range:NSMakeRange(0, self.work.content.length)] ;
     NSTextCheckingResult *match = [matches firstObject];

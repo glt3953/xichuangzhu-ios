@@ -21,7 +21,7 @@
 #import <ionicons/IonIcons.h>
 #import <Masonry/Masonry.h>
 
-@interface XCZWorkViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface XCZWorkViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIBarButtonItem *likeButton;
 @property (strong, nonatomic) UIBarButtonItem *unlikeButton;
@@ -156,11 +156,11 @@
 //    
 //    // 全屏模式下，扩大title的顶部间距
 //    if (isFullScreen) {
-//        [self.detailsView exitFullScreenMode];
+//        [self.workView exitFullScreenMode];
 //    } else {
-//        [self.detailsView enterFullScreenMode];
+//        [self.workView enterFullScreenMode];
 //    }
-//    
+//
 //    [UIView animateWithDuration:0.4 animations:^{
 //        [self.view setNeedsLayout];
 //        [self.view layoutIfNeeded];
@@ -279,7 +279,7 @@ static NSString * const cellIdentifier = @"QuoteCell";
     workView.frame = frame;
     
 //    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toggleBars:)];
-//    [detailsView addGestureRecognizer:gesture];
+//    [workView addGestureRecognizer:gesture];
     
     return workView;
 }
