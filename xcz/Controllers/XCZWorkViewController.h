@@ -7,6 +7,7 @@
 //
 
 #import "XCZWork.h"
+#import "XCZQuote.h"
 #import "XCZBaseViewController.h"
 #import <UIKit/UIKit.h>
 
@@ -14,6 +15,7 @@
 
 - (instancetype)initWithWorkId:(int)workId;
 - (instancetype)initWithWork:(XCZWork *)work;
+- (instancetype)initWithWork:(XCZWork *)work quote:(XCZQuote *)quote;
 - (void)updateWithWork:(XCZWork *)work;
 
 @end

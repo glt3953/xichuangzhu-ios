@@ -175,27 +175,15 @@
 {
     [self.quoteLabels removeAllObjects];
     
-    __block NSInteger prevLocation = 0;
-    
-    NSString *pattern = @"[，。：；？！、]";
-    NSRegularExpression *expression = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:nil];
-    
-    NSRange range = NSMakeRange(0,[self.quote.quote length]);
-    [expression enumerateMatchesInString:self.quote.quote options:0 range:range usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-        NSRange range = [result rangeAtIndex:0];
-        
+    for (NSString *piece in self.quote.pieces) {
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         paragraphStyle.lineSpacing = [self lineSpacing];
         
-        NSString *quoteText = [self.quote.quote substringWithRange:NSMakeRange(prevLocation, range.location - prevLocation)];
-        UILabel *quoteLabel = [self createVerticalLabel:quoteText attributes:@{NSParagraphStyleAttributeName: paragraphStyle}];
-        
+        UILabel *quoteLabel = [self createVerticalLabel:piece attributes:@{NSParagraphStyleAttributeName: paragraphStyle}];
         quoteLabel.font = [UIFont fontWithName:[self fontName] size:[self quoteFontSize]];
-
-        [self.quoteLabels addObject:quoteLabel];
         
-        prevLocation = range.location + 1;
-    }];
+        [self.quoteLabels addObject:quoteLabel];
+    }
 }
 
 - (UILabel *)createVerticalLabel:(NSString *)text

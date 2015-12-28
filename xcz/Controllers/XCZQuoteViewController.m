@@ -131,7 +131,8 @@
         return;
     }
     
-    XCZWorkViewController *controller = [[XCZWorkViewController alloc] initWithWorkId:quote.workId];
+    XCZWork *work = [XCZWork getById:quote.workId];
+    XCZWorkViewController *controller = [[XCZWorkViewController alloc] initWithWork:work quote:quote];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

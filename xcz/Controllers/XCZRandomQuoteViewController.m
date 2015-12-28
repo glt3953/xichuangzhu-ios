@@ -136,7 +136,8 @@ static CGFloat const SecondQuoteViewOriginalScale = 0.97;
 
 - (void)quoteViewPressed:(XCZQuote *)quote
 {
-    UIViewController *controller = [[XCZWorkViewController alloc] initWithWorkId:quote.workId];
+    XCZWork *work = [XCZWork getById:quote.workId];
+    XCZWorkViewController *controller = [[XCZWorkViewController alloc] initWithWork:work quote:quote];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

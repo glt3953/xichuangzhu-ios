@@ -207,6 +207,20 @@
     }];
 }
 
+- (void)highlightQuote:(XCZQuote *)quote
+{
+    NSMutableAttributedString *contentString = [[NSMutableAttributedString alloc] initWithAttributedString:self.contentLabel.attributedText];
+    NSString *pattern = [NSString stringWithFormat:@"%@.+%@.{1}", [quote.pieces firstObject], [quote.pieces lastObject]];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:NULL];
+    NSArray *matches = [regex matchesInString:self.work.content options:0 range:NSMakeRange(0, self.work.content.length)] ;
+    NSTextCheckingResult *match = [matches firstObject];
+    
+    if (match != nil) {
+        [contentString addAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:self.contentLabel.font.pointSize]} range:match.range];
+        self.contentLabel.attributedText = contentString;
+    }
+}
+
 #pragma mark - View helpers
 
 - (UIView *)createIntroWapView

@@ -28,10 +28,11 @@
 @property (strong, nonatomic) UIBarButtonItem *wikiButton;
 @property (strong, nonatomic) UIBarButtonItem *authorButton;
 
-@property (strong, nonatomic) XCZWorkView *detailsView;
+@property (strong, nonatomic) XCZWorkView *workView;
 @property (strong, nonatomic) UITableView *tableView;
 
 @property (strong, nonatomic) XCZWork *work;
+@property (strong, nonatomic) XCZQuote *quote;
 @property (strong, nonatomic) NSArray *quotes;
 
 @end
@@ -56,6 +57,12 @@
 - (instancetype)initWithWorkId:(int)workId
 {
     XCZWork *work = [XCZWork getById:workId];
+    return [self initWithWork:work];
+}
+
+- (instancetype)initWithWork:(XCZWork *)work quote:(XCZQuote *)quote
+{
+    self.quote = quote;
     return [self initWithWork:work];
 }
 
@@ -258,22 +265,23 @@ static NSString * const cellIdentifier = @"QuoteCell";
 
 - (UIView *)createHeaderView
 {
-    XCZWorkView *detailsView = [[XCZWorkView alloc] initWithWork:self.work];
-    detailsView.delegate = self;
-    self.detailsView = detailsView;
+    XCZWorkView *workView = [[XCZWorkView alloc] initWithWork:self.work];
+    [workView highlightQuote:self.quote];
+    workView.delegate = self;
+    self.workView = workView;
     
-    detailsView.bounds = CGRectMake(0, 0, SCREEN_WIDTH, 0);
-    [detailsView setNeedsLayout];
-    [detailsView layoutIfNeeded];
-    CGSize size = [detailsView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    CGRect frame = detailsView.frame;
+    workView.bounds = CGRectMake(0, 0, SCREEN_WIDTH, 0);
+    [workView setNeedsLayout];
+    [workView layoutIfNeeded];
+    CGSize size = [workView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    CGRect frame = workView.frame;
     frame.size.height = size.height;
-    detailsView.frame = frame;
+    workView.frame = frame;
     
 //    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toggleBars:)];
 //    [detailsView addGestureRecognizer:gesture];
     
-    return detailsView;
+    return workView;
 }
 
 #pragma mark - Getters & Setters
