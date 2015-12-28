@@ -23,6 +23,7 @@
 #import "Constants.h"
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
+#import "UMCheckUpdate.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import <ionicons/IonIcons.h>
 #import <Fabric/Fabric.h>
@@ -54,6 +55,7 @@
 
     // 友盟
     [UMSocialData setAppKey:UmengAppKey];
+    [UMCheckUpdate checkUpdateWithAppkey:UmengAppKey channel:nil];
     [UMSocialWechatHandler setWXAppId:WechatAppId appSecret:WechatAppSecret url:nil];
     [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToWechatSession, UMShareToWechatTimeline]];
     

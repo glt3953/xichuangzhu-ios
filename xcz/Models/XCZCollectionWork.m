@@ -6,6 +6,7 @@
 //  Copyright © 2015年 Zhipeng Liu. All rights reserved.
 //
 
+#import "XCZWork.h"
 #import "XCZCollectionWork.h"
 #import "XCZUtils.h"
 
@@ -129,7 +130,7 @@
 - (NSString *)workFirstSentence
 {
     if (!_workFirstSentence) {
-        _workFirstSentence = [XCZUtils getFirstSentenceFromWorkContent:self.workContent];
+        _workFirstSentence = [XCZWork getFirstSentenceFromWorkContent:self.workContent];
     }
     
     return _workFirstSentence;

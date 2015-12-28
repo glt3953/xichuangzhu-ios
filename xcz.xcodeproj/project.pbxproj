@@ -48,6 +48,8 @@
 		0587F1491BD9D3B60037747E /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0587F1431BD9D3B60037747E /* libSocialWechat.a */; };
 		0587F14A1BD9D3B60037747E /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0587F1441BD9D3B60037747E /* libWeChatSDK.a */; };
 		0587F14C1BD9D4870037747E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0587F14B1BD9D4870037747E /* SystemConfiguration.framework */; };
+		059397821C318B1200B5F40F /* libUMCheckUpdate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 059397801C318B1200B5F40F /* libUMCheckUpdate.a */; };
+		059397851C31926300B5F40F /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 059397841C31926300B5F40F /* NSString+Helper.m */; };
 		0599F5F11BE76A2A00AA099D /* XCZSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0599F5F01BE76A2A00AA099D /* XCZSettingsViewController.m */; };
 		0599F5F41BE7923F00AA099D /* UIImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0599F5F31BE7923F00AA099D /* UIImage+Helper.m */; };
 		0599F5F71BE7B9A300AA099D /* XCZBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0599F5F61BE7B9A300AA099D /* XCZBadgeView.m */; };
@@ -186,6 +188,10 @@
 		0587F1461BD9D3B60037747E /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		0587F1471BD9D3B60037747E /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		0587F14B1BD9D4870037747E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		059397801C318B1200B5F40F /* libUMCheckUpdate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMCheckUpdate.a; sourceTree = "<group>"; };
+		059397811C318B1200B5F40F /* UMCheckUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMCheckUpdate.h; sourceTree = "<group>"; };
+		059397831C31926300B5F40F /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
+		059397841C31926300B5F40F /* NSString+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
 		0599F5EF1BE76A2A00AA099D /* XCZSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZSettingsViewController.h; sourceTree = "<group>"; };
 		0599F5F01BE76A2A00AA099D /* XCZSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZSettingsViewController.m; sourceTree = "<group>"; };
 		0599F5F21BE7923F00AA099D /* UIImage+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helper.h"; sourceTree = "<group>"; };
@@ -269,6 +275,7 @@
 				0587F14C1BD9D4870037747E /* SystemConfiguration.framework in Frameworks */,
 				05DF00C9195F0CE100175ABF /* CoreGraphics.framework in Frameworks */,
 				0587F14A1BD9D3B60037747E /* libWeChatSDK.a in Frameworks */,
+				059397821C318B1200B5F40F /* libUMCheckUpdate.a in Frameworks */,
 				05DF00CD195F0CE100175ABF /* CoreData.framework in Frameworks */,
 				05DF00CB195F0CE100175ABF /* UIKit.framework in Frameworks */,
 				0587F1341BD9D39F0037747E /* libUMSocial_Sdk_4.2.5.a in Frameworks */,
@@ -430,6 +437,8 @@
 				0545D2691BC5379200410895 /* UIColor+Helper.m */,
 				055D34BE1C2C0342004902C9 /* NSArray+Helper.h */,
 				055D34BF1C2C0342004902C9 /* NSArray+Helper.m */,
+				059397831C31926300B5F40F /* NSString+Helper.h */,
+				059397841C31926300B5F40F /* NSString+Helper.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -497,6 +506,15 @@
 				0587F1471BD9D3B60037747E /* WXApiObject.h */,
 			);
 			path = Wechat;
+			sourceTree = "<group>";
+		};
+		0593977F1C318B1200B5F40F /* UMCheckUpdate */ = {
+			isa = PBXGroup;
+			children = (
+				059397801C318B1200B5F40F /* libUMCheckUpdate.a */,
+				059397811C318B1200B5F40F /* UMCheckUpdate.h */,
+			);
+			path = UMCheckUpdate;
 			sourceTree = "<group>";
 		};
 		05CC12F9196569E80014989C /* Models */ = {
@@ -572,6 +590,7 @@
 			children = (
 				0587F13E1BD9D3B60037747E /* UMSocial_Sdk_Extra_Frameworks */,
 				0587F1181BD9D39F0037747E /* UMSocial_Sdk_4.2.5 */,
+				0593977F1C318B1200B5F40F /* UMCheckUpdate */,
 				05DF00CE195F0CE100175ABF /* xcz */,
 				05DF00EB195F0CE100175ABF /* xczTests */,
 				05DF00C5195F0CE100175ABF /* Frameworks */,
@@ -861,6 +880,7 @@
 				05CC765D1BD6247E00A3970D /* XCZQuoteView.m in Sources */,
 				05CFDFE81BF7740F0027773C /* XCZCollection.m in Sources */,
 				05349CE51C1B392A0011DCEB /* XCZBaseViewController.m in Sources */,
+				059397851C31926300B5F40F /* NSString+Helper.m in Sources */,
 				0599F5F71BE7B9A300AA099D /* XCZBadgeView.m in Sources */,
 				05349CDF1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m in Sources */,
 				055D34B71C2BB2CB004902C9 /* XCZTagView.m in Sources */,
@@ -1045,6 +1065,7 @@
 					"$(PROJECT_DIR)/UMSocial_Sdk_4.2.5",
 					"$(PROJECT_DIR)/UMSocial_Sdk_Extra_Frameworks/Twitter",
 					"$(PROJECT_DIR)/UMSocial_Sdk_Extra_Frameworks/Wechat",
+					"$(PROJECT_DIR)/UMCheckUpdate",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hustlzp.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1079,6 +1100,7 @@
 					"$(PROJECT_DIR)/UMSocial_Sdk_4.2.5",
 					"$(PROJECT_DIR)/UMSocial_Sdk_Extra_Frameworks/Twitter",
 					"$(PROJECT_DIR)/UMSocial_Sdk_Extra_Frameworks/Wechat",
+					"$(PROJECT_DIR)/UMCheckUpdate",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hustlzp.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

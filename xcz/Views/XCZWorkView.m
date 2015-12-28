@@ -208,12 +208,15 @@
 {
     NSMutableAttributedString *contentString = [[NSMutableAttributedString alloc] initWithAttributedString:self.contentLabel.attributedText];
     NSString *pattern;
+    NSString *phraseSeperators = @"，。：；？！、";
+    NSString *sentenceSeperators = @"。；？！";
+    
     if (quote.pieces.count == 1) {
-        pattern = [NSString stringWithFormat:@"%@.{1}", [quote.pieces firstObject]];
+        pattern = [NSString stringWithFormat:@"%@[%@]{1}", [quote.pieces firstObject], phraseSeperators];
     } else {
-        pattern = [NSString stringWithFormat:@"%@.*%@.{1}", [quote.pieces firstObject], [quote.pieces lastObject]];
+        pattern = [NSString stringWithFormat:@"%@.*[%@\n]{1}%@[%@]{0,1}", [quote.pieces firstObject], phraseSeperators, [quote.pieces lastObject], sentenceSeperators];
     }
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:NULL];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionDotMatchesLineSeparators error:NULL];
     NSArray *matches = [regex matchesInString:self.work.content options:0 range:NSMakeRange(0, self.work.content.length)] ;
     NSTextCheckingResult *match = [matches firstObject];
     

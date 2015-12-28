@@ -36,34 +36,4 @@
     }
 }
 
-+ (NSString *)getFirstSentenceFromWorkContent:(NSString *)content
-{    
-    content = [[content componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] firstObject];
-    NSArray *seperators = @[@"。", @"？", @"；", @"！"];
-    
-    NSInteger minLocation = -1;
-    NSString *minSeperator;
-    
-    for (NSString *seperator in seperators) {
-        NSInteger location = [content rangeOfString:seperator].location;
-        if (location == NSNotFound) {
-            continue;
-        }
-        
-        if (minLocation == -1) {
-            minLocation = location;
-            minSeperator = seperator;
-        } else if (location < minLocation){
-            minLocation = location;
-            minSeperator = seperator;
-        }
-    }
-    
-    if (minLocation == -1) {
-        return content;
-    } else {
-        return [NSString stringWithFormat:@"%@%@", [[content componentsSeparatedByString:minSeperator] firstObject], minSeperator];
-    }
-}
-
 @end

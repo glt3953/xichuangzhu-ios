@@ -10,6 +10,7 @@
 #import "XCZCollection.h"
 #import "XCZCollectionWork.h"
 #import "XCZUtils.h"
+#import "Constants.h"
 #import <FMDB/FMDB.h>
 
 @interface XCZWork ()
@@ -169,6 +170,36 @@
     return collections;
 }
 
++ (NSString *)getFirstSentenceFromWorkContent:(NSString *)content
+{
+    content = [[content componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] firstObject];
+    NSArray *seperators = @[@"。", @"？", @"；", @"！"];
+    
+    NSInteger minLocation = -1;
+    NSString *minSeperator;
+    
+    for (NSString *seperator in seperators) {
+        NSInteger location = [content rangeOfString:seperator].location;
+        if (location == NSNotFound) {
+            continue;
+        }
+        
+        if (minLocation == -1) {
+            minLocation = location;
+            minSeperator = seperator;
+        } else if (location < minLocation){
+            minLocation = location;
+            minSeperator = seperator;
+        }
+    }
+    
+    if (minLocation == -1) {
+        return content;
+    } else {
+        return [NSString stringWithFormat:@"%@%@", [[content componentsSeparatedByString:minSeperator] firstObject], minSeperator];
+    }
+}
+
 #pragma mark - Internal Helper
 
 - (void)updateWithResultSet:(FMResultSet *)resultSet
@@ -198,8 +229,8 @@
     self.contentTr = [resultSet stringForColumn:@"content_tr"];
     self.introTr = [resultSet stringForColumn:@"intro_tr"];
     
-    self.firstSentence = [XCZUtils getFirstSentenceFromWorkContent:_content];
-    self.firstSentenceTr = [XCZUtils getFirstSentenceFromWorkContent:_contentTr];
+    self.firstSentence = [XCZWork getFirstSentenceFromWorkContent:_content];
+    self.firstSentenceTr = [XCZWork getFirstSentenceFromWorkContent:_contentTr];
 }
 
 #pragma mark - Getters & Setters

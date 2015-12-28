@@ -32,5 +32,6 @@
 + (NSMutableArray *)reorderWorks;
 + (NSMutableArray *)getWorksByAuthorId:(int)authorId kind:(NSString *)kind;
 + (XCZWork *)getRandomWork;
++ (NSString *)getFirstSentenceFromWorkContent:(NSString *)content;
 
 @end
