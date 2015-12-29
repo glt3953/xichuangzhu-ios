@@ -30,6 +30,9 @@
     [self setTitle:title forState:UIControlStateNormal];
     [self addTarget:self action:@selector(tagPressed) forControlEvents:UIControlEventTouchUpInside];
     
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tagLongPressed:)];
+    [self addGestureRecognizer:longPressGesture];
+    
     return self;
 }
 
@@ -44,6 +47,21 @@
             }
         });
     });
+}
+
+- (void)tagLongPressed:(UILongPressGestureRecognizer *)gesture
+{
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        self.backgroundColor = self.tagSelectedBackgroundColor;
+    } else if (gesture.state == UIGestureRecognizerStateEnded) {
+        self.backgroundColor = self.tagBackgroundColor;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (self.onTap) {
+                self.onTap();
+            }
+        });
+    }
 }
 
 #pragma mark - Getters & Setters

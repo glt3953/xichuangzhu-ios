@@ -483,8 +483,8 @@
 				0599F5F61BE7B9A300AA099D /* XCZBadgeView.m */,
 				0593978C1C32254300B5F40F /* XCZTagView.h */,
 				059397891C32254300B5F40F /* XCZTagView.m */,
-				0593978A1C32254300B5F40F /* XCZTagListView.m */,
 				0593978B1C32254300B5F40F /* XCZTagListView.h */,
+				0593978A1C32254300B5F40F /* XCZTagListView.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
