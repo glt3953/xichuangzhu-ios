@@ -109,9 +109,14 @@
     
     // slogan wap
     UIView *sloganWapView = [UIView new];
+    sloganWapView.userInteractionEnabled = YES;
     sloganWapView.backgroundColor = [UIColor colorWithRGBA:0xF2F2F2FF];
+    // tap gesture
     UITapGestureRecognizer *gestureForSlogan = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sloganTapped:)];
     [sloganWapView addGestureRecognizer:gestureForSlogan];
+    // long press gesture
+    UILongPressGestureRecognizer *longPressGestureForSlogan = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(sloganLongPressed:)];
+    [sloganWapView addGestureRecognizer:longPressGestureForSlogan];
     [contentView addSubview:sloganWapView];
     
     // slogan
@@ -269,7 +274,7 @@
 
 - (void)sloganTapped:(UITapGestureRecognizer *)gesture
 {
-    gesture.view.backgroundColor = [UIColor colorWithRGBA:0xE6E6E6FF];
+    gesture.view.backgroundColor = [UIColor colorWithRGBA:0xEAEAEAFF];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         gesture.view.backgroundColor = [UIColor colorWithRGBA:0xF2F2F2FF];
         
@@ -278,6 +283,20 @@
             [self.navigationController pushViewController:controller animated:YES];
         });
     });
+}
+
+- (void)sloganLongPressed:(UILongPressGestureRecognizer *)gesture
+{
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        gesture.view.backgroundColor = [UIColor colorWithRGBA:0xEAEAEAFF];
+    } else if (gesture.state == UIGestureRecognizerStateEnded) {
+        gesture.view.backgroundColor = [UIColor colorWithRGBA:0xF2F2F2FF];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            UIViewController *controller = [[XCZWorkViewController alloc] initWithWorkId:10024];
+            [self.navigationController pushViewController:controller animated:YES];
+        });
+    }
 }
 
 #pragma mark - SomeDelegate
