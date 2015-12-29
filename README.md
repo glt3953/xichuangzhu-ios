@@ -13,8 +13,3 @@ xichuangzhu-ios
 * 使用Xcode打开`xcz.xcworkspace`
 * 将`xcz/Constants.sample.h`重命名为`xcz/Constants.h`，并在Xcode中加入此文件
 * 编译运行即可
-
-###对LeanCloudFeedback的修改
-
-* 修改错误提示（LCUserFeedbackViewController.m 第266行）
-* 文字简繁版：详情、请填写反馈、意见反馈、发送
