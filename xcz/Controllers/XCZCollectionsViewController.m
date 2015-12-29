@@ -94,7 +94,7 @@ static NSString * const FooterViewReuseIdentifier = @"FooterView";
 
 #pragma mark - Public Interface
 
-- (void)updateTabBarTitle
+- (void)updateBarTitles
 {
     self.tabBarItem.title = LocalizedString(@"分类");
 }

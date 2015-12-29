@@ -11,6 +11,6 @@
 @interface XCZBaseViewController : UIViewController
 
 - (void)createViews;
-- (void)updateTabBarTitle;
+- (void)updateBarTitles;
 
 @end

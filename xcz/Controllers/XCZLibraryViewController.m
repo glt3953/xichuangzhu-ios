@@ -77,6 +77,12 @@
 {
     [super viewDidLoad];
     
+    UISegmentedControl *segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"作品", LocalizedString(@"文学家")]];
+    self.segmentControl = segmentControl;
+    self.segmentControl.selectedSegmentIndex = 0;
+    [self.segmentControl addTarget:self action:@selector(segmentControlTapped) forControlEvents:UIControlEventValueChanged];
+    self.navigationItem.titleView = segmentControl;
+    
     [self segmentControlTapped];
 }
 
@@ -96,12 +102,6 @@
 
 - (void)createViews
 {
-    UISegmentedControl *segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"作品", LocalizedString(@"文学家")]];
-    self.segmentControl = segmentControl;
-    self.segmentControl.selectedSegmentIndex = 0;
-    [self.segmentControl addTarget:self action:@selector(segmentControlTapped) forControlEvents:UIControlEventValueChanged];
-    self.navigationItem.titleView = segmentControl;
-    
     [self.view addSubview:self.worksViewController.view];
     [self.worksViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
@@ -115,9 +115,10 @@
 
 #pragma mark - Public Interface
 
-- (void)updateTabBarTitle
+- (void)updateBarTitles
 {
     self.tabBarItem.title = LocalizedString(@"文库");
+    [self.segmentControl setTitle:LocalizedString(@"文学家") forSegmentAtIndex:1];
 }
 
 #pragma mark - User Interface
