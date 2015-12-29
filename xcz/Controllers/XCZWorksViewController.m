@@ -78,8 +78,6 @@ static NSString * const cellIdentifier = @"WorkCell";
 
 - (void)createViews
 {
-    self.navigationItem.title = @"作品";
-    
     UISearchBar *searchBar = [UISearchBar new];
     searchBar.placeholder = LocalizedString(@"搜索");
     [self.view addSubview:searchBar];

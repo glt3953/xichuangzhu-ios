@@ -106,8 +106,6 @@ static NSString * const cellIdentifier = @"AuthorCell";
 
 - (void)createViews
 {
-    self.navigationItem.title = @"文学家";
-    
     UISearchBar *searchBar = [UISearchBar new];
     searchBar.placeholder = LocalizedString(@"搜索");
     [self.view addSubview:searchBar];
