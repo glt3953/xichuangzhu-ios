@@ -21,10 +21,14 @@
 #define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
 #define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 
-#define XCZFontFangsong @"STFangsong"
+#define XCZFontHWFangsong @"STFangsong"
+#define XCZFontWYFangsong @"Wyue-GutiFangsong-NC"
 
 #define XCZTabBarHeight 49
 #define XCZNavBarHeight 64
 #define XCZStatusBarHeight 20
+
+#define XCZQuoteFontChangedNotification @"XCZQuoteFontChangedNotification"
+#define XCZChineseKindChangedNotification @"XCZChineseKindChangedNotification"
 
 #endif
