@@ -270,12 +270,14 @@
 - (void)sloganTapped:(UITapGestureRecognizer *)gesture
 {
     gesture.view.backgroundColor = [UIColor colorWithRGBA:0xE6E6E6FF];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         gesture.view.backgroundColor = [UIColor colorWithRGBA:0xF2F2F2FF];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            UIViewController *controller = [[XCZWorkViewController alloc] initWithWorkId:10024];
+            [self.navigationController pushViewController:controller animated:YES];
+        });
     });
-    
-    UIViewController *controller = [[XCZWorkViewController alloc] initWithWorkId:10024];
-    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - SomeDelegate
