@@ -23,7 +23,6 @@
 #import "Constants.h"
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
-#import "UMCheckUpdate.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import <ionicons/IonIcons.h>
 #import <Fabric/Fabric.h>
@@ -55,7 +54,6 @@
 
     // 友盟
     [UMSocialData setAppKey:UmengAppKey];
-    [UMCheckUpdate checkUpdateWithAppkey:UmengAppKey channel:nil];
     [UMSocialWechatHandler setWXAppId:WechatAppId appSecret:WechatAppSecret url:nil];
     [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToWechatSession, UMShareToWechatTimeline]];
     
@@ -183,7 +181,7 @@
     
     // 若Documents文件夹下不存在数据库文件，则执行拷贝
     if (![[NSFileManager defaultManager] fileExistsAtPath:storePath]) {
-        NSLog(@"Public database not found... copy from bundle.");
+        NSLog(@"Public database not found...copy from bundle.");
         [[NSFileManager defaultManager] copyItemAtPath:bundleStore toPath:storePath error:nil];
     } else {
         NSLog(@"Public database found.");

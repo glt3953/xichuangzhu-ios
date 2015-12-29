@@ -38,7 +38,6 @@
 		059397991C32264600B5F40F /* XCZUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 059397981C32264600B5F40F /* XCZUtils.m */; };
 		059397C51C32267900B5F40F /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 0593979C1C32267900B5F40F /* NSString+FontAwesome.m */; };
 		059397C61C32267900B5F40F /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 0593979E1C32267900B5F40F /* UIImage+FontAwesome.m */; };
-		059397C71C32267900B5F40F /* libUMCheckUpdate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 059397A01C32267900B5F40F /* libUMCheckUpdate.a */; };
 		059397C81C32267900B5F40F /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 059397A31C32267900B5F40F /* UMSocialLocalizable.strings */; };
 		059397C91C32267900B5F40F /* libUMSocial_Sdk_4.2.5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 059397B11C32267900B5F40F /* libUMSocial_Sdk_4.2.5.a */; };
 		059397CA1C32267900B5F40F /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 059397B31C32267900B5F40F /* UMSCommentDetailController.xib */; };
@@ -167,8 +166,6 @@
 		0593979C1C32267900B5F40F /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
 		0593979D1C32267900B5F40F /* UIImage+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FontAwesome.h"; sourceTree = "<group>"; };
 		0593979E1C32267900B5F40F /* UIImage+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FontAwesome.m"; sourceTree = "<group>"; };
-		059397A01C32267900B5F40F /* libUMCheckUpdate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMCheckUpdate.a; sourceTree = "<group>"; };
-		059397A11C32267900B5F40F /* UMCheckUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMCheckUpdate.h; sourceTree = "<group>"; };
 		059397A41C32267900B5F40F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		059397A61C32267900B5F40F /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		059397A71C32267900B5F40F /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -273,7 +270,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				059397C71C32267900B5F40F /* libUMCheckUpdate.a in Frameworks */,
 				059397C91C32267900B5F40F /* libUMSocial_Sdk_4.2.5.a in Frameworks */,
 				0587F14C1BD9D4870037747E /* SystemConfiguration.framework in Frameworks */,
 				05DF00C9195F0CE100175ABF /* CoreGraphics.framework in Frameworks */,
@@ -391,7 +387,6 @@
 			isa = PBXGroup;
 			children = (
 				0593979A1C32267900B5F40F /* FontAwesome */,
-				0593979F1C32267900B5F40F /* UMCheckUpdate */,
 				059397A21C32267900B5F40F /* UMSocial_Sdk_4.2.5 */,
 				059397BD1C32267900B5F40F /* UMSocial_Sdk_Extra_Frameworks */,
 			);
@@ -503,15 +498,6 @@
 				0593979E1C32267900B5F40F /* UIImage+FontAwesome.m */,
 			);
 			path = FontAwesome;
-			sourceTree = "<group>";
-		};
-		0593979F1C32267900B5F40F /* UMCheckUpdate */ = {
-			isa = PBXGroup;
-			children = (
-				059397A01C32267900B5F40F /* libUMCheckUpdate.a */,
-				059397A11C32267900B5F40F /* UMCheckUpdate.h */,
-			);
-			path = UMCheckUpdate;
 			sourceTree = "<group>";
 		};
 		059397A21C32267900B5F40F /* UMSocial_Sdk_4.2.5 */ = {

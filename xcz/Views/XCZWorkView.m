@@ -83,16 +83,16 @@
     contentLabel.attributedText = [[NSAttributedString alloc] initWithString:self.work.content attributes:@{NSParagraphStyleAttributeName: contentParagraphStyle}];
     [self addSubview:contentLabel];
     
-    UIView *collectionWapView;
-    if (self.work.collections.count > 0) {
-        collectionWapView = [self createCollectionWapView];
-        [self addSubview:collectionWapView];
-    }
-    
     UIView *introWapView;
     if ([self.work.intro length] > 0) {
         introWapView = [self createIntroWapView];
         [self addSubview:introWapView];
+    }
+    
+    UIView *collectionWapView;
+    if (self.work.collections.count > 0) {
+        collectionWapView = [self createCollectionWapView];
+        [self addSubview:collectionWapView];
     }
     
     UILabel *quotesHeaderLabel;
@@ -144,8 +144,8 @@
     
     UIView *prevView;
     BOOL hasMakeConstraintToContentLabel = NO;
-    NSArray *viewArray = @[collectionWapView ? collectionWapView : [NSNull null],
-                           introWapView ? introWapView : [NSNull null],
+    NSArray *viewArray = @[introWapView ? introWapView : [NSNull null],
+                           collectionWapView ? collectionWapView : [NSNull null],
                            quotesHeaderLabel ? quotesHeaderLabel : [NSNull null]];
     NSArray *reverseViewArray = [viewArray reversedArray];
     
