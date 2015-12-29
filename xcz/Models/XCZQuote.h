@@ -20,6 +20,7 @@
 
 + (XCZQuote *)getRandomQuote;
 + (XCZQuote *)getRandomQuoteByAuthorId:(int)authorId;
++ (NSArray *)getAll;
 + (NSArray *)getByAuthorId:(int)authorId;
 + (NSArray *)getByWorkId:(int)workId;
 + (NSMutableArray *)getRandomQuotes:(int)number;
