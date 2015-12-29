@@ -11,6 +11,7 @@
 #import "XCZWorkViewController.h"
 #import "LocalizeHelper.h"
 #import "UIColor+Helper.h"
+#import "Constants.h"
 #import <Masonry/Masonry.h>
 
 @interface XCZAboutViewController ()
@@ -78,7 +79,7 @@
     
     // text
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:LocalizedString(@"西窗烛 ") attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17]}];
-    NSMutableAttributedString *versionText = [[NSMutableAttributedString alloc] initWithString:@"v1.9.0" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
+    NSMutableAttributedString *versionText = [[NSMutableAttributedString alloc] initWithString:@"v1.9.1" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
     [text appendAttributedString:versionText];
     UILabel *textLabel = [UILabel new];
     textLabel.attributedText = text;
@@ -117,21 +118,22 @@
     UILabel *sloganLabel = [UILabel new];
     sloganLabel.numberOfLines = 0;
     sloganLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    sloganLabel.font = [UIFont systemFontOfSize:20];
+    sloganLabel.font = [UIFont fontWithName:XCZFontWYFangsong size:20];
     NSString *sloganText = LocalizedString(@"何当共剪西窗烛，\n却话巴山夜雨时。");
     NSMutableAttributedString *attributedStringForSlogan = [[NSMutableAttributedString alloc] initWithString:sloganText];
     NSMutableParagraphStyle *paragraphStyleForSlogan = [[NSMutableParagraphStyle alloc] init];
     paragraphStyleForSlogan.alignment = NSTextAlignmentCenter;
-    paragraphStyleForSlogan.lineSpacing = 10;
+    paragraphStyleForSlogan.lineSpacing = 5;
     [attributedStringForSlogan addAttribute:NSParagraphStyleAttributeName value:paragraphStyleForSlogan range:NSMakeRange(0, sloganText.length)];
+    [attributedStringForSlogan addAttribute:NSKernAttributeName value:@(1.1)
+                             range:NSMakeRange(0, sloganText.length)];
     sloganLabel.attributedText = attributedStringForSlogan;
     [sloganWapView addSubview:sloganLabel];
     
     // slogan from
     UILabel *sloganFromLabel = [UILabel new];
-    sloganFromLabel.text = LocalizedString(@"— [唐] 李商隐");
-    sloganFromLabel.textColor = [UIColor colorWithRGBA:0x333333FF];
-    sloganFromLabel.font = [UIFont systemFontOfSize:12];
+    sloganFromLabel.text = LocalizedString(@"— [唐]李商隐");
+    sloganFromLabel.font = [UIFont fontWithName:XCZFontWYFangsong size:12];
     [sloganWapView addSubview:sloganFromLabel];
     
     // about
@@ -212,7 +214,7 @@
     
     [sloganLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(sloganWapView);
-        make.top.equalTo(sloganWapView).offset(40);
+        make.top.equalTo(sloganWapView).offset(45);
     }];
     
     [sloganFromLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -222,7 +224,7 @@
     }];
     
     [aboutLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(sloganWapView.mas_bottom).offset(30);
+        make.top.equalTo(sloganWapView.mas_bottom).offset(25);
         make.left.equalTo(contentView).offset(20);
         make.right.equalTo(contentView).offset(-20);
     }];
