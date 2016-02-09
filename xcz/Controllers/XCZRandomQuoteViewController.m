@@ -27,6 +27,7 @@ static CGFloat const SecondQuoteViewOriginalScale = 0.97;
 @property (strong, nonatomic) XCZQuoteDraggableView *firstQuoteView;
 @property (strong, nonatomic) XCZQuoteDraggableView *secondQuoteView;
 @property (strong, nonatomic) MBProgressHUD *hud;
+@property (strong, nonatomic) NSMutableArray *quoteIds;
 
 @end
 
@@ -170,8 +171,20 @@ static CGFloat const SecondQuoteViewOriginalScale = 0.97;
 
 - (void)loadQuoteView
 {
-    XCZQuoteDraggableView *quoteView = [[XCZQuoteDraggableView alloc] initWithQuote:[XCZQuote getRandomQuote]];
+    XCZQuote *randomQuote;
+    if (self.quoteIds.count == 0) {
+        randomQuote = [XCZQuote getRandomQuote];
+    } else {
+        randomQuote = [XCZQuote getRandomQuoteExcept:self.quoteIds];
+    }
+    
+    XCZQuoteDraggableView *quoteView = [[XCZQuoteDraggableView alloc] initWithQuote:randomQuote];
     quoteView.delegate = self;
+    
+    if (self.quoteIds.count == 10) {
+        [self.quoteIds removeObjectAtIndex:0];
+    }
+    [self.quoteIds addObject:[NSString stringWithFormat:@"%d", randomQuote.id]];
     
     if (!self.firstQuoteView) {
         self.firstQuoteView = quoteView;
@@ -218,5 +231,14 @@ static CGFloat const SecondQuoteViewOriginalScale = 0.97;
 }
 
 #pragma mark - Getters & Setters
+
+- (NSMutableArray *)quoteIds
+{
+    if (!_quoteIds) {
+        _quoteIds = [NSMutableArray new];
+    }
+    
+    return _quoteIds;
+}
 
 @end

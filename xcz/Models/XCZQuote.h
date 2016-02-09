@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSArray *pieces;
 
 + (XCZQuote *)getRandomQuote;
++ (XCZQuote *)getRandomQuoteExcept:(NSArray *)quoteIds;
 + (XCZQuote *)getRandomQuoteByAuthorId:(int)authorId;
 + (NSArray *)getAll;
 + (NSArray *)getByAuthorId:(int)authorId;

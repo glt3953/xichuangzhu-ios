@@ -37,6 +37,23 @@
     return quote;
 }
 
++ (XCZQuote *)getRandomQuoteExcept:(NSArray *)quoteIds
+{
+    XCZQuote * quote = [[XCZQuote alloc] init];
+    
+    NSString *dbPath = [XCZUtils getDatabaseFilePath];
+    FMDatabase *db = [FMDatabase databaseWithPath:dbPath];
+    if ([db open]) {
+        NSString *queryString = [NSString stringWithFormat:@"SELECT * FROM quotes WHERE id NOT IN (%@) ORDER BY RANDOM() LIMIT 1", [quoteIds componentsJoinedByString:@", "]];
+        FMResultSet *s = [db executeQuery:queryString];
+        [s next];
+        [quote loadFromResultSet:s];
+        [db close];
+    }
+    
+    return quote;
+}
+
 // 获取某文学家的一条随机摘录
 + (XCZQuote *)getRandomQuoteByAuthorId:(int)authorId
 {
