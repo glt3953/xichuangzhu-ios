@@ -179,7 +179,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (tableView == self.searchController.searchResultsTableView) {
         return 1;
     } else {
         if (self.orderAuthorsByAlphabet) {
@@ -192,7 +192,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (tableView == self.searchController.searchResultsTableView) {
         return self.searchResult.count;
     } else {
         if (self.orderAuthorsByAlphabet) {
@@ -210,7 +210,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
 // Section标题
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (tableView == self.searchController.searchResultsTableView) {
         return @"";
     } else {
         if (self.orderAuthorsByAlphabet) {
@@ -225,7 +225,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
 // 索引
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (tableView == self.searchController.searchResultsTableView) {
         return @[];
     } else {
         if (self.orderAuthorsByAlphabet) {
@@ -254,7 +254,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XCZAuthor *author = nil;
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (tableView == self.searchController.searchResultsTableView) {
         author = self.searchResult[indexPath.row];
     } else {
         if (self.orderAuthorsByAlphabet) {
@@ -278,7 +278,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
 {
     XCZAuthor *author;
     
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (tableView == self.searchController.searchResultsTableView) {
         author = self.searchResult[indexPath.row];
     } else {
         if (self.orderAuthorsByAlphabet) {
@@ -306,7 +306,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XCZAuthor *author = nil;
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (tableView == self.searchController.searchResultsTableView) {
         author = self.searchResult[indexPath.row];
         [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     } else {

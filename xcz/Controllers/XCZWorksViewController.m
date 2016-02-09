@@ -150,7 +150,7 @@ static NSString * const cellIdentifier = @"WorkCell";
 // 表行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (tableView == self.searchController.searchResultsTableView) {
         return [self.searchResults count];
     } else {
         return [self.works count];
@@ -161,7 +161,7 @@ static NSString * const cellIdentifier = @"WorkCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XCZWork *work;
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (tableView == self.searchController.searchResultsTableView) {
         work = self.searchResults[indexPath.row];
     } else {
         work = self.works[indexPath.row];
@@ -176,7 +176,7 @@ static NSString * const cellIdentifier = @"WorkCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XCZWork *work;
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (tableView == self.searchController.searchResultsTableView) {
         work = self.searchResults[indexPath.row];
     } else {
         work = self.works[indexPath.row];
@@ -197,7 +197,7 @@ static NSString * const cellIdentifier = @"WorkCell";
 {
     XCZWork *work;
     
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (tableView == self.searchController.searchResultsTableView) {
         work = self.searchResults[indexPath.row];
         [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     } else {
