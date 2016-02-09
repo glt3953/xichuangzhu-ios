@@ -9,6 +9,8 @@
 #import "XCZWorkSearchResult.h"
 #import "XCZUtils.h"
 #import <FMDB/FMDB.h>
+#import <FMDB/FMDatabase+FTS3.h>
+#import <FMDB/FMTokenizers.h>
 
 @interface XCZWorkSearchResult ()
 
@@ -35,8 +37,22 @@
     FMDatabase *db = [FMDatabase databaseWithPath:dbPath];
     
     if ([db open]) {
-        NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM works_ft WHERE works_ft MATCH '%@'", keyword];
+        NSString *query = [[NSString alloc] initWithFormat:@"SELECT id, title, title_tr, dynasty, dynasty_tr, author, author_tr, snippet(works_ft, '[', ']', '...', -1, 3) AS content FROM works_ft WHERE works_ft MATCH '%@'", keyword];
+        
+//        [db installTokenizerModule];
+        FMSimpleTokenizer *simpleTok = [[FMSimpleTokenizer alloc] initWithLocale:NULL];
+        
+        // This installs a tokenizer module named "fmdb"
+        [db installTokenizerModule];
+        // This registers the delegate using the name "simple", which should be used when creating the table (below).
+        [FMDatabase registerTokenizer:simpleTok withKey:@"simple"];
+        
         FMResultSet *s = [db executeQuery:query];
+        
+        if (s == nil) {
+            NSLog(@"%@", [db lastErrorMessage]);
+        }
+        
         while ([s next]) {
             XCZWorkSearchResult *work = [XCZWorkSearchResult new];
             [work updateWithResultSet:s];
@@ -62,7 +78,45 @@
     self.titleTr = [resultSet stringForColumn:@"title_tr"];
     self.authorTr = [resultSet stringForColumn:@"author_tr"];
     self.dynastyTr = [resultSet stringForColumn:@"dynasty_tr"];
-    self.contentTr = [resultSet stringForColumn:@"content_tr"];
+//    self.contentTr = [resultSet stringForColumn:@"content_tr"];
 }
+
+#pragma mark - Getters & Setters
+
+- (NSString *)title
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _title;
+    } else {
+        return _titleTr;
+    }
+}
+
+- (NSString *)author
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _author;
+    } else {
+        return _authorTr;
+    }
+}
+
+- (NSString *)dynasty
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+        return _dynasty;
+    } else {
+        return _dynastyTr;
+    }
+}
+
+//- (NSString *)content
+//{
+//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+//        return _content;
+//    } else {
+//        return _contentTr;
+//    }
+//}
 
 @end

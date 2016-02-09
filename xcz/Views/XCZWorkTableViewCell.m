@@ -87,4 +87,11 @@
     self.firstSentenceLabel.text = collectionWork.workFirstSentence;
 }
 
+- (void)updateWithWorkSearchResult:(XCZWorkSearchResult *)workSearchResult
+{
+    self.titleLabel.text = workSearchResult.title;
+    self.authorLabel.text = [NSString stringWithFormat:@"[%@] %@", workSearchResult.dynasty, workSearchResult.author];
+    self.firstSentenceLabel.text = workSearchResult.content;
+}
+
 @end

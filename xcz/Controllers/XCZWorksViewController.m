@@ -7,6 +7,7 @@
 //
 
 #import "XCZWork.h"
+#import "XCZWorkSearchResult.h"
 #import "XCZWorkTableViewCell.h"
 #import "XCZWorksViewController.h"
 #import "XCZWorkViewController.h"
@@ -136,6 +137,8 @@ static NSString * const cellIdentifier = @"WorkCell";
 {
     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"titleTr contains[c] %@ || titleSim contains[c] %@", searchText, searchText];
     self.searchResults = [self.works filteredArrayUsingPredicate:resultPredicate];
+    
+    NSArray *hehe = [XCZWorkSearchResult fullTextSearch:searchText];
 }
 
 // 以下代码解决了 searchResultsTableView 下方空间的 bug

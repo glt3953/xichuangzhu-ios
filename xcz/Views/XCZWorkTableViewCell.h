@@ -7,6 +7,7 @@
 //
 
 #import "XCZWork.h"
+#import "XCZWorkSearchResult.h"
 #import "XCZCollectionWork.h"
 #import <UIKit/UIKit.h>
 
@@ -14,5 +15,6 @@
 
 - (void)updateWithWork:(XCZWork *)work showAuthor:(BOOL)showAuthor;
 - (void)updateWithCollectionWork:(XCZCollectionWork *)collectionWork;
+- (void)updateWithWorkSearchResult:(XCZWorkSearchResult *)workSearchResult;
 
 @end
