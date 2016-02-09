@@ -54,6 +54,7 @@
 		0599F5F11BE76A2A00AA099D /* XCZSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0599F5F01BE76A2A00AA099D /* XCZSettingsViewController.m */; };
 		0599F5F41BE7923F00AA099D /* UIImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0599F5F31BE7923F00AA099D /* UIImage+Helper.m */; };
 		0599F5F71BE7B9A300AA099D /* XCZBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0599F5F61BE7B9A300AA099D /* XCZBadgeView.m */; };
+		059D1C361C6A33DB005DA29C /* XCZWorkSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 059D1C351C6A33DB005DA29C /* XCZWorkSearchResult.m */; };
 		05AC40BA1BFF56A1006F6CA3 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05AC40B91BFF569B006F6CA3 /* FontAwesome.ttf */; };
 		05B2287C195FD19500F91BCC /* xcz.db in Resources */ = {isa = PBXBuildFile; fileRef = 05B2287B195FCEBE00F91BCC /* xcz.db */; };
 		05BDB0B91A555CA800DBBFBF /* xcz_user.db in Resources */ = {isa = PBXBuildFile; fileRef = 05BDB0B81A555CA800DBBFBF /* xcz_user.db */; };
@@ -200,6 +201,8 @@
 		0599F5F31BE7923F00AA099D /* UIImage+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helper.m"; sourceTree = "<group>"; };
 		0599F5F51BE7B9A300AA099D /* XCZBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZBadgeView.h; sourceTree = "<group>"; };
 		0599F5F61BE7B9A300AA099D /* XCZBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZBadgeView.m; sourceTree = "<group>"; };
+		059D1C341C6A33DB005DA29C /* XCZWorkSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorkSearchResult.h; sourceTree = "<group>"; };
+		059D1C351C6A33DB005DA29C /* XCZWorkSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWorkSearchResult.m; sourceTree = "<group>"; };
 		05AC40B91BFF569B006F6CA3 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		05B2287B195FCEBE00F91BCC /* xcz.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = xcz.db; sourceTree = "<group>"; };
 		05BDB0B81A555CA800DBBFBF /* xcz_user.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = xcz_user.db; sourceTree = "<group>"; };
@@ -586,6 +589,8 @@
 				056485381BA8895300F52EAE /* XCZQuote.m */,
 				056485391BA8895300F52EAE /* XCZWork.h */,
 				0564853A1BA8895300F52EAE /* XCZWork.m */,
+				059D1C341C6A33DB005DA29C /* XCZWorkSearchResult.h */,
+				059D1C351C6A33DB005DA29C /* XCZWorkSearchResult.m */,
 				05CFDFE31BF773F80027773C /* XCZCollectionKind.h */,
 				05CFDFE41BF773F80027773C /* XCZCollectionKind.m */,
 				05CFDFE61BF7740F0027773C /* XCZCollection.h */,
@@ -931,6 +936,7 @@
 				0545D26B1BC5379200410895 /* UIColor+Helper.m in Sources */,
 				05CFDFE51BF773F80027773C /* XCZCollectionKind.m in Sources */,
 				056485591BA889E100F52EAE /* XCZWorksViewController.m in Sources */,
+				059D1C361C6A33DB005DA29C /* XCZWorkSearchResult.m in Sources */,
 				0564853F1BA8895300F52EAE /* XCZWork.m in Sources */,
 				05ECE6191BD3D476008DE9CE /* XCZWikiViewController.m in Sources */,
 				0599F5F41BE7923F00AA099D /* UIImage+Helper.m in Sources */,

@@ -3,11 +3,9 @@ PODS:
   - Crashlytics (3.4.1):
     - Fabric (~> 1.6.0)
   - Fabric (1.6.1)
-  - FMDB (2.5):
-    - FMDB/standard (= 2.5)
-  - FMDB/common (2.5)
-  - FMDB/standard (2.5):
-    - FMDB/common
+  - FMDB/FTS (2.6):
+    - FMDB/standard
+  - FMDB/standard (2.6)
   - HTCopyableLabel (0.0.7)
   - ionicons (2.0.3)
   - LeanCloudFeedback (0.0.8):
@@ -23,7 +21,7 @@ DEPENDENCIES:
   - AVOSCloud
   - Crashlytics
   - Fabric
-  - FMDB
+  - FMDB/FTS
   - HTCopyableLabel
   - ionicons
   - LeanCloudFeedback
@@ -36,7 +34,7 @@ SPEC CHECKSUMS:
   AVOSCloud: 4b06ec4444ca0ee0543e6cf729b11e5f3f956977
   Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
   Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
-  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
   HTCopyableLabel: e67c190d2f1f8f03c9d9858a7d8ce33be7fb43fa
   ionicons: ec1e86e6c3316bd9942a7f024080dd75c70dd6a5
   LeanCloudFeedback: d509e77271da2985d5d29a6ea0d3fb44f541f7df
