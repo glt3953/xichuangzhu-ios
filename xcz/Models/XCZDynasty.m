@@ -50,6 +50,7 @@
     self.name = [resultSet stringForColumn:@"name"];
     self.intro = [resultSet stringForColumn:@"intro"];
     
+    self.nameSim = [resultSet stringForColumn:@"name"];
     self.nameTr = [resultSet stringForColumn:@"name_tr"];
     self.introTr = [resultSet stringForColumn:@"intro_tr"];
 }

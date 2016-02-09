@@ -56,11 +56,13 @@ static NSString * const cellIdentifier = @"AuthorCell";
     self.authorsForFirstChar = [NSMutableDictionary new];
     
     for (XCZAuthor *author in self.authors) {
-        if (![self.authorsForDynasty objectForKey:author.dynasty]) {
+        // 按朝代名称（简体）归类
+        if (![self.authorsForDynasty objectForKey:author.dynastySim]) {
             [self.authorsForDynasty setObject:[NSMutableArray array] forKey:author.dynasty];
         }
-        [[self.authorsForDynasty objectForKey:author.dynasty] addObject:author];
+        [[self.authorsForDynasty objectForKey:author.dynastySim] addObject:author];
         
+        // 按首字母归类
         if (![self.authorsForFirstChar objectForKey:author.firstChar]) {
             [self.authorsForFirstChar setObject:[NSMutableArray array] forKey:author.firstChar];
         }
@@ -71,8 +73,10 @@ static NSString * const cellIdentifier = @"AuthorCell";
         NSString *firstCharInString = [NSString stringWithFormat:@"%c", firstChar];
         
         if ([self.authorsForFirstChar objectForKey:firstCharInString] != nil) {
+            // 构建 firstChars
             [self.firstChars addObject:firstCharInString];
 
+            // 同一首字母的文学家，按姓名排序
             NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
             NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
             NSArray *sortedArray = [[self.authorsForFirstChar objectForKey:firstCharInString] sortedArrayUsingDescriptors:sortDescriptors];
@@ -201,7 +205,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
             return authors.count;
         } else {
             XCZDynasty *dynasty = self.dynasties[section];
-            NSArray *authors = [self.authorsForDynasty objectForKey:dynasty.name];
+            NSArray *authors = [self.authorsForDynasty objectForKey:dynasty.nameSim];
             return authors.count;
         }
     }
@@ -263,7 +267,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
             author = authors[indexPath.row];
         } else {
             XCZDynasty *dynasty = self.dynasties[indexPath.section];
-            NSArray *authors = [self.authorsForDynasty objectForKey:dynasty.name];
+            NSArray *authors = [self.authorsForDynasty objectForKey:dynasty.nameSim];
             author = authors[indexPath.row];
         }
     }
@@ -287,7 +291,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
             author = authors[indexPath.row];
         } else {
             XCZDynasty *dynasty = self.dynasties[indexPath.section];
-            NSArray *authors = [self.authorsForDynasty objectForKey:dynasty.name];
+            NSArray *authors = [self.authorsForDynasty objectForKey:dynasty.nameSim];
             author = authors[indexPath.row];
         }
     }
@@ -316,7 +320,7 @@ static NSString * const cellIdentifier = @"AuthorCell";
             author = authors[indexPath.row];
         } else {
             XCZDynasty *dynasty = self.dynasties[indexPath.section];
-            NSArray *authors = [self.authorsForDynasty objectForKey:dynasty.name];
+            NSArray *authors = [self.authorsForDynasty objectForKey:dynasty.nameSim];
             author = authors[indexPath.row];
         }
     }

@@ -130,6 +130,7 @@
     self.nameTr = [resultSet stringForColumn:@"name_tr"];
     self.nameSim = [resultSet stringForColumn:@"name"];
     self.introTr = [resultSet stringForColumn:@"intro_tr"];
+    self.dynastySim = [resultSet stringForColumn:@"dynasty"];
     self.dynastyTr = [resultSet stringForColumn:@"dynasty_tr"];
 }
 

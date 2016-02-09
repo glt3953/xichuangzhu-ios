@@ -12,6 +12,7 @@
 
 @property (nonatomic) int id;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *nameSim;
 @property (nonatomic, strong) NSString *intro;
 @property (nonatomic) int start_year;
 @property (nonatomic) int end_year;

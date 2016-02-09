@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *firstChar;
 @property (nonatomic, strong) NSString *intro;
 @property (nonatomic, strong) NSString *dynasty;
+@property (nonatomic, strong) NSString *dynastySim;
 @property (nonatomic, strong) NSString *birthYear;
 @property (nonatomic, strong) NSString *deathYear;
 @property (nonatomic, strong) NSString *baiduWiki;
