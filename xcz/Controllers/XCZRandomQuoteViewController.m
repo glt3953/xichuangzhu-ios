@@ -87,7 +87,7 @@ static CGFloat const SecondQuoteViewOriginalScale = 0.97;
 {
     [self loadQuoteView];
     [self loadQuoteView];
-    self.firstQuoteView.draggable = YES;
+    self.firstQuoteView.userInteractionEnabled = YES;
 }
 
 #pragma mark - Public Interface
@@ -103,7 +103,7 @@ static CGFloat const SecondQuoteViewOriginalScale = 0.97;
 {
     [AVAnalytics event:@"refresh_quote"];
     self.navigationItem.rightBarButtonItem.enabled = NO;
-    [self.firstQuoteView leftClickAction];
+    [self.firstQuoteView dragLeft];
     
     [UIView animateWithDuration:.4 animations:^{
         self.secondQuoteView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
@@ -142,25 +142,25 @@ static CGFloat const SecondQuoteViewOriginalScale = 0.97;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)quoteViewSwipedLeft:(UIView *)quoteView
+- (void)didDragLeft:(UIView *)quoteView
 {
     [self loadQuoteView];
     self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
-- (void)quoteViewSwipedRight:(UIView *)quoteView
+- (void)didDragRight:(UIView *)quoteView
 {
     [self loadQuoteView];
     self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
-- (void)beingDragged:(CGFloat)factor
+- (void)dragging:(CGFloat)factor
 {
     CGFloat scale = SecondQuoteViewOriginalScale + (1 - SecondQuoteViewOriginalScale) * factor;
     self.secondQuoteView.transform = CGAffineTransformScale(CGAffineTransformIdentity, scale, scale);
 }
 
-- (void)backToCenter:(CGFloat)factor
+- (void)willBackToCenter:(CGFloat)factor
 {
     [UIView animateWithDuration:.3 animations:^{
         self.secondQuoteView.transform = CGAffineTransformScale(CGAffineTransformIdentity, SecondQuoteViewOriginalScale, SecondQuoteViewOriginalScale);
@@ -188,12 +188,12 @@ static CGFloat const SecondQuoteViewOriginalScale = 0.97;
     
     if (!self.firstQuoteView) {
         self.firstQuoteView = quoteView;
-        self.firstQuoteView.draggable = YES;
+        self.firstQuoteView.userInteractionEnabled = YES;
         [self.view addSubview:quoteView];
     } else {
         if (self.secondQuoteView) {
             self.firstQuoteView = self.secondQuoteView;
-            self.firstQuoteView.draggable = YES;
+            self.firstQuoteView.userInteractionEnabled = YES;
             self.secondQuoteView = quoteView;
         }
             

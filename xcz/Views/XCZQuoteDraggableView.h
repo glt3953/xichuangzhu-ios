@@ -10,21 +10,20 @@
 
 @protocol XCZQuoteDraggableViewDelegate <XCZQuoteViewDelegate>
 
-- (void)quoteViewSwipedLeft:(UIView *)quoteView;
-- (void)quoteViewSwipedRight:(UIView *)quoteView;
+- (void)didDragLeft:(UIView *)quoteView;
+- (void)didDragRight:(UIView *)quoteView;
 
 @optional
-- (void)beingDragged:(CGFloat)factor;
-- (void)backToCenter:(CGFloat)factor;
+- (void)dragging:(CGFloat)factor;
+- (void)willBackToCenter:(CGFloat)factor;
 
 @end
 
 @interface XCZQuoteDraggableView : XCZQuoteView
 
 @property (weak, nonatomic) id <XCZQuoteDraggableViewDelegate> delegate;
-@property (nonatomic) BOOL draggable;
 
-- (void)leftClickAction;
-- (void)rightClickAction;
+- (void)dragLeft;
+- (void)dragRight;
 
 @end

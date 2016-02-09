@@ -35,20 +35,17 @@
         return nil;
     }
     
-    self.draggable = NO;
-    
-    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(beingDragged:)];
+    self.userInteractionEnabled = false;
+    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panned:)];
     [self addGestureRecognizer:panGestureRecognizer];
     
     return self;
 }
 
-- (void)beingDragged:(UIPanGestureRecognizer *)gestureRecognizer
+#pragma mark - User Interaction
+
+- (void)panned:(UIPanGestureRecognizer *)gestureRecognizer
 {
-    if (!self.draggable) {
-        return;
-    }
-    
     self.xFromCenter = [gestureRecognizer translationInView:self].x;
     self.yFromCenter = [gestureRecognizer translationInView:self].y;
     
@@ -63,6 +60,7 @@
             self.center = CGPointMake(self.originalPoint.x + self.xFromCenter, self.originalPoint.y + self.yFromCenter);
             
             // 旋转
+            
             // dictates rotation (see ROTATION_MAX and ROTATION_STRENGTH for details)
             CGFloat rotationStrength = MIN(self.xFromCenter / ROTATION_STRENGTH, ROTATION_MAX);
             
@@ -78,77 +76,30 @@
             
             self.transform = scaleTransform;
             
-            if ([self.delegate respondsToSelector:@selector(beingDragged:)]) {
-                [self.delegate beingDragged:MIN(1.0, fabs(self.xFromCenter) / ACTION_MARGIN)];
+            if ([self.delegate respondsToSelector:@selector(dragging:)]) {
+                [self.delegate dragging:MIN(1.0, fabs(self.xFromCenter) / ACTION_MARGIN)];
             }
             
             break;
         };
             
         case UIGestureRecognizerStateEnded: {
-            [self afterSwipeAction];
+            [self panEnded];
             break;
         };
-        case UIGestureRecognizerStatePossible:break;
-        case UIGestureRecognizerStateCancelled:break;
-        case UIGestureRecognizerStateFailed:break;
+        case UIGestureRecognizerStatePossible: break;
+        case UIGestureRecognizerStateCancelled: break;
+        case UIGestureRecognizerStateFailed: break;
     }
     
 }
 
-- (void)afterSwipeAction
-{
-    if (self.xFromCenter > ACTION_MARGIN) {
-        [self rightAction];
-    } else if (self.xFromCenter < -ACTION_MARGIN) {
-        [self leftAction];
-    } else {
-        [UIView animateWithDuration:0.3
-                         animations:^{
-                             self.center = self.originalPoint;
-                             self.transform = CGAffineTransformMakeRotation(0);
-                         }];
-        if ([self.delegate respondsToSelector:@selector(backToCenter:)]) {
-            [self.delegate backToCenter:MIN(1.0, fabs(self.xFromCenter) / ACTION_MARGIN)];
-        }
-    }
-}
+#pragma mark - Public Methods
 
-- (void)leftAction
-{
-    [AVAnalytics event:@"quote_drag_left"];
-    
-    CGPoint finishPoint = CGPointMake(-500, 2 * self.yFromCenter +self.originalPoint.y);
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         self.center = finishPoint;
-                     } completion:^(BOOL complete){
-                         [self removeFromSuperview];
-                         
-                         if (self.delegate && [self.delegate respondsToSelector:@selector(quoteViewSwipedLeft:)]) {
-                             [self.delegate quoteViewSwipedLeft:self];
-                         }
-                     }];
-}
-
-- (void)rightAction
-{
-    [AVAnalytics event:@"quote_drag_right"];
-    
-    CGPoint finishPoint = CGPointMake(500, 2 * self.yFromCenter + self.originalPoint.y);
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         self.center = finishPoint;
-                     } completion:^(BOOL complete){
-                         [self removeFromSuperview];
-                         
-                         if (self.delegate && [self.delegate respondsToSelector:@selector(quoteViewSwipedRight:)]) {
-                             [self.delegate quoteViewSwipedRight:self];
-                         }
-                     }];
-}
-
-- (void)leftClickAction
+/**
+ *  程序控制向左滑
+ */
+- (void)dragLeft
 {
     [AVAnalytics event:@"quote_click_left"];
     
@@ -160,13 +111,18 @@
                      } completion:^(BOOL complete){
                          [self removeFromSuperview];
                          
-                         if (self.delegate && [self.delegate respondsToSelector:@selector(quoteViewSwipedLeft:)]) {
-                             [self.delegate quoteViewSwipedLeft:self];
+                         if (self.delegate) {
+                             if ([self.delegate respondsToSelector:@selector(didDragLeft:)]) {
+                                 [self.delegate didDragLeft:self];
+                             }
                          }
                      }];
 }
 
-- (void)rightClickAction
+/**
+ *  程序控制向右滑
+ */
+- (void)dragRight
 {
     [AVAnalytics event:@"quote_click_right"];
     
@@ -178,21 +134,60 @@
                      } completion:^(BOOL complete){
                          [self removeFromSuperview];
                          
-                         if (self.delegate && [self.delegate respondsToSelector:@selector(quoteViewSwipedRight:)]) {
-                             [self.delegate quoteViewSwipedRight:self];
+                         if (self.delegate) {
+                             if ([self.delegate respondsToSelector:@selector(didDragRight:)]) {
+                                 [self.delegate didDragRight:self];
+                             }
                          }
                      }];
 }
 
-#pragma mark - Public Methods
+#pragma mark - Private Helpers
 
-- (void)quoteViewPressed
+- (void)panEnded
 {
-    if (!self.draggable) {
-        return;
+    if (self.xFromCenter > ACTION_MARGIN) {
+        [AVAnalytics event:@"quote_drag_right"];
+        
+        CGPoint finishPoint = CGPointMake(500, 2 * self.yFromCenter + self.originalPoint.y);
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.center = finishPoint;
+                         } completion:^(BOOL complete){
+                             [self removeFromSuperview];
+                             
+                             if (self.delegate) {
+                                 if ([self.delegate respondsToSelector:@selector(didDragRight:)]) {
+                                     [self.delegate didDragRight:self];
+                                 }
+                             }
+                         }];
+    } else if (self.xFromCenter < -ACTION_MARGIN) {
+        [AVAnalytics event:@"quote_drag_left"];
+        
+        CGPoint finishPoint = CGPointMake(-500, 2 * self.yFromCenter +self.originalPoint.y);
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.center = finishPoint;
+                         } completion:^(BOOL complete){
+                             [self removeFromSuperview];
+                             
+                             if (self.delegate) {
+                                 if ([self.delegate respondsToSelector:@selector(didDragLeft:)]) {
+                                     [self.delegate didDragLeft:self];
+                                 }
+                             }
+                         }];
+    } else {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.center = self.originalPoint;
+                             self.transform = CGAffineTransformMakeRotation(0);
+                         }];
+        if ([self.delegate respondsToSelector:@selector(willBackToCenter:)]) {
+            [self.delegate willBackToCenter:MIN(1.0, fabs(self.xFromCenter) / ACTION_MARGIN)];
+        }
     }
-    
-    [super quoteViewPressed];
 }
 
 #pragma mark - Getters & Setters
