@@ -260,9 +260,9 @@
         [FMDatabase registerTokenizer:simpleTok withKey:@"simple"];
         
         // Create the table with the "simple" tokenizer
-        [db executeUpdate:@"CREATE VIRTUAL TABLE works_ft USING fts3(id, title, title_tr, content, content_tr, dynasty, dynasty_tr, author, author_tr, tokenize=fmdb simple)"];
+        [db executeUpdate:@"CREATE VIRTUAL TABLE works_ft USING fts4(id, title, title_tr, content, content_tr, dynasty, dynasty_tr, author, author_tr, tokenize=fmdb simple)"];
     
-        [db executeUpdate:@"INSERT INTO works_ft (id, title, title_tr, content, content_tr, dynasty, dynasty_tr, author, author_tr) SELECT id, title, title_tr, content, content_tr, dynasty, dynasty_tr, author, author_tr FROM works"];
+        [db executeUpdate:@"INSERT INTO works_ft (id, title, title_tr, content, content_tr, dynasty, dynasty_tr, author, author_tr) SELECT id, title, title_tr, compress_content, compress_content_tr, dynasty, dynasty_tr, author, author_tr FROM works"];
         
         // Use a property to keep the tokenizer instance from being de-allocated.
         self.tokenizer = simpleTok;

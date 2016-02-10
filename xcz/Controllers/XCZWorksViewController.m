@@ -135,10 +135,7 @@ static NSString * const cellIdentifier = @"WorkCell";
 // 过滤结果
 - (void)filterContentForSearchText:(NSString*)searchText
 {
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"titleTr contains[c] %@ || titleSim contains[c] %@", searchText, searchText];
-    self.searchResults = [self.works filteredArrayUsingPredicate:resultPredicate];
-    
-    NSArray *hehe = [XCZWorkSearchResult fullTextSearch:searchText];
+    self.searchResults = [XCZWorkSearchResult fullTextSearch:searchText];
 }
 
 // 以下代码解决了 searchResultsTableView 下方空间的 bug
@@ -163,31 +160,34 @@ static NSString * const cellIdentifier = @"WorkCell";
 // 单元格内容
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XCZWork *work;
+    XCZWorkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
     if (tableView == self.searchController.searchResultsTableView) {
-        work = self.searchResults[indexPath.row];
+        XCZWorkSearchResult *workSearchResult = self.searchResults[indexPath.row];
+        [cell updateWithWorkSearchResult:workSearchResult];
     } else {
-        work = self.works[indexPath.row];
+        XCZWork *work = self.works[indexPath.row];
+        [cell updateWithWork:work showAuthor:YES];
     }
     
-    XCZWorkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    [cell updateWithWork:work showAuthor:YES];
     return cell;
 }
 
 // 单元格高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XCZWork *work;
-    if (tableView == self.searchController.searchResultsTableView) {
-        work = self.searchResults[indexPath.row];
-    } else {
-        work = self.works[indexPath.row];
-    }
 
-    return [tableView fd_heightForCellWithIdentifier:cellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", work.id] configuration:^(XCZWorkTableViewCell *cell) {
-        [cell updateWithWork:work showAuthor:YES];
-    }];
+    if (tableView == self.searchController.searchResultsTableView) {
+        XCZWorkSearchResult *workSearchResult = self.searchResults[indexPath.row];
+        return [tableView fd_heightForCellWithIdentifier:cellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", workSearchResult.id] configuration:^(XCZWorkTableViewCell *cell) {
+            [cell updateWithWorkSearchResult:workSearchResult];
+        }];
+    } else {
+        XCZWork *work = self.works[indexPath.row];
+        return [tableView fd_heightForCellWithIdentifier:cellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", work.id] configuration:^(XCZWorkTableViewCell *cell) {
+            [cell updateWithWork:work showAuthor:YES];
+        }];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -201,7 +201,8 @@ static NSString * const cellIdentifier = @"WorkCell";
     XCZWork *work;
     
     if (tableView == self.searchController.searchResultsTableView) {
-        work = self.searchResults[indexPath.row];
+        XCZWorkSearchResult *workSearchResult = self.searchResults[indexPath.row];
+        work = [XCZWork getById:workSearchResult.id];
         [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     } else {
         work = self.works[indexPath.row];
