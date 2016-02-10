@@ -127,12 +127,14 @@
 {
     if (self.segmentControl.selectedSegmentIndex == 0) {
         self.authorsViewController.view.hidden = YES;
+        [self.authorsViewController.view endEditing:YES];
         self.worksViewController.view.hidden = NO;
-        self.navigationItem.rightBarButtonItem = self.refreshWorksButton;
         self.navigationItem.title = self.worksViewController.navigationItem.title;
+        self.navigationItem.rightBarButtonItem = self.refreshWorksButton;
     } else {
         self.authorsViewController.view.hidden = NO;
         self.worksViewController.view.hidden = YES;
+        [self.worksViewController.view endEditing:YES];
         self.navigationItem.title = self.authorsViewController.navigationItem.title;
         
         if (self.orderAuthorsByAlphabet) {
