@@ -1,27 +1,28 @@
 //
-//  XCZWorkTableViewCell.m
+//  XCZWorkSearchResultTableViewCell.m
 //  xcz
 //
-//  Created by hustlzp on 15/10/19.
-//  Copyright © 2015年 Zhipeng Liu. All rights reserved.
+//  Created by hustlzp on 16/2/10.
+//  Copyright © 2016年 Zhipeng Liu. All rights reserved.
 //
 
 #import "UIColor+Helper.h"
 #import "Constants.h"
-#import "XCZWorkTableViewCell.h"
+#import "XCZWorkSearchResultTableViewCell.h"
 #import "XCZUtils.h"
+#import "XCZWorkSearchResultTableViewCell.h"
 #import <Masonry.h>
 
-@interface XCZWorkTableViewCell ()
+@interface XCZWorkSearchResultTableViewCell ()
 
-@property (strong, nonatomic) XCZWork *work;
+@property (strong, nonatomic) XCZWorkSearchResult *work;
 @property (strong, nonatomic) UILabel *titleLabel;
 @property (strong, nonatomic) UILabel *authorLabel;
-@property (strong, nonatomic) UILabel *firstSentenceLabel;
+@property (strong, nonatomic) UILabel *contentLabel;
 
 @end
 
-@implementation XCZWorkTableViewCell
+@implementation XCZWorkSearchResultTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -40,11 +41,11 @@
     self.authorLabel = authorLabel;
     
     // first sentence
-    UILabel *firstSentenceLabel = [UILabel new];
-    [self.contentView addSubview:firstSentenceLabel];
-    firstSentenceLabel.font = [UIFont systemFontOfSize:12];
-    firstSentenceLabel.textColor = [UIColor colorWithRGBA:0x999999FF];
-    self.firstSentenceLabel = firstSentenceLabel;
+    UILabel *contentLabel = [UILabel new];
+    [self.contentView addSubview:contentLabel];
+    contentLabel.font = [UIFont systemFontOfSize:12];
+    contentLabel.textColor = [UIColor colorWithRGBA:0x999999FF];
+    self.contentLabel = contentLabel;
     
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset([XCZUtils getCellHorizonalGap]);
@@ -57,7 +58,7 @@
         make.right.equalTo(self.contentView).offset(-[XCZUtils getCellHorizonalGap]);
     }];
     
-    [firstSentenceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(titleLabel.mas_bottom).offset(6);
         make.left.equalTo(titleLabel);
         make.right.equalTo(authorLabel);
@@ -67,24 +68,11 @@
     return self;
 }
 
-- (void)updateWithWork:(XCZWork *)work showAuthor:(BOOL)showAuthor
+- (void)updateWithWorkSearchResult:(XCZWorkSearchResult *)workSearchResult
 {
-    self.titleLabel.text = work.title;
-    self.authorLabel.text = [NSString stringWithFormat:@"[%@] %@", work.dynasty, work.author];
-    self.firstSentenceLabel.text = work.firstSentence;
-    
-    if (showAuthor) {
-        self.authorLabel.hidden = NO;
-    } else {
-        self.authorLabel.hidden = YES;
-    }
-}
-
-- (void)updateWithCollectionWork:(XCZCollectionWork *)collectionWork
-{
-    self.titleLabel.text = collectionWork.workTitle;
-    self.authorLabel.text = [NSString stringWithFormat:@"[%@] %@", collectionWork.workDynasty, collectionWork.workAuthor];
-    self.firstSentenceLabel.text = collectionWork.workFirstSentence;
+    self.titleLabel.text = workSearchResult.title;
+    self.authorLabel.text = [NSString stringWithFormat:@"[%@] %@", workSearchResult.dynasty, workSearchResult.author];
+    self.contentLabel.text = workSearchResult.content;
 }
 
 @end

@@ -12,12 +12,14 @@
 #import "XCZWorksViewController.h"
 #import "XCZWorkViewController.h"
 #import "LocalizeHelper.h"
+#import "XCZWorkSearchResultTableViewCell.h"
 #import <FMDB/FMDB.h>
 #import <AVOSCloud/AVOSCloud.h>
 #import <UITableView+FDTemplateLayoutCell.h>
 #import <Masonry.h>
 
 static NSString * const cellIdentifier = @"WorkCell";
+static NSString * const searchResultCellIdentifier = @"WorkSearchResultCellIdentifierCell";
 
 @interface XCZWorksViewController () <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -84,7 +86,7 @@ static NSString * const cellIdentifier = @"WorkCell";
     [self.view addSubview:searchBar];
     
     UISearchDisplayController *searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
-    [searchController.searchResultsTableView registerClass:[XCZWorkTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    [searchController.searchResultsTableView registerClass:[XCZWorkSearchResultTableViewCell class] forCellReuseIdentifier:searchResultCellIdentifier];
     searchController.searchResultsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.searchController = searchController;
     searchController.delegate = self;
@@ -160,26 +162,25 @@ static NSString * const cellIdentifier = @"WorkCell";
 // 单元格内容
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XCZWorkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
     if (tableView == self.searchController.searchResultsTableView) {
+        XCZWorkSearchResultTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:searchResultCellIdentifier];
         XCZWorkSearchResult *workSearchResult = self.searchResults[indexPath.row];
         [cell updateWithWorkSearchResult:workSearchResult];
+        return cell;
     } else {
+        XCZWorkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         XCZWork *work = self.works[indexPath.row];
         [cell updateWithWork:work showAuthor:YES];
+        return cell;
     }
-    
-    return cell;
 }
 
 // 单元格高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
     if (tableView == self.searchController.searchResultsTableView) {
         XCZWorkSearchResult *workSearchResult = self.searchResults[indexPath.row];
-        return [tableView fd_heightForCellWithIdentifier:cellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", workSearchResult.id] configuration:^(XCZWorkTableViewCell *cell) {
+        return [tableView fd_heightForCellWithIdentifier:searchResultCellIdentifier cacheByKey:[NSString stringWithFormat:@"%d", workSearchResult.id] configuration:^(XCZWorkSearchResultTableViewCell *cell) {
             [cell updateWithWorkSearchResult:workSearchResult];
         }];
     } else {

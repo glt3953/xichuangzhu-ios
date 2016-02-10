@@ -15,6 +15,5 @@
 
 - (void)updateWithWork:(XCZWork *)work showAuthor:(BOOL)showAuthor;
 - (void)updateWithCollectionWork:(XCZCollectionWork *)collectionWork;
-- (void)updateWithWorkSearchResult:(XCZWorkSearchResult *)workSearchResult;
 
 @end

@@ -57,6 +57,7 @@
 		059D1C361C6A33DB005DA29C /* XCZWorkSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 059D1C351C6A33DB005DA29C /* XCZWorkSearchResult.m */; };
 		05AC40BA1BFF56A1006F6CA3 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05AC40B91BFF569B006F6CA3 /* FontAwesome.ttf */; };
 		05B2287C195FD19500F91BCC /* xcz.db in Resources */ = {isa = PBXBuildFile; fileRef = 05B2287B195FCEBE00F91BCC /* xcz.db */; };
+		05B336161C6AFCC300423986 /* XCZWorkSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B336151C6AFCC300423986 /* XCZWorkSearchResultTableViewCell.m */; };
 		05BDB0B91A555CA800DBBFBF /* xcz_user.db in Resources */ = {isa = PBXBuildFile; fileRef = 05BDB0B81A555CA800DBBFBF /* xcz_user.db */; };
 		05CC76591BD5E6E800A3970D /* XCZRandomQuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CC76581BD5E6E800A3970D /* XCZRandomQuoteViewController.m */; };
 		05CC765A1BD5FEDC00A3970D /* 华文仿宋.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05CC76561BD5E56A00A3970D /* 华文仿宋.ttf */; };
@@ -205,6 +206,8 @@
 		059D1C351C6A33DB005DA29C /* XCZWorkSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWorkSearchResult.m; sourceTree = "<group>"; };
 		05AC40B91BFF569B006F6CA3 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		05B2287B195FCEBE00F91BCC /* xcz.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = xcz.db; sourceTree = "<group>"; };
+		05B336141C6AFCC300423986 /* XCZWorkSearchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorkSearchResultTableViewCell.h; sourceTree = "<group>"; };
+		05B336151C6AFCC300423986 /* XCZWorkSearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWorkSearchResultTableViewCell.m; sourceTree = "<group>"; };
 		05BDB0B81A555CA800DBBFBF /* xcz_user.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = xcz_user.db; sourceTree = "<group>"; };
 		05CC76561BD5E56A00A3970D /* 华文仿宋.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文仿宋.ttf"; sourceTree = "<group>"; };
 		05CC76571BD5E6E800A3970D /* XCZRandomQuoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZRandomQuoteViewController.h; sourceTree = "<group>"; };
@@ -471,6 +474,8 @@
 				0545D26D1BC5428500410895 /* XCZWorkView.m */,
 				05ECE6201BD49D5E008DE9CE /* XCZWorkTableViewCell.h */,
 				05ECE6211BD49D5E008DE9CE /* XCZWorkTableViewCell.m */,
+				05B336141C6AFCC300423986 /* XCZWorkSearchResultTableViewCell.h */,
+				05B336151C6AFCC300423986 /* XCZWorkSearchResultTableViewCell.m */,
 			);
 			name = Work;
 			sourceTree = "<group>";
@@ -951,6 +956,7 @@
 				05CFDFEB1BF774230027773C /* XCZCollectionWork.m in Sources */,
 				05F219141BC5784000B222D7 /* XCZOtherViewController.m in Sources */,
 				05CFDFF61BF8298D0027773C /* XCZCollectionSectionHeaderView.m in Sources */,
+				05B336161C6AFCC300423986 /* XCZWorkSearchResultTableViewCell.m in Sources */,
 				059397C61C32267900B5F40F /* UIImage+FontAwesome.m in Sources */,
 				0593978D1C32254300B5F40F /* XCZTagView.m in Sources */,
 				056485531BA889E100F52EAE /* XCZAuthorViewController.m in Sources */,
