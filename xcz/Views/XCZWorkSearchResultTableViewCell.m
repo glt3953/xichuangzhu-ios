@@ -70,9 +70,50 @@
 
 - (void)updateWithWorkSearchResult:(XCZWorkSearchResult *)workSearchResult
 {
-    self.titleLabel.text = workSearchResult.title;
+    self.titleLabel.attributedText =[self generateAttributedString:workSearchResult.title];
     self.authorLabel.text = [NSString stringWithFormat:@"[%@] %@", workSearchResult.dynasty, workSearchResult.author];
-    self.contentLabel.text = workSearchResult.content;
+    self.contentLabel.attributedText = [self generateAttributedString:workSearchResult.content];
+}
+
+#pragma mark - Private Helpers
+
+- (NSAttributedString *)generateAttributedString:(NSString *)searchText
+{
+    NSMutableAttributedString *resultAttributedString = [NSMutableAttributedString new];
+    
+    __block NSUInteger prevLocation = 0;
+    NSString *pattern = @"\\[[^\\[\\]]+\\]";
+    NSRegularExpression *expression = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:nil];
+    NSRange range = NSMakeRange(0, [searchText length]);
+    NSArray *matchResults = [expression matchesInString:searchText options:0 range:range];
+    
+    if (matchResults.count > 0) {
+        for (NSTextCheckingResult *matchResult in matchResults) {
+            NSRange range = [matchResult rangeAtIndex:0];
+            
+            if (range.location > prevLocation) {
+                NSRange plainTextRange = NSMakeRange(prevLocation, range.location - prevLocation);
+                NSAttributedString *plainText = [[NSAttributedString alloc] initWithString:[searchText substringWithRange:plainTextRange]];
+                [resultAttributedString appendAttributedString:plainText];
+            }
+            
+            NSRange highlightTextRange = NSMakeRange(range.location + 1, range.length - 2);
+            NSAttributedString *highlightText = [[NSAttributedString alloc] initWithString:[searchText substringWithRange:highlightTextRange] attributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor]}];
+            [resultAttributedString appendAttributedString:highlightText];
+            
+            prevLocation = range.location + range.length;
+        }
+        
+        if ([searchText length] > prevLocation) {
+            NSRange plainTextRange = NSMakeRange(prevLocation, [searchText length] - prevLocation);
+            NSAttributedString *plainText = [[NSAttributedString alloc] initWithString:[searchText substringWithRange:plainTextRange]];
+            [resultAttributedString appendAttributedString:plainText];
+        }
+    } else {
+        resultAttributedString = [[NSMutableAttributedString alloc] initWithString:searchText];
+    }
+    
+    return resultAttributedString;
 }
 
 @end
