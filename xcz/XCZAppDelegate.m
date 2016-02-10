@@ -23,6 +23,7 @@
 #import "Constants.h"
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
+#import "OpenCCService.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import <ionicons/IonIcons.h>
 #import <Fabric/Fabric.h>

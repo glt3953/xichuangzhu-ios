@@ -58,6 +58,47 @@
 		05AC40BA1BFF56A1006F6CA3 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05AC40B91BFF569B006F6CA3 /* FontAwesome.ttf */; };
 		05B2287C195FD19500F91BCC /* xcz.db in Resources */ = {isa = PBXBuildFile; fileRef = 05B2287B195FCEBE00F91BCC /* xcz.db */; };
 		05B336161C6AFCC300423986 /* XCZWorkSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B336151C6AFCC300423986 /* XCZWorkSearchResultTableViewCell.m */; };
+		05B336581C6B628200423986 /* BinaryDict.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B336191C6B628100423986 /* BinaryDict.cpp */; };
+		05B3365A1C6B628200423986 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05B3361C1C6B628100423986 /* CMakeLists.txt */; };
+		05B3365B1C6B628200423986 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B3361F1C6B628100423986 /* Config.cpp */; };
+		05B3365D1C6B628200423986 /* Conversion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B336231C6B628100423986 /* Conversion.cpp */; };
+		05B3365E1C6B628200423986 /* ConversionChain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B336251C6B628100423986 /* ConversionChain.cpp */; };
+		05B336611C6B628200423986 /* Converter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B336291C6B628100423986 /* Converter.cpp */; };
+		05B336621C6B628200423986 /* DartsDict.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B3362B1C6B628100423986 /* DartsDict.cpp */; };
+		05B336641C6B628200423986 /* Dict.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B3362E1C6B628100423986 /* Dict.cpp */; };
+		05B336651C6B628200423986 /* DictEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B336301C6B628100423986 /* DictEntry.cpp */; };
+		05B336661C6B628200423986 /* DictGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B336321C6B628100423986 /* DictGroup.cpp */; };
+		05B336681C6B628200423986 /* MaxMatchSegmentation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B336391C6B628100423986 /* MaxMatchSegmentation.cpp */; };
+		05B3366A1C6B628200423986 /* PhraseExtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B3363E1C6B628100423986 /* PhraseExtract.cpp */; };
+		05B3366C1C6B628200423986 /* Segmentation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B336411C6B628100423986 /* Segmentation.cpp */; };
+		05B3366D1C6B628200423986 /* SimpleConverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B336451C6B628100423986 /* SimpleConverter.cpp */; };
+		05B3366F1C6B628200423986 /* TextDict.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B336491C6B628100423986 /* TextDict.cpp */; };
+		05B336751C6B628200423986 /* UTF8StringSlice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B336521C6B628100423986 /* UTF8StringSlice.cpp */; };
+		05B336771C6B628200423986 /* UTF8Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05B336551C6B628100423986 /* UTF8Util.cpp */; };
+		05B3367E1C6B62EF00423986 /* OpenCCService.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05B3367D1C6B62EF00423986 /* OpenCCService.mm */; };
+		05B3368A1C6B632B00423986 /* hk2s.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B336801C6B632B00423986 /* hk2s.json */; };
+		05B3368B1C6B632B00423986 /* s2hk.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B336811C6B632B00423986 /* s2hk.json */; };
+		05B3368C1C6B632B00423986 /* s2t.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B336821C6B632B00423986 /* s2t.json */; };
+		05B3368D1C6B632B00423986 /* s2tw.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B336831C6B632B00423986 /* s2tw.json */; };
+		05B3368E1C6B632B00423986 /* s2twp.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B336841C6B632B00423986 /* s2twp.json */; };
+		05B3368F1C6B632B00423986 /* t2hk.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B336851C6B632B00423986 /* t2hk.json */; };
+		05B336901C6B632B00423986 /* t2s.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B336861C6B632B00423986 /* t2s.json */; };
+		05B336911C6B632B00423986 /* t2tw.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B336871C6B632B00423986 /* t2tw.json */; };
+		05B336921C6B632B00423986 /* tw2s.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B336881C6B632B00423986 /* tw2s.json */; };
+		05B336931C6B632B00423986 /* tw2sp.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B336891C6B632B00423986 /* tw2sp.json */; };
+		05B336A21C6B636900423986 /* HKVariants.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05B336951C6B636900423986 /* HKVariants.txt */; };
+		05B336A31C6B636900423986 /* HKVariantsPhrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05B336961C6B636900423986 /* HKVariantsPhrases.txt */; };
+		05B336A41C6B636900423986 /* HKVariantsRevPhrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05B336971C6B636900423986 /* HKVariantsRevPhrases.txt */; };
+		05B336A51C6B636900423986 /* JPVariants.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05B336981C6B636900423986 /* JPVariants.txt */; };
+		05B336A61C6B636900423986 /* STCharacters.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05B336991C6B636900423986 /* STCharacters.txt */; };
+		05B336A71C6B636900423986 /* STPhrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05B3369A1C6B636900423986 /* STPhrases.txt */; };
+		05B336A81C6B636900423986 /* TSCharacters.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05B3369B1C6B636900423986 /* TSCharacters.txt */; };
+		05B336A91C6B636900423986 /* TSPhrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05B3369C1C6B636900423986 /* TSPhrases.txt */; };
+		05B336AA1C6B636900423986 /* TWPhrasesIT.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05B3369D1C6B636900423986 /* TWPhrasesIT.txt */; };
+		05B336AB1C6B636900423986 /* TWPhrasesName.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05B3369E1C6B636900423986 /* TWPhrasesName.txt */; };
+		05B336AC1C6B636900423986 /* TWPhrasesOther.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05B3369F1C6B636900423986 /* TWPhrasesOther.txt */; };
+		05B336AD1C6B636900423986 /* TWVariants.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05B336A01C6B636900423986 /* TWVariants.txt */; };
+		05B336AE1C6B636900423986 /* TWVariantsRevPhrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05B336A11C6B636900423986 /* TWVariantsRevPhrases.txt */; };
 		05BDB0B91A555CA800DBBFBF /* xcz_user.db in Resources */ = {isa = PBXBuildFile; fileRef = 05BDB0B81A555CA800DBBFBF /* xcz_user.db */; };
 		05CC76591BD5E6E800A3970D /* XCZRandomQuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CC76581BD5E6E800A3970D /* XCZRandomQuoteViewController.m */; };
 		05CC765A1BD5FEDC00A3970D /* 华文仿宋.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05CC76561BD5E56A00A3970D /* 华文仿宋.ttf */; };
@@ -208,6 +249,83 @@
 		05B2287B195FCEBE00F91BCC /* xcz.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = xcz.db; sourceTree = "<group>"; };
 		05B336141C6AFCC300423986 /* XCZWorkSearchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZWorkSearchResultTableViewCell.h; sourceTree = "<group>"; };
 		05B336151C6AFCC300423986 /* XCZWorkSearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCZWorkSearchResultTableViewCell.m; sourceTree = "<group>"; };
+		05B336191C6B628100423986 /* BinaryDict.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryDict.cpp; sourceTree = "<group>"; };
+		05B3361A1C6B628100423986 /* BinaryDict.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BinaryDict.hpp; sourceTree = "<group>"; };
+		05B3361C1C6B628100423986 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		05B3361E1C6B628100423986 /* Common.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Common.hpp; sourceTree = "<group>"; };
+		05B3361F1C6B628100423986 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
+		05B336201C6B628100423986 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
+		05B336231C6B628100423986 /* Conversion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Conversion.cpp; sourceTree = "<group>"; };
+		05B336241C6B628100423986 /* Conversion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Conversion.hpp; sourceTree = "<group>"; };
+		05B336251C6B628100423986 /* ConversionChain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConversionChain.cpp; sourceTree = "<group>"; };
+		05B336261C6B628100423986 /* ConversionChain.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConversionChain.hpp; sourceTree = "<group>"; };
+		05B336291C6B628100423986 /* Converter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Converter.cpp; sourceTree = "<group>"; };
+		05B3362A1C6B628100423986 /* Converter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Converter.hpp; sourceTree = "<group>"; };
+		05B3362B1C6B628100423986 /* DartsDict.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DartsDict.cpp; sourceTree = "<group>"; };
+		05B3362C1C6B628100423986 /* DartsDict.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DartsDict.hpp; sourceTree = "<group>"; };
+		05B3362E1C6B628100423986 /* Dict.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dict.cpp; sourceTree = "<group>"; };
+		05B3362F1C6B628100423986 /* Dict.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Dict.hpp; sourceTree = "<group>"; };
+		05B336301C6B628100423986 /* DictEntry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DictEntry.cpp; sourceTree = "<group>"; };
+		05B336311C6B628100423986 /* DictEntry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DictEntry.hpp; sourceTree = "<group>"; };
+		05B336321C6B628100423986 /* DictGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DictGroup.cpp; sourceTree = "<group>"; };
+		05B336331C6B628100423986 /* DictGroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DictGroup.hpp; sourceTree = "<group>"; };
+		05B336361C6B628100423986 /* Exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Exception.hpp; sourceTree = "<group>"; };
+		05B336371C6B628100423986 /* Export.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Export.hpp; sourceTree = "<group>"; };
+		05B336381C6B628100423986 /* Lexicon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Lexicon.hpp; sourceTree = "<group>"; };
+		05B336391C6B628100423986 /* MaxMatchSegmentation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MaxMatchSegmentation.cpp; sourceTree = "<group>"; };
+		05B3363A1C6B628100423986 /* MaxMatchSegmentation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MaxMatchSegmentation.hpp; sourceTree = "<group>"; };
+		05B3363C1C6B628100423986 /* opencc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opencc.h; sourceTree = "<group>"; };
+		05B3363D1C6B628100423986 /* Optional.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Optional.hpp; sourceTree = "<group>"; };
+		05B3363E1C6B628100423986 /* PhraseExtract.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhraseExtract.cpp; sourceTree = "<group>"; };
+		05B3363F1C6B628100423986 /* PhraseExtract.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PhraseExtract.hpp; sourceTree = "<group>"; };
+		05B336411C6B628100423986 /* Segmentation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Segmentation.cpp; sourceTree = "<group>"; };
+		05B336421C6B628100423986 /* Segmentation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Segmentation.hpp; sourceTree = "<group>"; };
+		05B336431C6B628100423986 /* Segments.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Segments.hpp; sourceTree = "<group>"; };
+		05B336441C6B628100423986 /* SerializableDict.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SerializableDict.hpp; sourceTree = "<group>"; };
+		05B336451C6B628100423986 /* SimpleConverter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleConverter.cpp; sourceTree = "<group>"; };
+		05B336461C6B628100423986 /* SimpleConverter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SimpleConverter.hpp; sourceTree = "<group>"; };
+		05B336491C6B628100423986 /* TextDict.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextDict.cpp; sourceTree = "<group>"; };
+		05B3364A1C6B628100423986 /* TextDict.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextDict.hpp; sourceTree = "<group>"; };
+		05B336521C6B628100423986 /* UTF8StringSlice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UTF8StringSlice.cpp; sourceTree = "<group>"; };
+		05B336531C6B628100423986 /* UTF8StringSlice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UTF8StringSlice.hpp; sourceTree = "<group>"; };
+		05B336551C6B628100423986 /* UTF8Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UTF8Util.cpp; sourceTree = "<group>"; };
+		05B336561C6B628100423986 /* UTF8Util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UTF8Util.hpp; sourceTree = "<group>"; };
+		05B3367C1C6B62EF00423986 /* OpenCCService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenCCService.h; sourceTree = "<group>"; };
+		05B3367D1C6B62EF00423986 /* OpenCCService.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCCService.mm; sourceTree = "<group>"; };
+		05B336801C6B632B00423986 /* hk2s.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hk2s.json; sourceTree = "<group>"; };
+		05B336811C6B632B00423986 /* s2hk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = s2hk.json; sourceTree = "<group>"; };
+		05B336821C6B632B00423986 /* s2t.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = s2t.json; sourceTree = "<group>"; };
+		05B336831C6B632B00423986 /* s2tw.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = s2tw.json; sourceTree = "<group>"; };
+		05B336841C6B632B00423986 /* s2twp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = s2twp.json; sourceTree = "<group>"; };
+		05B336851C6B632B00423986 /* t2hk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = t2hk.json; sourceTree = "<group>"; };
+		05B336861C6B632B00423986 /* t2s.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = t2s.json; sourceTree = "<group>"; };
+		05B336871C6B632B00423986 /* t2tw.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = t2tw.json; sourceTree = "<group>"; };
+		05B336881C6B632B00423986 /* tw2s.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tw2s.json; sourceTree = "<group>"; };
+		05B336891C6B632B00423986 /* tw2sp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tw2sp.json; sourceTree = "<group>"; };
+		05B336951C6B636900423986 /* HKVariants.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HKVariants.txt; sourceTree = "<group>"; };
+		05B336961C6B636900423986 /* HKVariantsPhrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HKVariantsPhrases.txt; sourceTree = "<group>"; };
+		05B336971C6B636900423986 /* HKVariantsRevPhrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HKVariantsRevPhrases.txt; sourceTree = "<group>"; };
+		05B336981C6B636900423986 /* JPVariants.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JPVariants.txt; sourceTree = "<group>"; };
+		05B336991C6B636900423986 /* STCharacters.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = STCharacters.txt; sourceTree = "<group>"; };
+		05B3369A1C6B636900423986 /* STPhrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = STPhrases.txt; sourceTree = "<group>"; };
+		05B3369B1C6B636900423986 /* TSCharacters.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TSCharacters.txt; sourceTree = "<group>"; };
+		05B3369C1C6B636900423986 /* TSPhrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TSPhrases.txt; sourceTree = "<group>"; };
+		05B3369D1C6B636900423986 /* TWPhrasesIT.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TWPhrasesIT.txt; sourceTree = "<group>"; };
+		05B3369E1C6B636900423986 /* TWPhrasesName.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TWPhrasesName.txt; sourceTree = "<group>"; };
+		05B3369F1C6B636900423986 /* TWPhrasesOther.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TWPhrasesOther.txt; sourceTree = "<group>"; };
+		05B336A01C6B636900423986 /* TWVariants.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TWVariants.txt; sourceTree = "<group>"; };
+		05B336A11C6B636900423986 /* TWVariantsRevPhrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TWVariantsRevPhrases.txt; sourceTree = "<group>"; };
+		05B336B11C6B637A00423986 /* darts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = darts.h; sourceTree = "<group>"; };
+		05B337821C6B637B00423986 /* document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = document.h; sourceTree = "<group>"; };
+		05B337831C6B637B00423986 /* filestream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filestream.h; sourceTree = "<group>"; };
+		05B337851C6B637B00423986 /* pow10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pow10.h; sourceTree = "<group>"; };
+		05B337861C6B637B00423986 /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		05B337871C6B637B00423986 /* strfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strfunc.h; sourceTree = "<group>"; };
+		05B337881C6B637B00423986 /* prettywriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prettywriter.h; sourceTree = "<group>"; };
+		05B337891C6B637B00423986 /* rapidjson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rapidjson.h; sourceTree = "<group>"; };
+		05B3378A1C6B637B00423986 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
+		05B3378B1C6B637B00423986 /* stringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringbuffer.h; sourceTree = "<group>"; };
+		05B3378C1C6B637B00423986 /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
 		05BDB0B81A555CA800DBBFBF /* xcz_user.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = xcz_user.db; sourceTree = "<group>"; };
 		05CC76561BD5E56A00A3970D /* 华文仿宋.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文仿宋.ttf"; sourceTree = "<group>"; };
 		05CC76571BD5E6E800A3970D /* XCZRandomQuoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCZRandomQuoteViewController.h; sourceTree = "<group>"; };
@@ -392,6 +510,7 @@
 		054AA5191BD74C1200CE8EDC /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				05B336171C6B626600423986 /* OpenCC */,
 				0593979A1C32267900B5F40F /* FontAwesome */,
 				059397A21C32267900B5F40F /* UMSocial_Sdk_4.2.5 */,
 				059397BD1C32267900B5F40F /* UMSocial_Sdk_Extra_Frameworks */,
@@ -579,6 +698,146 @@
 				059397C41C32267900B5F40F /* WXApiObject.h */,
 			);
 			path = Wechat;
+			sourceTree = "<group>";
+		};
+		05B336171C6B626600423986 /* OpenCC */ = {
+			isa = PBXGroup;
+			children = (
+				05B336AF1C6B637A00423986 /* deps */,
+				05B336941C6B636900423986 /* dictionary */,
+				05B3367F1C6B632B00423986 /* config */,
+				05B3367C1C6B62EF00423986 /* OpenCCService.h */,
+				05B3367D1C6B62EF00423986 /* OpenCCService.mm */,
+				05B336181C6B628100423986 /* src */,
+			);
+			path = OpenCC;
+			sourceTree = "<group>";
+		};
+		05B336181C6B628100423986 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				05B336191C6B628100423986 /* BinaryDict.cpp */,
+				05B3361A1C6B628100423986 /* BinaryDict.hpp */,
+				05B3361C1C6B628100423986 /* CMakeLists.txt */,
+				05B3361E1C6B628100423986 /* Common.hpp */,
+				05B3361F1C6B628100423986 /* Config.cpp */,
+				05B336201C6B628100423986 /* Config.hpp */,
+				05B336231C6B628100423986 /* Conversion.cpp */,
+				05B336241C6B628100423986 /* Conversion.hpp */,
+				05B336251C6B628100423986 /* ConversionChain.cpp */,
+				05B336261C6B628100423986 /* ConversionChain.hpp */,
+				05B336291C6B628100423986 /* Converter.cpp */,
+				05B3362A1C6B628100423986 /* Converter.hpp */,
+				05B3362B1C6B628100423986 /* DartsDict.cpp */,
+				05B3362C1C6B628100423986 /* DartsDict.hpp */,
+				05B3362E1C6B628100423986 /* Dict.cpp */,
+				05B3362F1C6B628100423986 /* Dict.hpp */,
+				05B336301C6B628100423986 /* DictEntry.cpp */,
+				05B336311C6B628100423986 /* DictEntry.hpp */,
+				05B336321C6B628100423986 /* DictGroup.cpp */,
+				05B336331C6B628100423986 /* DictGroup.hpp */,
+				05B336361C6B628100423986 /* Exception.hpp */,
+				05B336371C6B628100423986 /* Export.hpp */,
+				05B336381C6B628100423986 /* Lexicon.hpp */,
+				05B336391C6B628100423986 /* MaxMatchSegmentation.cpp */,
+				05B3363A1C6B628100423986 /* MaxMatchSegmentation.hpp */,
+				05B3363C1C6B628100423986 /* opencc.h */,
+				05B3363D1C6B628100423986 /* Optional.hpp */,
+				05B3363E1C6B628100423986 /* PhraseExtract.cpp */,
+				05B3363F1C6B628100423986 /* PhraseExtract.hpp */,
+				05B336411C6B628100423986 /* Segmentation.cpp */,
+				05B336421C6B628100423986 /* Segmentation.hpp */,
+				05B336431C6B628100423986 /* Segments.hpp */,
+				05B336441C6B628100423986 /* SerializableDict.hpp */,
+				05B336451C6B628100423986 /* SimpleConverter.cpp */,
+				05B336461C6B628100423986 /* SimpleConverter.hpp */,
+				05B336491C6B628100423986 /* TextDict.cpp */,
+				05B3364A1C6B628100423986 /* TextDict.hpp */,
+				05B336521C6B628100423986 /* UTF8StringSlice.cpp */,
+				05B336531C6B628100423986 /* UTF8StringSlice.hpp */,
+				05B336551C6B628100423986 /* UTF8Util.cpp */,
+				05B336561C6B628100423986 /* UTF8Util.hpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		05B3367F1C6B632B00423986 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				05B336801C6B632B00423986 /* hk2s.json */,
+				05B336811C6B632B00423986 /* s2hk.json */,
+				05B336821C6B632B00423986 /* s2t.json */,
+				05B336831C6B632B00423986 /* s2tw.json */,
+				05B336841C6B632B00423986 /* s2twp.json */,
+				05B336851C6B632B00423986 /* t2hk.json */,
+				05B336861C6B632B00423986 /* t2s.json */,
+				05B336871C6B632B00423986 /* t2tw.json */,
+				05B336881C6B632B00423986 /* tw2s.json */,
+				05B336891C6B632B00423986 /* tw2sp.json */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		05B336941C6B636900423986 /* dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				05B336951C6B636900423986 /* HKVariants.txt */,
+				05B336961C6B636900423986 /* HKVariantsPhrases.txt */,
+				05B336971C6B636900423986 /* HKVariantsRevPhrases.txt */,
+				05B336981C6B636900423986 /* JPVariants.txt */,
+				05B336991C6B636900423986 /* STCharacters.txt */,
+				05B3369A1C6B636900423986 /* STPhrases.txt */,
+				05B3369B1C6B636900423986 /* TSCharacters.txt */,
+				05B3369C1C6B636900423986 /* TSPhrases.txt */,
+				05B3369D1C6B636900423986 /* TWPhrasesIT.txt */,
+				05B3369E1C6B636900423986 /* TWPhrasesName.txt */,
+				05B3369F1C6B636900423986 /* TWPhrasesOther.txt */,
+				05B336A01C6B636900423986 /* TWVariants.txt */,
+				05B336A11C6B636900423986 /* TWVariantsRevPhrases.txt */,
+			);
+			path = dictionary;
+			sourceTree = "<group>";
+		};
+		05B336AF1C6B637A00423986 /* deps */ = {
+			isa = PBXGroup;
+			children = (
+				05B336B01C6B637A00423986 /* darts-clone */,
+				05B337811C6B637B00423986 /* rapidjson-0.11 */,
+			);
+			path = deps;
+			sourceTree = "<group>";
+		};
+		05B336B01C6B637A00423986 /* darts-clone */ = {
+			isa = PBXGroup;
+			children = (
+				05B336B11C6B637A00423986 /* darts.h */,
+			);
+			path = "darts-clone";
+			sourceTree = "<group>";
+		};
+		05B337811C6B637B00423986 /* rapidjson-0.11 */ = {
+			isa = PBXGroup;
+			children = (
+				05B337821C6B637B00423986 /* document.h */,
+				05B337831C6B637B00423986 /* filestream.h */,
+				05B337841C6B637B00423986 /* internal */,
+				05B337881C6B637B00423986 /* prettywriter.h */,
+				05B337891C6B637B00423986 /* rapidjson.h */,
+				05B3378A1C6B637B00423986 /* reader.h */,
+				05B3378B1C6B637B00423986 /* stringbuffer.h */,
+				05B3378C1C6B637B00423986 /* writer.h */,
+			);
+			path = "rapidjson-0.11";
+			sourceTree = "<group>";
+		};
+		05B337841C6B637B00423986 /* internal */ = {
+			isa = PBXGroup;
+			children = (
+				05B337851C6B637B00423986 /* pow10.h */,
+				05B337861C6B637B00423986 /* stack.h */,
+				05B337871C6B637B00423986 /* strfunc.h */,
+			);
+			path = internal;
 			sourceTree = "<group>";
 		};
 		05CC12F9196569E80014989C /* Models */ = {
@@ -810,23 +1069,47 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B336AE1C6B636900423986 /* TWVariantsRevPhrases.txt in Resources */,
 				059397CC1C32267900B5F40F /* UMSCommentInputControlleriPad.xib in Resources */,
 				059397D01C32267900B5F40F /* UMSnsAccountViewController.xib in Resources */,
+				05B336A41C6B636900423986 /* HKVariantsRevPhrases.txt in Resources */,
+				05B336911C6B632B00423986 /* t2tw.json in Resources */,
 				05B2287C195FD19500F91BCC /* xcz.db in Resources */,
+				05B3368B1C6B632B00423986 /* s2hk.json in Resources */,
+				05B336A51C6B636900423986 /* JPVariants.txt in Resources */,
 				05CC765A1BD5FEDC00A3970D /* 华文仿宋.ttf in Resources */,
 				0521D8721C1BBA6B0003A081 /* InfoPlist.strings in Resources */,
 				05BDB0B91A555CA800DBBFBF /* xcz_user.db in Resources */,
+				05B3368E1C6B632B00423986 /* s2twp.json in Resources */,
 				054D06551C19EF8A002E7854 /* Wyue.otf in Resources */,
+				05B3368D1C6B632B00423986 /* s2tw.json in Resources */,
+				05B336A61C6B636900423986 /* STCharacters.txt in Resources */,
 				059397CE1C32267900B5F40F /* UMShareEditViewControlleriPad.xib in Resources */,
 				059397D11C32267900B5F40F /* UMSShareListController.xib in Resources */,
 				059397C81C32267900B5F40F /* UMSocialLocalizable.strings in Resources */,
+				05B336A91C6B636900423986 /* TSPhrases.txt in Resources */,
 				059397CA1C32267900B5F40F /* UMSCommentDetailController.xib in Resources */,
 				059397CB1C32267900B5F40F /* UMSCommentInputController.xib in Resources */,
+				05B3365A1C6B628200423986 /* CMakeLists.txt in Resources */,
+				05B336AC1C6B636900423986 /* TWPhrasesOther.txt in Resources */,
+				05B336AD1C6B636900423986 /* TWVariants.txt in Resources */,
+				05B336931C6B632B00423986 /* tw2sp.json in Resources */,
 				059397D21C32267900B5F40F /* UMSocialSDKResourcesNew.bundle in Resources */,
+				05B336A31C6B636900423986 /* HKVariantsPhrases.txt in Resources */,
+				05B336AB1C6B636900423986 /* TWPhrasesName.txt in Resources */,
 				05CE723719A4D97C003864E4 /* Images.xcassets in Resources */,
+				05B3368A1C6B632B00423986 /* hk2s.json in Resources */,
+				05B336901C6B632B00423986 /* t2s.json in Resources */,
+				05B336A81C6B636900423986 /* TSCharacters.txt in Resources */,
+				05B3368F1C6B632B00423986 /* t2hk.json in Resources */,
+				05B336A71C6B636900423986 /* STPhrases.txt in Resources */,
+				05B336921C6B632B00423986 /* tw2s.json in Resources */,
+				05B336A21C6B636900423986 /* HKVariants.txt in Resources */,
 				0521D8781C1BBDC50003A081 /* Localizable.strings in Resources */,
+				05B336AA1C6B636900423986 /* TWPhrasesIT.txt in Resources */,
 				059397CD1C32267900B5F40F /* UMShareEditViewController.xib in Resources */,
 				05AC40BA1BFF56A1006F6CA3 /* FontAwesome.ttf in Resources */,
+				05B3368C1C6B632B00423986 /* s2t.json in Resources */,
 				059397CF1C32267900B5F40F /* UMSLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -907,16 +1190,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B3366A1C6B628200423986 /* PhraseExtract.cpp in Sources */,
+				05B336621C6B628200423986 /* DartsDict.cpp in Sources */,
 				0545D2681BC51F9800410895 /* XCZLabel.m in Sources */,
 				0564853D1BA8895300F52EAE /* XCZLike.m in Sources */,
 				059397961C32262400B5F40F /* LocalizeHelper.m in Sources */,
 				0545D2741BC54CF600410895 /* XCZMeetViewController.m in Sources */,
 				054AA51F1BD74FE600CE8EDC /* XCZAuthorHeaderView.m in Sources */,
+				05B3365B1C6B628200423986 /* Config.cpp in Sources */,
+				05B3366D1C6B628200423986 /* SimpleConverter.cpp in Sources */,
+				05B3367E1C6B62EF00423986 /* OpenCCService.mm in Sources */,
 				05349CE21C1AD4200011DCEB /* XCZQuoteFontSettingsViewController.m in Sources */,
 				05CC76631BD6433000A3970D /* XCZQuoteViewController.m in Sources */,
 				05CC765D1BD6247E00A3970D /* XCZQuoteView.m in Sources */,
 				05CFDFE81BF7740F0027773C /* XCZCollection.m in Sources */,
 				059397851C31926300B5F40F /* NSString+Helper.m in Sources */,
+				05B3366F1C6B628200423986 /* TextDict.cpp in Sources */,
 				0599F5F71BE7B9A300AA099D /* XCZBadgeView.m in Sources */,
 				05349CDF1C1AD3FB0011DCEB /* XCZChineseKindSettingsViewController.m in Sources */,
 				05ECE6221BD49D5E008DE9CE /* XCZWorkTableViewCell.m in Sources */,
@@ -926,27 +1215,35 @@
 				0599F5F11BE76A2A00AA099D /* XCZSettingsViewController.m in Sources */,
 				0564853C1BA8895300F52EAE /* XCZDynasty.m in Sources */,
 				05CFDFEF1BF77B2F0027773C /* XCZCollectionWorksViewController.m in Sources */,
+				05B336681C6B628200423986 /* MaxMatchSegmentation.cpp in Sources */,
 				059397881C3224FD00B5F40F /* XCZBaseViewController.m in Sources */,
 				05CFDFF31BF782300027773C /* XCZCollectionCell.m in Sources */,
 				0545D26E1BC5428500410895 /* XCZWorkView.m in Sources */,
+				05B3365D1C6B628200423986 /* Conversion.cpp in Sources */,
 				056485521BA889E100F52EAE /* XCZWorkViewController.m in Sources */,
+				05B336771C6B628200423986 /* UTF8Util.cpp in Sources */,
 				05DF00D9195F0CE100175ABF /* XCZAppDelegate.m in Sources */,
 				056485561BA889E100F52EAE /* XCZLikesViewController.m in Sources */,
+				05B336751C6B628200423986 /* UTF8StringSlice.cpp in Sources */,
 				055D34C01C2C0342004902C9 /* NSArray+Helper.m in Sources */,
 				0545D2711BC54C8B00410895 /* XCZLibraryViewController.m in Sources */,
+				05B336641C6B628200423986 /* Dict.cpp in Sources */,
 				0564853B1BA8895300F52EAE /* XCZAuthor.m in Sources */,
 				05CFDFF91BF8438B0027773C /* XCZCollectionSectionFooterView.m in Sources */,
 				05CC76591BD5E6E800A3970D /* XCZRandomQuoteViewController.m in Sources */,
 				0593978E1C32254300B5F40F /* XCZTagListView.m in Sources */,
 				0545D26B1BC5379200410895 /* UIColor+Helper.m in Sources */,
+				05B3366C1C6B628200423986 /* Segmentation.cpp in Sources */,
 				05CFDFE51BF773F80027773C /* XCZCollectionKind.m in Sources */,
 				056485591BA889E100F52EAE /* XCZWorksViewController.m in Sources */,
+				05B336661C6B628200423986 /* DictGroup.cpp in Sources */,
 				059D1C361C6A33DB005DA29C /* XCZWorkSearchResult.m in Sources */,
 				0564853F1BA8895300F52EAE /* XCZWork.m in Sources */,
 				05ECE6191BD3D476008DE9CE /* XCZWikiViewController.m in Sources */,
 				0599F5F41BE7923F00AA099D /* UIImage+Helper.m in Sources */,
 				05DF00D5195F0CE100175ABF /* main.m in Sources */,
 				05CC76661BD6460D00A3970D /* XCZQuoteTableViewCell.m in Sources */,
+				05B336581C6B628200423986 /* BinaryDict.cpp in Sources */,
 				05CC76691BD6900500A3970D /* XCZCopyableLabel.m in Sources */,
 				059397991C32264600B5F40F /* XCZUtils.m in Sources */,
 				05CFDFE21BF772010027773C /* XCZCollectionsViewController.m in Sources */,
@@ -956,9 +1253,12 @@
 				05CFDFEB1BF774230027773C /* XCZCollectionWork.m in Sources */,
 				05F219141BC5784000B222D7 /* XCZOtherViewController.m in Sources */,
 				05CFDFF61BF8298D0027773C /* XCZCollectionSectionHeaderView.m in Sources */,
+				05B336651C6B628200423986 /* DictEntry.cpp in Sources */,
 				05B336161C6AFCC300423986 /* XCZWorkSearchResultTableViewCell.m in Sources */,
 				059397C61C32267900B5F40F /* UIImage+FontAwesome.m in Sources */,
+				05B336611C6B628200423986 /* Converter.cpp in Sources */,
 				0593978D1C32254300B5F40F /* XCZTagView.m in Sources */,
+				05B3365E1C6B628200423986 /* ConversionChain.cpp in Sources */,
 				056485531BA889E100F52EAE /* XCZAuthorViewController.m in Sources */,
 				05F2191A1BC6134400B222D7 /* XCZAboutViewController.m in Sources */,
 			);

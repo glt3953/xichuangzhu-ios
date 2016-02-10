@@ -13,6 +13,8 @@
 #import "XCZWorkViewController.h"
 #import "LocalizeHelper.h"
 #import "XCZWorkSearchResultTableViewCell.h"
+#import "Constants.h"
+#import "OpenCCService.h"
 #import <FMDB/FMDB.h>
 #import <AVOSCloud/AVOSCloud.h>
 #import <UITableView+FDTemplateLayoutCell.h>
@@ -27,6 +29,7 @@ static NSString * const searchResultCellIdentifier = @"WorkSearchResultCellIdent
 @property (strong, nonatomic) NSArray *searchResults;
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UISearchDisplayController *searchController;
+@property (nonatomic) BOOL searching;
 
 @end
 
@@ -41,6 +44,7 @@ static NSString * const searchResultCellIdentifier = @"WorkSearchResultCellIdent
         return nil;
     }
     
+    self.searching = NO;
     self.works = [XCZWork getAll];
 
     return self;
@@ -137,7 +141,25 @@ static NSString * const searchResultCellIdentifier = @"WorkSearchResultCellIdent
 // 过滤结果
 - (void)filterContentForSearchText:(NSString*)searchText
 {
-    self.searchResults = [XCZWorkSearchResult fullTextSearch:searchText];
+    self.searching = YES;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        OpenCCService *service;
+        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimplifiedChinese"]) {
+            service = [[OpenCCService alloc] initWithConverterType:OpenCCServiceConverterTypeT2S];
+        } else {
+            service = [[OpenCCService alloc] initWithConverterType:OpenCCServiceConverterTypeS2T];
+        }
+
+        NSArray *searchResults = [XCZWorkSearchResult fullTextSearch:[service convert:searchText]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.searching = NO;
+            self.searchResults = searchResults;
+            [self.searchController.searchResultsTableView reloadData];
+        });
+    });
 }
 
 // 以下代码解决了 searchResultsTableView 下方空间的 bug
@@ -191,6 +213,7 @@ static NSString * const searchResultCellIdentifier = @"WorkSearchResultCellIdent
     }
 }
 
+// 单元格预估高度
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 62.5;
@@ -211,6 +234,36 @@ static NSString * const searchResultCellIdentifier = @"WorkSearchResultCellIdent
     
     UIViewController *controller = [[XCZWorkViewController alloc] initWithWork:work];
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (self.searching) {
+        UIView *headerView = [UIView new];
+        headerView.backgroundColor = [UIColor whiteColor];
+        
+        UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [headerView addSubview:activityIndicatorView];
+        [activityIndicatorView startAnimating];
+        
+        [activityIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(headerView);
+            make.top.equalTo(headerView).offset(20);
+        }];
+        
+        return headerView;
+    } else {
+        return nil;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (self.searching) {
+        return SCREEN_HEIGHT;
+    } else {
+        return CGFLOAT_MIN;
+    }
 }
 
 #pragma mark - Internal Helpers
