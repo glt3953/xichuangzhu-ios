@@ -69,7 +69,6 @@
     // 执行数据库拷贝
     [self copyPublicDatabase];
     [self copyUserDatabase];
-    [self createFullTextIndexIfNeeded];
     
     // 延迟0.5s
     usleep(500 * 1000);
@@ -234,45 +233,6 @@
         } else {
             NSLog(@"Version match.");
         }
-    }
-}
-
-- (void)createFullTextIndexIfNeeded
-{
-    NSString *storePath = [XCZUtils getDatabaseFilePath];
-    FMDatabase *db = [FMDatabase databaseWithPath:storePath];
-    
-    [db open];
-    FMResultSet *s = [db executeQuery:@"SELECT COUNT(*) AS tablesCount FROM sqlite_master WHERE type='table' AND name='works_ft'"];
-    [s next];
-    int tablesCount = [s intForColumn:@"tablesCount"];
-    [db close];
-    
-    if (tablesCount == 0) {
-        NSLog(@"Full text index not found, begin generating.");
-        
-        [db open];
-        
-        FMSimpleTokenizer *simpleTok = [[FMSimpleTokenizer alloc] initWithLocale:NULL];
-        
-        // This installs a tokenizer module named "fmdb"
-        [db installTokenizerModule];
-        // This registers the delegate using the name "simple", which should be used when creating the table (below).
-        [FMDatabase registerTokenizer:simpleTok withKey:@"simple"];
-        
-        // Create the table with the "simple" tokenizer
-        [db executeUpdate:@"CREATE VIRTUAL TABLE works_ft USING fts4(id, title, title_tr, content, content_tr, dynasty, dynasty_tr, author, author_tr, tokenize=fmdb simple)"];
-    
-        [db executeUpdate:@"INSERT INTO works_ft (id, title, title_tr, content, content_tr, dynasty, dynasty_tr, author, author_tr) SELECT id, title, title_tr, compress_content, compress_content_tr, dynasty, dynasty_tr, author, author_tr FROM works"];
-        
-        // Use a property to keep the tokenizer instance from being de-allocated.
-        self.tokenizer = simpleTok;
-        
-        [db close];
-        
-        NSLog(@"Full text index has been generated.");
-    } else {
-        NSLog(@"Full text index found.");
     }
 }
 
